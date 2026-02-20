@@ -1,4 +1,9 @@
 {
+  "Metadata": {
+    "title": "Jetforge Labs | Desarrollo de Software a Medida y Soluciones Tecnologicas",
+    "description": "Jetforge Labs desarrolla software a medida, aplicaciones moviles, infraestructura cloud y soluciones potenciadas por IA. Desde MVP hasta escala empresarial, entregamos tecnologia que genera resultados reales.",
+    "keywords": "desarrollo de software a medida, desarrollo de aplicaciones moviles, cloud devops, automatizacion IA, desarrollo MVP, fabrica de software, soluciones tecnologicas, auditorias de seguridad"
+  },
   "Navbar": {
     "services": "Servicios",
     "about": "Nosotros",

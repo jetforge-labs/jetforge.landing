@@ -1,0 +1,6 @@
+# Jetforge Labs - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jetforgelabs.com/sitemap.xml

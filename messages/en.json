@@ -1,4 +1,9 @@
 {
+  "Metadata": {
+    "title": "Jetforge Labs | Custom Software Development & Tech Solutions",
+    "description": "Jetforge Labs builds high-quality custom software, mobile apps, cloud infrastructure, and AI-powered solutions. From MVP to enterprise scale, we deliver technology that drives real business results.",
+    "keywords": "custom software development, mobile app development, cloud devops, AI automation, MVP development, software factory, tech solutions, security audits"
+  },
   "Navbar": {
     "services": "Services",
     "about": "About",

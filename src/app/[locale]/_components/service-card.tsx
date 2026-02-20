@@ -10,7 +10,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ title, description, icon }: ServiceCardProps) {
   return (
-    <div className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/5 bg-navy-900/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-xl hover:shadow-blue-500/5">
+    <article className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/5 bg-navy-900/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-xl hover:shadow-blue-500/5">
       {/* Hover gradient overlay */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
@@ -25,6 +25,6 @@ export function ServiceCard({ title, description, icon }: ServiceCardProps) {
       <p className="relative text-sm leading-relaxed text-slate-400">
         {description}
       </p>
-    </div>
+    </article>
   );
 }
