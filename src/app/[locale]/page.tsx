@@ -91,20 +91,6 @@ export default async function Home() {
               </a>
             </div>
           </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-            <a
-              href="#services"
-              className="flex cursor-pointer flex-col items-center gap-1 text-slate-500 transition-colors duration-200 hover:text-slate-300"
-              aria-label="Scroll to services"
-            >
-              <span className="text-xs font-medium uppercase tracking-widest">
-                {tHero("scroll")}
-              </span>
-              <ChevronDownIcon className="h-4 w-4 animate-bounce" />
-            </a>
-          </div>
         </section>
 
         {/* Tech strip */}

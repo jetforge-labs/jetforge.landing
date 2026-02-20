@@ -52,7 +52,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-center px-6 py-4">
+      <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4">
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
@@ -65,18 +65,6 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* Language switcher */}
-          <button
-            type="button"
-            onClick={switchLocale}
-            className="cursor-pointer text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
-            aria-label="Switch language"
-          >
-            <span className={locale === "en" ? "text-white" : ""}>EN</span>
-            {" | "}
-            <span className={locale === "es" ? "text-white" : ""}>ES</span>
-          </button>
-
           <a
             href="#contact"
             className="cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:shadow-blue-500/30 hover:brightness-110"
@@ -84,6 +72,18 @@ export function Navbar() {
             {t("getInTouch")}
           </a>
         </div>
+
+        {/* Language switcher — top right */}
+        <button
+          type="button"
+          onClick={switchLocale}
+          className="absolute right-6 hidden cursor-pointer text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white md:block"
+          aria-label="Switch language"
+        >
+          <span className={locale === "en" ? "text-white" : ""}>EN</span>
+          {" | "}
+          <span className={locale === "es" ? "text-white" : ""}>ES</span>
+        </button>
 
         {/* Mobile hamburger */}
         <button
