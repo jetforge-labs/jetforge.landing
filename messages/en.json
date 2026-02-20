@@ -1,0 +1,87 @@
+{
+  "Navbar": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch"
+  },
+  "Hero": {
+    "badge": "Tech Solutions",
+    "headingLine1": "We Build Software",
+    "headingLine2": "That Drives Results",
+    "subheading": "From concept to deployment, we deliver scalable, high-quality software products that move your business forward.",
+    "startProject": "Start a Project",
+    "ourServices": "Our Services",
+    "scroll": "Scroll"
+  },
+  "TechStrip": {
+    "heading": "Technologies We Work With"
+  },
+  "Services": {
+    "eyebrow": "What We Do",
+    "heading": "Our Services",
+    "subheading": "End-to-end software development services tailored to your needs.",
+    "customSoftware": {
+      "title": "Custom Software",
+      "description": "Tailored solutions designed to match your unique business processes and goals."
+    },
+    "mobileApps": {
+      "title": "Mobile Apps",
+      "description": "Native and cross-platform mobile applications that deliver seamless user experiences."
+    },
+    "cloudDevOps": {
+      "title": "Cloud & DevOps",
+      "description": "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running."
+    },
+    "aiAutomation": {
+      "title": "AI & Automation",
+      "description": "Intelligent automation and machine learning integrations to streamline operations."
+    },
+    "mvpDevelopment": {
+      "title": "MVP Development",
+      "description": "Rapid prototyping and MVP delivery to validate your ideas and reach market fast."
+    },
+    "securityAudits": {
+      "title": "Security Audits",
+      "description": "Comprehensive security assessments to protect your applications and data."
+    }
+  },
+  "About": {
+    "eyebrow": "About Us",
+    "headingStart": "Engineering Excellence,",
+    "headingHighlight": "Delivered",
+    "paragraph1": "Jetforge Labs is a tech solutions company focused on building reliable, scalable products for startups and established businesses alike. We combine technical expertise with a pragmatic approach to deliver solutions that work.",
+    "paragraph2": "Our team of engineers, designers, and product strategists work closely with you to understand your challenges and craft software that solves real problems.",
+    "workWithUs": "Work with us"
+  },
+  "Contact": {
+    "eyebrow": "Get in Touch",
+    "headingStart": "Let's Build Something",
+    "headingHighlight": "Great",
+    "subheading": "Ready to start your next project? Reach out and let's talk.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your full name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@company.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us about your project, goals, and timeline...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "successTitle": "Message sent!",
+    "successMessage": "We'll get back to you as soon as possible.",
+    "sendAnother": "Send another message",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "Footer": {
+    "tagline": "Building reliable, scalable software products that drive real business results. Your vision, our engineering.",
+    "navigation": "Navigation",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "servicesHeader": "Services",
+    "copyright": "Jetforge Labs. All rights reserved.",
+    "bottomTagline": "Crafted with precision and purpose."
+  }
+}

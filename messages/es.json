@@ -1,0 +1,87 @@
+{
+  "Navbar": {
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "getInTouch": "Contactanos"
+  },
+  "Hero": {
+    "badge": "Soluciones Tecnológicas",
+    "headingLine1": "Construimos Software",
+    "headingLine2": "Que Genera Resultados",
+    "subheading": "Desde el concepto hasta la implementacion, desarrollamos productos de software escalables y de alta calidad que impulsan tu negocio.",
+    "startProject": "Iniciar un Proyecto",
+    "ourServices": "Nuestros Servicios",
+    "scroll": "Explorar"
+  },
+  "TechStrip": {
+    "heading": "Tecnologias con las que Trabajamos"
+  },
+  "Services": {
+    "eyebrow": "Lo que Hacemos",
+    "heading": "Nuestros Servicios",
+    "subheading": "Servicios integrales de desarrollo de software adaptados a tus necesidades.",
+    "customSoftware": {
+      "title": "Software a Medida",
+      "description": "Soluciones personalizadas disenadas para adaptarse a los procesos y objetivos unicos de tu negocio."
+    },
+    "mobileApps": {
+      "title": "Apps Moviles",
+      "description": "Aplicaciones moviles nativas y multiplataforma que ofrecen experiencias de usuario excepcionales."
+    },
+    "cloudDevOps": {
+      "title": "Cloud & DevOps",
+      "description": "Infraestructura cloud escalable y pipelines de CI/CD que mantienen tus sistemas en funcionamiento."
+    },
+    "aiAutomation": {
+      "title": "IA & Automatizacion",
+      "description": "Automatizacion inteligente e integraciones de machine learning para optimizar tus operaciones."
+    },
+    "mvpDevelopment": {
+      "title": "Desarrollo de MVP",
+      "description": "Prototipado rapido y entrega de MVP para validar tus ideas y llegar al mercado rapidamente."
+    },
+    "securityAudits": {
+      "title": "Auditorias de Seguridad",
+      "description": "Evaluaciones de seguridad integrales para proteger tus aplicaciones y datos."
+    }
+  },
+  "About": {
+    "eyebrow": "Sobre Nosotros",
+    "headingStart": "Excelencia en Ingenieria,",
+    "headingHighlight": "Garantizada",
+    "paragraph1": "Jetforge Labs es una empresa de soluciones tecnológicas enfocada en construir productos confiables y escalables tanto para startups como para empresas consolidadas. Combinamos experiencia técnica con un enfoque pragmático para entregar soluciones que funcionan.",
+    "paragraph2": "Nuestro equipo de ingenieros, disenadores y estrategas de producto trabaja de cerca contigo para entender tus desafios y crear software que resuelve problemas reales.",
+    "workWithUs": "Trabaja con nosotros"
+  },
+  "Contact": {
+    "eyebrow": "Contactanos",
+    "headingStart": "Construyamos Algo",
+    "headingHighlight": "Grandioso",
+    "subheading": "Listo para iniciar tu proximo proyecto? Escribinos y hablemos.",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Tu nombre completo",
+    "emailLabel": "Correo electronico",
+    "emailPlaceholder": "tu@empresa.com",
+    "subjectLabel": "Asunto",
+    "subjectPlaceholder": "De que se trata?",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Contanos sobre tu proyecto, objetivos y plazos...",
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "successTitle": "Mensaje enviado!",
+    "successMessage": "Te responderemos lo antes posible.",
+    "sendAnother": "Enviar otro mensaje",
+    "errorGeneric": "Algo salió mal. Por favor, intentá de nuevo."
+  },
+  "Footer": {
+    "tagline": "Construimos productos de software confiables y escalables que generan resultados reales para tu negocio. Tu vision, nuestra ingenieria.",
+    "navigation": "Navegacion",
+    "services": "Servicios",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "servicesHeader": "Servicios",
+    "copyright": "Jetforge Labs. Todos los derechos reservados.",
+    "bottomTagline": "Desarrollado con precision y proposito."
+  }
+}
