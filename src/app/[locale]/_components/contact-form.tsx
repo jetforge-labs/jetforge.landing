@@ -128,7 +128,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="group flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:shadow-blue-500/40 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+        className="btn-press group flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:shadow-blue-500/40 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "sending" ? t("sending") : t("send")}
         <PaperAirplaneIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

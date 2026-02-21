@@ -67,7 +67,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:shadow-blue-500/30 hover:brightness-110"
+            className="btn-press cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:shadow-blue-500/30 hover:brightness-110"
           >
             {t("getInTouch")}
           </a>

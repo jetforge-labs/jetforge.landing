@@ -101,3 +101,101 @@ body::before {
 [id] {
   scroll-margin-top: 80px;
 }
+
+/* ─── Hero entrance animations ─── */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate {
+  animation: hero-fade-up 0.8s ease-out both;
+}
+
+.hero-animate-delay-1 {
+  animation: hero-fade-up 0.8s ease-out 0.15s both;
+}
+
+.hero-animate-delay-2 {
+  animation: hero-fade-up 0.8s ease-out 0.3s both;
+}
+
+.hero-animate-delay-3 {
+  animation: hero-fade-up 0.8s ease-out 0.45s both;
+}
+
+/* ─── Scroll-triggered reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children (service cards, etc.) */
+.reveal-stagger > .reveal {
+  transition-delay: calc(var(--stagger-index, 0) * 100ms);
+}
+
+/* ─── Focus-visible ring for keyboard navigation ─── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgba(96, 165, 250, 0.7);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Button active (pressed) feedback ─── */
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ─── Scroll indicator pulse ─── */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* Reduced motion: disable all custom animations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate,
+  .hero-animate-delay-1,
+  .hero-animate-delay-2,
+  .hero-animate-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .gradient-orb,
+  .gradient-orb-delayed {
+    animation: none;
+  }
+}

@@ -8,7 +8,7 @@
     "services": "Servicios",
     "about": "Nosotros",
     "contact": "Contacto",
-    "getInTouch": "Contactanos"
+    "getInTouch": "Contáctanos"
   },
   "Hero": {
     "badge": "Soluciones Tecnológicas",
@@ -85,7 +85,6 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "servicesHeader": "Servicios",
-    "copyright": "Jetforge Labs. Todos los derechos reservados.",
-    "bottomTagline": "Desarrollado con precision y proposito."
+    "copyright": "Jetforge Labs. Todos los derechos reservados."
   }
 }
