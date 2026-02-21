@@ -238,9 +238,6 @@ export default async function Home() {
               <a href="#" aria-label="Back to top">
                 <Logo className="mb-4 h-40" />
               </a>
-              <p className="mb-6 max-w-xs text-sm leading-relaxed text-slate-500">
-                {tFooter("tagline")}
-              </p>
             </div>
 
             {/* Quick links */}
