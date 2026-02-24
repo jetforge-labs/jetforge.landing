@@ -125,6 +125,8 @@ export default async function PrivacyPolicy() {
               <p>
                 <strong className="text-white">Jetforge Labs OÜ</strong>
                 <br />
+                {t("contact.registryCode")}: 17116764
+                <br />
                 Harju maakond, Tallinn, Kesklinna linnaosa, Tornimäe tn 5, 10145
                 <br />
                 <a href="mailto:hello@jetforgelabs.com">hello@jetforgelabs.com</a>
