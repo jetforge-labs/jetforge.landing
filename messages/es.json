@@ -84,6 +84,71 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "servicesHeader": "Servicios",
-    "copyright": "Jetforge Labs. Todos los derechos reservados."
+    "institutional": "Institucional",
+    "copyright": "Jetforge Labs. Todos los derechos reservados.",
+    "privacy": "Política de Privacidad"
+  },
+  "Privacy": {
+    "title": "Política de Privacidad",
+    "metaDescription": "Política de Privacidad de Jetforge Labs y todas sus aplicaciones y servicios.",
+    "eyebrow": "Legal",
+    "lastUpdated": "Última actualización",
+    "lastUpdatedDate": "24 de febrero de 2026",
+    "intro": {
+      "heading": "Introducción",
+      "p1": "Jetforge Labs OÜ (\"nosotros\", \"nos\" o \"nuestro\") opera sitios web, aplicaciones móviles y otros productos y servicios digitales (colectivamente, \"Servicios\"). Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando utiliza cualquiera de nuestros Servicios.",
+      "p2": "Al acceder o utilizar nuestros Servicios, usted acepta esta Política de Privacidad. Si no está de acuerdo con los términos de esta política, por favor no acceda a nuestros Servicios."
+    },
+    "collect": {
+      "heading": "Información que Recopilamos",
+      "p1": "Podemos recopilar los siguientes tipos de información:",
+      "item1": "Información personal que usted proporciona directamente, como su nombre, dirección de correo electrónico y cualquier mensaje que envíe a través de nuestros formularios de contacto.",
+      "item2": "Datos de uso recopilados automáticamente, incluyendo información del dispositivo, tipo de navegador, sistema operativo, dirección IP y patrones de interacción dentro de nuestros Servicios.",
+      "item3": "Datos analíticos a través de servicios de terceros para comprender cómo se utilizan nuestros Servicios y mejorar la experiencia del usuario.",
+      "item4": "Identificadores publicitarios y datos relacionados cuando nuestras aplicaciones muestran anuncios, utilizados para servir publicidad relevante."
+    },
+    "use": {
+      "heading": "Cómo Usamos su Información",
+      "p1": "Utilizamos la información que recopilamos para los siguientes propósitos:",
+      "item1": "Proporcionar, mantener y mejorar nuestros Servicios.",
+      "item2": "Comunicarnos con usted, incluyendo responder consultas y enviar avisos relacionados con el servicio.",
+      "item3": "Analizar tendencias de uso y optimizar el rendimiento y la experiencia del usuario de nuestros Servicios.",
+      "item4": "Mostrar publicidad dentro de nuestras aplicaciones, incluyendo anuncios personalizados cuando corresponda.",
+      "item5": "Cumplir con obligaciones legales y proteger nuestros derechos."
+    },
+    "thirdParty": {
+      "heading": "Servicios de Terceros",
+      "p1": "Nuestros Servicios pueden integrarse con servicios de terceros que recopilan información de forma independiente. Estos pueden incluir:",
+      "item1": "Proveedores de análisis (por ejemplo, Google Analytics, Firebase Analytics) para rastrear el uso y rendimiento.",
+      "item2": "Redes publicitarias (por ejemplo, Google AdMob) para mostrar anuncios dentro de nuestras aplicaciones.",
+      "item3": "Proveedores de alojamiento en la nube e infraestructura para almacenar y procesar datos de forma segura.",
+      "p2": "Estos servicios de terceros tienen sus propias políticas de privacidad, y le recomendamos que las revise. No somos responsables de las prácticas de estos terceros."
+    },
+    "security": {
+      "heading": "Almacenamiento y Seguridad de Datos",
+      "p1": "Implementamos medidas técnicas y organizativas razonables para proteger su información personal contra el acceso no autorizado, alteración, divulgación o destrucción.",
+      "p2": "Sin embargo, ningún método de transmisión por internet o almacenamiento electrónico es 100% seguro. Aunque nos esforzamos por proteger su información, no podemos garantizar su seguridad absoluta."
+    },
+    "rights": {
+      "heading": "Sus Derechos",
+      "p1": "Dependiendo de su jurisdicción, puede tener los siguientes derechos respecto a sus datos personales:",
+      "item1": "Acceder a los datos personales que tenemos sobre usted.",
+      "item2": "Solicitar la corrección de datos inexactos o incompletos.",
+      "item3": "Solicitar la eliminación de sus datos personales.",
+      "item4": "Oponerse o restringir el procesamiento de sus datos personales.",
+      "p2": "Para ejercer cualquiera de estos derechos, contáctenos utilizando la información proporcionada a continuación."
+    },
+    "children": {
+      "heading": "Privacidad de los Niños",
+      "p1": "Nuestros Servicios no están dirigidos a menores de 13 años (o la edad de consentimiento aplicable en su jurisdicción). No recopilamos intencionalmente información personal de niños. Si nos enteramos de que hemos recopilado datos personales de un niño sin el consentimiento de los padres, tomaremos medidas para eliminar esa información de inmediato."
+    },
+    "changes": {
+      "heading": "Cambios en Esta Política",
+      "p1": "Podemos actualizar esta Política de Privacidad de vez en cuando. Cualquier cambio se publicará en esta página con una fecha de revisión actualizada. Le recomendamos que revise esta política periódicamente para mantenerse informado sobre cómo protegemos su información."
+    },
+    "contact": {
+      "heading": "Contáctenos",
+      "p1": "Si tiene alguna pregunta o inquietud sobre esta Política de Privacidad o nuestras prácticas de datos, contáctenos en:"
+    }
   }
 }

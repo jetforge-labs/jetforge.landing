@@ -84,6 +84,71 @@
     "about": "About",
     "contact": "Contact",
     "servicesHeader": "Services",
-    "copyright": "Jetforge Labs. All rights reserved."
+    "institutional": "Institutional",
+    "copyright": "Jetforge Labs. All rights reserved.",
+    "privacy": "Privacy Policy"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "metaDescription": "Privacy Policy for Jetforge Labs and all its applications and services.",
+    "eyebrow": "Legal",
+    "lastUpdated": "Last updated",
+    "lastUpdatedDate": "February 24, 2026",
+    "intro": {
+      "heading": "Introduction",
+      "p1": "Jetforge Labs OÜ (\"we\", \"us\", or \"our\") operates websites, mobile applications, and other digital products and services (collectively, \"Services\"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use any of our Services.",
+      "p2": "By accessing or using our Services, you agree to this Privacy Policy. If you do not agree with the terms of this policy, please do not access our Services."
+    },
+    "collect": {
+      "heading": "Information We Collect",
+      "p1": "We may collect the following types of information:",
+      "item1": "Personal information you provide directly, such as your name, email address, and any messages you send through our contact forms.",
+      "item2": "Usage data collected automatically, including device information, browser type, operating system, IP address, and interaction patterns within our Services.",
+      "item3": "Analytics data through third-party services to understand how our Services are used and to improve user experience.",
+      "item4": "Advertising identifiers and related data when our applications display ads, used to serve relevant advertisements."
+    },
+    "use": {
+      "heading": "How We Use Your Information",
+      "p1": "We use the information we collect for the following purposes:",
+      "item1": "To provide, maintain, and improve our Services.",
+      "item2": "To communicate with you, including responding to inquiries and sending service-related notices.",
+      "item3": "To analyze usage trends and optimize the performance and user experience of our Services.",
+      "item4": "To display advertisements within our applications, including personalized ads where applicable.",
+      "item5": "To comply with legal obligations and protect our rights."
+    },
+    "thirdParty": {
+      "heading": "Third-Party Services",
+      "p1": "Our Services may integrate with third-party services that collect information independently. These may include:",
+      "item1": "Analytics providers (e.g., Google Analytics, Firebase Analytics) to track usage and performance.",
+      "item2": "Advertising networks (e.g., Google AdMob) to display ads within our applications.",
+      "item3": "Cloud hosting and infrastructure providers to store and process data securely.",
+      "p2": "These third-party services have their own privacy policies, and we encourage you to review them. We are not responsible for the practices of these third parties."
+    },
+    "security": {
+      "heading": "Data Storage & Security",
+      "p1": "We implement reasonable technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+      "p2": "However, no method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee its absolute security."
+    },
+    "rights": {
+      "heading": "Your Rights",
+      "p1": "Depending on your jurisdiction, you may have the following rights regarding your personal data:",
+      "item1": "Access the personal data we hold about you.",
+      "item2": "Request correction of inaccurate or incomplete data.",
+      "item3": "Request deletion of your personal data.",
+      "item4": "Object to or restrict the processing of your personal data.",
+      "p2": "To exercise any of these rights, please contact us using the information provided below."
+    },
+    "children": {
+      "heading": "Children's Privacy",
+      "p1": "Our Services are not directed to children under the age of 13 (or the applicable age of consent in your jurisdiction). We do not knowingly collect personal information from children. If we become aware that we have collected personal data from a child without parental consent, we will take steps to delete that information promptly."
+    },
+    "changes": {
+      "heading": "Changes to This Policy",
+      "p1": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically to stay informed about how we are protecting your information."
+    },
+    "contact": {
+      "heading": "Contact Us",
+      "p1": "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:"
+    }
   }
 }

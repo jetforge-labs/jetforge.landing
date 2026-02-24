@@ -232,7 +232,7 @@ export default async function Home() {
       {/* Footer */}
       <footer className="border-t border-white/5 bg-navy-950 px-6 py-12 md:py-16">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 md:grid-cols-3 md:gap-12">
+          <div className="grid gap-10 md:grid-cols-4 md:gap-12">
             {/* Brand */}
             <div className="md:col-span-1">
               <a href="#" aria-label="Back to top">
@@ -275,6 +275,23 @@ export default async function Home() {
                     </a>
                   </li>
                 ))}
+              </ul>
+            </div>
+
+            {/* Institutional */}
+            <div>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
+                {tFooter("institutional")}
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="/privacy"
+                    className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                  >
+                    {tFooter("privacy")}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
