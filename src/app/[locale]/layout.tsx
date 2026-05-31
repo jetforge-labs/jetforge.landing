@@ -90,7 +90,7 @@ function OrganizationJsonLd({ locale }: { locale: string }) {
     "@type": "Organization",
     name: "Jetforge Labs",
     url: "https://jetforgelabs.com",
-    logo: "https://jetforgelabs.com/logo.png",
+    logo: "https://jetforgelabs.com/logo-mark.png",
     description:
       locale === "en"
         ? "Custom software development and tech solutions company. We build scalable software products for startups and enterprises."
