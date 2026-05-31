@@ -25,7 +25,7 @@ export default async function PrivacyPolicy() {
   return (
     <div className="min-h-screen">
       <header>
-        <Navbar />
+        <Navbar minimal />
       </header>
 
       <main className="px-6 pt-32 pb-20 md:pt-40 md:pb-28">

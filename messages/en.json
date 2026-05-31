@@ -9,7 +9,8 @@
     "build": "What We Build",
     "about": "About",
     "contact": "Contact",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "backToHome": "Back to home"
   },
   "Hero": {
     "badge": "Tech Solutions",

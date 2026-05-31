@@ -9,7 +9,8 @@
     "build": "Qué Construimos",
     "about": "Nosotros",
     "contact": "Contacto",
-    "getInTouch": "Contáctanos"
+    "getInTouch": "Contáctanos",
+    "backToHome": "Volver al inicio"
   },
   "Hero": {
     "badge": "Soluciones Tecnológicas",

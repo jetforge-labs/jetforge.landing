@@ -1,12 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter, usePathname } from "@/i18n/navigation";
+import { useRouter, usePathname, Link } from "@/i18n/navigation";
 import { Logo } from "./logo";
 
-export function Navbar() {
+interface NavbarProps {
+  /** Minimal header for non-landing pages (e.g. legal): brand + back-to-home,
+   *  no in-page section anchors. */
+  minimal?: boolean;
+}
+
+export function Navbar({ minimal = false }: NavbarProps) {
   const t = useTranslations("Navbar");
   const locale = useLocale();
   const router = useRouter();
@@ -46,14 +52,54 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    scrolled
+      ? "border-b border-white/5 bg-navy-950/90 shadow-lg shadow-black/20 backdrop-blur-xl"
+      : "bg-transparent"
+  }`;
+
+  if (minimal) {
+    return (
+      <nav className={navClasses}>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          {/* Brand — back to home */}
+          <Link
+            href="/"
+            aria-label="Jetforge Labs — home"
+            className="flex items-center"
+          >
+            <Logo className="h-7 w-auto sm:h-8" />
+          </Link>
+
+          <div className="flex items-center gap-5 sm:gap-6">
+            {/* Language switcher */}
+            <button
+              type="button"
+              onClick={switchLocale}
+              className="cursor-pointer text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
+              aria-label="Switch language"
+            >
+              <span className={locale === "en" ? "text-white" : ""}>EN</span>
+              {" | "}
+              <span className={locale === "es" ? "text-white" : ""}>ES</span>
+            </button>
+
+            {/* Back to home */}
+            <Link
+              href="/"
+              className="btn-press group inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-white"
+            >
+              <ArrowLeftIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+              {t("backToHome")}
+            </Link>
+          </div>
+        </div>
+      </nav>
+    );
+  }
+
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-white/5 bg-navy-950/90 shadow-lg shadow-black/20 backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-    >
+    <nav className={navClasses}>
       <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4">
         {/* Brand — top left */}
         <a
