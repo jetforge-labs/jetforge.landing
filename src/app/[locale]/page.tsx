@@ -62,7 +62,7 @@ export default async function Home() {
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center">
             <div className="hero-animate mb-8 flex flex-col items-center gap-4">
-              <Logo className="h-48 sm:h-64 md:h-80" priority />
+              <Logo className="h-32 sm:h-40 md:h-48" priority />
               <span className="inline-flex rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-400">
                 {tHero("badge")}
               </span>
@@ -236,7 +236,7 @@ export default async function Home() {
             {/* Brand */}
             <div className="md:col-span-1">
               <a href="#" aria-label="Back to top">
-                <Logo className="mb-4 h-40" />
+                <Logo className="mb-4 h-24" />
               </a>
             </div>
 
@@ -250,7 +250,7 @@ export default async function Home() {
                   <li key={key}>
                     <a
                       href={`#${key}`}
-                      className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                      className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                     >
                       {tFooter(key)}
                     </a>
@@ -269,7 +269,7 @@ export default async function Home() {
                   <li key={key}>
                     <a
                       href="#services"
-                      className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                      className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                     >
                       {tServices(`${key}.title`)}
                     </a>
@@ -287,7 +287,7 @@ export default async function Home() {
                 <li>
                   <a
                     href="/privacy"
-                    className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                    className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     {tFooter("privacy")}
                   </a>
@@ -298,7 +298,7 @@ export default async function Home() {
 
           {/* Bottom bar */}
           <div className="mt-12 flex flex-col items-center justify-center gap-4 border-t border-white/5 pt-8 sm:flex-row">
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} {tFooter("copyright")}
             </p>
           </div>

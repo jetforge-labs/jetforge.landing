@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
+import { Logo } from "./logo";
 
 export function Navbar() {
   const t = useTranslations("Navbar");
@@ -53,6 +54,15 @@ export function Navbar() {
       }`}
     >
       <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4">
+        {/* Brand — top left */}
+        <a
+          href="#"
+          aria-label="Jetforge Labs — home"
+          className="absolute left-6 flex items-center"
+        >
+          <Logo className="h-7 w-auto sm:h-8" />
+        </a>
+
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
