@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "title": "Jetforge Labs | Custom Software Development & Tech Solutions",
+    "description": "Jetforge Labs builds high-quality custom software, mobile apps, cloud infrastructure, and AI-powered solutions. From MVP to enterprise scale, we deliver technology that drives real business results.",
+    "keywords": "custom software development, mobile app development, cloud devops, AI automation, MVP development, software factory, tech solutions, security audits",
+    "baseUrl": "https://jetforgelabs.com",
+    "ogImage": "/opengraph-image.png",
+    "ogImageAlt": "Jetforge Labs - Custom Software Development & Tech Solutions",
+    "ogType": "website",
+    "ogLocale": "en_US",
+    "ogLocaleAlternate": "es_AR",
+    "siteName": "Jetforge Labs",
+    "twitterCard": "summary_large_image",
+    "authors": "Jetforge Labs",
+    "creator": "Jetforge Labs",
+    "publisher": "Jetforge Labs"
+  },
+  "font": {
+    "family": "Plus Jakarta Sans",
+    "variable": "--font-jakarta",
+    "weights": [300, 400, 500, 600, 700],
+    "subsets": ["latin"]
+  },
+  "colors": {
+    "background": "#030308",
+    "foreground": "#e2e8f0",
+    "navy950": "#010104",
+    "navy900": "#030308",
+    "navy800": "#08081a",
+    "navy700": "#0d0d2a",
+    "navy600": "#141438",
+    "blue600": "#2563eb",
+    "blue500": "#3b82f6",
+    "blue400": "#60a5fa",
+    "blue300": "#93c5fd",
+    "orange500": "#f97316",
+    "orange400": "#fb923c",
+    "slate100": "#f1f5f9",
+    "slate200": "#e2e8f0",
+    "slate300": "#cbd5e1",
+    "slate400": "#94a3b8",
+    "slate500": "#64748b",
+    "slate600": "#475569"
+  },
+  "navbar": {
+    "logo": {
+      "src": "/logo.png",
+      "alt": "Jetforge Labs logo",
+      "width": 1000,
+      "height": 250
+    },
+    "links": [
+      { "label": "Services", "href": "#services" },
+      { "label": "About", "href": "#about" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": {
+      "label": "Get in Touch",
+      "href": "#contact"
+    },
+    "languageSwitcher": ["EN", "ES"]
+  },
+  "hero": {
+    "badge": "Tech Solutions",
+    "headingLine1": "We Build Software",
+    "headingLine2": "That Drives Results",
+    "subheading": "From concept to deployment, we deliver scalable, high-quality software products that move your business forward.",
+    "ctaPrimary": "Start a Project",
+    "ctaSecondary": "Our Services"
+  },
+  "techStrip": {
+    "heading": "Technologies We Work With",
+    "technologies": [
+      "React",
+      "React Native",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "AWS",
+      "PostgreSQL",
+      "MongoDB",
+      "GraphQL",
+      "Docker"
+    ]
+  },
+  "services": {
+    "eyebrow": "What We Do",
+    "heading": "Our Services",
+    "subheading": "End-to-end software development services tailored to your needs.",
+    "cards": [
+      {
+        "icon": "CodeBracketIcon",
+        "title": "Custom Software",
+        "description": "Tailored solutions designed to match your unique business processes and goals."
+      },
+      {
+        "icon": "DevicePhoneMobileIcon",
+        "title": "Mobile Apps",
+        "description": "Native and cross-platform mobile applications that deliver seamless user experiences."
+      },
+      {
+        "icon": "CloudIcon",
+        "title": "Cloud & DevOps",
+        "description": "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running."
+      },
+      {
+        "icon": "CpuChipIcon",
+        "title": "AI & Automation",
+        "description": "Intelligent automation and machine learning integrations to streamline operations."
+      },
+      {
+        "icon": "RocketLaunchIcon",
+        "title": "MVP Development",
+        "description": "Rapid prototyping and MVP delivery to validate your ideas and reach market fast."
+      },
+      {
+        "icon": "ShieldCheckIcon",
+        "title": "Security Audits",
+        "description": "Comprehensive security assessments to protect your applications and data."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "headingStart": "Engineering Excellence,",
+    "headingHighlight": "Delivered",
+    "paragraph1": "Jetforge Labs is a tech solutions company focused on building reliable, scalable products for startups and established businesses alike. We combine technical expertise with a pragmatic approach to deliver solutions that work.",
+    "paragraph2": "Our team of engineers, designers, and product strategists work closely with you to understand your challenges and craft software that solves real problems.",
+    "cta": "Work with us"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "headingStart": "Let's Build Something",
+    "headingHighlight": "Great",
+    "subheading": "Ready to start your next project? Reach out and let's talk.",
+    "form": {
+      "fields": [
+        { "name": "name", "label": "Name", "placeholder": "Your full name", "type": "text" },
+        { "name": "email", "label": "Email", "placeholder": "you@company.com", "type": "email" },
+        { "name": "subject", "label": "Subject", "placeholder": "What is this about?", "type": "text" },
+        { "name": "message", "label": "Message", "placeholder": "Tell us about your project, goals, and timeline...", "type": "textarea", "rows": 5 }
+      ],
+      "submitLabel": "Send Message",
+      "sendingLabel": "Sending...",
+      "successTitle": "Message sent!",
+      "successMessage": "We'll get back to you as soon as possible.",
+      "sendAnother": "Send another message",
+      "errorGeneric": "Something went wrong. Please try again."
+    },
+    "endpoint": "/api/contact"
+  },
+  "footer": {
+    "columns": [
+      {
+        "type": "brand",
+        "logo": true
+      },
+      {
+        "heading": "Navigation",
+        "links": [
+          { "label": "Services", "href": "#services" },
+          { "label": "About", "href": "#about" },
+          { "label": "Contact", "href": "#contact" }
+        ]
+      },
+      {
+        "heading": "Services",
+        "links": [
+          { "label": "Custom Software" },
+          { "label": "Mobile Apps" },
+          { "label": "Cloud & DevOps" },
+          { "label": "AI & Automation" }
+        ]
+      },
+      {
+        "heading": "Institutional",
+        "links": [
+          { "label": "Privacy Policy", "href": "/privacy" }
+        ]
+      }
+    ],
+    "copyright": "Jetforge Labs. All rights reserved."
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Jetforge Labs",
+      "url": "https://jetforgelabs.com",
+      "logo": "https://jetforgelabs.com/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "availableLanguage": ["English", "Spanish"]
+      }
+    },
+    "website": {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Jetforge Labs",
+      "url": "https://jetforgelabs.com"
+    },
+    "services": [
+      "Custom Software Development",
+      "Mobile App Development",
+      "Cloud & DevOps",
+      "AI & Automation",
+      "MVP Development",
+      "Security Audits"
+    ]
+  }
+}
