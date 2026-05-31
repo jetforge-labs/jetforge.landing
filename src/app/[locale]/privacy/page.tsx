@@ -142,7 +142,7 @@ export default async function PrivacyPolicy() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center gap-6">
             <Link href="/" aria-label="Back to home">
-              <Logo className="h-24" />
+              <Logo className="text-2xl" />
             </Link>
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} {tFooter("copyright")}

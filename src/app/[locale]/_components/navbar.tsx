@@ -68,7 +68,7 @@ export function Navbar({ minimal = false }: NavbarProps) {
             aria-label="Jetforge Labs — home"
             className="flex items-center"
           >
-            <Logo className="h-7 w-auto sm:h-8" />
+            <Logo className="text-lg sm:text-xl" />
           </Link>
 
           <div className="flex items-center gap-5 sm:gap-6">

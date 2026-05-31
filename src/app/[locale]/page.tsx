@@ -68,7 +68,7 @@ export default async function Home() {
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center">
             <div className="hero-animate mb-8 flex flex-col items-center gap-4">
-              <Logo className="h-32 sm:h-40 md:h-48" priority />
+              <Logo className="text-3xl sm:text-4xl md:text-5xl" />
               <span className="badge-shimmer inline-flex rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-400">
                 {tHero("badge")}
               </span>
@@ -249,7 +249,7 @@ export default async function Home() {
             {/* Brand */}
             <div className="md:col-span-1">
               <a href="#" aria-label="Back to top">
-                <Logo className="mb-4 h-24" />
+                <Logo className="mb-4 text-2xl" />
               </a>
             </div>
 

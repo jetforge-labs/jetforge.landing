@@ -1,20 +1,16 @@
-import Image from "next/image";
-
 interface LogoProps {
+  /** Sizing/spacing utilities (e.g. text-xl, mb-4). Weight/tracking/color
+   *  are applied by the component for a consistent wordmark. */
   className?: string;
-  priority?: boolean;
 }
 
-export function Logo({ className = "h-[50px]", priority = false }: LogoProps) {
+/** Text wordmark used across the site (navbar, hero, footer). */
+export function Logo({ className = "" }: LogoProps) {
   return (
-    <Image
-      src="/logo-mark.png"
-      alt="Jetforge Labs logo"
-      width={419}
-      height={539}
-      className={`object-contain ${className}`}
-      priority={priority}
-      {...(priority ? { fetchPriority: "high" } : { loading: "lazy" })}
-    />
+    <span
+      className={`font-bold leading-none tracking-tight text-white ${className}`}
+    >
+      Jetforge Labs
+    </span>
   );
 }
