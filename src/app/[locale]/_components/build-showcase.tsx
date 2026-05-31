@@ -124,6 +124,7 @@ export async function BuildShowcase() {
           {builds.map((build, index) => (
             <article
               key={build.key}
+              data-tilt
               className="reveal group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-navy-900/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-xl hover:shadow-blue-500/5"
               style={{ "--stagger-index": index } as React.CSSProperties}
             >

@@ -23,6 +23,17 @@
   --font-sans: var(--font-jakarta);
 }
 
+/* ─── Motion system tokens ─── */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-flow: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 600ms;
+  --stagger-step: 90ms;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -61,6 +72,80 @@ body::before {
   background-clip: text;
 }
 
+/* Hero headline — one-time gradient sweep ("decode" beat). LCP-safe: text
+   is in the DOM; only the gradient fill animates. */
+.gradient-text-sweep {
+  background: linear-gradient(
+    120deg,
+    #60a5fa 0%,
+    #3b82f6 35%,
+    #93c5fd 50%,
+    #3b82f6 65%,
+    #2563eb 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: headline-sweep 1.4s var(--ease-out) 0.55s both;
+}
+
+@keyframes headline-sweep {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+/* Badge — slow, sparing shimmer sweep */
+.badge-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 55%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(173, 198, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-180%);
+  animation: badge-shimmer-sweep 5s var(--ease-smooth) 1.5s infinite;
+}
+
+@keyframes badge-shimmer-sweep {
+  0% { transform: translateX(-180%); }
+  35%, 100% { transform: translateX(320%); }
+}
+
+/* Primary CTA — soft breathing glow halo (opacity/transform only) */
+.cta-glow {
+  position: relative;
+}
+
+.cta-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  filter: blur(14px);
+  opacity: 0.3;
+  animation: cta-breathe 4s var(--ease-smooth) infinite;
+}
+
+@keyframes cta-breathe {
+  0%, 100% { opacity: 0.22; transform: scale(0.97); }
+  50% { opacity: 0.45; transform: scale(1.02); }
+}
+
 /* Glow effects */
 .glow-blue {
   box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(59, 130, 246, 0.05);
@@ -70,31 +155,55 @@ body::before {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
-/* Section divider gradient */
+/* Section divider gradient with a traveling data-flow pulse */
 .section-divider {
+  position: relative;
   height: 1px;
+  overflow: hidden;
   background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+}
+
+.section-divider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 28%;
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.7), transparent);
+  transform: translateX(-100%);
+  animation: divider-flow 7s var(--ease-flow) infinite;
+}
+
+@keyframes divider-flow {
+  0% { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(460%); }
 }
 
 /* Animated gradient orb */
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  33% { transform: translate(30px, -30px) scale(1.05); opacity: 1; }
+  66% { transform: translate(-20px, 20px) scale(0.95); opacity: 0.65; }
 }
 
 .gradient-orb {
-  animation: float 20s ease-in-out infinite;
+  animation: float 20s var(--ease-flow) infinite;
 }
 
 @keyframes float-delayed {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-25px, 20px) scale(0.95); }
-  66% { transform: translate(15px, -25px) scale(1.05); }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  33% { transform: translate(-25px, 20px) scale(0.95); opacity: 0.5; }
+  66% { transform: translate(15px, -25px) scale(1.05); opacity: 0.9; }
 }
 
 .gradient-orb-delayed {
-  animation: float-delayed 25s ease-in-out infinite;
+  animation: float-delayed 25s var(--ease-flow) infinite;
+}
+
+/* Parallax layers (driven by MotionController; transform-only) */
+[data-parallax] {
+  will-change: transform;
 }
 
 /* Smooth scroll offset for fixed nav */
@@ -133,18 +242,30 @@ body::before {
 /* ─── Scroll-triggered reveal ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Soften the blur on small screens (cheaper paint) */
+@media (max-width: 767px) {
+  .reveal {
+    filter: blur(4px);
+  }
 }
 
 /* Stagger children (service cards, etc.) */
 .reveal-stagger > .reveal {
-  transition-delay: calc(var(--stagger-index, 0) * 100ms);
+  transition-delay: calc(var(--stagger-index, 0) * var(--stagger-step));
 }
 
 /* ─── Focus-visible ring for keyboard navigation ─── */
@@ -187,6 +308,7 @@ select:focus-visible {
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
   }
 
@@ -197,5 +319,27 @@ select:focus-visible {
   .gradient-orb,
   .gradient-orb-delayed {
     animation: none;
+  }
+
+  /* Neutralize motion effects, hold final/resting state */
+  .section-divider::after,
+  .badge-shimmer::after {
+    animation: none;
+    display: none;
+  }
+
+  .gradient-text-sweep {
+    animation: none;
+    background-position: 0 0;
+  }
+
+  .cta-glow::before {
+    animation: none;
+    opacity: 0.3;
+    transform: none;
+  }
+
+  [data-parallax] {
+    transform: none !important;
   }
 }
