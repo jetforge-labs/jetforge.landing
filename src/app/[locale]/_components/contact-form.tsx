@@ -49,7 +49,11 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="flex flex-col items-center gap-4 py-12 text-center">
+      <div
+        role="status"
+        aria-live="polite"
+        className="flex flex-col items-center gap-4 py-12 text-center"
+      >
         <CheckCircleIcon className="h-12 w-12 text-green-400" />
         <p className="text-lg font-semibold text-white">{t("successTitle")}</p>
         <p className="text-sm text-slate-400">{t("successMessage")}</p>
@@ -65,7 +69,11 @@ export function ContactForm() {
   }
 
   return (
-    <form className="space-y-5 text-left" onSubmit={handleSubmit}>
+    <form
+      className="space-y-5 text-left"
+      onSubmit={handleSubmit}
+      aria-busy={status === "sending"}
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
@@ -122,7 +130,9 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">{errorMsg}</p>
+        <p role="alert" className="text-sm text-red-400">
+          {errorMsg}
+        </p>
       )}
 
       <button

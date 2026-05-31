@@ -9,11 +9,14 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { ContactForm } from "./_components/contact-form";
 import { Logo } from "./_components/logo";
 import { Navbar } from "./_components/navbar";
 import { ScrollRevealInit } from "./_components/scroll-reveal";
+import { MotionController } from "./_components/motion-controller";
 import { ServiceCard } from "./_components/service-card";
+import { BuildShowcase } from "./_components/build-showcase";
 
 import { TechStrip } from "./_components/tech-strip";
 
@@ -39,6 +42,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       <ScrollRevealInit />
+      <MotionController />
 
       {/* Navbar */}
       <header>
@@ -53,17 +57,19 @@ export default async function Home() {
         >
           {/* Background layers */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-navy-700)_0%,_var(--color-navy-950)_70%)]" />
-          <div className="hero-grid absolute inset-0" />
+          <div data-parallax="0.12" className="hero-grid absolute inset-0" />
 
-          {/* Gradient orbs */}
-          <div className="gradient-orb pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-3xl" />
-          <div className="gradient-orb-delayed pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-blue-600/8 blur-3xl" />
+          {/* Gradient orbs (parallax wrapper; orbs keep their float) */}
+          <div data-parallax="0.05" className="pointer-events-none absolute inset-0">
+            <div className="gradient-orb absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-3xl" />
+            <div className="gradient-orb-delayed absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-blue-600/8 blur-3xl" />
+          </div>
 
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center">
             <div className="hero-animate mb-8 flex flex-col items-center gap-4">
-              <Logo className="h-48 sm:h-64 md:h-80" priority />
-              <span className="inline-flex rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-400">
+              <Logo className="text-3xl sm:text-4xl md:text-5xl" />
+              <span className="badge-shimmer inline-flex rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm font-medium text-blue-400">
                 {tHero("badge")}
               </span>
             </div>
@@ -71,7 +77,7 @@ export default async function Home() {
             <h1 className="hero-animate-delay-1 mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-7xl">
               {tHero("headingLine1")}
               <br />
-              <span className="gradient-text">{tHero("headingLine2")}</span>
+              <span className="gradient-text-sweep">{tHero("headingLine2")}</span>
             </h1>
 
             <p className="hero-animate-delay-2 mx-auto mb-10 max-w-2xl text-base leading-relaxed text-slate-400 sm:mb-12 sm:text-lg md:text-xl">
@@ -81,13 +87,14 @@ export default async function Home() {
             <div className="hero-animate-delay-3 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="#contact"
-                className="btn-press group flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:shadow-blue-500/40 hover:brightness-110 sm:w-auto"
+                data-magnetic
+                className="cta-glow btn-press group flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:shadow-blue-500/40 hover:brightness-110 sm:w-auto"
               >
                 {tHero("startProject")}
-                <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
               </a>
               <a
                 href="#services"
+                data-magnetic
                 className="btn-press w-full cursor-pointer rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-center font-semibold text-slate-200 backdrop-blur-sm transition-all duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white sm:w-auto"
               >
                 {tHero("ourServices")}
@@ -152,6 +159,12 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
+        {/* Section divider */}
+        <div className="section-divider mx-auto max-w-4xl" role="separator" />
+
+        {/* What We Build — example deliverables */}
+        <BuildShowcase />
 
         {/* Section divider */}
         <div className="section-divider mx-auto max-w-4xl" role="separator" />
@@ -236,7 +249,7 @@ export default async function Home() {
             {/* Brand */}
             <div className="md:col-span-1">
               <a href="#" aria-label="Back to top">
-                <Logo className="mb-4 h-40" />
+                <Logo className="mb-4 text-2xl" />
               </a>
             </div>
 
@@ -246,11 +259,11 @@ export default async function Home() {
                 {tFooter("navigation")}
               </h3>
               <ul className="space-y-3">
-                {(["services", "about", "contact"] as const).map((key) => (
+                {(["services", "build", "about", "contact"] as const).map((key) => (
                   <li key={key}>
                     <a
                       href={`#${key}`}
-                      className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                      className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                     >
                       {tFooter(key)}
                     </a>
@@ -269,7 +282,7 @@ export default async function Home() {
                   <li key={key}>
                     <a
                       href="#services"
-                      className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                      className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                     >
                       {tServices(`${key}.title`)}
                     </a>
@@ -285,12 +298,12 @@ export default async function Home() {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <a
+                  <Link
                     href="/privacy"
-                    className="cursor-pointer text-sm text-slate-500 transition-colors duration-200 hover:text-slate-300"
+                    className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     {tFooter("privacy")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -298,7 +311,7 @@ export default async function Home() {
 
           {/* Bottom bar */}
           <div className="mt-12 flex flex-col items-center justify-center gap-4 border-t border-white/5 pt-8 sm:flex-row">
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} {tFooter("copyright")}
             </p>
           </div>

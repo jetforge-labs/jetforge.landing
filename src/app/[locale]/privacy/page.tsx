@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Navbar } from "../_components/navbar";
 import { Logo } from "../_components/logo";
 import type { Metadata } from "next";
@@ -24,7 +25,7 @@ export default async function PrivacyPolicy() {
   return (
     <div className="min-h-screen">
       <header>
-        <Navbar />
+        <Navbar minimal />
       </header>
 
       <main className="px-6 pt-32 pb-20 md:pt-40 md:pb-28">
@@ -140,10 +141,10 @@ export default async function PrivacyPolicy() {
       <footer className="border-t border-white/5 bg-navy-950 px-6 py-12 md:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center gap-6">
-            <a href="/" aria-label="Back to home">
-              <Logo className="h-24" />
-            </a>
-            <p className="text-xs text-slate-600">
+            <Link href="/" aria-label="Back to home">
+              <Logo className="text-2xl" />
+            </Link>
+            <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} {tFooter("copyright")}
             </p>
           </div>

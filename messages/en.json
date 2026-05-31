@@ -6,9 +6,11 @@
   },
   "Navbar": {
     "services": "Services",
+    "build": "What We Build",
     "about": "About",
     "contact": "Contact",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "backToHome": "Back to home"
   },
   "Hero": {
     "badge": "Tech Solutions",
@@ -50,6 +52,58 @@
       "description": "Comprehensive security assessments to protect your applications and data."
     }
   },
+  "Build": {
+    "eyebrow": "Example Builds",
+    "heading": "What We Build",
+    "subheading": "A look at the kind of products and systems we ship — and what you get when we do.",
+    "idealForLabel": "Ideal for",
+    "stackLabel": "Representative stack",
+    "outcomeLabel": "Sample outcome",
+    "items": {
+      "mvp": {
+        "name": "MVP / 0→1 Product Builds",
+        "description": "From a validated idea to a launch-ready product in weeks — auth, payments, and your core flows wired end to end.",
+        "idealFor": "Founders validating a new product or preparing to raise.",
+        "outcome": "A production MVP that real users can sign up for and pay through."
+      },
+      "web": {
+        "name": "Web Apps",
+        "description": "Fast, SEO-ready web applications, dashboards, and customer portals built on the modern React stack.",
+        "idealFor": "SaaS platforms, admin panels, and data-rich internal dashboards.",
+        "outcome": "Server-rendered apps that stay fast as features and traffic grow."
+      },
+      "mobile": {
+        "name": "Mobile Apps",
+        "description": "Cross-platform iOS and Android apps from a single React Native codebase, shipped to both stores.",
+        "idealFor": "Consumer products and companion apps that need native reach.",
+        "outcome": "One codebase live on the App Store and Google Play."
+      },
+      "ai": {
+        "name": "AI Agents & LLM Integrations",
+        "description": "Production LLM features and autonomous agents — retrieval, tool use, and workflow automation wired into your product.",
+        "idealFor": "Support automation, document processing, and internal copilots.",
+        "outcome": "Agents that do real work, with guardrails and observability built in."
+      },
+      "backend": {
+        "name": "Backend, APIs & Integrations",
+        "description": "Robust APIs and third-party integrations that connect your systems and hold up under load.",
+        "idealFor": "Headless backends and connecting CRMs, ERPs, and payment providers.",
+        "outcome": "Typed, documented APIs deployed with zero-downtime migrations."
+      },
+      "cloud": {
+        "name": "Cloud & DevOps",
+        "description": "Infrastructure-as-code, containerized deploys, and CI/CD pipelines that ship changes safely.",
+        "idealFor": "Teams scaling their infrastructure or hardening their release process.",
+        "outcome": "Push-to-deploy pipelines with monitoring and one-command rollbacks."
+      },
+      "tools": {
+        "name": "Internal Tools & Automation",
+        "description": "Custom dashboards and automations that retire spreadsheets and manual operations.",
+        "idealFor": "Ops-heavy teams drowning in repetitive, manual workflows.",
+        "outcome": "Manual processes turned into reliable, one-click workflows."
+      }
+    }
+  },
   "About": {
     "eyebrow": "About Us",
     "headingStart": "Engineering Excellence,",
@@ -81,6 +135,7 @@
   "Footer": {
     "navigation": "Navigation",
     "services": "Services",
+    "build": "What We Build",
     "about": "About",
     "contact": "Contact",
     "servicesHeader": "Services",
