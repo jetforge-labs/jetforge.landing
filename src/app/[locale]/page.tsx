@@ -9,11 +9,13 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { ContactForm } from "./_components/contact-form";
 import { Logo } from "./_components/logo";
 import { Navbar } from "./_components/navbar";
 import { ScrollRevealInit } from "./_components/scroll-reveal";
 import { ServiceCard } from "./_components/service-card";
+import { BuildShowcase } from "./_components/build-showcase";
 
 import { TechStrip } from "./_components/tech-strip";
 
@@ -156,6 +158,12 @@ export default async function Home() {
         {/* Section divider */}
         <div className="section-divider mx-auto max-w-4xl" role="separator" />
 
+        {/* What We Build — example deliverables */}
+        <BuildShowcase />
+
+        {/* Section divider */}
+        <div className="section-divider mx-auto max-w-4xl" role="separator" />
+
         {/* About */}
         <section
           id="about"
@@ -246,7 +254,7 @@ export default async function Home() {
                 {tFooter("navigation")}
               </h3>
               <ul className="space-y-3">
-                {(["services", "about", "contact"] as const).map((key) => (
+                {(["services", "build", "about", "contact"] as const).map((key) => (
                   <li key={key}>
                     <a
                       href={`#${key}`}
@@ -285,12 +293,12 @@ export default async function Home() {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <a
+                  <Link
                     href="/privacy"
                     className="cursor-pointer text-sm text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     {tFooter("privacy")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -6,6 +6,7 @@
   },
   "Navbar": {
     "services": "Servicios",
+    "build": "Qué Construimos",
     "about": "Nosotros",
     "contact": "Contacto",
     "getInTouch": "Contáctanos"
@@ -50,6 +51,58 @@
       "description": "Evaluaciones de seguridad integrales para proteger tus aplicaciones y datos."
     }
   },
+  "Build": {
+    "eyebrow": "Ejemplos de Proyectos",
+    "heading": "Lo que Construimos",
+    "subheading": "Un vistazo al tipo de productos y sistemas que entregamos, y lo que obtenés cuando lo hacemos.",
+    "idealForLabel": "Ideal para",
+    "stackLabel": "Stack representativo",
+    "outcomeLabel": "Resultado de ejemplo",
+    "items": {
+      "mvp": {
+        "name": "MVP / Productos 0→1",
+        "description": "De una idea validada a un producto listo para lanzar en semanas: autenticación, pagos y tus flujos principales conectados de punta a punta.",
+        "idealFor": "Fundadores que validan un producto nuevo o se preparan para levantar capital.",
+        "outcome": "Un MVP en producción donde usuarios reales pueden registrarse y pagar."
+      },
+      "web": {
+        "name": "Aplicaciones Web",
+        "description": "Aplicaciones web, dashboards y portales de clientes rápidos y listos para SEO, sobre el stack moderno de React.",
+        "idealFor": "Plataformas SaaS, paneles de administración y dashboards internos con muchos datos.",
+        "outcome": "Apps renderizadas en el servidor que siguen siendo rápidas a medida que crecen."
+      },
+      "mobile": {
+        "name": "Aplicaciones Móviles",
+        "description": "Apps multiplataforma para iOS y Android desde una sola base de código React Native, publicadas en ambas tiendas.",
+        "idealFor": "Productos de consumo y apps complementarias que necesitan alcance nativo.",
+        "outcome": "Una sola base de código publicada en App Store y Google Play."
+      },
+      "ai": {
+        "name": "Agentes de IA e Integraciones LLM",
+        "description": "Funcionalidades LLM en producción y agentes autónomos: recuperación, uso de herramientas y automatización de flujos integrados en tu producto.",
+        "idealFor": "Automatización de soporte, procesamiento de documentos y copilotos internos.",
+        "outcome": "Agentes que hacen trabajo real, con controles y observabilidad incorporados."
+      },
+      "backend": {
+        "name": "Backend, APIs e Integraciones",
+        "description": "APIs robustas e integraciones con terceros que conectan tus sistemas y aguantan la carga.",
+        "idealFor": "Backends headless y conexión con CRMs, ERPs y proveedores de pago.",
+        "outcome": "APIs tipadas y documentadas, desplegadas con migraciones sin downtime."
+      },
+      "cloud": {
+        "name": "Cloud & DevOps",
+        "description": "Infraestructura como código, despliegues en contenedores y pipelines de CI/CD que publican cambios de forma segura.",
+        "idealFor": "Equipos que escalan su infraestructura o endurecen su proceso de release.",
+        "outcome": "Pipelines de despliegue automático, con monitoreo y rollbacks en un comando."
+      },
+      "tools": {
+        "name": "Herramientas Internas y Automatización",
+        "description": "Dashboards y automatizaciones a medida que reemplazan planillas y tareas manuales.",
+        "idealFor": "Equipos de operaciones saturados de flujos manuales y repetitivos.",
+        "outcome": "Procesos manuales convertidos en flujos confiables de un clic."
+      }
+    }
+  },
   "About": {
     "eyebrow": "Sobre Nosotros",
     "headingStart": "Excelencia en Ingenieria,",
@@ -81,6 +134,7 @@
   "Footer": {
     "navigation": "Navegacion",
     "services": "Servicios",
+    "build": "Qué Construimos",
     "about": "Nosotros",
     "contact": "Contacto",
     "servicesHeader": "Servicios",
