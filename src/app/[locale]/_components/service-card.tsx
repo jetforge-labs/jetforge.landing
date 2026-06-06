@@ -1,33 +1,69 @@
 "use client";
 
-import type { ReactNode } from "react";
+import {
+  Code,
+  DeviceMobile,
+  Cloud,
+  Robot,
+  Rocket,
+  ShieldCheck,
+} from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: ReactNode;
-}
+const services = [
+  { key: "customSoftware", Icon: Code },
+  { key: "mobileApps",     Icon: DeviceMobile },
+  { key: "cloudDevOps",    Icon: Cloud },
+  { key: "aiAutomation",   Icon: Robot },
+  { key: "mvpDevelopment", Icon: Rocket },
+  { key: "securityAudits", Icon: ShieldCheck },
+] as const;
 
-export function ServiceCard({ title, description, icon }: ServiceCardProps) {
+/**
+ * Editorial split list — one family distinct from the Build card grid.
+ * No card chrome; uses divide-y hairlines for rhythm.
+ */
+export function ServiceList() {
+  const t = useTranslations("Services");
+
   return (
-    <article
-      data-tilt
-      className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-white/5 bg-navy-900/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-xl hover:shadow-blue-500/5"
+    <div
+      className="reveal-stagger divide-y"
+      style={{ borderColor: "var(--color-hairline)" }}
     >
-      {/* Hover gradient overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      {services.map(({ key, Icon }, index) => (
+        <div
+          key={key}
+          className="reveal group grid grid-cols-[auto_1fr] gap-6 py-8 transition-colors duration-200 first:pt-0 last:pb-0 md:grid-cols-[auto_1fr_auto] md:gap-10"
+          style={{ "--stagger-index": index } as React.CSSProperties}
+        >
+          {/* Icon badge */}
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[12px] bg-[oklch(0.74_0.16_55_/_0.10)] ring-1 ring-[oklch(0.74_0.16_55_/_0.20)] transition-all duration-300 group-hover:bg-[oklch(0.74_0.16_55_/_0.16)] group-hover:ring-[oklch(0.74_0.16_55_/_0.35)]">
+            <Icon
+              weight="duotone"
+              className="h-5 w-5 text-[oklch(0.74_0.16_55)] transition-colors duration-300"
+              aria-hidden="true"
+            />
+          </div>
 
-      {/* Icon with background */}
-      <div className="relative mb-5 inline-flex rounded-xl bg-blue-500/10 p-3 ring-1 ring-blue-500/20 transition-all duration-300 group-hover:bg-blue-500/15 group-hover:ring-blue-500/30 group-hover:shadow-lg group-hover:shadow-blue-500/10">
-        {icon}
-      </div>
+          {/* Text */}
+          <div>
+            <h3 className="mb-1.5 text-base font-semibold text-[oklch(0.92_0.005_60)] md:text-lg">
+              {t(`${key}.title`)}
+            </h3>
+            <p className="max-w-xl text-sm leading-relaxed text-[oklch(0.80_0.010_60)] md:text-base">
+              {t(`${key}.description`)}
+            </p>
+          </div>
 
-      <h3 className="relative mb-2 text-lg font-semibold text-white">
-        {title}
-      </h3>
-      <p className="relative text-sm leading-relaxed text-slate-400">
-        {description}
-      </p>
-    </article>
+          {/* Index counter — right column, desktop only */}
+          <div className="hidden items-center md:flex">
+            <span className="font-mono text-xs text-[oklch(0.45_0.008_60)]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

@@ -130,7 +130,11 @@
     "successTitle": "Message sent!",
     "successMessage": "We'll get back to you as soon as possible.",
     "sendAnother": "Send another message",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "validation": {
+      "required": "Required",
+      "email": "Enter a valid email"
+    }
   },
   "Footer": {
     "navigation": "Navigation",

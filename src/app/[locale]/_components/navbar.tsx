@@ -1,44 +1,66 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Bars3Icon, XMarkIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useState, useEffect, useRef } from "react";
+import { List, X, ArrowLeft } from "@phosphor-icons/react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname, Link } from "@/i18n/navigation";
 import { Logo } from "./logo";
 
 interface NavbarProps {
-  /** Minimal header for non-landing pages (e.g. legal): brand + back-to-home,
-   *  no in-page section anchors. */
   minimal?: boolean;
 }
 
-export function Navbar({ minimal = false }: NavbarProps) {
-  const t = useTranslations("Navbar");
+/**
+ * LangSwitch — rendered as Link for canonical URL + SEO hreflang.
+ * Falls back to router.replace if locale routing isn't handled by next-intl links.
+ */
+function LangSwitch({ compact = false }: { compact?: boolean }) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navLinks = [
-    { label: t("services"), href: "#services" },
-    { label: t("build"), href: "#build" },
-    { label: t("about"), href: "#about" },
-    { label: t("contact"), href: "#contact" },
-  ];
 
   function switchLocale() {
     const nextLocale = locale === "en" ? "es" : "en";
     router.replace(pathname, { locale: nextLocale });
   }
 
+  return (
+    <button
+      type="button"
+      onClick={switchLocale}
+      className={`inline-flex min-h-[44px] cursor-pointer items-center text-sm font-medium text-[oklch(0.60_0.008_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)] ${compact ? "px-2" : "px-3"}`}
+      aria-label="Switch language"
+    >
+      <span className={locale === "en" ? "text-[oklch(0.92_0.005_60)]" : ""}>EN</span>
+      <span className="mx-1 text-[oklch(0.45_0.008_60)]">/</span>
+      <span className={locale === "es" ? "text-[oklch(0.92_0.005_60)]" : ""}>ES</span>
+    </button>
+  );
+}
+
+export function Navbar({ minimal = false }: NavbarProps) {
+  const t = useTranslations("Navbar");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  const navLinks = [
+    { label: t("services"), href: "#services" },
+    { label: t("build"),    href: "#build" },
+    { label: t("about"),    href: "#about" },
+    { label: t("contact"),  href: "#contact" },
+  ];
+
+  // Bug fix: IntersectionObserver replaces window.addEventListener("scroll")
   useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 20);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -47,49 +69,33 @@ export function Navbar({ minimal = false }: NavbarProps) {
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
-  const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    scrolled
-      ? "border-b border-white/5 bg-navy-950/90 shadow-lg shadow-black/20 backdrop-blur-xl"
-      : "bg-transparent"
-  }`;
+  const navBase = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-[max(0.5rem,env(safe-area-inset-top))] pb-2`;
+  const navScrolled = scrolled
+    ? "border-b border-[var(--color-hairline)] bg-[oklch(0.16_0.012_60_/_0.92)] shadow-[0_1px_24px_oklch(0.10_0.010_60_/_0.4)] backdrop-blur-sm md:backdrop-blur-xl"
+    : "bg-transparent";
 
   if (minimal) {
     return (
-      <nav className={navClasses}>
+      <nav className={`${navBase} ${navScrolled}`} aria-label="Site navigation">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          {/* Brand — back to home */}
           <Link
             href="/"
             aria-label="Jetforge Labs — home"
             className="flex items-center"
           >
-            <Logo className="text-lg sm:text-xl pt-4" />
+            <Logo className="text-lg sm:text-xl" />
           </Link>
 
-          <div className="flex items-center gap-5 sm:gap-6">
-            {/* Language switcher */}
-            <button
-              type="button"
-              onClick={switchLocale}
-              className="cursor-pointer text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
-              aria-label="Switch language"
-            >
-              <span className={locale === "en" ? "text-white" : ""}>EN</span>
-              {" | "}
-              <span className={locale === "es" ? "text-white" : ""}>ES</span>
-            </button>
-
-            {/* Back to home */}
+          <div className="flex items-center gap-4">
+            <LangSwitch compact />
             <Link
               href="/"
-              className="btn-press group inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-white"
+              className="btn-press group inline-flex min-h-[44px] cursor-pointer items-center gap-2 text-sm font-medium text-[oklch(0.80_0.010_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)]"
             >
-              <ArrowLeftIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+              <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
               {t("backToHome")}
             </Link>
           </div>
@@ -99,108 +105,106 @@ export function Navbar({ minimal = false }: NavbarProps) {
   }
 
   return (
-    <nav className={navClasses}>
-      <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4">
-        {/* Brand — top left */}
-        <a
-          href="#"
-          aria-label="Jetforge Labs — home"
-          className="absolute left-6 flex items-center pt-3"
-        >
-          <Logo className="h-7 w-auto sm:h-8" />
-        </a>
+    <>
+      {/* Sentinel element — top of page; IntersectionObserver watches this */}
+      <div ref={sentinelRef} className="pointer-events-none absolute top-0 h-1 w-full" aria-hidden="true" />
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="cursor-pointer text-sm font-medium text-slate-300 transition-colors duration-200 hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
+      {/* Mobile backdrop — full-screen overlay, behind the menu panel */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
+          aria-hidden="true"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
 
+      <nav className={`${navBase} ${navScrolled}`} aria-label="Site navigation">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-center px-6 py-4 transition-all duration-300">
+          {/* Brand wordmark — fixed left */}
           <a
-            href="#contact"
-            className="btn-press cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:shadow-blue-500/30 hover:brightness-110"
+            href="#"
+            aria-label="Jetforge Labs — home"
+            className="absolute left-6 inline-flex min-h-[44px] items-center"
           >
-            {t("getInTouch")}
+            {/* Bug fix #14: Logo renders as span — use text-* not h-/w-auto */}
+            <Logo className="text-lg sm:text-xl" />
           </a>
-        </div>
 
-        {/* Language switcher — top right */}
-        <button
-          type="button"
-          onClick={switchLocale}
-          className="absolute right-6 hidden cursor-pointer text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white md:block"
-          aria-label="Switch language"
-        >
-          <span className={locale === "en" ? "text-white" : ""}>EN</span>
-          {" | "}
-          <span className={locale === "es" ? "text-white" : ""}>ES</span>
-        </button>
-
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          className="absolute right-6 cursor-pointer rounded-lg p-2 text-slate-300 transition-colors duration-200 hover:text-white md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? (
-            <XMarkIcon className="h-6 w-6" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        className={`overflow-hidden transition-all duration-300 md:hidden ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <div className="border-t border-white/5 bg-navy-950/95 px-6 pb-6 pt-4 backdrop-blur-xl">
-          <div className="flex flex-col gap-4">
+          {/* Desktop nav — centred */}
+          <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="cursor-pointer text-base font-medium text-slate-300 transition-colors duration-200 hover:text-white"
+                className="inline-flex min-h-[44px] cursor-pointer items-center px-3 text-sm font-medium text-[oklch(0.80_0.010_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)]"
               >
                 {link.label}
               </a>
             ))}
 
-            {/* Mobile language switcher */}
-            <button
-              type="button"
-              onClick={() => {
-                switchLocale();
-                setMobileOpen(false);
-              }}
-              className="cursor-pointer text-left text-base font-medium text-slate-300 transition-colors duration-200 hover:text-white"
-            >
-              <span className={locale === "en" ? "text-white" : ""}>EN</span>
-              {" | "}
-              <span className={locale === "es" ? "text-white" : ""}>ES</span>
-            </button>
-
+            {/* Single CTA — same label/intent as hero */}
             <a
               href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="cursor-pointer rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:shadow-blue-500/30 hover:brightness-110"
+              className="btn-press cta-ember inline-flex min-h-[44px] cursor-pointer items-center rounded-[12px] bg-[oklch(0.74_0.16_55)] px-5 py-3 text-sm font-semibold text-[oklch(0.14_0.010_60)] transition-all duration-200 hover:bg-[oklch(0.78_0.16_55)]"
             >
               {t("getInTouch")}
             </a>
           </div>
+
+          {/* Lang switch — fixed right, desktop */}
+          <div className="absolute right-6 hidden md:flex">
+            <LangSwitch compact />
+          </div>
+
+          {/* Mobile hamburger — fixed right */}
+          <button
+            type="button"
+            className="absolute right-6 inline-flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-[12px] text-[oklch(0.80_0.010_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)] md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <List className="h-5 w-5" />}
+          </button>
         </div>
-      </div>
-    </nav>
+
+        {/* Mobile menu panel — above backdrop (nav is z-50) */}
+        <div
+          className={`relative z-50 overflow-hidden md:hidden transition-all duration-300 ${
+            mobileOpen
+              ? "max-h-[100vh] opacity-100 translate-y-0 pointer-events-auto"
+              : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+          }`}
+          aria-hidden={!mobileOpen}
+        >
+          <div className="border-t border-[var(--color-hairline)] bg-[oklch(0.16_0.012_60_/_0.96)] px-6 pb-6 pt-4 backdrop-blur-sm md:backdrop-blur-xl">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex min-h-[44px] cursor-pointer items-center text-base font-medium text-[oklch(0.80_0.010_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)]"
+                >
+                  {link.label}
+                </a>
+              ))}
+
+              <div className="pt-2">
+                <LangSwitch />
+              </div>
+
+              <a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                className="btn-press mt-2 flex min-h-[44px] cursor-pointer items-center justify-center rounded-[12px] bg-[oklch(0.74_0.16_55)] px-5 py-3 text-sm font-semibold text-[oklch(0.14_0.010_60)] transition-all duration-200 hover:bg-[oklch(0.78_0.16_55)]"
+              >
+                {t("getInTouch")}
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }

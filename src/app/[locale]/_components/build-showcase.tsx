@@ -1,52 +1,48 @@
-import type { ComponentType, SVGProps } from "react";
 import {
-  RocketLaunchIcon,
-  CodeBracketIcon,
-  DevicePhoneMobileIcon,
-  CpuChipIcon,
-  ServerStackIcon,
-  CloudIcon,
-  WrenchScrewdriverIcon,
-  CheckCircleIcon,
-} from "@heroicons/react/24/outline";
+  Rocket,
+  Code,
+  DeviceMobile,
+  Brain,
+  Stack,
+  CloudArrowUp,
+  Wrench,
+  CheckCircle,
+} from "@phosphor-icons/react/dist/ssr";
+import { type Icon } from "@phosphor-icons/react";
 import { getTranslations } from "next-intl/server";
-
-type HeroIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 interface BuildItem {
   key: string;
-  icon: HeroIcon;
-  /** Representative stack — proper nouns, identical across locales, so kept in code. */
+  Icon: Icon;
   stack: string[];
 }
 
-/** Headline offering — rendered as a full-width featured row. */
 const featured: BuildItem = {
   key: "mvp",
-  icon: RocketLaunchIcon,
+  Icon: Rocket,
   stack: ["Next.js", "TypeScript", "PostgreSQL", "Stripe", "Vercel"],
 };
 
 const builds: BuildItem[] = [
-  { key: "web", icon: CodeBracketIcon, stack: ["Next.js", "React", "TypeScript", "Tailwind", "PostgreSQL"] },
-  { key: "mobile", icon: DevicePhoneMobileIcon, stack: ["React Native", "Expo", "TypeScript", "Node.js"] },
-  { key: "ai", icon: CpuChipIcon, stack: ["Python", "OpenAI / Anthropic", "LangChain", "Vector DB"] },
-  { key: "backend", icon: ServerStackIcon, stack: ["Node.js", "NestJS", "GraphQL", "PostgreSQL"] },
-  { key: "cloud", icon: CloudIcon, stack: ["AWS", "Docker", "Terraform", "GitHub Actions"] },
-  { key: "tools", icon: WrenchScrewdriverIcon, stack: ["Next.js", "Node.js", "PostgreSQL", "Webhooks"] },
+  { key: "web",     Icon: Code,          stack: ["Next.js", "React", "TypeScript", "Tailwind", "PostgreSQL"] },
+  { key: "mobile",  Icon: DeviceMobile,  stack: ["React Native", "Expo", "TypeScript", "Node.js"] },
+  { key: "ai",      Icon: Brain,         stack: ["Python", "OpenAI / Anthropic", "LangChain", "Vector DB"] },
+  { key: "backend", Icon: Stack,         stack: ["Node.js", "NestJS", "GraphQL", "PostgreSQL"] },
+  { key: "cloud",   Icon: CloudArrowUp,  stack: ["AWS", "Docker", "Terraform", "GitHub Actions"] },
+  { key: "tools",   Icon: Wrench,        stack: ["Next.js", "Node.js", "PostgreSQL", "Webhooks"] },
 ];
 
 function StackChips({ items, label }: { items: string[]; label: string }) {
   return (
     <div>
-      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[oklch(0.60_0.008_60)]">
         {label}
       </p>
       <ul className="flex flex-wrap gap-2">
         {items.map((tech) => (
           <li
             key={tech}
-            className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-300"
+            className="rounded-full border border-[var(--color-hairline)] bg-[oklch(0.21_0.014_60_/_0.6)] px-2.5 py-1 text-xs font-medium text-[oklch(0.80_0.010_60)]"
           >
             {tech}
           </li>
@@ -63,99 +59,125 @@ export async function BuildShowcase() {
     <section
       id="build"
       aria-labelledby="build-heading"
-      className="relative px-6 py-28 md:py-32"
+      className="relative px-6 py-16 sm:py-20 md:py-32"
     >
-      {/* Ambient orb, consistent with other sections */}
-      <div className="gradient-orb-delayed pointer-events-none absolute -left-40 top-32 h-[500px] w-[500px] rounded-full bg-blue-600/5 blur-3xl" />
-
       <div className="relative mx-auto max-w-6xl">
-        <div className="reveal mb-16 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">
-            {t("eyebrow")}
-          </p>
+        {/* Left-aligned header */}
+        <div className="reveal mb-16 max-w-2xl">
           <h2
             id="build-heading"
-            className="mb-4 text-3xl font-bold text-white md:text-5xl"
+            className="mb-4 font-display text-3xl font-bold tracking-[-0.02em] text-[oklch(0.92_0.005_60)] md:text-5xl"
+            style={{ textWrap: "balance" } as React.CSSProperties}
           >
             {t("heading")}
           </h2>
-          <p className="mx-auto max-w-2xl text-slate-400 md:text-lg">
+          <p className="text-[oklch(0.80_0.010_60)] md:text-lg">
             {t("subheading")}
           </p>
         </div>
 
-        {/* Featured build — full-width row */}
-        <article className="reveal group relative mb-6 overflow-hidden rounded-2xl border border-blue-500/15 bg-navy-900/80 p-8 transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 sm:p-10 lg:flex lg:items-center lg:gap-12">
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/8 via-transparent to-transparent" />
-          <div className="relative lg:flex-1">
-            <div className="mb-5 inline-flex rounded-xl bg-blue-500/10 p-3 ring-1 ring-blue-500/20 transition-all duration-300 group-hover:bg-blue-500/15 group-hover:ring-blue-500/30">
-              <featured.icon className="h-6 w-6 text-blue-400" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold text-white">
-              {t(`items.${featured.key}.name`)}
-            </h3>
-            <p className="mb-4 text-slate-400 md:text-lg">
-              {t(`items.${featured.key}.description`)}
-            </p>
-            <p className="text-sm text-slate-400">
-              <span className="font-semibold text-slate-300">
-                {t("idealForLabel")}:
-              </span>{" "}
-              {t(`items.${featured.key}.idealFor`)}
-            </p>
-          </div>
-
-          <div className="relative mt-8 flex flex-col gap-5 border-t border-white/5 pt-6 lg:mt-0 lg:w-80 lg:shrink-0 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-            <StackChips items={featured.stack} label={t("stackLabel")} />
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                {t("outcomeLabel")}
-              </p>
-              <p className="flex items-start gap-2 text-sm text-slate-300">
-                <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
-                {t(`items.${featured.key}.outcome`)}
-              </p>
-            </div>
-          </div>
-        </article>
-
-        {/* Remaining builds */}
-        <div className="reveal-stagger grid gap-6 sm:grid-cols-2">
-          {builds.map((build, index) => (
+        {/* Featured build — double-bezel treatment, full-width row */}
+        {/* Bug fix #12: wrap article in reveal div so server/client DOM match */}
+        <div className="reveal mb-6">
+          <div className="bezel-outer">
             <article
-              key={build.key}
-              data-tilt
-              className="reveal group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/5 bg-navy-900/80 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/20 hover:shadow-xl hover:shadow-blue-500/5"
-              style={{ "--stagger-index": index } as React.CSSProperties}
+              className="bezel-inner group relative overflow-hidden bg-[oklch(0.19_0.012_60)] p-6 transition-all duration-300 hover:shadow-[0_8px_40px_oklch(0.16_0.012_60_/_0.5)] sm:p-8 lg:flex lg:items-center lg:gap-12 lg:p-10"
+              aria-label={t(`items.${featured.key}.name`)}
             >
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {/* Ember gradient overlay on hover */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[oklch(0.74_0.16_55_/_0.06)] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-              <div className="relative mb-5 inline-flex w-fit rounded-xl bg-blue-500/10 p-3 ring-1 ring-blue-500/20 transition-all duration-300 group-hover:bg-blue-500/15 group-hover:ring-blue-500/30">
-                <build.icon className="h-6 w-6 text-blue-400 transition-colors duration-300 group-hover:text-blue-300" />
-              </div>
-
-              <h3 className="relative mb-2 text-lg font-semibold text-white">
-                {t(`items.${build.key}.name`)}
-              </h3>
-              <p className="relative mb-4 text-sm leading-relaxed text-slate-400">
-                {t(`items.${build.key}.description`)}
-              </p>
-
-              <p className="relative mb-5 text-sm text-slate-400">
-                <span className="font-semibold text-slate-300">
-                  {t("idealForLabel")}:
-                </span>{" "}
-                {t(`items.${build.key}.idealFor`)}
-              </p>
-
-              <div className="relative mt-auto flex flex-col gap-4 border-t border-white/5 pt-5">
-                <StackChips items={build.stack} label={t("stackLabel")} />
-                <p className="flex items-start gap-2 text-sm text-slate-300">
-                  <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
-                  {t(`items.${build.key}.outcome`)}
+              <div className="relative lg:flex-1">
+                <div className="mb-5 inline-flex rounded-[12px] bg-[oklch(0.74_0.16_55_/_0.10)] p-3 ring-1 ring-[oklch(0.74_0.16_55_/_0.20)] transition-all duration-300 group-hover:bg-[oklch(0.74_0.16_55_/_0.16)] group-hover:ring-[oklch(0.74_0.16_55_/_0.35)]">
+                  <featured.Icon
+                    weight="duotone"
+                    className="h-6 w-6 text-[oklch(0.74_0.16_55)]"
+                    aria-hidden="true"
+                  />
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-[oklch(0.92_0.005_60)]">
+                  {t(`items.${featured.key}.name`)}
+                </h3>
+                <p className="mb-4 text-[oklch(0.80_0.010_60)] md:text-lg">
+                  {t(`items.${featured.key}.description`)}
+                </p>
+                <p className="text-sm text-[oklch(0.80_0.010_60)]">
+                  <span className="font-semibold text-[oklch(0.92_0.005_60)]">
+                    {t("idealForLabel")}:
+                  </span>{" "}
+                  {t(`items.${featured.key}.idealFor`)}
                 </p>
               </div>
+
+              <div className="relative mt-8 flex flex-col gap-5 border-t border-[var(--color-hairline)] pt-6 lg:mt-0 lg:w-80 lg:shrink-0 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+                <StackChips items={featured.stack} label={t("stackLabel")} />
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[oklch(0.60_0.008_60)]">
+                    {t("outcomeLabel")}
+                  </p>
+                  <p className="flex items-start gap-2 text-sm text-[oklch(0.80_0.010_60)]">
+                    <CheckCircle
+                      weight="duotone"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-[oklch(0.74_0.16_55)]"
+                      aria-hidden="true"
+                    />
+                    {t(`items.${featured.key}.outcome`)}
+                  </p>
+                </div>
+              </div>
             </article>
+          </div>
+        </div>
+
+        {/* Remaining builds — 2-col card grid, richer treatment than Services list */}
+        <div className="reveal-stagger grid gap-4 sm:grid-cols-2">
+          {builds.map((build, index) => (
+            // Bug fix #12: explicit reveal wrapper — DOM is now consistent server/client
+            <div
+              key={build.key}
+              className="reveal"
+              style={{ "--stagger-index": index } as React.CSSProperties}
+            >
+              <article
+                className="group relative flex h-full flex-col overflow-hidden rounded-[16px] border border-[var(--color-hairline)] bg-[oklch(0.21_0.014_60_/_0.7)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-[oklch(0.74_0.16_55_/_0.20)] hover:shadow-[0_4px_24px_oklch(0.16_0.012_60_/_0.5)]"
+                aria-label={t(`items.${build.key}.name`)}
+              >
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[oklch(0.74_0.16_55_/_0.04)] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                <div className="relative mb-5 inline-flex w-fit rounded-[12px] bg-[oklch(0.74_0.16_55_/_0.08)] p-3 ring-1 ring-[oklch(0.74_0.16_55_/_0.18)] transition-all duration-300 group-hover:bg-[oklch(0.74_0.16_55_/_0.14)] group-hover:ring-[oklch(0.74_0.16_55_/_0.30)]">
+                  <build.Icon
+                    weight="duotone"
+                    className="h-5 w-5 text-[oklch(0.74_0.16_55)]"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <h3 className="relative mb-2 text-base font-semibold text-[oklch(0.92_0.005_60)]">
+                  {t(`items.${build.key}.name`)}
+                </h3>
+                <p className="relative mb-4 text-sm leading-relaxed text-[oklch(0.80_0.010_60)]">
+                  {t(`items.${build.key}.description`)}
+                </p>
+                <p className="relative mb-5 text-sm text-[oklch(0.80_0.010_60)]">
+                  <span className="font-semibold text-[oklch(0.92_0.005_60)]">
+                    {t("idealForLabel")}:
+                  </span>{" "}
+                  {t(`items.${build.key}.idealFor`)}
+                </p>
+
+                <div className="relative mt-auto flex flex-col gap-4 border-t border-[var(--color-hairline)] pt-5">
+                  <StackChips items={build.stack} label={t("stackLabel")} />
+                  <p className="flex items-start gap-2 text-sm text-[oklch(0.80_0.010_60)]">
+                    <CheckCircle
+                      weight="duotone"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-[oklch(0.74_0.16_55)]"
+                      aria-hidden="true"
+                    />
+                    {t(`items.${build.key}.outcome`)}
+                  </p>
+                </div>
+              </article>
+            </div>
           ))}
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Navbar } from "../_components/navbar";
-import { Logo } from "../_components/logo";
+import { Footer } from "../_components/footer";
 import type { Metadata } from "next";
 
 interface Props {
@@ -20,10 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PrivacyPolicy() {
   const t = await getTranslations("Privacy");
-  const tFooter = await getTranslations("Footer");
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-[100dvh]">
       <header>
         <Navbar minimal />
       </header>
@@ -31,18 +29,18 @@ export default async function PrivacyPolicy() {
       <main className="px-6 pt-32 pb-20 md:pt-40 md:pb-28">
         <article className="mx-auto max-w-3xl">
           <div className="mb-12">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-400">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[oklch(0.74_0.16_55)]">
               {t("eyebrow")}
             </p>
             <h1 className="mb-4 text-3xl font-bold text-white md:text-5xl">
               {t("title")}
             </h1>
-            <p className="text-slate-400">
+            <p className="text-[oklch(0.50_0.008_60)]">
               {t("lastUpdated")}: {t("lastUpdatedDate")}
             </p>
           </div>
 
-          <div className="space-y-10 text-slate-300 leading-relaxed [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:md:text-2xl [&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-blue-300">
+          <div className="space-y-10 text-[oklch(0.72_0.008_60)] leading-relaxed [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-[oklch(0.92_0.005_60)] [&_h2]:md:text-2xl [&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_a]:text-[oklch(0.74_0.16_55)] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[oklch(0.80_0.18_55)]">
             {/* Introduction */}
             <section>
               <h2>{t("intro.heading")}</h2>
@@ -138,18 +136,7 @@ export default async function PrivacyPolicy() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 bg-navy-950 px-6 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-center gap-6">
-            <Link href="/" aria-label="Back to home">
-              <Logo className="text-2xl" />
-            </Link>
-            <p className="text-xs text-slate-500">
-              &copy; {new Date().getFullYear()} {tFooter("copyright")}
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer minimal />
     </div>
   );
 }

@@ -53,7 +53,9 @@ export function MotionController() {
 
     // ── Tilt + magnetic (fine pointers only) ────────────────────────
     if (finePointer) {
-      // Tilt
+      // Tilt — [data-tilt] consumers (service-card, build-showcase) were removed
+      // in the 2026-06 redesign. This block is dead code. Keep it so re-adding
+      // data-tilt to any element lights it up without further changes.
       document
         .querySelectorAll<HTMLElement>("[data-tilt]")
         .forEach((el) => {

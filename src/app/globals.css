@@ -1,49 +1,81 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #030308;
-  --color-foreground: #e2e8f0;
-  --color-navy-950: #010104;
-  --color-navy-900: #030308;
-  --color-navy-800: #08081a;
-  --color-navy-700: #0d0d2a;
-  --color-navy-600: #141438;
-  --color-blue-600: #2563eb;
-  --color-blue-500: #3b82f6;
-  --color-blue-400: #60a5fa;
-  --color-blue-300: #93c5fd;
-  --color-orange-500: #f97316;
-  --color-orange-400: #fb923c;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --font-sans: var(--font-jakarta);
+  /* ─── Graphite-warm base (OKLCH) ─── */
+  --color-bg:              oklch(0.16 0.012 60);   /* ~#181613 near-black warm */
+  --color-surface:         oklch(0.21 0.014 60);   /* ~#1e1b17 card base */
+  --color-surface-2:       oklch(0.26 0.016 60);   /* ~#252119 elevated */
+  --color-hairline:        oklch(0.30 0.015 60 / 0.4); /* 1px borders, low alpha */
+
+  /* ─── Ember accent ─── */
+  --color-ember:           oklch(0.74 0.16 55);    /* ~#f5933b */
+  --color-ember-dim:       oklch(0.65 0.13 55);    /* hover/dimmed */
+  --color-ember-muted:     oklch(0.74 0.16 55 / 0.12); /* bg tints */
+  --color-ember-ring:      oklch(0.74 0.16 55 / 0.25);
+
+  /* ─── Blue — demoted to single accent role ─── */
+  --color-blue-accent:     oklch(0.72 0.15 250);   /* ~#60a5fa, used ≤10% */
+  --color-blue-muted:      oklch(0.72 0.15 250 / 0.10);
+  --color-blue-ring:       oklch(0.72 0.15 250 / 0.30);
+
+  /* ─── Text ramp ─── */
+  --color-ink:             oklch(0.92 0.005 60);   /* ~#eae7e3 headlines */
+  --color-body:            oklch(0.80 0.010 60);   /* ~#c7c2bb body ≥9:1 */
+  --color-muted:           oklch(0.60 0.008 60);   /* ~#8b8680 secondary */
+  --color-subtle:          oklch(0.45 0.008 60);   /* ~#65605c tertiary */
+
+  /* ─── Navy legacy (kept for compat, mapped to graphite) ─── */
+  --color-navy-950:        oklch(0.16 0.012 60);
+  --color-navy-900:        oklch(0.19 0.012 60);
+  --color-navy-800:        oklch(0.21 0.014 60);
+
+  /* ─── Slate ramp (kept for compat; swap usages to body/muted) ─── */
+  --color-slate-100:       oklch(0.95 0.003 60);
+  --color-slate-200:       oklch(0.90 0.005 60);
+  --color-slate-300:       oklch(0.83 0.007 60);
+  --color-slate-400:       var(--color-body);
+  --color-slate-500:       var(--color-muted);
+  --color-slate-600:       var(--color-subtle);
+
+  /* ─── Error ─── */
+  --color-error:           oklch(0.62 0.22 25);
+
+  /* ─── Fonts ─── */
+  --font-sans:             var(--font-jakarta);
+  --font-display:          var(--font-geist);
 }
 
-/* ─── Motion system tokens ─── */
+/* ─── Motion tokens ─── */
 :root {
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-flow: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 150ms;
-  --dur-base: 300ms;
-  --dur-slow: 600ms;
-  --stagger-step: 90ms;
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-flow:     cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:      150ms;
+  --dur-base:      300ms;
+  --dur-slow:      600ms;
+  --stagger-step:  80ms;
+
+  /* ─── Border-radius scale ─── */
+  --radius-card:   16px;
+  --radius-btn:    12px;
+  --radius-input:  12px;
+  --radius-pill:   9999px;
+  --radius-badge:  9999px;
 }
 
+/* ─── Global base ─── */
 html {
+  /* scroll-behavior handled below in reduced-motion block */
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-navy-950);
-  color: var(--color-foreground);
+  background: var(--color-bg);
+  color: var(--color-body);
+  overflow-x: hidden; /* Bug fix #13: prevent horizontal scroll from orbs */
 }
 
-/* Noise texture overlay */
+/* Noise texture — fixed, pointer-none, z-top */
 body::before {
   content: "";
   position: fixed;
@@ -56,47 +88,15 @@ body::before {
   background-size: 256px 256px;
 }
 
-/* Grid pattern for hero */
+/* ─── Hero grid ─── */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+    linear-gradient(oklch(0.74 0.16 55 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.74 0.16 55 / 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hero headline — one-time gradient sweep ("decode" beat). LCP-safe: text
-   is in the DOM; only the gradient fill animates. */
-.gradient-text-sweep {
-  background: linear-gradient(
-    120deg,
-    #60a5fa 0%,
-    #3b82f6 35%,
-    #93c5fd 50%,
-    #3b82f6 65%,
-    #2563eb 100%
-  );
-  background-size: 220% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: headline-sweep 1.4s var(--ease-out) 0.55s both;
-}
-
-@keyframes headline-sweep {
-  from { background-position: 100% 0; }
-  to { background-position: 0 0; }
-}
-
-/* Badge — slow, sparing shimmer sweep */
+/* ─── Badge shimmer — low-key, ember tint ─── */
 .badge-shimmer {
   position: relative;
   overflow: hidden;
@@ -112,11 +112,11 @@ body::before {
   background: linear-gradient(
     105deg,
     transparent,
-    rgba(173, 198, 255, 0.25),
+    oklch(0.74 0.16 55 / 0.20),
     transparent
   );
   transform: translateX(-180%);
-  animation: badge-shimmer-sweep 5s var(--ease-smooth) 1.5s infinite;
+  animation: badge-shimmer-sweep 6s var(--ease-smooth) 2s infinite;
 }
 
 @keyframes badge-shimmer-sweep {
@@ -124,43 +124,34 @@ body::before {
   35%, 100% { transform: translateX(320%); }
 }
 
-/* Primary CTA — soft breathing glow halo (opacity/transform only) */
-.cta-glow {
+/* ─── Primary CTA — hover-only glow, no infinite breathing ─── */
+.cta-ember {
   position: relative;
 }
 
-.cta-glow::before {
+.cta-ember::before {
   content: "";
   position: absolute;
   inset: -2px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  background: linear-gradient(135deg, var(--color-ember), var(--color-ember-dim));
   filter: blur(14px);
-  opacity: 0.3;
-  animation: cta-breathe 4s var(--ease-smooth) infinite;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
-@keyframes cta-breathe {
-  0%, 100% { opacity: 0.22; transform: scale(0.97); }
-  50% { opacity: 0.45; transform: scale(1.02); }
+.cta-ember:hover::before,
+.cta-ember:focus-visible::before {
+  opacity: 0.35;
 }
 
-/* Glow effects */
-.glow-blue {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 0 80px rgba(59, 130, 246, 0.05);
-}
-
-.glow-blue-sm {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
-}
-
-/* Section divider gradient with a traveling data-flow pulse */
+/* ─── Section divider — ember pulse ─── */
 .section-divider {
   position: relative;
   height: 1px;
   overflow: hidden;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  background: var(--color-hairline);
 }
 
 .section-divider::after {
@@ -170,9 +161,9 @@ body::before {
   left: 0;
   height: 100%;
   width: 28%;
-  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, oklch(0.74 0.16 55 / 0.5), transparent);
   transform: translateX(-100%);
-  animation: divider-flow 7s var(--ease-flow) infinite;
+  animation: divider-flow 9s var(--ease-flow) infinite;
 }
 
 @keyframes divider-flow {
@@ -180,38 +171,38 @@ body::before {
   55%, 100% { transform: translateX(460%); }
 }
 
-/* Animated gradient orb */
+/* ─── Gradient orb — only used in hero ─── */
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-  33% { transform: translate(30px, -30px) scale(1.05); opacity: 1; }
-  66% { transform: translate(-20px, 20px) scale(0.95); opacity: 0.65; }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  33%       { transform: translate(30px, -30px) scale(1.04); opacity: 0.9; }
+  66%       { transform: translate(-20px, 20px) scale(0.96); opacity: 0.55; }
 }
 
 .gradient-orb {
-  animation: float 20s var(--ease-flow) infinite;
+  animation: float 22s var(--ease-flow) infinite;
 }
 
 @keyframes float-delayed {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  33% { transform: translate(-25px, 20px) scale(0.95); opacity: 0.5; }
-  66% { transform: translate(15px, -25px) scale(1.05); opacity: 0.9; }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33%       { transform: translate(-25px, 20px) scale(0.95); opacity: 0.45; }
+  66%       { transform: translate(15px, -25px) scale(1.04); opacity: 0.8; }
 }
 
 .gradient-orb-delayed {
-  animation: float-delayed 25s var(--ease-flow) infinite;
+  animation: float-delayed 28s var(--ease-flow) infinite;
 }
 
-/* Parallax layers (driven by MotionController; transform-only) */
+/* Parallax — driven by MotionController */
 [data-parallax] {
   will-change: transform;
 }
 
-/* Smooth scroll offset for fixed nav */
-[id] {
+/* ─── Scroll offset — scoped to section IDs only ─── */
+section[id] {
   scroll-margin-top: 80px;
 }
 
-/* ─── Hero entrance animations ─── */
+/* ─── Hero entrance ─── */
 @keyframes hero-fade-up {
   from {
     opacity: 0;
@@ -224,26 +215,26 @@ body::before {
 }
 
 .hero-animate {
-  animation: hero-fade-up 0.8s ease-out both;
+  animation: hero-fade-up 0.8s var(--ease-out) both;
 }
 
 .hero-animate-delay-1 {
-  animation: hero-fade-up 0.8s ease-out 0.15s both;
+  animation: hero-fade-up 0.8s var(--ease-out) 0.15s both;
 }
 
 .hero-animate-delay-2 {
-  animation: hero-fade-up 0.8s ease-out 0.3s both;
+  animation: hero-fade-up 0.8s var(--ease-out) 0.3s both;
 }
 
 .hero-animate-delay-3 {
-  animation: hero-fade-up 0.8s ease-out 0.45s both;
+  animation: hero-fade-up 0.8s var(--ease-out) 0.45s both;
 }
 
 /* ─── Scroll-triggered reveal ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(6px);
+  transform: translateY(20px);
+  filter: blur(5px);
   transition:
     opacity var(--dur-slow) var(--ease-out),
     transform var(--dur-slow) var(--ease-out),
@@ -256,46 +247,61 @@ body::before {
   filter: blur(0);
 }
 
-/* Soften the blur on small screens (cheaper paint) */
 @media (max-width: 767px) {
   .reveal {
-    filter: blur(4px);
+    filter: blur(3px);
   }
 }
 
-/* Stagger children (service cards, etc.) */
+/* Stagger children */
 .reveal-stagger > .reveal {
   transition-delay: calc(var(--stagger-index, 0) * var(--stagger-step));
 }
 
-/* ─── Focus-visible ring for keyboard navigation ─── */
+/* ─── Focus-visible ring ─── */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid rgba(96, 165, 250, 0.7);
+  outline: 2px solid oklch(0.74 0.16 55 / 0.7);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* ─── Button active (pressed) feedback ─── */
+/* ─── Button press feedback ─── */
 .btn-press:active {
   transform: scale(0.97);
 }
 
-/* ─── Scroll indicator pulse ─── */
-@keyframes scroll-bounce {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(6px); opacity: 1; }
+/* ─── Double-bezel shell (outer wrapper for featured cards) ─── */
+.bezel-outer {
+  background: oklch(0.20 0.014 60 / 0.5);
+  border: 1px solid var(--color-hairline);
+  padding: 4px;
+  border-radius: calc(var(--radius-card) + 4px);
 }
 
-.scroll-indicator {
-  animation: scroll-bounce 2s ease-in-out infinite;
+.bezel-inner {
+  border-radius: var(--radius-card);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
 }
 
-/* Reduced motion: disable all custom animations */
+/* ─── Tinted shadow utility ─── */
+.shadow-warm {
+  box-shadow: 0 8px 32px oklch(0.16 0.012 60 / 0.6);
+}
+
+.shadow-ember-sm {
+  box-shadow: 0 4px 16px oklch(0.74 0.16 55 / 0.12);
+}
+
+/* ─── Reduced motion — full neutralization ─── */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-animate,
   .hero-animate-delay-1,
   .hero-animate-delay-2,
@@ -312,31 +318,19 @@ select:focus-visible {
     transition: none;
   }
 
-  .scroll-indicator {
-    animation: none;
-  }
-
   .gradient-orb,
   .gradient-orb-delayed {
     animation: none;
   }
 
-  /* Neutralize motion effects, hold final/resting state */
   .section-divider::after,
   .badge-shimmer::after {
     animation: none;
     display: none;
   }
 
-  .gradient-text-sweep {
-    animation: none;
-    background-position: 0 0;
-  }
-
-  .cta-glow::before {
-    animation: none;
-    opacity: 0.3;
-    transform: none;
+  .cta-ember::before {
+    transition: none;
   }
 
   [data-parallax] {
