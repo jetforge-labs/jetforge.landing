@@ -137,6 +137,7 @@
     }
   },
   "Footer": {
+    "description": "Estudio de software especializado en productos a medida, apps moviles, infraestructura cloud e IA. Construido para escalar, lanzado para impactar.",
     "navigation": "Navegacion",
     "services": "Servicios",
     "build": "Qué Construimos",

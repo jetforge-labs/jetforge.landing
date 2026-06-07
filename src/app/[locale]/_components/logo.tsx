@@ -4,11 +4,11 @@ interface LogoProps {
   className?: string;
 }
 
-/** Text wordmark — Geist display, consistent across navbar/hero/footer. */
+/** Text wordmark — Orbitron display, consistent across navbar/hero/footer. */
 export function Logo({ className = "" }: LogoProps) {
   return (
     <span
-      className={`font-display font-bold leading-none tracking-[-0.02em] text-[oklch(0.92_0.005_60)] ${className}`}
+      className={`font-logo font-bold leading-none tracking-normal text-[oklch(0.92_0.005_60)] ${className}`}
     >
       Jetforge Labs
     </span>

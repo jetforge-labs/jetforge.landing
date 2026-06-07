@@ -137,6 +137,7 @@
     }
   },
   "Footer": {
+    "description": "Software studio specializing in custom products, mobile apps, cloud infrastructure, and AI. Built to scale, shipped to matter.",
     "navigation": "Navigation",
     "services": "Services",
     "build": "What We Build",

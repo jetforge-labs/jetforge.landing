@@ -43,6 +43,7 @@
   /* ─── Fonts ─── */
   --font-sans:             var(--font-jakarta);
   --font-display:          var(--font-geist);
+  --font-logo:             var(--font-orbitron);
 }
 
 /* ─── Motion tokens ─── */
@@ -250,6 +251,20 @@ body::before {
   animation: float-delayed 28s var(--ease-flow) infinite;
 }
 
+/* ─── Footer glow orbs — static warm wash behind footer content ─── */
+.footer-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    oklch(0.74 0.16 55 / 0.08) 0%,
+    oklch(0.74 0.16 55 / 0.03) 45%,
+    transparent 72%
+  );
+}
+
 /* Parallax — driven by MotionController */
 [data-parallax] {
   will-change: transform;
@@ -319,6 +334,7 @@ section[id] {
 /* ─── Focus-visible ring ─── */
 a:focus-visible,
 button:focus-visible,
+[role="button"]:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
@@ -344,6 +360,189 @@ select:focus-visible {
   border-radius: var(--radius-card);
   box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
 }
+
+/* ─── Service accordion — expanding palette-native panels ─── */
+/* The row is a single CSS grid; the active track grows to ~5fr while the rest
+   hold 1fr. Axis is column on desktop, row on mobile (set inline by JS). The
+   grid-template transition is the whole interaction. */
+.svc-accordion {
+  transition:
+    grid-template-columns 500ms var(--ease-out),
+    grid-template-rows 500ms var(--ease-out);
+  /* Explicit, deterministic height so the single grid row is NEVER sized by a
+     panel's wrapping content. During the 500ms width animation the incoming
+     active column is still narrow, so its in-flow text would wrap into many
+     lines and spike the (content-driven) row height — then snap back as the
+     column widens. That spike is the "blink". With a fixed height + the panels'
+     existing overflow:hidden, the narrow-phase text is simply clipped (and it's
+     fading in via opacity anyway) instead of inflating the row.
+     Mobile: vertical accordion — fits the active 5fr row (longest ES desc at
+     text-sm) above five collapsed 64px rows. Desktop override below. */
+  height: 720px;
+}
+
+/* Desktop: horizontal accordion, single row. Sized to comfortably fit the
+   longest ACTIVE content top-aligned (measured ~200px for 2 lines) with
+   headroom so even a 3-line ES wrap clears without clipping. */
+@media (min-width: 768px) {
+  .svc-accordion {
+    height: 248px;
+  }
+}
+
+/* Each panel. The per-index gradient angle + ember position is set via the
+   --svc-angle / --svc-ember-x / --svc-ember-y custom props (inline, per card),
+   so the row has rhythm without leaving the palette. */
+.svc-panel {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  /* Matches .svc-content padding (p-6 / md:p-8); drives the collapsed icon's
+     negative margin so it optically centers in the full column. */
+  --svc-pad: 1.5rem;
+  background:
+    radial-gradient(
+      120% 90% at var(--svc-ember-x, 50%) var(--svc-ember-y, 0%),
+      oklch(0.74 0.16 55 / 0.05) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      var(--svc-angle, 150deg),
+      oklch(0.21 0.014 60) 0%,
+      oklch(0.16 0.012 60) 100%
+    );
+  transition:
+    background 500ms var(--ease-out),
+    box-shadow 400ms var(--ease-out);
+}
+
+/* Content padding grows at md (matches .svc-content p-6 → md:p-8); keep the
+   collapsed-icon centering offset in sync. */
+@media (min-width: 768px) {
+  .svc-panel {
+    --svc-pad: 2rem;
+  }
+}
+
+/* The faint ember grid texture (reuses the hero-grid line pattern, finer). */
+.svc-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(oklch(0.74 0.16 55 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.74 0.16 55 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.3;
+  transition: opacity 500ms var(--ease-out);
+  pointer-events: none;
+}
+
+/* Active panel: warmer ember presence + brighter texture + inset edge light. */
+.svc-panel[data-active="true"] {
+  background:
+    radial-gradient(
+      130% 100% at var(--svc-ember-x, 50%) var(--svc-ember-y, 0%),
+      oklch(0.74 0.16 55 / 0.16) 0%,
+      oklch(0.74 0.16 55 / 0.05) 38%,
+      transparent 66%
+    ),
+    linear-gradient(
+      var(--svc-angle, 150deg),
+      oklch(0.245 0.018 58) 0%,
+      oklch(0.175 0.013 60) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.05),
+    inset 0 0 0 1px oklch(0.74 0.16 55 / 0.18);
+}
+
+.svc-panel[data-active="true"]::before {
+  opacity: 0.6;
+}
+
+/* Large watermark icon behind expanded content. */
+.svc-watermark {
+  position: absolute;
+  right: -1.5rem;
+  bottom: -1.5rem;
+  color: oklch(0.74 0.16 55 / 0.07);
+  opacity: 0;
+  transform: scale(0.9) translateY(8px);
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+  pointer-events: none;
+}
+
+.svc-panel[data-active="true"] .svc-watermark {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* The service icon is the persistent indicator — visible in BOTH collapsed and
+   active states. When collapsed it centers in the narrow column (so it never
+   looks orphaned against the edge padding); when the panel goes active it
+   eases back to its natural top-left position above the title. */
+.svc-icon-wrap {
+  /* Mobile: collapsed panels are full-width short rows, so the icon reads best
+     left-aligned (its natural position) — no centering offset. */
+  justify-content: flex-start;
+  transition: margin 500ms var(--ease-out);
+}
+
+/* Desktop: collapsed panels are narrow columns, so center the icon and pull it
+   left by the content padding to optically center it in the full column width
+   (not just the padded box). It eases back to top-left when the panel goes
+   active. */
+@media (min-width: 768px) {
+  .svc-icon-wrap {
+    justify-content: center;
+    margin-left: calc(var(--svc-pad) * -1);
+    margin-right: calc(var(--svc-pad) * -1);
+  }
+
+  .svc-panel[data-active="true"] .svc-icon-wrap {
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Staggered fade-in of the active panel's title + description. */
+.svc-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 400ms var(--ease-out),
+    transform 400ms var(--ease-out);
+}
+
+/* HEIGHT FIX: collapsed panels keep their title+desc in the DOM (for the fade),
+   but in a ~72px column that text wraps into a very tall stack and — because
+   the whole accordion is ONE grid row sized to its tallest content — it
+   inflates the row height for EVERY panel. Pull the collapsed (non-active)
+   panels' text OUT OF FLOW so only the ACTIVE panel's content (wrapping
+   normally in its wide 5fr column) drives the row height. The opacity:0 text
+   is invisible anyway; absolute-positioning it just stops it sizing the row.
+   Scoped to data-active="false" so it never touches the active panel or the
+   reduced-motion fallback (where every panel renders data-active="true"). */
+.svc-panel[data-active="false"] .svc-reveal {
+  position: absolute;
+  inset-inline: var(--svc-pad);
+  /* Keep below the icon so, if ever painted, it doesn't overlap it. */
+  top: calc(var(--svc-pad) + 3.5rem);
+  pointer-events: none;
+}
+
+.svc-panel[data-active="true"] .svc-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.svc-panel[data-active="true"] .svc-reveal-2 { transition-delay: 120ms; }
+.svc-panel[data-active="true"] .svc-reveal-3 { transition-delay: 190ms; }
 
 /* ─── Tinted shadow utility ─── */
 .shadow-warm {
@@ -411,5 +610,72 @@ select:focus-visible {
 
   [data-parallax] {
     transform: none !important;
+  }
+
+  /* ─── Service accordion → static, fully-readable stack ─── */
+  /* Kill the grid-template animation and the panel/reveal transitions, then
+     reveal every panel's content regardless of active state. The accordion
+     becomes an equal-size grid where all titles AND descriptions are visible —
+     no information hidden behind an interaction that can't animate. */
+  .svc-accordion {
+    transition: none;
+    /* Drop the explicit accordion height: the reduced-motion fallback is a flat
+       grid that must auto-size to show every panel's full title + description
+       with nothing clipped. The fixed height only applies to the animated
+       accordion (outside this block). */
+    height: auto !important;
+    /* Force equal tracks on both axes; the active inline style is overridden.
+       NOTE: the component must also drop its inline grid-template under
+       reduced-motion (it does), since inline grid tracks beat external
+       !important. Responsive bumps live in flattened compound queries below —
+       nested @media inside this block is silently dropped by Tailwind v4. */
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+  }
+
+  .svc-panel,
+  .svc-panel::before,
+  .svc-watermark,
+  .svc-reveal,
+  .svc-icon-wrap {
+    transition: none !important;
+  }
+
+  /* Every panel reads as expanded: title + description always visible, and the
+     icon sits top-left (not column-centered) since each card is full width.
+     Force text BACK into flow (override the out-of-flow height fix) so the
+     static grid measures real content height and nothing is clipped. */
+  .svc-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    position: static !important;
+    inset-inline: auto !important;
+    top: auto !important;
+  }
+
+  .svc-icon-wrap {
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .svc-watermark {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Reduced-motion responsive track bumps (flattened) ─── */
+/* Top-level compound queries — Tailwind v4 / PostCSS drops @media nested
+   inside another @media, so these must NOT live inside the reduce block. */
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .svc-accordion {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .svc-accordion {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
