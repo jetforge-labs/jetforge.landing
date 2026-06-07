@@ -96,6 +96,64 @@ body::before {
   background-size: 60px 60px;
 }
 
+/* ─── Top radial shade — anchored at the crown of the hero ─── */
+.hero-shade {
+  background: radial-gradient(
+    60% 50% at 49% 0%,
+    oklch(0.74 0.16 55 / 0.10) 0%,
+    oklch(0.74 0.16 55 / 0.04) 28%,
+    transparent 70%
+  );
+}
+
+/* ─── Framed canvas — vertical hairline frame around the hero content ─── */
+/* Each rule is a single vertical line; the fade is via mask-image so it works
+   regardless of Tailwind v4 minor (no reliance on mask-* utilities). */
+.frame-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+}
+
+/* Bold outer pair — desktop only, vertical gradient tint */
+.frame-line-outer {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    oklch(0.30 0.015 60 / 0.55) 12%,
+    oklch(0.30 0.015 60 / 0.55) 100%
+  );
+}
+
+/* Fainter inner pair — ember-tinted hairline */
+.frame-line-inner {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    oklch(0.74 0.16 55 / 0.18) 10%,
+    oklch(0.30 0.015 60 / 0.35) 100%
+  );
+}
+
+/* ─── Tech marquee — pure-CSS infinite loop ─── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* list is rendered twice → seamless */
+}
+
 /* ─── Badge shimmer — low-key, ember tint ─── */
 .badge-shimmer {
   position: relative;
@@ -327,6 +385,24 @@ select:focus-visible {
   .badge-shimmer::after {
     animation: none;
     display: none;
+  }
+
+  /* Marquee → static, centered, horizontally scrollable fallback */
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .marquee-track [data-clone] {
+    display: none; /* hide the duplicate list when not looping */
+  }
+
+  .marquee-mask {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .cta-ember::before {

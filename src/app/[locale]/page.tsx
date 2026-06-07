@@ -1,10 +1,10 @@
 import {
   ArrowRight,
+  Sparkle,
 } from "@phosphor-icons/react/dist/ssr";
 import { getTranslations } from "next-intl/server";
 import { ContactForm } from "./_components/contact-form";
 import { Footer } from "./_components/footer";
-import { Logo } from "./_components/logo";
 import { Navbar } from "./_components/navbar";
 import { ScrollRevealInit } from "./_components/scroll-reveal";
 import { MotionController } from "./_components/motion-controller";
@@ -38,20 +38,47 @@ export default async function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_oklch(0.22_0.018_55)_0%,_oklch(0.16_0.012_60)_65%)]" />
           <div data-parallax="0.12" className="hero-grid absolute inset-0" />
 
+          {/* Top radial shade — crown glow behind content */}
+          <div aria-hidden="true" className="hero-shade pointer-events-none absolute inset-0" />
+
           {/* Single hero orb — ember tint */}
           <div data-parallax="0.05" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="gradient-orb absolute -top-32 -right-32 h-[480px] w-[480px] rounded-full bg-[oklch(0.74_0.16_55_/_0.08)] blur-3xl" />
+          </div>
+
+          {/* Framed canvas — vertical hairline frame around the content column.
+              Inner pair tracks the content edges (≥md); bold outer pair sits a
+              touch wider (≥lg). All clipped to the section, no horizontal scroll. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-full max-w-4xl -translate-x-1/2 md:block"
+          >
+            {/* Faint inner pair — hugs the content column from md */}
+            <div className="frame-line frame-line-inner left-0" />
+            <div className="frame-line frame-line-inner right-0" />
+            {/* Bold outer pair — lg only, pushed slightly outside the column */}
+            <div className="frame-line frame-line-outer left-[-2.5rem] hidden lg:block" />
+            <div className="frame-line frame-line-outer right-[-2.5rem] hidden lg:block" />
           </div>
 
           {/* Content */}
           <div className="relative z-10 mx-auto max-w-4xl text-center">
             {/* Wordmark + badge */}
             <div className="hero-animate mb-8 flex flex-col items-center gap-4">
-              <Logo className="text-3xl sm:text-4xl md:text-5xl" />
-              {/* ONE eyebrow on the whole page — here as brand beat */}
-              <span className="badge-shimmer inline-flex rounded-full border border-[oklch(0.74_0.16_55_/_0.25)] bg-[oklch(0.74_0.16_55_/_0.07)] px-4 py-1.5 text-sm font-medium text-[oklch(0.74_0.16_55)]">
+              {/* Announcement-style brand badge: icon · label · divider · arrow */}
+              <a
+                href="#services"
+                className="badge-shimmer group inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-full border border-[oklch(0.74_0.16_55_/_0.25)] bg-[oklch(0.74_0.16_55_/_0.07)] py-1.5 pr-2.5 pl-3.5 text-sm font-medium text-[oklch(0.74_0.16_55)] transition-colors duration-200 hover:border-[oklch(0.74_0.16_55_/_0.4)] hover:bg-[oklch(0.74_0.16_55_/_0.10)]"
+              >
+                <Sparkle weight="fill" className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                 {tHero("badge")}
-              </span>
+                <span aria-hidden="true" className="h-3.5 w-px bg-[oklch(0.74_0.16_55_/_0.3)]" />
+                <ArrowRight
+                  weight="bold"
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+                />
+              </a>
             </div>
 
             <h1

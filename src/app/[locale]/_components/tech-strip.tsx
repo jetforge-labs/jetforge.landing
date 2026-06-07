@@ -35,6 +35,38 @@ const uniqueBySlug = technologies.filter(
   (tech, idx, arr) => arr.findIndex((t) => t.slug === tech.slug) === idx
 );
 
+function TechItem({ tech }: { tech: Tech }) {
+  return (
+    <div
+      className="group flex shrink-0 items-center gap-2 opacity-50 transition-opacity duration-200 hover:opacity-80"
+      title={tech.name}
+    >
+      {tech.svg ? (
+        /* Inline SVG for logos not available on cdn.simpleicons.org */
+        <svg
+          viewBox="0 0 32 32"
+          fill="currentColor"
+          aria-hidden="true"
+          width={20}
+          height={20}
+          className="h-5 w-5 shrink-0 text-[#a8a29e]"
+        >
+          <path fillRule="evenodd" d={tech.svg} />
+        </svg>
+      ) : (
+        /* Simple Icons via CDN — client component handles onError */
+        <TechLogo
+          src={`https://cdn.simpleicons.org/${tech.slug}/${ICON_COLOR}`}
+          alt={tech.name}
+        />
+      )}
+      <span className="text-sm font-medium whitespace-nowrap text-[oklch(0.60_0.008_60)] transition-colors duration-200 group-hover:text-[oklch(0.80_0.010_60)]">
+        {tech.name}
+      </span>
+    </div>
+  );
+}
+
 export async function TechStrip() {
   const t = await getTranslations("TechStrip");
 
@@ -44,43 +76,29 @@ export async function TechStrip() {
         <p className="mb-6 text-center text-xs font-medium uppercase tracking-widest text-[oklch(0.55_0.008_60)]">
           {t("heading")}
         </p>
+
         {/*
-          Grid at every breakpoint — 10 items divide evenly into each column count,
-          so no orphan is mathematically possible:
-          xs  (≥0px):    2 cols → 5 rows  (320/375/414px)
-          sm  (≥640px):  5 cols → 2 rows  (640px and above, including desktop)
+          Infinite marquee — pure CSS (@keyframes marquee in globals.css).
+          The track renders the logo list TWICE; the keyframe translates -50%
+          so the second copy lands exactly where the first started → seamless.
+          Edge fade via mask-image. Pauses on hover. Reduced-motion neutralizes
+          to a static, centered, scrollable row (clone hidden) in globals.css.
         */}
-        <div className="grid grid-cols-2 place-items-center gap-x-6 gap-y-6 sm:grid-cols-5 sm:gap-y-8">
-          {uniqueBySlug.map((tech) => (
-            <div
-              key={tech.slug + tech.name}
-              className="group flex items-center gap-2 opacity-50 transition-opacity duration-200 hover:opacity-80"
-              title={tech.name}
-            >
-              {tech.svg ? (
-                /* Inline SVG for logos not available on cdn.simpleicons.org */
-                <svg
-                  viewBox="0 0 32 32"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  width={20}
-                  height={20}
-                  className="h-5 w-5 shrink-0 text-[#a8a29e]"
-                >
-                  <path fillRule="evenodd" d={tech.svg} />
-                </svg>
-              ) : (
-                /* Simple Icons via CDN — client component handles onError */
-                <TechLogo
-                  src={`https://cdn.simpleicons.org/${tech.slug}/${ICON_COLOR}`}
-                  alt={tech.name}
-                />
-              )}
-              <span className="text-sm font-medium text-[oklch(0.60_0.008_60)] transition-colors duration-200 group-hover:text-[oklch(0.80_0.010_60)]">
-                {tech.name}
-              </span>
+        <div className="marquee-mask overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+          <div className="marquee-track">
+            {/* Copy 1 — one half of the track; pr-12 supplies the seam gap */}
+            <div className="flex shrink-0 gap-x-12 pr-12">
+              {uniqueBySlug.map((tech) => (
+                <TechItem key={`a-${tech.slug}-${tech.name}`} tech={tech} />
+              ))}
             </div>
-          ))}
+            {/* Copy 2 — identical half, hidden under reduced motion */}
+            <div className="flex shrink-0 gap-x-12 pr-12" aria-hidden="true" data-clone>
+              {uniqueBySlug.map((tech) => (
+                <TechItem key={`b-${tech.slug}-${tech.name}`} tech={tech} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
