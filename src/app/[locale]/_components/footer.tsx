@@ -14,7 +14,7 @@ export async function Footer({ minimal = false }: FooterProps) {
 
   if (minimal) {
     return (
-      <footer className="relative overflow-hidden border-t border-[var(--color-hairline)] bg-[oklch(0.18_0.012_60)] px-6 py-12 md:py-16">
+      <footer className="relative overflow-hidden border-t border-[var(--color-hairline)] bg-[oklch(0.155_0.015_265)] px-6 py-12 md:py-16">
         <div
           aria-hidden="true"
           className="footer-orb left-1/2 top-0 z-0 h-72 w-72 -translate-x-1/2 -translate-y-1/3"
@@ -28,7 +28,7 @@ export async function Footer({ minimal = false }: FooterProps) {
             >
               <Logo className="text-2xl" />
             </Link>
-            <p className="text-xs text-[oklch(0.45_0.008_60)]">
+            <p className="text-xs text-[oklch(0.47_0.010_250)]">
               &copy; {year} {tFooter("copyright")}
             </p>
           </div>
@@ -38,12 +38,12 @@ export async function Footer({ minimal = false }: FooterProps) {
   }
 
   const linkClass =
-    "inline-flex min-h-[44px] cursor-pointer items-center text-sm text-[oklch(0.60_0.008_60)] transition-colors duration-200 hover:text-[oklch(0.92_0.005_60)]";
+    "inline-flex min-h-[44px] cursor-pointer items-center text-sm text-[oklch(0.62_0.010_250)] transition-colors duration-200 hover:text-[oklch(0.93_0.006_250)]";
   const headerClass =
-    "mb-4 text-xs font-semibold uppercase tracking-wider text-[oklch(0.60_0.008_60)]";
+    "mb-4 text-xs font-semibold uppercase tracking-wider text-[oklch(0.62_0.010_250)]";
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--color-hairline)] bg-[oklch(0.18_0.012_60)] px-6 pb-12 pt-16 md:pb-16 md:pt-24">
+    <footer className="relative overflow-hidden border-t border-[var(--color-hairline)] bg-[oklch(0.155_0.015_265)] px-6 pb-12 pt-16 md:pb-16 md:pt-24">
       {/* Ember glow orbs — decorative warm wash behind content */}
       <div
         aria-hidden="true"
@@ -65,7 +65,7 @@ export async function Footer({ minimal = false }: FooterProps) {
             >
               <Logo className="text-2xl" />
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[oklch(0.80_0.010_60)]">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[oklch(0.81_0.010_250)]">
               {tFooter("description")}
             </p>
           </div>
@@ -118,7 +118,7 @@ export async function Footer({ minimal = false }: FooterProps) {
 
         {/* Bottom bar */}
         <div className="mt-14 flex flex-col items-center justify-center gap-4 border-t border-[var(--color-hairline)] pt-8 sm:flex-row sm:justify-start">
-          <p className="text-xs text-[oklch(0.45_0.008_60)]">
+          <p className="text-xs text-[oklch(0.47_0.010_250)]">
             &copy; {year} {tFooter("copyright")}
           </p>
         </div>

@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { TechLogo } from "./tech-logo";
 
 // Simple Icons slugs + display names
-// Colour: muted oklch(0.67 0.008 60) approximated as #a8a29e — lifted for visibility on dark bg
+// Colour: muted oklch(0.68 0.010 250) approximated as #a8a29e — lifted for visibility on dark bg
 const ICON_COLOR = "a8a29e";
 
 // AWS single-path SVG (Simple Icons removed Amazon brand slugs from their CDN)
@@ -60,7 +60,7 @@ function TechItem({ tech }: { tech: Tech }) {
           alt={tech.name}
         />
       )}
-      <span className="text-sm font-medium whitespace-nowrap text-[oklch(0.60_0.008_60)] transition-colors duration-200 group-hover:text-[oklch(0.80_0.010_60)]">
+      <span className="text-sm font-medium whitespace-nowrap text-[oklch(0.62_0.010_250)] transition-colors duration-200 group-hover:text-[oklch(0.81_0.010_250)]">
         {tech.name}
       </span>
     </div>
@@ -71,9 +71,10 @@ export async function TechStrip() {
   const t = await getTranslations("TechStrip");
 
   return (
-    <div className="border-y border-[var(--color-hairline)] bg-[oklch(0.18_0.012_60_/_0.5)]">
+    // relative: paints above the NeonThread background filament
+    <div className="relative border-y border-[var(--color-hairline)] bg-[oklch(0.155_0.015_265_/_0.5)]">
       <div className="mx-auto max-w-6xl px-6 py-8 sm:py-10 md:py-14">
-        <p className="mb-6 text-center text-xs font-medium uppercase tracking-widest text-[oklch(0.55_0.008_60)]">
+        <p className="mb-6 text-center text-xs font-medium uppercase tracking-widest text-[oklch(0.57_0.010_250)]">
           {t("heading")}
         </p>
 

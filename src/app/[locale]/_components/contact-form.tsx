@@ -5,10 +5,10 @@ import { PaperPlane, CheckCircle } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
 
 const baseInput =
-  "w-full rounded-[12px] border bg-[oklch(0.16_0.012_60_/_0.8)] px-5 py-3.5 text-sm text-[oklch(0.92_0.005_60)] placeholder-[oklch(0.45_0.008_60)] shadow-inner shadow-black/10 outline-none transition-all duration-200 focus:ring-2";
+  "w-full rounded-[12px] border bg-[oklch(0.13_0.014_265_/_0.8)] px-5 py-3.5 text-sm text-[oklch(0.93_0.006_250)] placeholder-[oklch(0.47_0.010_250)] shadow-inner shadow-black/10 outline-none transition-all duration-200 focus:ring-2";
 
 const inputNormal =
-  `${baseInput} border-[var(--color-hairline)] focus:border-[oklch(0.74_0.16_55_/_0.50)] focus:ring-[oklch(0.74_0.16_55_/_0.18)]`;
+  `${baseInput} border-[var(--color-hairline)] focus:border-[oklch(0.70_0.17_255_/_0.50)] focus:ring-[oklch(0.70_0.17_255_/_0.18)]`;
 
 const inputError =
   `${baseInput} border-[oklch(0.62_0.22_25_/_0.6)] focus:border-[oklch(0.62_0.22_25_/_0.8)] focus:ring-[oklch(0.62_0.22_25_/_0.18)] aria-[invalid=true]:border-[oklch(0.62_0.22_25_/_0.6)]`;
@@ -98,14 +98,14 @@ export function ContactForm() {
       >
         <CheckCircle
           weight="duotone"
-          className="h-12 w-12 text-[oklch(0.74_0.16_55)]"
+          className="h-12 w-12 text-[oklch(0.70_0.17_255)]"
         />
-        <p className="text-lg font-semibold text-[oklch(0.92_0.005_60)]">{t("successTitle")}</p>
-        <p className="text-sm text-[oklch(0.80_0.010_60)]">{t("successMessage")}</p>
+        <p className="text-lg font-semibold text-[oklch(0.93_0.006_250)]">{t("successTitle")}</p>
+        <p className="text-sm text-[oklch(0.81_0.010_250)]">{t("successMessage")}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-2 cursor-pointer text-sm font-medium text-[oklch(0.74_0.16_55)] transition-colors duration-200 hover:text-[oklch(0.80_0.18_55)]"
+          className="mt-2 cursor-pointer text-sm font-medium text-[oklch(0.70_0.17_255)] transition-colors duration-200 hover:text-[oklch(0.78_0.17_250)]"
         >
           {t("sendAnother")}
         </button>
@@ -117,7 +117,7 @@ export function ContactForm() {
     return touched[key] && fieldErrors[key] ? inputError : inputNormal;
   }
 
-  const labelClass = "mb-1.5 block text-xs font-medium text-[oklch(0.60_0.008_60)]";
+  const labelClass = "mb-1.5 block text-xs font-medium text-[oklch(0.62_0.010_250)]";
   const errClass   = "mt-1 text-xs text-[oklch(0.62_0.22_25)]";
 
   return (
@@ -217,10 +217,11 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="btn-press cta-ember group flex w-full cursor-pointer items-center justify-center gap-3 rounded-[12px] bg-[oklch(0.74_0.16_55)] py-4 text-sm font-semibold text-[oklch(0.14_0.010_60)] transition-all duration-200 hover:bg-[oklch(0.78_0.16_55)] disabled:cursor-not-allowed disabled:opacity-60"
+        data-thread-ignite
+        className="btn-press cta-ember group flex w-full cursor-pointer items-center justify-center gap-3 rounded-[12px] bg-[oklch(0.70_0.17_255)] py-4 text-sm font-semibold text-[oklch(0.12_0.012_265)] transition-all duration-200 hover:bg-[oklch(0.75_0.16_252)] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "sending" ? t("sending") : t("send")}
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.14_0.010_60_/_0.15)] transition-transform duration-200 group-hover:translate-x-0.5">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[oklch(0.12_0.012_265_/_0.15)] transition-transform duration-200 group-hover:translate-x-0.5">
           <PaperPlane weight="bold" className="h-3.5 w-3.5" />
         </span>
       </button>

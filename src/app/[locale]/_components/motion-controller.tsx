@@ -7,6 +7,8 @@ import { useEffect } from "react";
  *  - [data-tilt]      → subtle 3D tilt + lift on hover (fine pointers only)
  *  - [data-magnetic]  → small magnetic pull toward the cursor (fine pointers only)
  *  - [data-parallax]  → transform-only scroll parallax (desktop only)
+ *  - [data-spotlight] → pointer-tracked border highlight via --spot-x/--spot-y
+ *                       (fine pointers only; CSS ::after ring in globals.css)
  *
  * Transform/opacity only. Bails out entirely under prefers-reduced-motion, and
  * pointer effects only attach on fine (mouse) pointers, so touch devices stay calm.
@@ -89,6 +91,23 @@ export function MotionController() {
             el.style.transform = "";
             el.style.willChange = "";
             el.style.transition = "";
+          });
+        });
+
+      // Spotlight — feed cursor position to the CSS border-ring gradient
+      document
+        .querySelectorAll<HTMLElement>("[data-spotlight]")
+        .forEach((el) => {
+          const onMove = (e: PointerEvent) => {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty("--spot-x", `${(e.clientX - r.left).toFixed(0)}px`);
+            el.style.setProperty("--spot-y", `${(e.clientY - r.top).toFixed(0)}px`);
+          };
+          el.addEventListener("pointermove", onMove, { passive: true });
+          cleanups.push(() => {
+            el.removeEventListener("pointermove", onMove);
+            el.style.removeProperty("--spot-x");
+            el.style.removeProperty("--spot-y");
           });
         });
 

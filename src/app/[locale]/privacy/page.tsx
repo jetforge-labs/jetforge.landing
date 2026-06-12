@@ -29,18 +29,18 @@ export default async function PrivacyPolicy() {
       <main className="px-6 pt-32 pb-20 md:pt-40 md:pb-28">
         <article className="mx-auto max-w-3xl">
           <div className="mb-12">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[oklch(0.74_0.16_55)]">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[oklch(0.70_0.17_255)]">
               {t("eyebrow")}
             </p>
             <h1 className="mb-4 text-3xl font-bold text-white md:text-5xl">
               {t("title")}
             </h1>
-            <p className="text-[oklch(0.50_0.008_60)]">
+            <p className="text-[oklch(0.52_0.010_250)]">
               {t("lastUpdated")}: {t("lastUpdatedDate")}
             </p>
           </div>
 
-          <div className="space-y-10 text-[oklch(0.72_0.008_60)] leading-relaxed [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-[oklch(0.92_0.005_60)] [&_h2]:md:text-2xl [&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_a]:text-[oklch(0.74_0.16_55)] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[oklch(0.80_0.18_55)]">
+          <div className="space-y-10 text-[oklch(0.73_0.010_250)] leading-relaxed [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-[oklch(0.93_0.006_250)] [&_h2]:md:text-2xl [&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_a]:text-[oklch(0.70_0.17_255)] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[oklch(0.78_0.17_250)]">
             {/* Introduction */}
             <section>
               <h2>{t("intro.heading")}</h2>

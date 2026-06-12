@@ -29,28 +29,71 @@
     "subheading": "End-to-end software development services tailored to your needs.",
     "customSoftware": {
       "title": "Custom Software",
-      "description": "Tailored solutions designed to match your unique business processes and goals."
+      "description": "Tailored solutions designed to match your unique business processes and goals.",
+      "tagline": "Built around your processes",
+      "features": [
+        "Domain-driven design",
+        "Scalable architecture",
+        "Seamless integrations",
+        "Long-term maintainability"
+      ]
     },
     "mobileApps": {
       "title": "Mobile Apps",
-      "description": "Native and cross-platform mobile applications that deliver seamless user experiences."
+      "description": "Native and cross-platform mobile applications that deliver seamless user experiences.",
+      "tagline": "iOS & Android, one codebase",
+      "features": [
+        "React Native & Expo",
+        "Native performance",
+        "App Store delivery",
+        "Offline-first patterns"
+      ]
     },
     "cloudDevOps": {
       "title": "Cloud & DevOps",
-      "description": "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running."
+      "description": "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running.",
+      "tagline": "Infrastructure that scales with you",
+      "features": [
+        "AWS architecture",
+        "CI/CD pipelines",
+        "Infrastructure as code",
+        "Proactive monitoring"
+      ]
     },
     "aiAutomation": {
       "title": "AI & Automation",
-      "description": "Intelligent automation and machine learning integrations to streamline operations."
+      "description": "Intelligent automation and machine learning integrations to streamline operations.",
+      "tagline": "Put AI to work in your business",
+      "features": [
+        "LLM integrations",
+        "Workflow automation",
+        "RAG & vector search",
+        "Custom agents"
+      ]
     },
     "mvpDevelopment": {
       "title": "MVP Development",
-      "description": "Rapid prototyping and MVP delivery to validate your ideas and reach market fast."
+      "description": "Rapid prototyping and MVP delivery to validate your ideas and reach market fast.",
+      "tagline": "From idea to market, fast",
+      "features": [
+        "Rapid delivery cycles",
+        "Validated scope",
+        "Production-ready stack",
+        "Launch support"
+      ]
     },
     "securityAudits": {
       "title": "Security Audits",
-      "description": "Comprehensive security assessments to protect your applications and data."
-    }
+      "description": "Comprehensive security assessments to protect your applications and data.",
+      "tagline": "Find the gaps before attackers do",
+      "features": [
+        "Code & infra review",
+        "OWASP coverage",
+        "Pentest coordination",
+        "Actionable reports"
+      ]
+    },
+    "cardCta": "Start a project"
   },
   "Build": {
     "eyebrow": "Example Builds",

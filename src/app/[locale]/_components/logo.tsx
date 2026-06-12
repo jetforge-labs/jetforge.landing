@@ -8,7 +8,7 @@ interface LogoProps {
 export function Logo({ className = "" }: LogoProps) {
   return (
     <span
-      className={`font-logo font-bold leading-none tracking-normal text-[oklch(0.92_0.005_60)] ${className}`}
+      className={`font-logo font-bold leading-none tracking-normal text-[oklch(0.93_0.006_250)] ${className}`}
     >
       Jetforge Labs
     </span>

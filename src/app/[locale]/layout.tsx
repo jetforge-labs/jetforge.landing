@@ -37,8 +37,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   const baseUrl = "https://jetforgelabs.com";
-  const localePath = locale === "en" ? "" : `/${locale}`;
-  const canonicalUrl = `${baseUrl}${localePath}`;
+  const canonicalUrl = baseUrl;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -64,16 +63,10 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        en: `${baseUrl}`,
-        es: `${baseUrl}/es`,
-        "x-default": `${baseUrl}`,
-      },
     },
     openGraph: {
       type: "website",
-      locale: locale === "en" ? "en_US" : "es_AR",
-      alternateLocale: locale === "en" ? "es_AR" : "en_US",
+      locale: "en_US",
       url: canonicalUrl,
       siteName: "Jetforge Labs",
       title: t("title"),
@@ -96,7 +89,7 @@ export async function generateMetadata({
   };
 }
 
-function OrganizationJsonLd({ locale }: { locale: string }) {
+function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -104,13 +97,11 @@ function OrganizationJsonLd({ locale }: { locale: string }) {
     url: "https://jetforgelabs.com",
     logo: "https://jetforgelabs.com/icon.png",
     description:
-      locale === "en"
-        ? "Custom software development and tech solutions company. We build scalable software products for startups and enterprises."
-        : "Empresa de desarrollo de software a medida y soluciones tecnologicas. Construimos productos de software escalables para startups y empresas.",
+      "Custom software development and tech solutions company. We build scalable software products for startups and enterprises.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      availableLanguage: ["English", "Spanish"],
+      availableLanguage: ["English"],
     },
     sameAs: [],
   };
@@ -144,73 +135,39 @@ function WebSiteJsonLd() {
   );
 }
 
-function ServicesJsonLd({ locale }: { locale: string }) {
-  const services =
-    locale === "en"
-      ? [
-          {
-            name: "Custom Software Development",
-            description:
-              "Tailored solutions designed to match your unique business processes and goals.",
-          },
-          {
-            name: "Mobile App Development",
-            description:
-              "Native and cross-platform mobile applications that deliver seamless user experiences.",
-          },
-          {
-            name: "Cloud & DevOps",
-            description:
-              "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running.",
-          },
-          {
-            name: "AI & Automation",
-            description:
-              "Intelligent automation and machine learning integrations to streamline operations.",
-          },
-          {
-            name: "MVP Development",
-            description:
-              "Rapid prototyping and MVP delivery to validate your ideas and reach market fast.",
-          },
-          {
-            name: "Security Audits",
-            description:
-              "Comprehensive security assessments to protect your applications and data.",
-          },
-        ]
-      : [
-          {
-            name: "Desarrollo de Software a Medida",
-            description:
-              "Soluciones personalizadas disenadas para adaptarse a los procesos y objetivos unicos de tu negocio.",
-          },
-          {
-            name: "Desarrollo de Aplicaciones Moviles",
-            description:
-              "Aplicaciones moviles nativas y multiplataforma que ofrecen experiencias de usuario excepcionales.",
-          },
-          {
-            name: "Cloud & DevOps",
-            description:
-              "Infraestructura cloud escalable y pipelines de CI/CD que mantienen tus sistemas en funcionamiento.",
-          },
-          {
-            name: "IA & Automatizacion",
-            description:
-              "Automatizacion inteligente e integraciones de machine learning para optimizar tus operaciones.",
-          },
-          {
-            name: "Desarrollo de MVP",
-            description:
-              "Prototipado rapido y entrega de MVP para validar tus ideas y llegar al mercado rapidamente.",
-          },
-          {
-            name: "Auditorias de Seguridad",
-            description:
-              "Evaluaciones de seguridad integrales para proteger tus aplicaciones y datos.",
-          },
-        ];
+function ServicesJsonLd() {
+  const services = [
+    {
+      name: "Custom Software Development",
+      description:
+        "Tailored solutions designed to match your unique business processes and goals.",
+    },
+    {
+      name: "Mobile App Development",
+      description:
+        "Native and cross-platform mobile applications that deliver seamless user experiences.",
+    },
+    {
+      name: "Cloud & DevOps",
+      description:
+        "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running.",
+    },
+    {
+      name: "AI & Automation",
+      description:
+        "Intelligent automation and machine learning integrations to streamline operations.",
+    },
+    {
+      name: "MVP Development",
+      description:
+        "Rapid prototyping and MVP delivery to validate your ideas and reach market fast.",
+    },
+    {
+      name: "Security Audits",
+      description:
+        "Comprehensive security assessments to protect your applications and data.",
+    },
+  ];
 
   const schema = services.map((service) => ({
     "@context": "https://schema.org",
@@ -238,7 +195,7 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as "en" | "es")) {
+  if (!routing.locales.includes(locale as "en")) {
     notFound();
   }
 
@@ -247,9 +204,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <OrganizationJsonLd locale={locale} />
+        <OrganizationJsonLd />
         <WebSiteJsonLd />
-        <ServicesJsonLd locale={locale} />
+        <ServicesJsonLd />
       </head>
       <body className={`${jakarta.variable} ${geist.variable} ${orbitron.variable} font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>

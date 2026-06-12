@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ─── Graphite-warm base (OKLCH) ─── */
-  --color-bg:              oklch(0.16 0.012 60);   /* ~#181613 near-black warm */
-  --color-surface:         oklch(0.21 0.014 60);   /* ~#1e1b17 card base */
-  --color-surface-2:       oklch(0.26 0.016 60);   /* ~#252119 elevated */
-  --color-hairline:        oklch(0.30 0.015 60 / 0.4); /* 1px borders, low alpha */
+  /* ─── Ion blue-black base (OKLCH) — tech/AI direction ─── */
+  --color-bg:              oklch(0.13 0.014 265);   /* near-black with blue tint */
+  --color-surface:         oklch(0.185 0.016 265);  /* card base */
+  --color-surface-2:       oklch(0.235 0.018 265);  /* elevated */
+  --color-hairline:        oklch(0.32 0.02 265 / 0.4); /* 1px borders, low alpha */
 
-  /* ─── Ember accent ─── */
-  --color-ember:           oklch(0.74 0.16 55);    /* ~#f5933b */
-  --color-ember-dim:       oklch(0.65 0.13 55);    /* hover/dimmed */
-  --color-ember-muted:     oklch(0.74 0.16 55 / 0.12); /* bg tints */
-  --color-ember-ring:      oklch(0.74 0.16 55 / 0.25);
+  /* ─── Ion accent — electric blue ─── */
+  --color-ember:           oklch(0.70 0.17 255);    /* primary accent (legacy name) */
+  --color-ember-dim:       oklch(0.60 0.14 255);    /* hover/dimmed */
+  --color-ember-muted:     oklch(0.70 0.17 255 / 0.12); /* bg tints */
+  --color-ember-ring:      oklch(0.70 0.17 255 / 0.25);
 
-  /* ─── Blue — demoted to single accent role ─── */
-  --color-blue-accent:     oklch(0.72 0.15 250);   /* ~#60a5fa, used ≤10% */
-  --color-blue-muted:      oklch(0.72 0.15 250 / 0.10);
-  --color-blue-ring:       oklch(0.72 0.15 250 / 0.30);
+  /* ─── Violet — secondary AI tint, used ≤10% ─── */
+  --color-blue-accent:     oklch(0.65 0.18 295);
+  --color-blue-muted:      oklch(0.65 0.18 295 / 0.10);
+  --color-blue-ring:       oklch(0.65 0.18 295 / 0.30);
 
-  /* ─── Text ramp ─── */
-  --color-ink:             oklch(0.92 0.005 60);   /* ~#eae7e3 headlines */
-  --color-body:            oklch(0.80 0.010 60);   /* ~#c7c2bb body ≥9:1 */
-  --color-muted:           oklch(0.60 0.008 60);   /* ~#8b8680 secondary */
-  --color-subtle:          oklch(0.45 0.008 60);   /* ~#65605c tertiary */
+  /* ─── Text ramp — silver ─── */
+  --color-ink:             oklch(0.93 0.006 250);   /* headlines */
+  --color-body:            oklch(0.81 0.010 250);   /* body ≥9:1 */
+  --color-muted:           oklch(0.62 0.010 250);   /* secondary */
+  --color-subtle:          oklch(0.47 0.010 250);   /* tertiary */
 
-  /* ─── Navy legacy (kept for compat, mapped to graphite) ─── */
-  --color-navy-950:        oklch(0.16 0.012 60);
-  --color-navy-900:        oklch(0.19 0.012 60);
-  --color-navy-800:        oklch(0.21 0.014 60);
+  /* ─── Navy legacy (kept for compat) ─── */
+  --color-navy-950:        oklch(0.13 0.014 265);
+  --color-navy-900:        oklch(0.165 0.015 265);
+  --color-navy-800:        oklch(0.185 0.016 265);
 
   /* ─── Slate ramp (kept for compat; swap usages to body/muted) ─── */
-  --color-slate-100:       oklch(0.95 0.003 60);
-  --color-slate-200:       oklch(0.90 0.005 60);
-  --color-slate-300:       oklch(0.83 0.007 60);
+  --color-slate-100:       oklch(0.96 0.004 250);
+  --color-slate-200:       oklch(0.91 0.006 250);
+  --color-slate-300:       oklch(0.84 0.008 250);
   --color-slate-400:       var(--color-body);
   --color-slate-500:       var(--color-muted);
   --color-slate-600:       var(--color-subtle);
@@ -89,56 +89,6 @@ body::before {
   background-size: 256px 256px;
 }
 
-/* ─── Hero grid ─── */
-.hero-grid {
-  background-image:
-    linear-gradient(oklch(0.74 0.16 55 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.74 0.16 55 / 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ─── Top radial shade — anchored at the crown of the hero ─── */
-.hero-shade {
-  background: radial-gradient(
-    60% 50% at 49% 0%,
-    oklch(0.74 0.16 55 / 0.10) 0%,
-    oklch(0.74 0.16 55 / 0.04) 28%,
-    transparent 70%
-  );
-}
-
-/* ─── Framed canvas — vertical hairline frame around the hero content ─── */
-/* Each rule is a single vertical line; the fade is via mask-image so it works
-   regardless of Tailwind v4 minor (no reliance on mask-* utilities). */
-.frame-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-}
-
-/* Bold outer pair — desktop only, vertical gradient tint */
-.frame-line-outer {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    oklch(0.30 0.015 60 / 0.55) 12%,
-    oklch(0.30 0.015 60 / 0.55) 100%
-  );
-}
-
-/* Fainter inner pair — ember-tinted hairline */
-.frame-line-inner {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    oklch(0.74 0.16 55 / 0.18) 10%,
-    oklch(0.30 0.015 60 / 0.35) 100%
-  );
-}
-
 /* ─── Tech marquee — pure-CSS infinite loop ─── */
 .marquee-track {
   display: flex;
@@ -153,34 +103,6 @@ body::before {
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); } /* list is rendered twice → seamless */
-}
-
-/* ─── Badge shimmer — low-key, ember tint ─── */
-.badge-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-
-.badge-shimmer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 55%;
-  background: linear-gradient(
-    105deg,
-    transparent,
-    oklch(0.74 0.16 55 / 0.20),
-    transparent
-  );
-  transform: translateX(-180%);
-  animation: badge-shimmer-sweep 6s var(--ease-smooth) 2s infinite;
-}
-
-@keyframes badge-shimmer-sweep {
-  0% { transform: translateX(-180%); }
-  35%, 100% { transform: translateX(320%); }
 }
 
 /* ─── Primary CTA — hover-only glow, no infinite breathing ─── */
@@ -220,7 +142,7 @@ body::before {
   left: 0;
   height: 100%;
   width: 28%;
-  background: linear-gradient(90deg, transparent, oklch(0.74 0.16 55 / 0.5), transparent);
+  background: linear-gradient(90deg, transparent, oklch(0.70 0.17 255 / 0.5), transparent);
   transform: translateX(-100%);
   animation: divider-flow 9s var(--ease-flow) infinite;
 }
@@ -228,27 +150,6 @@ body::before {
 @keyframes divider-flow {
   0% { transform: translateX(-100%); }
   55%, 100% { transform: translateX(460%); }
-}
-
-/* ─── Gradient orb — only used in hero ─── */
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-  33%       { transform: translate(30px, -30px) scale(1.04); opacity: 0.9; }
-  66%       { transform: translate(-20px, 20px) scale(0.96); opacity: 0.55; }
-}
-
-.gradient-orb {
-  animation: float 22s var(--ease-flow) infinite;
-}
-
-@keyframes float-delayed {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  33%       { transform: translate(-25px, 20px) scale(0.95); opacity: 0.45; }
-  66%       { transform: translate(15px, -25px) scale(1.04); opacity: 0.8; }
-}
-
-.gradient-orb-delayed {
-  animation: float-delayed 28s var(--ease-flow) infinite;
 }
 
 /* ─── Footer glow orbs — static warm wash behind footer content ─── */
@@ -259,8 +160,8 @@ body::before {
   pointer-events: none;
   background: radial-gradient(
     circle at center,
-    oklch(0.74 0.16 55 / 0.08) 0%,
-    oklch(0.74 0.16 55 / 0.03) 45%,
+    oklch(0.70 0.17 255 / 0.08) 0%,
+    oklch(0.70 0.17 255 / 0.03) 45%,
     transparent 72%
   );
 }
@@ -299,10 +200,6 @@ section[id] {
   animation: hero-fade-up 0.8s var(--ease-out) 0.3s both;
 }
 
-.hero-animate-delay-3 {
-  animation: hero-fade-up 0.8s var(--ease-out) 0.45s both;
-}
-
 /* ─── Scroll-triggered reveal ─── */
 .reveal {
   opacity: 0;
@@ -338,7 +235,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid oklch(0.74 0.16 55 / 0.7);
+  outline: 2px solid oklch(0.70 0.17 255 / 0.7);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -350,7 +247,7 @@ select:focus-visible {
 
 /* ─── Double-bezel shell (outer wrapper for featured cards) ─── */
 .bezel-outer {
-  background: oklch(0.20 0.014 60 / 0.5);
+  background: oklch(0.175 0.016 265 / 0.5);
   border: 1px solid var(--color-hairline);
   padding: 4px;
   border-radius: calc(var(--radius-card) + 4px);
@@ -361,196 +258,129 @@ select:focus-visible {
   box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.06);
 }
 
-/* ─── Service accordion — expanding palette-native panels ─── */
-/* The row is a single CSS grid; the active track grows to ~5fr while the rest
-   hold 1fr. Axis is column on desktop, row on mobile (set inline by JS). The
-   grid-template transition is the whole interaction. */
-.svc-accordion {
-  transition:
-    grid-template-columns 500ms var(--ease-out),
-    grid-template-rows 500ms var(--ease-out);
-  /* Explicit, deterministic height so the single grid row is NEVER sized by a
-     panel's wrapping content. During the 500ms width animation the incoming
-     active column is still narrow, so its in-flow text would wrap into many
-     lines and spike the (content-driven) row height — then snap back as the
-     column widens. That spike is the "blink". With a fixed height + the panels'
-     existing overflow:hidden, the narrow-phase text is simply clipped (and it's
-     fading in via opacity anyway) instead of inflating the row.
-     Mobile: vertical accordion — fits the active 5fr row (longest ES desc at
-     text-sm) above five collapsed 64px rows. Desktop override below. */
-  height: 720px;
+/* ─── Flip cards (services) — 3D rotation + front code-line shimmer ─── */
+.flip-inner {
+  transition: transform 700ms var(--ease-out);
 }
 
-/* Desktop: horizontal accordion, single row. Sized to comfortably fit the
-   longest ACTIVE content top-aligned (measured ~200px for 2 lines) with
-   headroom so even a 3-line ES wrap clears without clipping. */
-@media (min-width: 768px) {
-  .svc-accordion {
-    height: 248px;
-  }
+.flip-code-line {
+  opacity: 0;
+  animation: flip-code-slide 2s ease-in-out infinite;
 }
 
-/* Each panel. The per-index gradient angle + ember position is set via the
-   --svc-angle / --svc-ember-x / --svc-ember-y custom props (inline, per card),
-   so the row has rhythm without leaving the palette. */
-.svc-panel {
-  position: relative;
-  overflow: hidden;
-  min-width: 0;
-  min-height: 0;
-  /* Matches .svc-content padding (p-6 / md:p-8); drives the collapsed icon's
-     negative margin so it optically centers in the full column. */
-  --svc-pad: 1.5rem;
-  background:
-    radial-gradient(
-      120% 90% at var(--svc-ember-x, 50%) var(--svc-ember-y, 0%),
-      oklch(0.74 0.16 55 / 0.05) 0%,
-      transparent 55%
-    ),
-    linear-gradient(
-      var(--svc-angle, 150deg),
-      oklch(0.21 0.014 60) 0%,
-      oklch(0.16 0.012 60) 100%
-    );
-  transition:
-    background 500ms var(--ease-out),
-    box-shadow 400ms var(--ease-out);
+@keyframes flip-code-slide {
+  0%   { transform: translateX(-80px); opacity: 0; }
+  50%  { transform: translateX(0);     opacity: 0.85; }
+  100% { transform: translateX(80px);  opacity: 0; }
 }
 
-/* Content padding grows at md (matches .svc-content p-6 → md:p-8); keep the
-   collapsed-icon centering offset in sync. */
-@media (min-width: 768px) {
-  .svc-panel {
-    --svc-pad: 2rem;
-  }
+/* ─── Neon thread — scroll-drawn ember filament (see neon-thread.tsx) ─── */
+.neon-thread {
+  display: block;
 }
 
-/* The faint ember grid texture (reuses the hero-grid line pattern, finer). */
-.svc-panel::before {
+.neon-thread path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* Layered strokes fake the neon bloom without SVG filters (cheap per-frame). */
+.neon-thread .thread-w1 { stroke: oklch(0.70 0.17 255 / 0.05); stroke-width: 14; }
+.neon-thread .thread-w2 { stroke: oklch(0.70 0.17 255 / 0.10); stroke-width: 7; }
+.neon-thread .thread-w3 { stroke: oklch(0.75 0.15 235 / 0.32); stroke-width: 2.5; }
+.neon-thread .thread-core { stroke: oklch(0.93 0.09 215); stroke-width: 1.25; }
+
+/* Travelling spark at the tip */
+.thread-tip { transition: opacity var(--dur-base) var(--ease-out); }
+.thread-tip .tip-halo { fill: oklch(0.70 0.17 255 / 0.12); }
+.thread-tip .tip-glow { fill: oklch(0.70 0.17 255 / 0.45); }
+.thread-tip .tip-core { fill: oklch(0.97 0.05 210); }
+
+.thread-tip .tip-halo {
+  animation: tip-pulse 2.4s var(--ease-flow) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes tip-pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.9; }
+  50%      { transform: scale(1.5); opacity: 0.4; }
+}
+
+/* Reduced-motion fallback: full path, dimmed, no spark */
+.thread-static { opacity: 0.25; }
+.thread-static .thread-tip { display: none; }
+
+/* ─── Thread arrival — the filament plugs into the contact card ─── */
+/* Glow lives on a dedicated ::after so it never fights .reveal's transition. */
+[data-thread-end] { position: relative; }
+
+[data-thread-end]::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(oklch(0.74 0.16 55 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.74 0.16 55 / 0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: 0.3;
-  transition: opacity 500ms var(--ease-out);
+  inset: -1px;
+  border-radius: inherit;
   pointer-events: none;
-}
-
-/* Active panel: warmer ember presence + brighter texture + inset edge light. */
-.svc-panel[data-active="true"] {
-  background:
-    radial-gradient(
-      130% 100% at var(--svc-ember-x, 50%) var(--svc-ember-y, 0%),
-      oklch(0.74 0.16 55 / 0.16) 0%,
-      oklch(0.74 0.16 55 / 0.05) 38%,
-      transparent 66%
-    ),
-    linear-gradient(
-      var(--svc-angle, 150deg),
-      oklch(0.245 0.018 58) 0%,
-      oklch(0.175 0.013 60) 100%
-    );
+  border: 1px solid oklch(0.70 0.17 255 / 0.40);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.05),
-    inset 0 0 0 1px oklch(0.74 0.16 55 / 0.18);
-}
-
-.svc-panel[data-active="true"]::before {
-  opacity: 0.6;
-}
-
-/* Large watermark icon behind expanded content. */
-.svc-watermark {
-  position: absolute;
-  right: -1.5rem;
-  bottom: -1.5rem;
-  color: oklch(0.74 0.16 55 / 0.07);
+    0 -18px 70px -28px oklch(0.70 0.17 255 / 0.50),
+    inset 0 1px 0 oklch(0.70 0.17 255 / 0.15);
   opacity: 0;
-  transform: scale(0.9) translateY(8px);
-  transition:
-    opacity 500ms var(--ease-out),
-    transform 500ms var(--ease-out);
-  pointer-events: none;
+  transition: opacity 700ms var(--ease-out);
 }
 
-.svc-panel[data-active="true"] .svc-watermark {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+[data-thread-end].thread-ignited::after { opacity: 1; }
+
+/* Submit button ignition — sustained ember aura + arrival pulse */
+[data-thread-ignite].thread-ignited {
+  box-shadow:
+    0 0 24px oklch(0.70 0.17 255 / 0.40),
+    0 0 64px oklch(0.70 0.17 255 / 0.16);
+  animation: ignite-pulse 900ms var(--ease-out) 1;
 }
 
-/* The service icon is the persistent indicator — visible in BOTH collapsed and
-   active states. When collapsed it centers in the narrow column (so it never
-   looks orphaned against the edge padding); when the panel goes active it
-   eases back to its natural top-left position above the title. */
-.svc-icon-wrap {
-  /* Mobile: collapsed panels are full-width short rows, so the icon reads best
-     left-aligned (its natural position) — no centering offset. */
-  justify-content: flex-start;
-  transition: margin 500ms var(--ease-out);
+[data-thread-ignite].thread-ignited.cta-ember::before { opacity: 0.30; }
+
+@keyframes ignite-pulse {
+  0%   { box-shadow: 0 0 0 0 oklch(0.70 0.17 255 / 0.55), 0 0 0 0 oklch(0.70 0.17 255 / 0.3); }
+  100% { box-shadow: 0 0 24px oklch(0.70 0.17 255 / 0.40), 0 0 64px oklch(0.70 0.17 255 / 0.16); }
 }
 
-/* Desktop: collapsed panels are narrow columns, so center the icon and pull it
-   left by the content padding to optically center it in the full column width
-   (not just the padded box). It eases back to top-left when the panel goes
-   active. */
-@media (min-width: 768px) {
-  .svc-icon-wrap {
-    justify-content: center;
-    margin-left: calc(var(--svc-pad) * -1);
-    margin-right: calc(var(--svc-pad) * -1);
+/* ─── Spotlight border — pointer-tracked ember ring (build cards) ─── */
+/* MotionController feeds --spot-x/--spot-y on [data-spotlight] (fine pointers). */
+@media (hover: hover) and (pointer: fine) {
+  [data-spotlight] { position: relative; }
+
+  [data-spotlight]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    padding: 1px;
+    background: radial-gradient(
+      200px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      oklch(0.70 0.17 255 / 0.45),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 350ms var(--ease-out);
   }
 
-  .svc-panel[data-active="true"] .svc-icon-wrap {
-    justify-content: flex-start;
-    margin-left: 0;
-    margin-right: 0;
-  }
+  [data-spotlight]:hover::after { opacity: 1; }
 }
-
-/* Staggered fade-in of the active panel's title + description. */
-.svc-reveal {
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 400ms var(--ease-out),
-    transform 400ms var(--ease-out);
-}
-
-/* HEIGHT FIX: collapsed panels keep their title+desc in the DOM (for the fade),
-   but in a ~72px column that text wraps into a very tall stack and — because
-   the whole accordion is ONE grid row sized to its tallest content — it
-   inflates the row height for EVERY panel. Pull the collapsed (non-active)
-   panels' text OUT OF FLOW so only the ACTIVE panel's content (wrapping
-   normally in its wide 5fr column) drives the row height. The opacity:0 text
-   is invisible anyway; absolute-positioning it just stops it sizing the row.
-   Scoped to data-active="false" so it never touches the active panel or the
-   reduced-motion fallback (where every panel renders data-active="true"). */
-.svc-panel[data-active="false"] .svc-reveal {
-  position: absolute;
-  inset-inline: var(--svc-pad);
-  /* Keep below the icon so, if ever painted, it doesn't overlap it. */
-  top: calc(var(--svc-pad) + 3.5rem);
-  pointer-events: none;
-}
-
-.svc-panel[data-active="true"] .svc-reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.svc-panel[data-active="true"] .svc-reveal-2 { transition-delay: 120ms; }
-.svc-panel[data-active="true"] .svc-reveal-3 { transition-delay: 190ms; }
 
 /* ─── Tinted shadow utility ─── */
 .shadow-warm {
-  box-shadow: 0 8px 32px oklch(0.16 0.012 60 / 0.6);
+  box-shadow: 0 8px 32px oklch(0.13 0.014 265 / 0.6);
 }
 
 .shadow-ember-sm {
-  box-shadow: 0 4px 16px oklch(0.74 0.16 55 / 0.12);
+  box-shadow: 0 4px 16px oklch(0.70 0.17 255 / 0.12);
 }
 
 /* ─── Reduced motion — full neutralization ─── */
@@ -561,8 +391,7 @@ select:focus-visible {
 
   .hero-animate,
   .hero-animate-delay-1,
-  .hero-animate-delay-2,
-  .hero-animate-delay-3 {
+  .hero-animate-delay-2 {
     animation: none;
     opacity: 1;
     transform: none;
@@ -575,13 +404,7 @@ select:focus-visible {
     transition: none;
   }
 
-  .gradient-orb,
-  .gradient-orb-delayed {
-    animation: none;
-  }
-
-  .section-divider::after,
-  .badge-shimmer::after {
+  .section-divider::after {
     animation: none;
     display: none;
   }
@@ -608,74 +431,28 @@ select:focus-visible {
     transition: none;
   }
 
+  /* Neon thread: JS already renders it static; kill residual animations */
+  .thread-tip .tip-halo,
+  [data-thread-ignite].thread-ignited {
+    animation: none;
+  }
+
+  [data-spotlight]::after {
+    transition: none;
+  }
+
   [data-parallax] {
     transform: none !important;
   }
 
-  /* ─── Service accordion → static, fully-readable stack ─── */
-  /* Kill the grid-template animation and the panel/reveal transitions, then
-     reveal every panel's content regardless of active state. The accordion
-     becomes an equal-size grid where all titles AND descriptions are visible —
-     no information hidden behind an interaction that can't animate. */
-  .svc-accordion {
+  /* Flip cards: swap faces instantly, no code-line shimmer */
+  .flip-inner {
     transition: none;
-    /* Drop the explicit accordion height: the reduced-motion fallback is a flat
-       grid that must auto-size to show every panel's full title + description
-       with nothing clipped. The fixed height only applies to the animated
-       accordion (outside this block). */
-    height: auto !important;
-    /* Force equal tracks on both axes; the active inline style is overridden.
-       NOTE: the component must also drop its inline grid-template under
-       reduced-motion (it does), since inline grid tracks beat external
-       !important. Responsive bumps live in flattened compound queries below —
-       nested @media inside this block is silently dropped by Tailwind v4. */
-    grid-template-columns: 1fr !important;
-    grid-template-rows: none !important;
   }
 
-  .svc-panel,
-  .svc-panel::before,
-  .svc-watermark,
-  .svc-reveal,
-  .svc-icon-wrap {
-    transition: none !important;
+  .flip-code-line {
+    animation: none;
+    opacity: 0.4;
   }
 
-  /* Every panel reads as expanded: title + description always visible, and the
-     icon sits top-left (not column-centered) since each card is full width.
-     Force text BACK into flow (override the out-of-flow height fix) so the
-     static grid measures real content height and nothing is clipped. */
-  .svc-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    position: static !important;
-    inset-inline: auto !important;
-    top: auto !important;
-  }
-
-  .svc-icon-wrap {
-    justify-content: flex-start !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .svc-watermark {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* ─── Reduced-motion responsive track bumps (flattened) ─── */
-/* Top-level compound queries — Tailwind v4 / PostCSS drops @media nested
-   inside another @media, so these must NOT live inside the reduce block. */
-@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
-  .svc-accordion {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
-  .svc-accordion {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
 }
