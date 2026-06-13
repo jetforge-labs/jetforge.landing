@@ -1,0 +1,40 @@
+# Jetforge Labs
+
+> Jetforge Labs is a software studio that builds production-grade products end-to-end: web apps, mobile apps, AI agents, and cloud infrastructure. From 0→1 MVPs to scaling production systems.
+
+Jetforge Labs OÜ is a software studio run by engineers who have built and scaled production systems. When you work with Jetforge Labs, you work directly with the engineers writing the code, not account managers who hand work off.
+
+## What Jetforge Labs does
+
+Jetforge Labs covers six disciplines:
+
+- **Custom Software Development:** Software built for how a business actually works, not adapted from a template.
+- **Mobile App Development:** iOS and Android apps built with React Native: one codebase, native performance, shipped to both stores.
+- **Cloud & DevOps:** AWS architecture, containerized deploys, and CI/CD pipelines.
+- **AI & Automation:** LLM integrations, RAG pipelines, and autonomous agents wired into production products.
+- **MVP Development:** Launch-ready products in weeks, not quarters. Auth, payments, and core flows on a production stack.
+- **Security Audits:** Code and infrastructure review, OWASP coverage, pentest coordination, actionable reports.
+
+## Who Jetforge Labs works with
+
+- Founders who need a technical partner for 0→1 product builds
+- Technical teams with a strong product vision that need execution support
+- Companies looking to integrate AI into existing products
+
+## Technology stack
+
+React, Next.js, TypeScript, React Native, Node.js, NestJS, GraphQL, PostgreSQL, AWS, Docker, Terraform, Python, LangChain, OpenAI / Anthropic APIs, vector databases.
+
+## Company information
+
+- Legal name: Jetforge Labs OÜ
+- Website: https://jetforgelabs.com
+- Contact: hello@jetforgelabs.com
+
+## Key pages
+
+- Homepage: https://jetforgelabs.com
+- Services: https://jetforgelabs.com/#services
+- What We Build: https://jetforgelabs.com/#build
+- Contact: https://jetforgelabs.com/#contact
+- Privacy Policy: https://jetforgelabs.com/privacy

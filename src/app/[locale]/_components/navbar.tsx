@@ -55,7 +55,7 @@ export function Navbar({ minimal = false }: NavbarProps) {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            aria-label="Jetforge Labs — home"
+            aria-label="Jetforge Labs, home"
             className="flex items-center"
           >
             <Logo className="text-lg sm:text-xl" />
@@ -95,7 +95,7 @@ export function Navbar({ minimal = false }: NavbarProps) {
           {/* Brand wordmark — left */}
           <a
             href="#"
-            aria-label="Jetforge Labs — home"
+            aria-label="Jetforge Labs, home"
             className="inline-flex min-h-[44px] items-center justify-self-start"
           >
             {/* Bug fix #14: Logo renders as span — use text-* not h-/w-auto */}

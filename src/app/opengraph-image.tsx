@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Jetforge Labs - Custom Software Development & Tech Solutions";
+export const alt = "Jetforge Labs. Software Studio. Ship products, not prototypes.";
 export const size = {
   width: 1200,
   height: 630,
@@ -20,11 +20,11 @@ export default function OgImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #010104 0%, #0d0d2a 50%, #010104 100%)",
+          background: "linear-gradient(135deg, #030308 0%, #0d0d2a 50%, #030308 100%)",
           position: "relative",
         }}
       >
-        {/* Decorative gradient circle */}
+        {/* Decorative gradient circle — ember/ion palette */}
         <div
           style={{
             position: "absolute",
@@ -33,7 +33,7 @@ export default function OgImage() {
             width: "400px",
             height: "400px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(100, 120, 220, 0.18) 0%, transparent 70%)",
           }}
         />
         <div
@@ -44,7 +44,7 @@ export default function OgImage() {
             width: "350px",
             height: "350px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(80, 100, 200, 0.12) 0%, transparent 70%)",
           }}
         />
 
@@ -77,7 +77,7 @@ export default function OgImage() {
             style={{
               width: "120px",
               height: "3px",
-              background: "linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa)",
+              background: "linear-gradient(90deg, #4a6fdc, #6080e8, #7090f4)",
               borderRadius: "2px",
             }}
           />
@@ -91,7 +91,7 @@ export default function OgImage() {
               letterSpacing: "0.5px",
             }}
           >
-            Custom Software Development & Tech Solutions
+            Ship products. Not prototypes.
           </div>
 
           {/* Services row */}
@@ -108,18 +108,18 @@ export default function OgImage() {
               "Custom Software",
               "Mobile Apps",
               "Cloud & DevOps",
-              "AI & Automation",
+              "AI Agents",
               "MVP Development",
             ].map((service) => (
               <div
                 key={service}
                 style={{
                   padding: "8px 20px",
-                  border: "1px solid rgba(59, 130, 246, 0.3)",
+                  border: "1px solid rgba(90, 120, 220, 0.3)",
                   borderRadius: "9999px",
                   fontSize: "16px",
-                  color: "#60a5fa",
-                  background: "rgba(59, 130, 246, 0.05)",
+                  color: "#7090f4",
+                  background: "rgba(70, 100, 200, 0.05)",
                 }}
               >
                 {service}

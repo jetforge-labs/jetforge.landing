@@ -94,14 +94,20 @@ function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Jetforge Labs",
+    legalName: "Jetforge Labs OÜ",
     url: "https://jetforgelabs.com",
     logo: "https://jetforgelabs.com/icon.png",
     description:
-      "Custom software development and tech solutions company. We build scalable software products for startups and enterprises.",
+      "Jetforge Labs is a software studio that builds production-grade products end-to-end: web apps, mobile apps, AI agents, and cloud infrastructure. From 0→1 MVPs to scaling production systems.",
+    foundingLocation: {
+      "@type": "Place",
+      name: "Estonia",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
       availableLanguage: ["English"],
+      url: "https://jetforgelabs.com/#contact",
     },
     sameAs: [],
   };
@@ -120,11 +126,53 @@ function WebSiteJsonLd() {
     "@type": "WebSite",
     name: "Jetforge Labs",
     url: "https://jetforgelabs.com",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://jetforgelabs.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string",
+    description:
+      "Software studio specializing in custom products, mobile apps, cloud infrastructure, and AI agents. Built to scale, shipped to matter.",
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+function ProfessionalServiceJsonLd() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Jetforge Labs",
+    url: "https://jetforgelabs.com",
+    description:
+      "Software studio that builds production-grade products end-to-end: web apps, mobile apps, AI agents, and cloud infrastructure. Specializing in 0→1 MVP development and scaling production systems.",
+    knowsAbout: [
+      "Custom Software Development",
+      "Mobile App Development",
+      "React Native",
+      "Next.js",
+      "AI Agent Development",
+      "LLM Integration",
+      "RAG Pipelines",
+      "Cloud Infrastructure",
+      "AWS",
+      "DevOps",
+      "MVP Development",
+      "Security Audits",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Software Development Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Software Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI & Automation" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "MVP Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Security Audits" } },
+      ],
     },
+    areaServed: "Worldwide",
   };
 
   return (
@@ -140,32 +188,32 @@ function ServicesJsonLd() {
     {
       name: "Custom Software Development",
       description:
-        "Tailored solutions designed to match your unique business processes and goals.",
+        "Software built for how your business actually works, not adapted from a template that almost fits.",
     },
     {
       name: "Mobile App Development",
       description:
-        "Native and cross-platform mobile applications that deliver seamless user experiences.",
+        "iOS and Android apps built with React Native: one codebase, native performance, shipped to both stores.",
     },
     {
       name: "Cloud & DevOps",
       description:
-        "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running.",
+        "AWS architecture, containerized deploys, and CI/CD pipelines. Your team ships confidently and the system doesn't fall over.",
     },
     {
       name: "AI & Automation",
       description:
-        "Intelligent automation and machine learning integrations to streamline operations.",
+        "LLM integrations, RAG pipelines, and autonomous agents that do real work inside your product. Not just demos.",
     },
     {
       name: "MVP Development",
       description:
-        "Rapid prototyping and MVP delivery to validate your ideas and reach market fast.",
+        "A launch-ready product in weeks, not quarters. Auth, payments, and your core flows wired end to end on a production stack.",
     },
     {
       name: "Security Audits",
       description:
-        "Comprehensive security assessments to protect your applications and data.",
+        "Code and infrastructure review, OWASP coverage, and pentest coordination. You get an actionable report, not a PDF of findings nobody acts on.",
     },
   ];
 
@@ -206,6 +254,7 @@ export default async function LocaleLayout({
       <head>
         <OrganizationJsonLd />
         <WebSiteJsonLd />
+        <ProfessionalServiceJsonLd />
         <ServicesJsonLd />
       </head>
       <body className={`${jakarta.variable} ${geist.variable} ${orbitron.variable} font-sans antialiased`}>

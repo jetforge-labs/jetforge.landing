@@ -1,8 +1,8 @@
 {
   "Metadata": {
-    "title": "Jetforge Labs | Custom Software Development & Tech Solutions",
-    "description": "Jetforge Labs builds high-quality custom software, mobile apps, cloud infrastructure, and AI-powered solutions. From MVP to enterprise scale, we deliver technology that drives real business results.",
-    "keywords": "custom software development, mobile app development, cloud devops, AI automation, MVP development, software factory, tech solutions, security audits"
+    "title": "Jetforge Labs | Software Studio for Startups & Technical Teams",
+    "description": "Jetforge Labs is a software studio that builds products end-to-end: web apps, mobile, AI integrations, cloud infrastructure. From 0→1 MVPs to scaling production systems.",
+    "keywords": "custom software development, software studio, MVP development, AI agent development, LLM integration, React Next.js development, mobile app development, cloud infrastructure, devops, technical co-founder"
   },
   "Navbar": {
     "services": "Services",
@@ -13,23 +13,23 @@
     "backToHome": "Back to home"
   },
   "Hero": {
-    "badge": "Tech Solutions",
-    "headingLine1": "We Build Software",
-    "headingLine2": "That Drives Results",
-    "subheading": "From concept to deployment, we deliver scalable, high-quality software products that move your business forward.",
+    "badge": "Software Studio",
+    "headingLine1": "Ship products.",
+    "headingLine2": "Not prototypes.",
+    "subheading": "We build production-grade software end-to-end: web apps, mobile, AI agents, and cloud infrastructure. From 0→1 MVP to scaling what already works.",
     "startProject": "Start a Project",
-    "ourServices": "Our Services"
+    "ourServices": "See Our Services"
   },
   "TechStrip": {
     "heading": "Technologies We Work With"
   },
   "Services": {
     "eyebrow": "What We Do",
-    "heading": "Our Services",
-    "subheading": "End-to-end software development services tailored to your needs.",
+    "heading": "What we're good at",
+    "subheading": "Six disciplines, one team. We cover the full stack, from product design to live deployment.",
     "customSoftware": {
       "title": "Custom Software",
-      "description": "Tailored solutions designed to match your unique business processes and goals.",
+      "description": "Software built for how your business actually works, not adapted from a template that almost fits.",
       "tagline": "Built around your processes",
       "features": [
         "Domain-driven design",
@@ -40,7 +40,7 @@
     },
     "mobileApps": {
       "title": "Mobile Apps",
-      "description": "Native and cross-platform mobile applications that deliver seamless user experiences.",
+      "description": "iOS and Android apps built with React Native: one codebase, native performance, shipped to both stores.",
       "tagline": "iOS & Android, one codebase",
       "features": [
         "React Native & Expo",
@@ -51,7 +51,7 @@
     },
     "cloudDevOps": {
       "title": "Cloud & DevOps",
-      "description": "Scalable cloud infrastructure and CI/CD pipelines that keep your systems running.",
+      "description": "AWS architecture, containerized deploys, and CI/CD pipelines. Your team ships confidently and the system doesn't fall over.",
       "tagline": "Infrastructure that scales with you",
       "features": [
         "AWS architecture",
@@ -62,7 +62,7 @@
     },
     "aiAutomation": {
       "title": "AI & Automation",
-      "description": "Intelligent automation and machine learning integrations to streamline operations.",
+      "description": "LLM integrations, RAG pipelines, and autonomous agents that do real work inside your product. Not just demos.",
       "tagline": "Put AI to work in your business",
       "features": [
         "LLM integrations",
@@ -73,7 +73,7 @@
     },
     "mvpDevelopment": {
       "title": "MVP Development",
-      "description": "Rapid prototyping and MVP delivery to validate your ideas and reach market fast.",
+      "description": "A launch-ready product in weeks, not quarters. Auth, payments, and your core flows wired end to end on a production stack.",
       "tagline": "From idea to market, fast",
       "features": [
         "Rapid delivery cycles",
@@ -84,7 +84,7 @@
     },
     "securityAudits": {
       "title": "Security Audits",
-      "description": "Comprehensive security assessments to protect your applications and data.",
+      "description": "Code and infrastructure review, OWASP coverage, and pentest coordination. You get an actionable report, not a PDF of findings nobody acts on.",
       "tagline": "Find the gaps before attackers do",
       "features": [
         "Code & infra review",
@@ -98,14 +98,14 @@
   "Build": {
     "eyebrow": "Example Builds",
     "heading": "What We Build",
-    "subheading": "A look at the kind of products and systems we ship — and what you get when we do.",
+    "subheading": "The specific kinds of products and systems we build, with the stack and outcomes you can expect.",
     "idealForLabel": "Ideal for",
     "stackLabel": "Representative stack",
     "outcomeLabel": "Sample outcome",
     "items": {
       "mvp": {
         "name": "MVP / 0→1 Product Builds",
-        "description": "From a validated idea to a launch-ready product in weeks — auth, payments, and your core flows wired end to end.",
+        "description": "From a validated idea to a launch-ready product in weeks. Auth, payments, and your core flows wired end to end.",
         "idealFor": "Founders validating a new product or preparing to raise.",
         "outcome": "A production MVP that real users can sign up for and pay through."
       },
@@ -123,7 +123,7 @@
       },
       "ai": {
         "name": "AI Agents & LLM Integrations",
-        "description": "Production LLM features and autonomous agents — retrieval, tool use, and workflow automation wired into your product.",
+        "description": "Production LLM features and autonomous agents: retrieval, tool use, and workflow automation wired into your product.",
         "idealFor": "Support automation, document processing, and internal copilots.",
         "outcome": "Agents that do real work, with guardrails and observability built in."
       },
@@ -149,17 +149,17 @@
   },
   "About": {
     "eyebrow": "About Us",
-    "headingStart": "Engineering Excellence,",
-    "headingHighlight": "Delivered",
-    "paragraph1": "Jetforge Labs is a tech solutions company focused on building reliable, scalable products for startups and established businesses alike. We combine technical expertise with a pragmatic approach to deliver solutions that work.",
-    "paragraph2": "Our team of engineers, designers, and product strategists work closely with you to understand your challenges and craft software that solves real problems.",
+    "headingStart": "A small studio that",
+    "headingHighlight": "ships.",
+    "paragraph1": "Jetforge Labs is a software studio run by engineers who have built and scaled production systems, not account managers who hand work off. When you work with us, you talk to the people writing the code.",
+    "paragraph2": "We work best with founders who need a technical partner, and with teams that have a strong product vision but need execution muscle. We've shipped MVPs, re-architected backends under traffic, and wired AI into products that had never touched an LLM.",
     "workWithUs": "Work with us"
   },
   "Contact": {
     "eyebrow": "Get in Touch",
-    "headingStart": "Let's Build Something",
-    "headingHighlight": "Great",
-    "subheading": "Ready to start your next project? Reach out and let's talk.",
+    "headingStart": "Have a project",
+    "headingHighlight": "in mind?",
+    "subheading": "Tell us what you're building. We'll tell you if and how we can help.",
     "nameLabel": "Name",
     "namePlaceholder": "Your full name",
     "emailLabel": "Email",

@@ -1,14 +1,13 @@
 {
   "meta": {
-    "title": "Jetforge Labs | Custom Software Development & Tech Solutions",
-    "description": "Jetforge Labs builds high-quality custom software, mobile apps, cloud infrastructure, and AI-powered solutions. From MVP to enterprise scale, we deliver technology that drives real business results.",
-    "keywords": "custom software development, mobile app development, cloud devops, AI automation, MVP development, software factory, tech solutions, security audits",
+    "title": "Jetforge Labs | Software Studio for Startups & Technical Teams",
+    "description": "Jetforge Labs is a software studio that builds products end-to-end: web apps, mobile, AI integrations, cloud infrastructure. From 0→1 MVPs to scaling production systems.",
+    "keywords": "custom software development, software studio, MVP development, AI agent development, LLM integration, React Next.js development, mobile app development, cloud infrastructure, devops, technical co-founder",
     "baseUrl": "https://jetforgelabs.com",
     "ogImage": "/opengraph-image.png",
     "ogImageAlt": "Jetforge Labs - Custom Software Development & Tech Solutions",
     "ogType": "website",
     "ogLocale": "en_US",
-    "ogLocaleAlternate": "es_AR",
     "siteName": "Jetforge Labs",
     "twitterCard": "summary_large_image",
     "authors": "Jetforge Labs",
@@ -61,12 +60,12 @@
     "languageSwitcher": ["EN", "ES"]
   },
   "hero": {
-    "badge": "Tech Solutions",
-    "headingLine1": "We Build Software",
-    "headingLine2": "That Drives Results",
-    "subheading": "From concept to deployment, we deliver scalable, high-quality software products that move your business forward.",
+    "badge": "Software Studio",
+    "headingLine1": "Ship products.",
+    "headingLine2": "Not prototypes.",
+    "subheading": "We build production-grade software end-to-end: web apps, mobile, AI agents, and cloud infrastructure. From 0→1 MVP to scaling what already works.",
     "ctaPrimary": "Start a Project",
-    "ctaSecondary": "Our Services"
+    "ctaSecondary": "See Our Services"
   },
   "techStrip": {
     "heading": "Technologies We Work With",
@@ -85,8 +84,8 @@
   },
   "services": {
     "eyebrow": "What We Do",
-    "heading": "Our Services",
-    "subheading": "End-to-end software development services tailored to your needs.",
+    "heading": "What we're good at",
+    "subheading": "Six disciplines, one team. We cover the full stack, from product design to live deployment.",
     "cards": [
       {
         "icon": "CodeBracketIcon",
@@ -122,10 +121,10 @@
   },
   "about": {
     "eyebrow": "About Us",
-    "headingStart": "Engineering Excellence,",
-    "headingHighlight": "Delivered",
-    "paragraph1": "Jetforge Labs is a tech solutions company focused on building reliable, scalable products for startups and established businesses alike. We combine technical expertise with a pragmatic approach to deliver solutions that work.",
-    "paragraph2": "Our team of engineers, designers, and product strategists work closely with you to understand your challenges and craft software that solves real problems.",
+    "headingStart": "A small studio that",
+    "headingHighlight": "ships.",
+    "paragraph1": "Jetforge Labs is a software studio run by engineers who have built and scaled production systems, not account managers who hand work off. When you work with us, you talk to the people writing the code.",
+    "paragraph2": "We work best with founders who need a technical partner, and with teams that have a strong product vision but need execution muscle. We've shipped MVPs, re-architected backends under traffic, and wired AI into products that had never touched an LLM.",
     "cta": "Work with us"
   },
   "contact": {
