@@ -383,6 +383,16 @@ select:focus-visible {
   box-shadow: 0 4px 16px oklch(0.70 0.17 255 / 0.12);
 }
 
+/* ─── Cosmic float — gentle vertical bob for the globe on the 404 page ─── */
+@keyframes cosmic-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+.cosmic-float {
+  animation: cosmic-float 4s var(--ease-flow) infinite;
+}
+
 /* ─── Reduced motion — full neutralization ─── */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -453,6 +463,11 @@ select:focus-visible {
   .flip-code-line {
     animation: none;
     opacity: 0.4;
+  }
+
+  /* 404 globe float: stop immediately */
+  .cosmic-float {
+    animation: none;
   }
 
 }

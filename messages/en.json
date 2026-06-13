@@ -191,6 +191,11 @@
     "copyright": "Jetforge Labs. All rights reserved.",
     "privacy": "Privacy Policy"
   },
+  "NotFound": {
+    "title": "Not cleared for launch",
+    "description": "This page isn't on our flight path. It may have moved, or it never left the launchpad.",
+    "back": "Back to base"
+  },
   "Privacy": {
     "title": "Privacy Policy",
     "metaDescription": "Privacy Policy for Jetforge Labs and all its applications and services.",
