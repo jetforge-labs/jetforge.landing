@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Geist, Orbitron } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -248,6 +249,7 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang={locale}>
@@ -262,6 +264,7 @@ export default async function LocaleLayout({
           {children}
         </NextIntlClientProvider>
       </body>
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }
