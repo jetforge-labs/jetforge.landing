@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Jetforge Labs. Small Mac apps for less friction in your day: Checkmate, Dilo and LimitBar.";
+export const alt = "Jetforge Labs. Small apps for less friction in your day: Checkmate, Dilo and LimitBar.";
 export const size = {
   width: 1200,
   height: 630,
@@ -36,7 +36,7 @@ export default function OgImage() {
           <div style={{ fontSize: 120, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>Your day,</div>
           <div style={{ fontSize: 120, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>with less friction.</div>
           <div style={{ marginTop: 28, fontSize: 30, color: "#4A4D55" }}>
-            Small Mac apps for the little things that eat your time.
+            Small apps for the little things that eat your time.
           </div>
         </div>
 

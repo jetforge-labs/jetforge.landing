@@ -3,7 +3,7 @@
     "title": "Jetforge Labs | Small apps for less friction in your day",
     "description": "Checkmate for the things you need to remember, Dilo for when you'd rather talk than type, LimitBar for knowing how much Claude you have left.",
     "keywords": "Mac apps, macOS apps, Checkmate, Dilo, LimitBar, task manager for Mac, dictation for Mac, menu bar app, custom software, software studio, Jetforge Labs",
-    "ogAlt": "Jetforge Labs. Small Mac apps for less friction in your day: Checkmate, Dilo and LimitBar."
+    "ogAlt": "Jetforge Labs. Small apps for less friction in your day: Checkmate, Dilo and LimitBar."
   },
   "Layout": {
     "skip": "Skip to content"
@@ -18,7 +18,7 @@
   "Hero": {
     "line1": "Your day,",
     "line2": "with less friction.",
-    "sub": "Small Mac apps for the little things that eat your time: remembering, typing, checking. Made by Jetforge Labs.",
+    "sub": "Small apps for the little things that eat your time: remembering, typing, checking. Made by Jetforge Labs.",
     "ctaFind": "Find your app",
     "ctaSuggest": "Suggest one",
     "appsLabel": "Apps"
