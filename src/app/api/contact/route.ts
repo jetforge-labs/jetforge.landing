@@ -1,25 +1,39 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { buildContactEmail, parseContactPayload } from "@/lib/contact";
 
 export async function POST(request: Request) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  let body: unknown;
   try {
-    const { name, email, subject, message } = await request.json();
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
 
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: "All fields are required." },
-        { status: 400 }
-      );
-    }
+  const parsed = parseContactPayload(body);
+  if (!parsed.ok) {
+    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  }
 
-    await resend.emails.send({
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const { subject, text } = buildContactEmail(parsed.data);
+
+    const { error } = await resend.emails.send({
       from: "Jetforge Labs Forms <forms@jetforgelabs.com>",
       to: "hello@jetforgelabs.com",
-      subject: `Contact form from ${name} <${email}>`,
-      text: `${subject}: ${message}`,
-      replyTo: email,
+      subject,
+      text,
+      replyTo: parsed.data.email,
     });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send message." },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

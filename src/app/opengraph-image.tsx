@@ -2,12 +2,18 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Jetforge Labs. Software Studio. Ship products, not prototypes.";
+export const alt = "Jetforge Labs. Small Mac apps for less friction in your day: Checkmate, Dilo and LimitBar.";
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = "image/png";
+
+const APPS = [
+  { name: "Checkmate", bg: "#0B2E2D", accent: "#59C5BF" },
+  { name: "Dilo", bg: "#0A1324", accent: "#7DB2FF" },
+  { name: "LimitBar", bg: "#111722", accent: "#FF5E3A" },
+];
 
 export default function OgImage() {
   return new ImageResponse(
@@ -18,132 +24,46 @@ export default function OgImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #030308 0%, #0d0d2a 50%, #030308 100%)",
-          position: "relative",
+          justifyContent: "space-between",
+          background: "#FFFFFF",
+          color: "#111214",
+          padding: "72px 80px",
         }}
       >
-        {/* Decorative gradient circle — ember/ion palette */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-100px",
-            right: "-100px",
-            width: "400px",
-            height: "400px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(100, 120, 220, 0.18) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-80px",
-            left: "-80px",
-            width: "350px",
-            height: "350px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(80, 100, 200, 0.12) 0%, transparent 70%)",
-          }}
-        />
+        <div style={{ fontSize: 30, fontWeight: 700, letterSpacing: -0.5 }}>Jetforge Labs</div>
 
-        {/* Content */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
-            zIndex: 1,
-          }}
-        >
-          {/* Company name */}
-          <div
-            style={{
-              fontSize: "72px",
-              fontWeight: 700,
-              color: "#ffffff",
-              letterSpacing: "-2px",
-              lineHeight: 1,
-            }}
-          >
-            Jetforge Labs
-          </div>
-
-          {/* Divider line */}
-          <div
-            style={{
-              width: "120px",
-              height: "3px",
-              background: "linear-gradient(90deg, #4a6fdc, #6080e8, #7090f4)",
-              borderRadius: "2px",
-            }}
-          />
-
-          {/* Tagline */}
-          <div
-            style={{
-              fontSize: "28px",
-              fontWeight: 400,
-              color: "#94a3b8",
-              letterSpacing: "0.5px",
-            }}
-          >
-            Ship products. Not prototypes.
-          </div>
-
-          {/* Services row */}
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              marginTop: "16px",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            {[
-              "Custom Software",
-              "Mobile Apps",
-              "Cloud & DevOps",
-              "AI Agents",
-              "MVP Development",
-            ].map((service) => (
-              <div
-                key={service}
-                style={{
-                  padding: "8px 20px",
-                  border: "1px solid rgba(90, 120, 220, 0.3)",
-                  borderRadius: "9999px",
-                  fontSize: "16px",
-                  color: "#7090f4",
-                  background: "rgba(70, 100, 200, 0.05)",
-                }}
-              >
-                {service}
-              </div>
-            ))}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 120, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>Your day,</div>
+          <div style={{ fontSize: 120, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>with less friction.</div>
+          <div style={{ marginTop: 28, fontSize: 30, color: "#4A4D55" }}>
+            Small Mac apps for the little things that eat your time.
           </div>
         </div>
 
-        {/* Domain */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "32px",
-            fontSize: "18px",
-            color: "#475569",
-            letterSpacing: "1px",
-          }}
-        >
-          jetforgelabs.com
+        <div style={{ display: "flex", gap: 14 }}>
+          {APPS.map((app) => (
+            <div
+              key={app.name}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                height: 56,
+                padding: "0 26px 0 18px",
+                borderRadius: 999,
+                background: app.bg,
+                color: "#F3F5F6",
+                fontSize: 24,
+                fontWeight: 600,
+              }}
+            >
+              <div style={{ width: 18, height: 18, borderRadius: 999, background: app.accent }} />
+              {app.name}
+            </div>
+          ))}
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    { ...size },
   );
 }

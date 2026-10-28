@@ -1,200 +1,117 @@
 {
   "Metadata": {
-    "title": "Jetforge Labs | Software Studio for Startups & Technical Teams",
-    "description": "Jetforge Labs is a software studio that builds products end-to-end: web apps, mobile, AI integrations, cloud infrastructure. From 0→1 MVPs to scaling production systems.",
-    "keywords": "custom software development, software studio, MVP development, AI agent development, LLM integration, React Next.js development, mobile app development, cloud infrastructure, devops, technical co-founder"
+    "title": "Jetforge Labs | Small apps for less friction in your day",
+    "description": "Checkmate for the things you need to remember, Dilo for when you'd rather talk than type, LimitBar for knowing how much Claude you have left.",
+    "keywords": "Mac apps, macOS apps, Checkmate, Dilo, LimitBar, task manager for Mac, dictation for Mac, menu bar app, custom software, software studio, Jetforge Labs",
+    "ogAlt": "Jetforge Labs. Small Mac apps for less friction in your day: Checkmate, Dilo and LimitBar."
   },
-  "Navbar": {
-    "services": "Services",
-    "build": "What We Build",
-    "about": "About",
+  "Layout": {
+    "skip": "Skip to content"
+  },
+  "Nav": {
+    "label": "Main",
+    "apps": "Apps",
+    "studio": "Studio",
     "contact": "Contact",
-    "getInTouch": "Get in Touch",
-    "backToHome": "Back to home"
+    "homeLabel": "Jetforge Labs, home"
   },
   "Hero": {
-    "badge": "Software Studio",
-    "headingLine1": "Ship products.",
-    "headingLine2": "Not prototypes.",
-    "subheading": "We build production-grade software end-to-end: web apps, mobile, AI agents, and cloud infrastructure. From 0→1 MVP to scaling what already works.",
-    "startProject": "Start a Project",
-    "ourServices": "See Our Services"
+    "line1": "Your day,",
+    "line2": "with less friction.",
+    "sub": "Small Mac apps for the little things that eat your time: remembering, typing, checking. Made by Jetforge Labs.",
+    "ctaFind": "Find your app",
+    "ctaSuggest": "Suggest one",
+    "appsLabel": "Apps"
   },
-  "TechStrip": {
-    "heading": "Technologies We Work With"
-  },
-  "Services": {
-    "eyebrow": "What We Do",
-    "heading": "What we're good at",
-    "subheading": "Six disciplines, one team. We cover the full stack, from product design to live deployment.",
-    "customSoftware": {
-      "title": "Custom Software",
-      "description": "Software built for how your business actually works, not adapted from a template that almost fits.",
-      "tagline": "Built around your processes",
-      "features": [
-        "Domain-driven design",
-        "Scalable architecture",
-        "Seamless integrations",
-        "Long-term maintainability"
-      ]
+  "Apps": {
+    "checkmate": {
+      "name": "Checkmate",
+      "phrase": "I have too much to remember.",
+      "line": "Put it in Checkmate and clear your list. No account, no cloud, free.",
+      "meta": [
+        "macOS 15+",
+        "Free"
+      ],
+      "cta": "Get Checkmate",
+      "shotLabel": "Checkmate window in dark mode, Today view: one overdue task and four tasks for today with priorities, times, a subtask count and a label, next to a sidebar with Inbox, Today, Upcoming and three projects."
     },
-    "mobileApps": {
-      "title": "Mobile Apps",
-      "description": "iOS and Android apps built with React Native: one codebase, native performance, shipped to both stores.",
-      "tagline": "iOS & Android, one codebase",
-      "features": [
-        "React Native & Expo",
-        "Native performance",
-        "App Store delivery",
-        "Offline-first patterns"
-      ]
+    "dilo": {
+      "name": "Dilo",
+      "phrase": "I'd rather talk than type.",
+      "line": "Dilo writes what you say in any app, and turns calls into notes. On your Mac.",
+      "meta": [
+        "macOS 26+",
+        "Basic is free"
+      ],
+      "cta": "Try Dilo free",
+      "shotLabel": "Dilo dictating into an email: it heard 'um, let's meet Tuesday, no, Wednesday at ten and, well, bring the revised budget', crossed out the fillers and the correction, and pasted 'Let's meet Wednesday at ten and bring the revised budget.'"
     },
-    "cloudDevOps": {
-      "title": "Cloud & DevOps",
-      "description": "AWS architecture, containerized deploys, and CI/CD pipelines. Your team ships confidently and the system doesn't fall over.",
-      "tagline": "Infrastructure that scales with you",
-      "features": [
-        "AWS architecture",
-        "CI/CD pipelines",
-        "Infrastructure as code",
-        "Proactive monitoring"
-      ]
-    },
-    "aiAutomation": {
-      "title": "AI & Automation",
-      "description": "LLM integrations, RAG pipelines, and autonomous agents that do real work inside your product. Not just demos.",
-      "tagline": "Put AI to work in your business",
-      "features": [
-        "LLM integrations",
-        "Workflow automation",
-        "RAG & vector search",
-        "Custom agents"
-      ]
-    },
-    "mvpDevelopment": {
-      "title": "MVP Development",
-      "description": "A launch-ready product in weeks, not quarters. Auth, payments, and your core flows wired end to end on a production stack.",
-      "tagline": "From idea to market, fast",
-      "features": [
-        "Rapid delivery cycles",
-        "Validated scope",
-        "Production-ready stack",
-        "Launch support"
-      ]
-    },
-    "securityAudits": {
-      "title": "Security Audits",
-      "description": "Code and infrastructure review, OWASP coverage, and pentest coordination. You get an actionable report, not a PDF of findings nobody acts on.",
-      "tagline": "Find the gaps before attackers do",
-      "features": [
-        "Code & infra review",
-        "OWASP coverage",
-        "Pentest coordination",
-        "Actionable reports"
-      ]
-    },
-    "cardCta": "Start a project"
-  },
-  "Build": {
-    "eyebrow": "Example Builds",
-    "heading": "What We Build",
-    "subheading": "The specific kinds of products and systems we build, with the stack and outcomes you can expect.",
-    "idealForLabel": "Ideal for",
-    "stackLabel": "Representative stack",
-    "outcomeLabel": "Sample outcome",
-    "items": {
-      "mvp": {
-        "name": "MVP / 0→1 Product Builds",
-        "description": "From a validated idea to a launch-ready product in weeks. Auth, payments, and your core flows wired end to end.",
-        "idealFor": "Founders validating a new product or preparing to raise.",
-        "outcome": "A production MVP that real users can sign up for and pay through."
-      },
-      "web": {
-        "name": "Web Apps",
-        "description": "Fast, SEO-ready web applications, dashboards, and customer portals built on the modern React stack.",
-        "idealFor": "SaaS platforms, admin panels, and data-rich internal dashboards.",
-        "outcome": "Server-rendered apps that stay fast as features and traffic grow."
-      },
-      "mobile": {
-        "name": "Mobile Apps",
-        "description": "Cross-platform iOS and Android apps from a single React Native codebase, shipped to both stores.",
-        "idealFor": "Consumer products and companion apps that need native reach.",
-        "outcome": "One codebase live on the App Store and Google Play."
-      },
-      "ai": {
-        "name": "AI Agents & LLM Integrations",
-        "description": "Production LLM features and autonomous agents: retrieval, tool use, and workflow automation wired into your product.",
-        "idealFor": "Support automation, document processing, and internal copilots.",
-        "outcome": "Agents that do real work, with guardrails and observability built in."
-      },
-      "backend": {
-        "name": "Backend, APIs & Integrations",
-        "description": "Robust APIs and third-party integrations that connect your systems and hold up under load.",
-        "idealFor": "Headless backends and connecting CRMs, ERPs, and payment providers.",
-        "outcome": "Typed, documented APIs deployed with zero-downtime migrations."
-      },
-      "cloud": {
-        "name": "Cloud & DevOps",
-        "description": "Infrastructure-as-code, containerized deploys, and CI/CD pipelines that ship changes safely.",
-        "idealFor": "Teams scaling their infrastructure or hardening their release process.",
-        "outcome": "Push-to-deploy pipelines with monitoring and one-command rollbacks."
-      },
-      "tools": {
-        "name": "Internal Tools & Automation",
-        "description": "Custom dashboards and automations that retire spreadsheets and manual operations.",
-        "idealFor": "Ops-heavy teams drowning in repetitive, manual workflows.",
-        "outcome": "Manual processes turned into reliable, one-click workflows."
-      }
+    "limitbar": {
+      "name": "LimitBar",
+      "phrase": "How much Claude do I have left?",
+      "line": "LimitBar shows your Claude Code and Codex limits in the menu bar.",
+      "meta": [
+        "For developers",
+        "macOS 14+",
+        "Free"
+      ],
+      "cta": "Get LimitBar",
+      "shotLabel": "LimitBar open from the menu bar: Claude session 91% left, resets in 2h 14m; weekly 39% left; Codex monthly 85% left."
     }
   },
+  "Friction": {
+    "title": "Got a friction we haven't fixed?",
+    "text": "Tell us what slows your day down. If it's a small app, we may build it.",
+    "suggest": "Suggest an app",
+    "customTitle": "Need custom software?",
+    "customText": "If the friction is bigger, or specific to your team, we can build that too: a tool for how you work, an internal app, a product of your own.",
+    "customCta": "Build something with us"
+  },
   "About": {
-    "eyebrow": "About Us",
-    "headingStart": "A small studio that",
-    "headingHighlight": "ships.",
-    "paragraph1": "Jetforge Labs is a software studio run by engineers who have built and scaled production systems, not account managers who hand work off. When you work with us, you talk to the people writing the code.",
-    "paragraph2": "We work best with founders who need a technical partner, and with teams that have a strong product vision but need execution muscle. We've shipped MVPs, re-architected backends under traffic, and wired AI into products that had never touched an LLM.",
-    "workWithUs": "Work with us"
+    "title": "The studio",
+    "text": "We're a small studio. We make the apps above and a few custom tools for others. Everything is built, shipped and supported by the same people.",
+    "also": "Need software for your team? We take on custom work too, with the same care as our own apps.",
+    "alsoLink": "Build something with us"
   },
   "Contact": {
-    "eyebrow": "Get in Touch",
-    "headingStart": "Have a project",
-    "headingHighlight": "in mind?",
-    "subheading": "Tell us what you're building. We'll tell you if and how we can help.",
+    "title": "What slows you down?",
+    "lead": "An idea, a question about an app, or something you'd like built.",
     "nameLabel": "Name",
-    "namePlaceholder": "Your full name",
     "emailLabel": "Email",
-    "emailPlaceholder": "you@company.com",
-    "subjectLabel": "Subject",
-    "subjectPlaceholder": "What is this about?",
+    "reasonLegend": "What's it about?",
+    "reasons": {
+      "app": "A question about an app",
+      "suggest": "Suggest an app",
+      "custom": "Custom software"
+    },
+    "placeholders": {
+      "app": "Which app, and what happened?",
+      "suggest": "What slows your day down?",
+      "custom": "What do you need built, and for whom?"
+    },
     "messageLabel": "Message",
-    "messagePlaceholder": "Tell us about your project, goals, and timeline...",
-    "send": "Send Message",
+    "send": "Send message",
     "sending": "Sending...",
-    "successTitle": "Message sent!",
-    "successMessage": "We'll get back to you as soon as possible.",
+    "successTitle": "Message sent",
+    "successMessage": "Thanks. We'll get back to you soon.",
     "sendAnother": "Send another message",
     "errorGeneric": "Something went wrong. Please try again.",
     "validation": {
-      "required": "Required",
-      "email": "Enter a valid email"
+      "required": "Fill in {field} to send.",
+      "email": "That email looks incomplete."
     }
   },
   "Footer": {
-    "description": "Software studio specializing in custom products, mobile apps, cloud infrastructure, and AI. Built to scale, shipped to matter.",
-    "navigation": "Navigation",
-    "services": "Services",
-    "build": "What We Build",
+    "tagline": "Small apps for less friction.",
+    "backToTop": "Jetforge Labs, back to top",
+    "appsHeading": "Apps",
+    "studioHeading": "Studio",
+    "legalHeading": "Legal",
     "about": "About",
+    "custom": "Custom software",
     "contact": "Contact",
-    "servicesHeader": "Services",
-    "institutional": "Institutional",
-    "copyright": "Jetforge Labs. All rights reserved.",
-    "privacy": "Privacy Policy"
-  },
-  "NotFound": {
-    "title": "Not cleared for launch",
-    "description": "This page isn't on our flight path. It may have moved, or it never left the launchpad.",
-    "back": "Back to base"
+    "privacy": "Privacy Policy",
+    "copyright": "© 2026 Jetforge Labs OÜ. All rights reserved."
   },
   "Privacy": {
     "title": "Privacy Policy",
@@ -259,5 +176,15 @@
       "p1": "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:",
       "registryCode": "Registry code"
     }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "This page doesn't exist, or it has moved.",
+    "back": "Back to home"
+  },
+  "Theme": {
+    "light": "light",
+    "dark": "dark",
+    "label": "Theme: {current}. Switch to {next}."
   }
 }

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { Navbar } from "../_components/navbar";
-import { Footer } from "../_components/footer";
+import { SiteNav } from "../_components/site-nav";
+import { SiteFooter } from "../_components/site-footer";
 import type { Metadata } from "next";
 
 interface Props {
@@ -21,26 +21,19 @@ export default async function PrivacyPolicy() {
   const t = await getTranslations("Privacy");
 
   return (
-    <div className="min-h-[100dvh]">
-      <header>
-        <Navbar minimal />
-      </header>
+    <>
+      <SiteNav />
+      <main id="main">
+        <div className="wrap page-head tex">
+          <p className="eyebrow">{t("eyebrow")}</p>
+          <h1>{t("title")}</h1>
+          <p className="updated">
+            {t("lastUpdated")}: {t("lastUpdatedDate")}
+          </p>
+        </div>
 
-      <main className="px-6 pt-32 pb-20 md:pt-40 md:pb-28">
-        <article className="mx-auto max-w-3xl">
-          <div className="mb-12">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-[oklch(0.70_0.17_255)]">
-              {t("eyebrow")}
-            </p>
-            <h1 className="mb-4 text-3xl font-bold text-white md:text-5xl">
-              {t("title")}
-            </h1>
-            <p className="text-[oklch(0.52_0.010_250)]">
-              {t("lastUpdated")}: {t("lastUpdatedDate")}
-            </p>
-          </div>
-
-          <div className="space-y-10 text-[oklch(0.73_0.010_250)] leading-relaxed [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-[oklch(0.93_0.006_250)] [&_h2]:md:text-2xl [&_p]:mb-3 [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_a]:text-[oklch(0.70_0.17_255)] [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-[oklch(0.78_0.17_250)]">
+        <article className="wrap legal">
+          <div className="legal-body">
             {/* Introduction */}
             <section>
               <h2>{t("intro.heading")}</h2>
@@ -122,7 +115,7 @@ export default async function PrivacyPolicy() {
               <h2>{t("contact.heading")}</h2>
               <p>{t("contact.p1")}</p>
               <p>
-                <strong className="text-white">Jetforge Labs OÜ</strong>
+                <strong>Jetforge Labs OÜ</strong>
                 <br />
                 {t("contact.registryCode")}: 17116764
                 <br />
@@ -134,9 +127,7 @@ export default async function PrivacyPolicy() {
           </div>
         </article>
       </main>
-
-      {/* Footer */}
-      <Footer minimal />
-    </div>
+      <SiteFooter />
+    </>
   );
 }

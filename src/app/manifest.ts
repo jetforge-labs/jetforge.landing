@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Jetforge Labs - Tech Solutions",
+    name: "Jetforge Labs",
     short_name: "Jetforge Labs",
     description:
-      "Custom software development and tech solutions. We build scalable products for startups and enterprises.",
+      "Small Mac apps for less friction in your day: Checkmate, Dilo and LimitBar.",
     start_url: "/",
     display: "standalone",
-    background_color: "#010104",
-    theme_color: "#010104",
+    background_color: "#FFFFFF",
+    theme_color: "#FFFFFF",
     icons: [
       {
         src: "/icon.png",
