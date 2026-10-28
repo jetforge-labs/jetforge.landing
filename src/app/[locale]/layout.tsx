@@ -110,7 +110,7 @@ async function StructuredData({ locale }: { locale: string }) {
     url: "https://jetforgelabs.com",
     logo: "https://jetforgelabs.com/icon.png",
     description:
-      "Jetforge Labs is a small software studio. It makes Mac apps (Checkmate, Dilo and LimitBar) and a few custom tools for others.",
+      "Jetforge Labs is a small software studio. It makes apps (Checkmate, Dilo and LimitBar) and a few custom tools for others.",
     foundingLocation: { "@type": "Place", name: "Estonia" },
     contactPoint: {
       "@type": "ContactPoint",

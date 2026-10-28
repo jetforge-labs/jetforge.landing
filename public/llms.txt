@@ -1,6 +1,6 @@
 # Jetforge Labs
 
-> Jetforge Labs is a small studio that makes Mac apps for the little things that eat your time: remembering, typing, checking. It also builds a few custom tools for others.
+> Jetforge Labs is a small studio that makes apps for the little things that eat your time: remembering, typing, checking. It also builds a few custom tools for others.
 
 Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported by the same people.
 
