@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ThemeToggle } from "./theme-toggle";
 
 interface SiteNavProps {
   /** true on the home page (in-page anchors); false elsewhere (anchors point back to "/"). */
@@ -27,18 +26,15 @@ export async function SiteNav({ home = false }: SiteNavProps) {
         <Link className="wordmark" href="/" aria-label={t("homeLabel")}>
           Jetforge Labs
         </Link>
-        <div className="nav-end">
-          <nav aria-label={t("label")}>
-            <ul>
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <ThemeToggle />
-        </div>
+        <nav aria-label={t("label")}>
+          <ul>
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
     </>
   );

@@ -14,7 +14,6 @@
   --input-bg:#FFFFFF;
   --placeholder:#6B6F78;  /* 4.9:1 on white */
   --custom-bg:#111214;
-  --custom-ring:transparent;
   --ink-hover:#2A2C31;
 
   /* Frame texture: a dot grid at the edge of visibility plus washes that borrow each app's accent.
@@ -44,47 +43,6 @@
   --ease-out:cubic-bezier(.23,1,.32,1);
 }
 
-/* Dark frame: same structure, inverted neutrals. Chapters are already dark and do not change. */
-/* Theme: with no data-theme on <html> the page follows prefers-color-scheme. Once the user picks one,
-   data-theme="light" or "dark" is saved and forces it (set before first paint by the inline script in the layout). */
-:root[data-theme="light"]{color-scheme:light}
-:root[data-theme="dark"]{color-scheme:dark}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-
-  --frame-bg:#0B0C0E;
-  --frame-ink:#F3F5F6;
-  --frame-ink2:#A4A9B2;   /* 8:1 on the dark frame */
-  --frame-line:rgba(243,245,246,.14);
-  --field-line:rgba(243,245,246,.5);
-  --input-bg:#14161A;
-  --placeholder:#8C919B;
-  --custom-bg:#14161A;
-  --custom-ring:rgba(243,245,246,.12);
-  --ink-hover:#FFFFFF;
-  --tex-dot:rgba(243,245,246,.12);
-  --wash-cm:rgba(89,197,191,.16);
-  --wash-dl:rgba(61,139,255,.14);
-  --wash-lb:rgba(255,94,58,.10);
-  }
-}
-:root[data-theme="dark"]{
-  --frame-bg:#0B0C0E;
-  --frame-ink:#F3F5F6;
-  --frame-ink2:#A4A9B2;   /* 8:1 on the dark frame */
-  --frame-line:rgba(243,245,246,.14);
-  --field-line:rgba(243,245,246,.5);
-  --input-bg:#14161A;
-  --placeholder:#8C919B;
-  --custom-bg:#14161A;
-  --custom-ring:rgba(243,245,246,.12);
-  --ink-hover:#FFFFFF;
-  --tex-dot:rgba(243,245,246,.12);
-  --wash-cm:rgba(89,197,191,.16);
-  --wash-dl:rgba(61,139,255,.14);
-  --wash-lb:rgba(255,94,58,.10);
-}
-
 /* One rule per app. A future app adds one block here: a dark background that clears 4.5:1 with --ch-ink2
    and an accent that clears 4.5:1 against that background, with a hue no other chapter uses. */
 [data-app="checkmate"]{--app-bg:#0B2E2D;--app-accent:#59C5BF;--app-on:#0B2E2D;--app-glow:rgba(89,197,191,.16)}
@@ -94,7 +52,7 @@
 /* ============ Base ============ */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-:root{color-scheme:light dark}
+:root{color-scheme:light}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--frame-bg);color:var(--frame-ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:clip;font-optical-sizing:auto}
@@ -298,7 +256,7 @@ a{color:inherit}
 
 /* Custom software: the "+" tile made big. Jetforge's own chapter, in the frame's ink. */
 .custom{grid-column:1 / -1;position:relative;isolation:isolate;overflow:hidden;margin-top:clamp(64px,9vw,112px);
-  border-radius:var(--r-frame);background:var(--custom-bg);color:var(--ch-ink);box-shadow:inset 0 0 0 1px var(--custom-ring);
+  border-radius:var(--r-frame);background:var(--custom-bg);color:var(--ch-ink);
   padding:clamp(32px,5.5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px clamp(32px,5vw,72px);align-items:end}
 .custom::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
   radial-gradient(38% 90% at 100% 100%,rgba(255,94,58,.17),transparent 70%),
@@ -396,8 +354,6 @@ textarea::placeholder{color:var(--placeholder)}
 }
 /* ============ Status messages ============ */
 .hint.err{color:#B3261E}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hint.err{color:#FF8A80}}
-:root[data-theme="dark"] .hint.err{color:#FF8A80}
 .sent{padding-block:8px}
 .sent h3{font-size:1.5rem;font-weight:640;letter-spacing:-.02em}
 .sent p{margin-top:8px;color:var(--frame-ink2)}
@@ -431,20 +387,3 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .nf p{margin-top:24px;max-width:40ch;font-size:1.1875rem;color:var(--frame-ink2)}
 .nf .btn{margin-top:32px}
 .nf.tex{--tex-mask:radial-gradient(ellipse 50% 60% at 20% 50%,#000 8%,transparent 70%)}
-
-
-/* ============ Theme toggle ============ */
-.nav-end{display:flex;align-items:center;gap:clamp(8px,2vw,20px)}
-.theme-toggle{display:inline-grid;place-items:center;width:44px;height:44px;margin-right:-10px;padding:0;border:0;border-radius:999px;background:none;
-  color:var(--frame-ink);cursor:pointer;opacity:.78;transition:opacity 160ms ease}
-.theme-toggle svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-@media (hover:hover){.theme-toggle:hover{opacity:1}}
-.theme-toggle:focus-visible{opacity:1}
-@media (max-width:560px){.nav{gap:12px}.nav ul{gap:14px}}
-.theme-toggle .i-moon{display:none}
-:root[data-theme="dark"] .theme-toggle .i-sun{display:none}
-:root[data-theme="dark"] .theme-toggle .i-moon{display:block}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:none}
-  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:block}
-}

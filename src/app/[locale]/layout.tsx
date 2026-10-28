@@ -27,15 +27,9 @@ const geistMono = localFont({
   display: "swap",
 });
 
-// Blocking, runs before first paint: applies the saved choice so there is no flash of the wrong theme.
-// With nothing saved, <html> has no data-theme and the CSS follows prefers-color-scheme.
-const THEME_SCRIPT = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
-
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B0C0E" },
-  ],
+  themeColor: "#FFFFFF",
+  colorScheme: "light",
 };
 
 interface LocaleLayoutProps {
@@ -168,18 +162,17 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Only these namespaces belong to client components, so only they are sent to the browser.
-  const { Contact, Theme } = await getMessages();
+  // Only the contact form is a client component, so it is the only namespace sent to the browser.
+  const { Contact } = await getMessages();
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${bricolage.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${bricolage.variable} ${geistMono.variable}`}>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         <StructuredData locale={locale} />
       </head>
       <body>
-        <NextIntlClientProvider messages={{ Contact, Theme }}>
+        <NextIntlClientProvider messages={{ Contact }}>
           {children}
         </NextIntlClientProvider>
       </body>

@@ -181,10 +181,5 @@
     "title": "Page not found",
     "description": "This page doesn't exist, or it has moved.",
     "back": "Back to home"
-  },
-  "Theme": {
-    "light": "light",
-    "dark": "dark",
-    "label": "Theme: {current}. Switch to {next}."
   }
 }
