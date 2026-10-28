@@ -1,29 +1,18 @@
 # Jetforge Labs
 
-> Jetforge Labs is a software studio that builds production-grade products end-to-end: web apps, mobile apps, AI agents, and cloud infrastructure. From 0→1 MVPs to scaling production systems.
+> Jetforge Labs is a small studio that makes Mac apps for the little things that eat your time: remembering, typing, checking. It also builds a few custom tools for others.
 
-Jetforge Labs OÜ is a software studio run by engineers who have built and scaled production systems. When you work with Jetforge Labs, you work directly with the engineers writing the code, not account managers who hand work off.
+Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported by the same people.
 
-## What Jetforge Labs does
+## Apps
 
-Jetforge Labs covers six disciplines:
+- **Checkmate:** a task list for your Mac. No account, no cloud, free. macOS 15+.
+- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free. https://getdilo.co
+- **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.
 
-- **Custom Software Development:** Software built for how a business actually works, not adapted from a template.
-- **Mobile App Development:** iOS and Android apps built with React Native: one codebase, native performance, shipped to both stores.
-- **Cloud & DevOps:** AWS architecture, containerized deploys, and CI/CD pipelines.
-- **AI & Automation:** LLM integrations, RAG pipelines, and autonomous agents wired into production products.
-- **MVP Development:** Launch-ready products in weeks, not quarters. Auth, payments, and core flows on a production stack.
-- **Security Audits:** Code and infrastructure review, OWASP coverage, pentest coordination, actionable reports.
+## Custom software
 
-## Who Jetforge Labs works with
-
-- Founders who need a technical partner for 0→1 product builds
-- Technical teams with a strong product vision that need execution support
-- Companies looking to integrate AI into existing products
-
-## Technology stack
-
-React, Next.js, TypeScript, React Native, Node.js, NestJS, GraphQL, PostgreSQL, AWS, Docker, Terraform, Python, LangChain, OpenAI / Anthropic APIs, vector databases.
+If the friction is bigger, or specific to your team, we can build that too: a tool for how you work, an internal app, a product of your own. Write to hello@jetforgelabs.com.
 
 ## Company information
 
@@ -34,7 +23,6 @@ React, Next.js, TypeScript, React Native, Node.js, NestJS, GraphQL, PostgreSQL, 
 ## Key pages
 
 - Homepage: https://jetforgelabs.com
-- Services: https://jetforgelabs.com/#services
-- What We Build: https://jetforgelabs.com/#build
+- Apps: https://jetforgelabs.com/#apps
 - Contact: https://jetforgelabs.com/#contact
 - Privacy Policy: https://jetforgelabs.com/privacy
