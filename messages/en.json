@@ -59,6 +59,12 @@
       "shotLabel": "LimitBar open from the menu bar: Claude session 91% left, resets in 2h 14m; weekly 39% left; Codex monthly 85% left."
     }
   },
+  "MoreApps": {
+    "title": "These aren't all of them.",
+    "text": "We make more apps than fit on one page. The full list lives in our store.",
+    "cta": "See all apps",
+    "newTab": "(opens in a new tab)"
+  },
   "Friction": {
     "title": "Got a friction we haven't fixed?",
     "text": "Tell us what slows your day down. If it's a small app, we may build it.",

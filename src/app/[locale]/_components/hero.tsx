@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { APPS } from "./apps";
+import { StoreButton } from "./more-apps";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -27,6 +28,9 @@ export async function Hero() {
               </a>
             </li>
           ))}
+          <li>
+            <StoreButton />
+          </li>
         </ul>
       </div>
     </section>
