@@ -4,6 +4,7 @@ import { APPS } from "./_components/apps";
 import { ContactSection } from "./_components/contact-section";
 import { Friction } from "./_components/friction";
 import { Hero } from "./_components/hero";
+import { MoreApps } from "./_components/more-apps";
 import { SiteFooter } from "./_components/site-footer";
 import { SiteNav } from "./_components/site-nav";
 
@@ -18,6 +19,7 @@ export default function Home() {
             <AppChapter key={app.slug} app={app} />
           ))}
         </div>
+        <MoreApps />
         <Friction />
         <About />
         <ContactSection />

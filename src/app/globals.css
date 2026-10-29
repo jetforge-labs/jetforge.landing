@@ -244,6 +244,18 @@ a{color:inherit}
   }
 }
 
+/* ============ More apps ============
+   A coda to the chapters, not a chapter: frame colours, one line of copy, one exit to the store.
+   The hairline below hands over to "Your friction", same treatment as About and Contact. */
+.more{position:relative;padding-block:clamp(64px,9vh,104px);display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(32px,5vw,72px);row-gap:28px;align-items:end}
+.more::after{content:"";position:absolute;bottom:0;left:var(--gutter);right:var(--gutter);height:1px;background:var(--frame-line)}
+.more h2{font-size:clamp(1.875rem,3.4vw,2.75rem);line-height:1.04;letter-spacing:-.03em;font-weight:640;font-variation-settings:"wdth" 96}
+.more p{margin-top:16px;max-width:52ch;font-size:clamp(1.0625rem,1.4vw,1.25rem);color:var(--frame-ink2)}
+.btn-store{padding-right:10px}
+.btn-store .arrow{background:rgba(255,255,255,.14)}
+.pills .btn-store{--h:48px;padding-left:20px;padding-right:7px}
+@media (hover:hover) and (pointer:fine){.btn-store:hover .arrow{transform:translate(2px,-2px)}}
+
 /* ============ Your friction ============ */
 .friction{padding-block:clamp(96px,14vh,160px);display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(40px,6vw,96px);align-items:center}
 .friction h2{font-size:clamp(2.5rem,5.6vw,4.75rem);line-height:1;letter-spacing:-.03em;font-weight:640;font-variation-settings:"wdth" 96;max-width:14ch}
@@ -333,6 +345,7 @@ textarea::placeholder{color:var(--placeholder)}
   [data-app="limitbar"] .lb{border-radius:var(--r-frame) 0 0 0}
   .contact{grid-template-columns:1fr}
   .friction{grid-template-columns:minmax(0,1fr)}
+  .more{grid-template-columns:minmax(0,1fr);align-items:start}
   .custom{grid-template-columns:minmax(0,1fr);align-items:start}
   .foot{grid-template-columns:minmax(0,1fr)}
   .friction.tex{--tex-mask:radial-gradient(ellipse 70% 30% at 40% 62%,#000 8%,transparent 70%)}
@@ -349,7 +362,7 @@ textarea::placeholder{color:var(--placeholder)}
   .app-name{font-size:2rem}
   .phrase .q-open{margin-left:-.3em}
   .custom{padding:32px 22px 24px}
-  .custom .btn{width:100%;justify-content:space-between;padding-left:20px}
+  .custom .btn,.more .btn{width:100%;justify-content:space-between;padding-left:20px}
   .foot-cols{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 /* ============ Status messages ============ */
