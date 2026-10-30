@@ -18,7 +18,10 @@ export async function Friction() {
             <Image src={app.icon} alt="" width={72} height={72} />
           </li>
         ))}
-        <li className="yours">+</li>
+        {/* Mouse shortcut to the same place as "Suggest an app"; kept out of the tab order since it repeats that link. */}
+        <li className="yours">
+          <a href="#contact" data-reason="suggest" tabIndex={-1}><span>+</span></a>
+        </li>
       </ul>
       <div className="custom" id="custom">
         <div>

@@ -18,7 +18,7 @@
 
   /* Frame texture: a dot grid at the edge of visibility plus washes that borrow each app's accent.
      Static on purpose (nothing to reduce for prefers-reduced-motion). */
-  --tex-dot:rgba(17,18,20,.13);
+  --tex-dot:rgba(17,18,20,.19);
   --tex-step:22px;
   --wash-cm:rgba(89,197,191,.20);
   --wash-dl:rgba(61,139,255,.13);
@@ -149,9 +149,14 @@ a{color:inherit}
 [data-app="checkmate"]::before{background:radial-gradient(60% 70% at 85% 95%,var(--app-glow),transparent 70%)}
 [data-app="checkmate"] .shot{width:max(780px,60vw);align-self:end;margin-bottom:calc(-1 * clamp(72px,10vh,112px) - 56px)}
 
-/* Dilo: desktop stage, vertically centred, bleeding right. */
-[data-app="dilo"]::before{background:radial-gradient(50% 60% at 90% 15%,var(--app-glow),transparent 70%)}
-[data-app="dilo"] .shot{width:max(760px,58vw)}
+/* Dilo: the middle chapter flips (stage left, copy right) so the three don't repeat one layout.
+   The stage fills its column up to the viewport edge, so the mail window always ends inside it. */
+@media (min-width:900px){
+  .chapter[data-app="dilo"]{grid-template-columns:minmax(0,1fr) minmax(0,520px);padding-left:0;padding-right:var(--edge)}
+  .chapter[data-app="dilo"] .copy{order:1}
+  .chapter[data-app="dilo"] .dl{border-radius:0 var(--r-frame) var(--r-frame) 0}
+}
+[data-app="dilo"]::before{background:radial-gradient(50% 60% at 10% 15%,var(--app-glow),transparent 70%)}
 
 /* LimitBar: the popover hangs from the top of the chapter, like it hangs from the menu bar. */
 [data-app="limitbar"]::before{background:radial-gradient(45% 55% at 8% 100%,var(--app-glow),transparent 70%)}
@@ -200,14 +205,14 @@ a{color:inherit}
 .inl b{color:var(--acc);font-weight:500;font-size:1.2em;line-height:1}
 
 /* ---------- Dilo recreation (from dilo.landing HeroDemo.astro, final state) ---------- */
-.dl{font-family:var(--mac);font-size:calc(100cqi / 64);position:relative;width:100%;height:38em;border-radius:var(--r-frame);overflow:hidden;isolation:isolate;color:#111827;
+.dl{--dl-w:max(760px,58vw);font-family:var(--mac);font-size:min(calc(var(--dl-w) / 64),calc(100cqi / 46));position:relative;width:100%;height:38em;border-radius:var(--r-frame);overflow:hidden;isolation:isolate;color:#111827;
   background:radial-gradient(55% 70% at 72% 10%,rgba(61,139,255,.42),transparent 62%),radial-gradient(70% 90% at 8% 100%,rgba(27,50,96,.95),transparent 70%),linear-gradient(160deg,#122039,#060A13);
   box-shadow:0 0 0 1px rgba(238,242,249,.1),0 3em 6em -2.4em rgba(0,0,0,.7)}
-.dl-bar{position:absolute;inset:0 0 auto 0;height:2.2em;display:flex;align-items:center;justify-content:space-between;padding:0 13em 0 1.4em;background:rgba(6,10,19,.42);color:rgba(237,241,247,.92);font-size:.92em;font-weight:500}
+.dl-bar{position:absolute;inset:0 0 auto 0;height:2.2em;display:flex;align-items:center;justify-content:space-between;padding:0 1.4em;background:rgba(6,10,19,.42);color:rgba(237,241,247,.92);font-size:.92em;font-weight:500}
 .dl-bar .apps{display:flex;gap:1.5em}
 .dl-bar .st{display:flex;align-items:center;gap:1em}
 .dl-bar img{width:1.35em;height:1.35em}
-.dl-win{position:absolute;left:14%;right:14%;top:13%;height:55%;background:#FBFBFC;border-radius:.9em;overflow:hidden;box-shadow:0 1.6em 3.2em -1.2em rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.12)}
+.dl-win{position:absolute;left:9%;right:9%;top:13%;height:55%;background:#FBFBFC;border-radius:.9em;overflow:hidden;box-shadow:0 1.6em 3.2em -1.2em rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.12)}
 .dl-wbar{display:flex;align-items:center;gap:1em;height:2.4em;padding:0 1em;background:#F1F2F4;border-bottom:1px solid rgba(17,24,39,.08);font-weight:600;font-size:.92em;color:#4A5264}
 .dl-wbar .lights{padding:0;gap:.5em}
 .dl-wbar .lights i{width:.85em;height:.85em}
@@ -216,7 +221,7 @@ a{color:inherit}
 .body{padding:1em 1.3em;font-size:1.05em;line-height:1.55}
 .pasted{background:rgba(61,139,255,.14);border-radius:.2em;padding:0 .1em}
 .caret{display:inline-block;width:.1em;height:1.1em;margin-left:.1em;background:#1F5FE0;vertical-align:-.18em}
-.hud{position:absolute;left:50%;bottom:6.5%;transform:translateX(-50%);width:72%;display:flex;gap:1.1em;align-items:flex-start;padding:1em 1.3em;border-radius:1.1em;color:#EDF1F7;
+.hud{position:absolute;left:50%;bottom:6.5%;transform:translateX(-50%);width:82%;display:flex;gap:1.1em;align-items:flex-start;padding:1em 1.3em;border-radius:1.1em;color:#EDF1F7;
   background:rgba(8,12,22,.9);box-shadow:0 1.2em 2.6em -1em rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px rgba(255,255,255,.06)}
 .hud .meta2{display:flex;flex-direction:column;gap:.5em;padding-top:.1em}
 .wave{display:flex;align-items:center;gap:.22em;height:1.7em}
@@ -241,6 +246,10 @@ a{color:inherit}
   @supports (animation-timeline:view()){
     .chapter .shot{animation:drift linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
     @keyframes drift{from{translate:5% 0}to{translate:0 0}}
+    @media (min-width:900px){
+      .chapter[data-app="dilo"] .shot{animation-name:drift-left}
+      @keyframes drift-left{from{translate:-5% 0}to{translate:0 0}}
+    }
   }
 }
 
@@ -264,7 +273,16 @@ a{color:inherit}
 .next{display:grid;grid-template-columns:repeat(2,148px);gap:14px}
 .next li{height:148px;border-radius:var(--r-frame);background:var(--app-bg);display:grid;place-items:center}
 .next img{width:72px;height:72px}
-.next .yours{background:transparent;border:1.5px dashed color-mix(in srgb,var(--frame-ink) 40%,transparent);color:var(--frame-ink2);font-size:2.25rem;font-weight:300}
+.next .yours{background:transparent;place-items:stretch}
+.yours a{display:grid;place-items:center;border-radius:inherit;border:1.5px dashed color-mix(in srgb,var(--frame-ink) 40%,transparent);color:var(--frame-ink2);
+  font-size:2.25rem;font-weight:300;text-decoration:none;cursor:pointer;
+  transition:border-color 200ms ease,background-color 200ms ease,color 200ms ease,transform 140ms var(--ease-out)}
+.yours a span{display:block;line-height:1;transition:transform 240ms var(--ease-out)}
+.yours a:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){
+  .yours a:hover{border-color:color-mix(in srgb,var(--frame-ink) 70%,transparent);background:color-mix(in srgb,var(--frame-ink) 3%,transparent);color:var(--frame-ink)}
+  .yours a:hover span{transform:scale(1.15)}
+}
 
 /* Custom software: the "+" tile made big. Jetforge's own chapter, in the frame's ink. */
 .custom{grid-column:1 / -1;position:relative;isolation:isolate;overflow:hidden;margin-top:clamp(64px,9vw,112px);
@@ -340,7 +358,8 @@ textarea::placeholder{color:var(--placeholder)}
   .chapter{grid-template-columns:minmax(0,1fr);align-items:start;min-height:auto;padding:88px 0 0 var(--gutter);row-gap:56px}
   .copy{padding-right:var(--gutter)}
   [data-app="checkmate"] .shot{width:150vw;align-self:start;margin-bottom:-48px}
-  [data-app="dilo"] .shot{width:135vw;margin-bottom:72px}
+  [data-app="dilo"] .shot{margin-bottom:72px}
+  [data-app="dilo"] .dl{--dl-w:135vw;border-radius:var(--r-frame) 0 0 var(--r-frame)}
   [data-app="limitbar"] .shot{order:0;width:min(520px,96vw);justify-self:start;margin:0 0 0 0}
   [data-app="limitbar"] .lb{border-radius:var(--r-frame) 0 0 0}
   .contact{grid-template-columns:1fr}
