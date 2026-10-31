@@ -8,7 +8,7 @@ Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported 
 
 All apps are free downloads for the Mac, notarized by Apple, and update themselves. Download page: https://jetforgelabs.com/apps
 
-- **Checkmate:** a task list for your Mac. No account needed, syncs through your iCloud, free. macOS 15+.
+- **Checkmate:** a task list for your Mac and iPhone, synced through your own iCloud. No account, no sign-up, free. macOS 15+, iOS 18+. iPhone: https://apps.apple.com/app/id6828836039
 - **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free, Pro is a paid upgrade. https://getdilo.co
 - **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.
 - **Berth:** a Dock for your Mac that stays out of the way, with live window previews and a shelf. macOS 15+, free.

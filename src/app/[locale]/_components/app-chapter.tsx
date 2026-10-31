@@ -35,6 +35,18 @@ export async function AppChapter({ app }: { app: AppEntry }) {
         <a className="btn btn-accent" href={app.href}>
           {t("cta")} <span className="arrow" aria-hidden="true">&rarr;</span>
         </a>
+        {app.ios && (
+          <div className="ios">
+            <Image className="ios-qr" src="/apps/checkmate-ios-qr.svg" alt="" width={120} height={120} unoptimized />
+            <div className="ios-body">
+              <p className="ios-text">{t("ios.text")}</p>
+              <a className="ios-badge" href={app.ios.url} aria-label={t("ios.badgeLabel")}>
+                {/* eslint-disable-next-line @next/next/no-img-element -- Apple's badge artwork must stay untouched */}
+                <img src="/badges/app-store-en.svg" alt="" height={44} width={131} />
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       {app.slug === "checkmate" && <CheckmateShot label={label} />}

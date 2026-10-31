@@ -49,6 +49,7 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
       </div>
       <div className="wrap foot-bar">
         <p>{t("copyright")}</p>
+        <p className="foot-legal">{t("appleTrademark")}</p>
       </div>
     </footer>
   );

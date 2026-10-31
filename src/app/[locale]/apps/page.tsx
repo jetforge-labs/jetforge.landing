@@ -8,7 +8,7 @@ import { SiteFooter } from "../_components/site-footer";
 import { SiteNav } from "../_components/site-nav";
 import type { Metadata } from "next";
 
-// Versions come from each app's appcast; the page is rebuilt in the background at the same pace as the fetch cache
+// Release data (minimum macOS) comes from each app's appcast; the page is rebuilt in the background at the same pace as the fetch cache
 // (APPCAST_REVALIDATE in src/lib/appcast.ts). Next needs a literal here.
 export const revalidate = 3600;
 
@@ -74,7 +74,7 @@ export default async function AppsPage({ params }: Props) {
                       <h2>{name}</h2>
                       <p className="meta">
                         <span>{t("macos", { version: release?.minMacOS ?? app.minMacOS })}</span>
-                        {release && <span>{t("version", { version: release.version })}</span>}
+                        {app.ios && <span>{t("ios", { version: app.ios.minIOS })}</span>}
                         {!app.pro && <span>{t("free")}</span>}
                       </p>
                     </div>
@@ -86,6 +86,12 @@ export default async function AppsPage({ params }: Props) {
                       <span className="vh"> {t("forApp", { name })}</span>
                       <span className="arrow" aria-hidden="true">&darr;</span>
                     </a>
+                    {app.ios && (
+                      <a className="ios-badge" href={app.ios.url} aria-label={t("iosBadgeLabel", { name })}>
+                        {/* eslint-disable-next-line @next/next/no-img-element -- Apple's badge artwork must stay untouched */}
+                        <img src="/badges/app-store-en.svg" alt="" height={44} width={131} />
+                      </a>
+                    )}
                     {app.pro && (
                       <a className="text-link" href={app.pro.url}>
                         {t("proAvailable")}

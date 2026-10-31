@@ -2,7 +2,7 @@
   "Metadata": {
     "title": "Jetforge Labs | Small apps for less friction in your day",
     "description": "Checkmate for the things you need to remember, Dilo for when you'd rather talk than type, LimitBar for knowing how much Claude you have left.",
-    "keywords": "Mac apps, macOS apps, Checkmate, Dilo, LimitBar, task manager for Mac, dictation for Mac, menu bar app, custom software, software studio, Jetforge Labs",
+    "keywords": "Mac apps, macOS apps, Checkmate, Dilo, LimitBar, task manager for Mac, iPhone apps, task manager for iPhone, to do list app, dictation for Mac, menu bar app, custom software, software studio, Jetforge Labs",
     "ogAlt": "Jetforge Labs. Small apps for less friction in your day: Checkmate, Dilo and LimitBar."
   },
   "Layout": {
@@ -27,12 +27,17 @@
     "checkmate": {
       "name": "Checkmate",
       "phrase": "I have too much to remember.",
-      "line": "Put it in Checkmate and clear your list. No account needed, syncs through your iCloud, free.",
+      "line": "Put it in Checkmate and clear your list. On your Mac and iPhone, synced through your iCloud. No account, no sign-up.",
       "meta": [
         "macOS 15+",
+        "iOS 18+",
         "Free"
       ],
-      "cta": "Get Checkmate",
+      "cta": "Get Checkmate for Mac",
+      "ios": {
+        "text": "Also on iPhone.",
+        "badgeLabel": "Download Checkmate on the App Store"
+      },
       "shotLabel": "Checkmate window in dark mode, Today view: one overdue task and four tasks for today with priorities, times, a subtask count and a label, next to a sidebar with Inbox, Today, Upcoming and three projects."
     },
     "dilo": {
@@ -87,7 +92,7 @@
     "lead": "Every app here is a free download for your Mac. They are notarized by Apple and update themselves.",
     "listLabel": "All apps",
     "macos": "macOS {version}+",
-    "version": "v{version}",
+    "ios": "iOS {version}+",
     "free": "Free",
     "download": "Download for Mac",
     "proAvailable": "Basic is free, Pro available",
@@ -95,7 +100,8 @@
     "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own.",
     "store": "You can also find them on our <link>Gumroad store</link>.",
     "newTab": "(opens in a new tab)",
-    "forApp": "({name})"
+    "forApp": "({name})",
+    "iosBadgeLabel": "Download {name} on the App Store"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",
@@ -149,7 +155,8 @@
     "custom": "Custom software",
     "contact": "Contact",
     "privacy": "Privacy Policy",
-    "copyright": "© 2026 Jetforge Labs OÜ. All rights reserved."
+    "copyright": "© 2026 Jetforge Labs OÜ. All rights reserved.",
+    "appleTrademark": "Apple and the Apple logo are trademarks of Apple Inc. App Store is a service mark of Apple Inc."
   },
   "Privacy": {
     "title": "Privacy Policy",
