@@ -135,7 +135,7 @@ async function StructuredData({ locale }: { locale: string }) {
     name: tApps(`${app.slug}.name`),
     description: tApps(`${app.slug}.line`),
     applicationCategory: app.category,
-    operatingSystem: "macOS",
+    operatingSystem: app.os,
     url: app.href,
     image: `https://jetforgelabs.com${app.icon}`,
     publisher: { "@type": "Organization", name: "Jetforge Labs" },

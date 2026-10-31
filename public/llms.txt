@@ -6,7 +6,7 @@ Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported 
 
 ## Apps
 
-- **Checkmate:** a task list for your Mac. No account, no cloud, free. macOS 15+.
+- **Checkmate:** a task list for your Mac and iPhone, synced through your own iCloud. No account, free. macOS 15+, iOS 18+.
 - **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free. https://getdilo.co
 - **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.
 

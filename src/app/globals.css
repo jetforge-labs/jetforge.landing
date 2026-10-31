@@ -141,6 +141,16 @@ a{color:inherit}
 .meta{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
 .meta span{font:500 .75rem/1 var(--mono);letter-spacing:.02em;color:var(--ch-ink2);padding:6px 9px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--ch-line)}
 .copy .btn{margin-top:32px}
+/* iPhone companion: official App Store badge (never recolor, scale or animate it), QR on pointer desktops only */
+.ios{margin-top:32px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:center}
+.ios-qr{display:none;width:120px;height:120px;border-radius:var(--r-win)}
+.ios-text{max-width:34ch;font-size:1rem;line-height:1.5;color:var(--ch-ink2);text-wrap:pretty}
+.ios-badge{display:inline-block;margin-top:12px;border-radius:8px;line-height:0}
+.ios-badge img{height:44px;width:auto}
+@media (min-width:900px) and (hover:hover) and (pointer:fine){
+  .ios{grid-template-columns:120px minmax(0,1fr)}
+  .ios-qr{display:block}
+}
 
 /* Screenshot slot: bleeds off the right edge (the section clips it). */
 .shot{position:relative;container-type:inline-size}
@@ -352,6 +362,7 @@ textarea::placeholder{color:var(--placeholder)}
 @media (hover:hover){.foot-cols a:hover{text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--frame-ink) 40%,transparent)}}
 .foot-bar{padding-bottom:40px;font-size:.875rem;color:var(--frame-ink2)}
 .foot-bar p{padding-top:24px;border-top:1px solid var(--frame-line)}
+.foot-bar .foot-legal{padding-top:8px;border-top:0;font-size:.75rem}
 
 /* ============ Responsive ============ */
 @media (max-width:899px){
