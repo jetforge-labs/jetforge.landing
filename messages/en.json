@@ -57,13 +57,45 @@
       ],
       "cta": "Get LimitBar",
       "shotLabel": "LimitBar open from the menu bar: Claude session 91% left, resets in 2h 14m; weekly 39% left; Codex monthly 85% left."
+    },
+    "berth": {
+      "name": "Berth",
+      "line": "A Dock for your Mac that stays out of the way, with live window previews and a shelf."
+    },
+    "macbrow": {
+      "name": "Macbrow",
+      "line": "Turns the notch into a shelf for your files, what's playing and your next event."
+    },
+    "deepspy": {
+      "name": "DeepSpy",
+      "line": "Find what's eating your disk and clean it up: a space map, junk finder and app uninstaller."
+    },
+    "tide": {
+      "name": "Tide",
+      "line": "A modern terminal for your Mac, built native."
     }
   },
   "MoreApps": {
     "title": "These aren't all of them.",
-    "text": "We make more apps than fit on one page. The full list lives in our store.",
-    "cta": "See all apps",
-    "newTab": "(opens in a new tab)"
+    "text": "We make more apps than fit on one page. Every one of them, with its download, is on the apps page.",
+    "cta": "See all apps"
+  },
+  "AppsPage": {
+    "title": "Download our apps",
+    "metaDescription": "Checkmate, Dilo, LimitBar, Berth, Macbrow, DeepSpy and Tide. Free downloads for your Mac, notarized by Apple, with automatic updates.",
+    "eyebrow": "Apps",
+    "lead": "Every app here is a free download for your Mac. They are notarized by Apple and update themselves.",
+    "listLabel": "All apps",
+    "macos": "macOS {version}+",
+    "version": "v{version}",
+    "free": "Free",
+    "basicFree": "Basic is free",
+    "download": "Download for Mac",
+    "downloadLabel": "Download {name} for Mac",
+    "proAvailable": "Pro available",
+    "more": "See it in action",
+    "moreLabel": "See {name} in action",
+    "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own."
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",

@@ -6,9 +6,15 @@ Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported 
 
 ## Apps
 
+All apps are free downloads for the Mac, notarized by Apple, and update themselves. Download page: https://jetforgelabs.com/apps
+
 - **Checkmate:** a task list for your Mac. No account, no cloud, free. macOS 15+.
-- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free. https://getdilo.co
+- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free, Pro is a paid upgrade. https://getdilo.co
 - **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.
+- **Berth:** a Dock for your Mac that stays out of the way, with live window previews and a shelf. macOS 15+, free.
+- **Macbrow:** turns the notch into a shelf for your files, what's playing and your next event. macOS 15+, free.
+- **DeepSpy:** finds what's eating your disk and cleans it up: a space map, junk finder and app uninstaller. macOS 15+, free.
+- **Tide:** a modern terminal for your Mac, built native. macOS 15+, free.
 
 ## Custom software
 
@@ -23,6 +29,6 @@ If the friction is bigger, or specific to your team, we can build that too: a to
 ## Key pages
 
 - Homepage: https://jetforgelabs.com
-- Apps: https://jetforgelabs.com/#apps
+- Apps and downloads: https://jetforgelabs.com/apps
 - Contact: https://jetforgelabs.com/#contact
 - Privacy Policy: https://jetforgelabs.com/privacy

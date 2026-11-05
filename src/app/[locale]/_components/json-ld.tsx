@@ -1,0 +1,48 @@
+import { getTranslations } from "next-intl/server";
+import { getRelease } from "@/lib/appcast";
+import type { AppEntry } from "./apps";
+
+export function JsonLd({ data }: { data: unknown }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/** One SoftwareApplication per app. Version and download link come from the same appcast as the page. */
+export async function AppsJsonLd({ apps }: { apps: readonly AppEntry[] }) {
+  const tApps = await getTranslations("Apps");
+  const releases = await Promise.all(apps.map((app) => getRelease(app.slug)));
+
+  return (
+    <>
+      {apps.map((app, i) => {
+        const release = releases[i];
+        return (
+          <JsonLd
+            key={app.slug}
+            data={{
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: tApps(`${app.slug}.name`),
+              description: tApps(`${app.slug}.line`),
+              applicationCategory: app.category,
+              operatingSystem: "macOS",
+              operatingSystemVersion: `${release?.minMacOS ?? app.minMacOS}+`,
+              url: app.pro ? app.pro.url : `https://jetforgelabs.com/apps#${app.slug}`,
+              image: `https://jetforgelabs.com${app.icon}`,
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              publisher: { "@type": "Organization", name: "Jetforge Labs" },
+              ...(release && {
+                softwareVersion: release.version,
+                downloadUrl: `https://jetforgelabs.com/download/${app.slug}`,
+              }),
+            }}
+          />
+        );
+      })}
+    </>
+  );
+}

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { APPS } from "./apps";
+import { ALL_APPS } from "./apps";
 
 interface SiteFooterProps {
   home?: boolean;
@@ -24,9 +24,9 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
           <nav aria-labelledby="foot-apps">
             <h3 id="foot-apps">{t("appsHeading")}</h3>
             <ul>
-              {APPS.map((app) => (
+              {ALL_APPS.map((app) => (
                 <li key={app.slug}>
-                  <Link href={`${base}#${app.slug}`}>{tApps(`${app.slug}.name`)}</Link>
+                  <Link href={`/apps#${app.slug}`}>{tApps(`${app.slug}.name`)}</Link>
                 </li>
               ))}
             </ul>

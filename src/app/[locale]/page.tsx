@@ -4,6 +4,7 @@ import { APPS } from "./_components/apps";
 import { ContactSection } from "./_components/contact-section";
 import { Friction } from "./_components/friction";
 import { Hero } from "./_components/hero";
+import { AppsJsonLd } from "./_components/json-ld";
 import { MoreApps } from "./_components/more-apps";
 import { SiteFooter } from "./_components/site-footer";
 import { SiteNav } from "./_components/site-nav";
@@ -11,6 +12,7 @@ import { SiteNav } from "./_components/site-nav";
 export default function Home() {
   return (
     <>
+      <AppsJsonLd apps={APPS} />
       <SiteNav home />
       <main id="main">
         <Hero />
