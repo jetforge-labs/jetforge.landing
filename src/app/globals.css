@@ -404,6 +404,7 @@ textarea::placeholder{color:var(--placeholder)}
 .apps-note{margin-top:32px;font-size:.9375rem;color:var(--frame-ink2);max-width:60ch}
 .apps-store{margin-top:4px}
 .apps-store .text-link{min-height:0;display:inline;gap:0}
+.apps-store .text-link{white-space:nowrap}
 .arrow-ne{margin-left:.25em;text-decoration:none;display:inline-block}
 @media (max-width:560px){.app-card-actions .btn{width:100%;justify-content:space-between}}
 
