@@ -89,13 +89,14 @@
     "macos": "macOS {version}+",
     "version": "v{version}",
     "free": "Free",
-    "basicFree": "Basic is free",
     "download": "Download for Mac",
     "downloadLabel": "Download {name} for Mac",
-    "proAvailable": "Pro available",
+    "proAvailable": "Basic is free, Pro available",
     "more": "See it in action",
     "moreLabel": "See {name} in action",
-    "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own."
+    "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own.",
+    "store": "You can also find them on our <link>Gumroad store</link>.",
+    "newTab": "(opens in a new tab)"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",

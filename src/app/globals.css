@@ -402,6 +402,9 @@ textarea::placeholder{color:var(--placeholder)}
   text-underline-offset:.22em;text-decoration-color:color-mix(in srgb,var(--frame-ink) 35%,transparent);transition:text-decoration-color 160ms ease}
 @media (hover:hover){.text-link:hover{text-decoration-color:var(--frame-ink)}}
 .apps-note{margin-top:32px;font-size:.9375rem;color:var(--frame-ink2);max-width:60ch}
+.apps-store{margin-top:4px}
+.apps-store .text-link{min-height:0;display:inline;gap:0}
+.arrow-ne{margin-left:.25em;text-decoration:none;display:inline-block}
 @media (max-width:560px){.app-card-actions .btn{width:100%;justify-content:space-between}}
 
 /* ============ Status messages ============ */

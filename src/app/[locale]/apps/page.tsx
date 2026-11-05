@@ -73,7 +73,7 @@ export default async function AppsPage() {
                       <p className="meta">
                         <span>{t("macos", { version: release?.minMacOS ?? app.minMacOS })}</span>
                         {release && <span>{t("version", { version: release.version })}</span>}
-                        <span>{app.pro ? t("basicFree") : t("free")}</span>
+                        {!app.pro && <span>{t("free")}</span>}
                       </p>
                     </div>
                   </div>
@@ -99,6 +99,17 @@ export default async function AppsPage() {
             })}
           </ul>
           <p className="apps-note">{t("note")}</p>
+          <p className="apps-note apps-store">
+            {t.rich("store", {
+              link: (chunks) => (
+                <a className="text-link" href="https://jetforgelabs.gumroad.com" target="_blank" rel="noopener noreferrer">
+                  {chunks}
+                  <span className="arrow-ne" aria-hidden="true">&#8599;</span>
+                  <span className="vh"> {t("newTab")}</span>
+                </a>
+              ),
+            })}
+          </p>
         </section>
       </main>
       <SiteFooter />
