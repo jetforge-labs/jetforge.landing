@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
-import { APPS } from "./_components/apps";
+import { JsonLd } from "./_components/json-ld";
 import "../globals.css";
 
 // Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%).
@@ -26,6 +26,10 @@ const geistMono = localFont({
   style: "normal",
   display: "swap",
 });
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const viewport: Viewport = {
   themeColor: "#FFFFFF",
@@ -89,18 +93,8 @@ export async function generateMetadata({
   };
 }
 
-function JsonLd({ data }: { data: unknown }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
-}
-
 async function StructuredData({ locale }: { locale: string }) {
   const tMeta = await getTranslations({ locale, namespace: "Metadata" });
-  const tApps = await getTranslations({ locale, namespace: "Apps" });
 
   const organization = {
     "@context": "https://schema.org",
@@ -110,7 +104,7 @@ async function StructuredData({ locale }: { locale: string }) {
     url: "https://jetforgelabs.com",
     logo: "https://jetforgelabs.com/icon.png",
     description:
-      "Jetforge Labs is a small software studio. It makes apps (Checkmate, Dilo and LimitBar) and a few custom tools for others.",
+      "Jetforge Labs is a small software studio. It makes apps (Checkmate, Dilo, LimitBar and more) and a few custom tools for others.",
     foundingLocation: { "@type": "Place", name: "Estonia" },
     contactPoint: {
       "@type": "ContactPoint",
@@ -129,25 +123,10 @@ async function StructuredData({ locale }: { locale: string }) {
     description: tMeta("description"),
   };
 
-  const apps = APPS.map((app) => ({
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: tApps(`${app.slug}.name`),
-    description: tApps(`${app.slug}.line`),
-    applicationCategory: app.category,
-    operatingSystem: "macOS",
-    url: app.href,
-    image: `https://jetforgelabs.com${app.icon}`,
-    publisher: { "@type": "Organization", name: "Jetforge Labs" },
-  }));
-
   return (
     <>
       <JsonLd data={organization} />
       <JsonLd data={website} />
-      {apps.map((schema) => (
-        <JsonLd key={schema.name} data={schema} />
-      ))}
     </>
   );
 }
@@ -161,6 +140,8 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as "en")) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   // Only the contact form is a client component, so it is the only namespace sent to the browser.
   const { Contact } = await getMessages();

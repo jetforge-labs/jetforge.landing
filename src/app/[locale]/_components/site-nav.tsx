@@ -12,7 +12,7 @@ export async function SiteNav({ home = false }: SiteNavProps) {
   const base = home ? "" : "/";
 
   const links = [
-    { label: t("apps"), href: `${base}#apps` },
+    { label: t("apps"), href: "/apps" },
     { label: t("studio"), href: `${base}#about` },
     { label: t("contact"), href: `${base}#contact` },
   ];

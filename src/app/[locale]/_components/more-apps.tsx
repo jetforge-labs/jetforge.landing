@@ -1,21 +1,19 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-const STORE_URL = "https://jetforgelabs.gumroad.com";
-
-/** Link to the Gumroad store, where every app lives. Shared by the hero pills and the MoreApps section. */
-export async function StoreButton() {
+/** Link to the /apps page, where every app can be downloaded. Shared by the hero pills and the MoreApps section. */
+export async function AllAppsButton() {
   const t = await getTranslations("MoreApps");
 
   return (
-    <a className="btn btn-ink btn-store" href={STORE_URL} target="_blank" rel="noopener noreferrer">
+    <Link className="btn btn-ink btn-store" href="/apps">
       {t("cta")}
-      <span className="vh"> {t("newTab")}</span>
-      <span className="arrow" aria-hidden="true">&#8599;</span>
-    </a>
+      <span className="arrow" aria-hidden="true">&rarr;</span>
+    </Link>
   );
 }
 
-/** Closes the chapter run: the page shows a few apps on purpose, the store has all of them. */
+/** Closes the chapter run: the page shows a few apps on purpose, /apps has all of them. */
 export async function MoreApps() {
   const t = await getTranslations("MoreApps");
 
@@ -25,7 +23,7 @@ export async function MoreApps() {
         <h2 id="more-title">{t("title")}</h2>
         <p>{t("text")}</p>
       </div>
-      <StoreButton />
+      <AllAppsButton />
     </section>
   );
 }

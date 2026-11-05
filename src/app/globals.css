@@ -145,7 +145,7 @@ a{color:inherit}
 /* Screenshot slot: bleeds off the right edge (the section clips it). */
 .shot{position:relative;container-type:inline-size}
 
-/* Checkmate: window bottom-right, bleeding off right and bottom (as the Gumroad cover brief asks). */
+/* Checkmate: window bottom-right, bleeding off right and bottom. */
 [data-app="checkmate"]::before{background:radial-gradient(60% 70% at 85% 95%,var(--app-glow),transparent 70%)}
 [data-app="checkmate"] .shot{width:max(780px,60vw);align-self:end;margin-bottom:calc(-1 * clamp(72px,10vh,112px) - 56px)}
 
@@ -237,7 +237,7 @@ a{color:inherit}
   @keyframes bar{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
 }
 
-/* ---------- LimitBar: crop of the Gumroad cover (menu bar + open popover) ---------- */
+/* ---------- LimitBar: crop of the store cover image (menu bar + open popover) ---------- */
 .lb{position:relative;width:100%;aspect-ratio:880 / 1040;overflow:hidden;border-radius:0 0 var(--r-frame) var(--r-frame);box-shadow:0 0 0 1px rgba(243,245,246,.08),0 3em 6em -2.4em rgba(0,0,0,.7)}
 .lb img{position:absolute;top:0;left:-118.18%;width:218.18%;max-width:none;height:auto}
 
@@ -263,7 +263,6 @@ a{color:inherit}
 .btn-store{padding-right:10px}
 .btn-store .arrow{background:rgba(255,255,255,.14)}
 .pills .btn-store{--h:48px;padding-left:20px;padding-right:7px}
-@media (hover:hover) and (pointer:fine){.btn-store:hover .arrow{transform:translate(2px,-2px)}}
 
 /* ============ Your friction ============ */
 .friction{padding-block:clamp(96px,14vh,160px);display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(40px,6vw,96px);align-items:center}
@@ -384,6 +383,31 @@ textarea::placeholder{color:var(--placeholder)}
   .custom .btn,.more .btn{width:100%;justify-content:space-between;padding-left:20px}
   .foot-cols{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+/* ============ Apps page ============
+   Frame colours only: every card is the same, the icon carries each app's identity. */
+.page-head .page-lead{margin-top:20px;max-width:46ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--frame-ink2)}
+.apps-list{padding-bottom:clamp(72px,10vh,128px)}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:20px}
+.app-card{scroll-margin-top:24px;display:flex;flex-direction:column;gap:20px;padding:clamp(20px,2.4vw,28px);border-radius:var(--r-frame);
+  box-shadow:inset 0 0 0 1.5px var(--frame-line);background:var(--frame-bg)}
+.app-card-head{display:flex;align-items:center;gap:16px}
+.app-card-head img{width:72px;height:72px;flex:none;filter:drop-shadow(0 8px 14px rgba(17,18,20,.22))}
+.app-card h2{font-size:1.75rem;line-height:1.05;font-weight:700;letter-spacing:-.02em;font-variation-settings:"wdth" 92}
+.app-card .meta{margin-top:10px}
+.app-card .meta span{color:var(--frame-ink2);box-shadow:inset 0 0 0 1px var(--frame-line)}
+.app-card-line{color:var(--frame-ink2);max-width:36ch}
+.app-card-actions{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
+.app-card-actions .btn{--h:48px;padding-left:20px;padding-right:7px}
+.text-link{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;
+  text-underline-offset:.22em;text-decoration-color:color-mix(in srgb,var(--frame-ink) 35%,transparent);transition:text-decoration-color 160ms ease}
+@media (hover:hover){.text-link:hover{text-decoration-color:var(--frame-ink)}}
+.apps-note{margin-top:32px;font-size:.9375rem;color:var(--frame-ink2);max-width:60ch}
+.apps-store{margin-top:4px}
+.apps-store .text-link{min-height:0;display:inline;gap:0}
+.apps-store .text-link{white-space:nowrap}
+.arrow-ne{margin-left:.25em;text-decoration:none;display:inline-block}
+@media (max-width:560px){.app-card-actions .btn{width:100%;justify-content:space-between}}
+
 /* ============ Status messages ============ */
 .hint.err{color:#B3261E}
 .sent{padding-block:8px}
