@@ -7,6 +7,6 @@ export async function GET(_request: Request, { params }: { params: Promise<{ slu
   const { slug } = await params;
   if (!isAppSlug(slug)) return new NextResponse("Not found", { status: 404 });
 
-  const release = await getRelease(slug);
+  const release = await getRelease(slug, 4000);
   return NextResponse.redirect(release?.downloadUrl ?? releasesPage(slug), 302);
 }

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
@@ -26,6 +26,10 @@ const geistMono = localFont({
   style: "normal",
   display: "swap",
 });
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const viewport: Viewport = {
   themeColor: "#FFFFFF",
@@ -136,6 +140,8 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as "en")) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   // Only the contact form is a client component, so it is the only namespace sent to the browser.
   const { Contact } = await getMessages();

@@ -11,10 +11,11 @@ export function JsonLd({ data }: { data: unknown }) {
   );
 }
 
-/** One SoftwareApplication per app. Version and download link come from the same appcast as the page. */
-export async function AppsJsonLd({ apps }: { apps: readonly AppEntry[] }) {
+/** One SoftwareApplication per app. With `live`, version and download link come from the appcast. */
+export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEntry[]; live?: boolean }) {
   const tApps = await getTranslations("Apps");
-  const releases = await Promise.all(apps.map((app) => getRelease(app.slug)));
+  // Only /apps reads the feeds; the home page must not wait on them.
+  const releases = await Promise.all(apps.map((app) => (live ? getRelease(app.slug) : null)));
 
   return (
     <>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getRelease } from "@/lib/appcast";
 import { ALL_APPS } from "../_components/apps";
@@ -43,14 +43,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function AppsPage() {
+export default async function AppsPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("AppsPage");
   const tApps = await getTranslations("Apps");
   const releases = await Promise.all(ALL_APPS.map((app) => getRelease(app.slug)));
 
   return (
     <>
-      <AppsJsonLd apps={ALL_APPS} />
+      <AppsJsonLd apps={ALL_APPS} live />
       <SiteNav />
       <main id="main">
         <div className="wrap page-head tex">
@@ -79,8 +81,9 @@ export default async function AppsPage() {
                   </div>
                   <p className="app-card-line">{tApps(`${app.slug}.line`)}</p>
                   <div className="app-card-actions">
-                    <a className="btn btn-ink btn-store" href={`/download/${app.slug}`} aria-label={t("downloadLabel", { name })}>
+                    <a className="btn btn-ink btn-store" href={`/download/${app.slug}`}>
                       {t("download")}
+                      <span className="vh"> {t("forApp", { name })}</span>
                       <span className="arrow" aria-hidden="true">&darr;</span>
                     </a>
                     {app.pro && (
@@ -89,8 +92,9 @@ export default async function AppsPage() {
                       </a>
                     )}
                     {app.featured && (
-                      <Link className="text-link" href={`/#${app.slug}`} aria-label={t("moreLabel", { name })}>
+                      <Link className="text-link" href={`/#${app.slug}`}>
                         {t("more")}
+                        <span className="vh"> {t("forApp", { name })}</span>
                       </Link>
                     )}
                   </div>

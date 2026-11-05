@@ -90,13 +90,12 @@
     "version": "v{version}",
     "free": "Free",
     "download": "Download for Mac",
-    "downloadLabel": "Download {name} for Mac",
     "proAvailable": "Basic is free, Pro available",
     "more": "See it in action",
-    "moreLabel": "See {name} in action",
     "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own.",
     "store": "You can also find them on our <link>Gumroad store</link>.",
-    "newTab": "(opens in a new tab)"
+    "newTab": "(opens in a new tab)",
+    "forApp": "({name})"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",

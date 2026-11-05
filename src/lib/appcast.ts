@@ -28,8 +28,20 @@ export const releasesPage = (slug: AppSlug) => `https://github.com/jetforge-labs
 const tag = (xml: string, name: string) => xml.match(new RegExp(`<${name}>\\s*([^<]+?)\\s*</${name}>`))?.[1] ?? null;
 
 /** Only ever redirect to this app's own release assets, whatever the feed says. */
-const isOwnAsset = (slug: AppSlug, url: string) =>
-  url.startsWith(`https://github.com/jetforge-labs/${slug}-updates/releases/download/`);
+function isOwnAsset(slug: AppSlug, value: string): boolean {
+  try {
+    const url = new URL(value);
+    return (
+      url.protocol === "https:" &&
+      url.host === "github.com" &&
+      url.pathname.startsWith(`/jetforge-labs/${slug}-updates/releases/download/`) &&
+      url.pathname.endsWith(".dmg") &&
+      !url.pathname.split("/").some((segment) => segment === ".." || segment === ".")
+    );
+  } catch {
+    return false;
+  }
+}
 
 /** Newest stable item of a Sparkle appcast: full-DMG enclosure (deltas ignored), highest build number. */
 export function parseAppcast(slug: AppSlug, xml: string): Release | null {
@@ -52,12 +64,15 @@ export function parseAppcast(slug: AppSlug, xml: string): Release | null {
   return best && { version: best.version, downloadUrl: best.downloadUrl, minMacOS: best.minMacOS };
 }
 
-/** Latest release of an app, or null if the feed is unreachable or unreadable. Cached for an hour. */
-export async function getRelease(slug: AppSlug): Promise<Release | null> {
+/**
+ * Latest release of an app, or null if the feed is unreachable or unreadable. Cached for an hour.
+ * `timeoutMs` bounds a cold fetch: pages keep it short and omit the data, the download route waits longer.
+ */
+export async function getRelease(slug: AppSlug, timeoutMs = 1500): Promise<Release | null> {
   try {
     const res = await fetch(FEEDS[slug], {
       next: { revalidate: APPCAST_REVALIDATE },
-      signal: AbortSignal.timeout(5000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;
     return parseAppcast(slug, await res.text());
