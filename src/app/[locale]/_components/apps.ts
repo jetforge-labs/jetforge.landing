@@ -2,6 +2,9 @@
 // A new app needs: an entry here, an "Apps.<slug>" block (name, line) in messages/en.json, an icon in public/apps/,
 // and an appcast URL in src/lib/appcast.ts. A featured one also needs a [data-app] block in globals.css and a
 // screenshot component in app-chapter.tsx.
+// Checkmate's iPhone app. Changing it? Run `node scripts/gen-checkmate-qr.mjs` to regenerate the QR.
+export const CHECKMATE_APP_STORE_URL = "https://apps.apple.com/app/id6828836039";
+
 export type AppSlug = "berth" | "checkmate" | "deepspy" | "dilo" | "limitbar" | "macbrow" | "tide";
 
 export interface AppEntry {
@@ -17,10 +20,12 @@ export interface AppEntry {
   href: string;
   /** The app has its own site and a paid tier (Dilo Pro). */
   pro?: { url: string };
+  /** iPhone companion app: App Store link, minimum iOS major version. */
+  ios?: { url: string; minIOS: number };
 }
 
 export const ALL_APPS: readonly AppEntry[] = [
-  { slug: "checkmate", icon: "/apps/checkmate-icon.png", category: "ProductivityApplication", minMacOS: 15, featured: true, href: "/download/checkmate" },
+  { slug: "checkmate", icon: "/apps/checkmate-icon.png", category: "ProductivityApplication", minMacOS: 15, featured: true, href: "/download/checkmate", ios: { url: CHECKMATE_APP_STORE_URL, minIOS: 18 } },
   { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", pro: { url: "https://getdilo.co" } },
   { slug: "limitbar", icon: "/apps/limitbar-icon.png", category: "DeveloperApplication", minMacOS: 14, featured: true, href: "/download/limitbar" },
   { slug: "berth", icon: "/apps/berth-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: false, href: "/download/berth" },

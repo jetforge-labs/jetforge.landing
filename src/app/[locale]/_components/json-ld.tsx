@@ -11,7 +11,7 @@ export function JsonLd({ data }: { data: unknown }) {
   );
 }
 
-/** One SoftwareApplication per app. With `live`, version and download link come from the appcast. */
+/** One SoftwareApplication per app. With `live`, the download link comes from the appcast. */
 export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEntry[]; live?: boolean }) {
   const tApps = await getTranslations("Apps");
   // Only /apps reads the feeds; the home page must not wait on them.
@@ -30,16 +30,18 @@ export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEnt
               name: tApps(`${app.slug}.name`),
               description: tApps(`${app.slug}.line`),
               applicationCategory: app.category,
-              operatingSystem: "macOS",
+              operatingSystem: app.ios ? "macOS, iOS" : "macOS",
               operatingSystemVersion: `${release?.minMacOS ?? app.minMacOS}+`,
               url: app.pro ? app.pro.url : `https://jetforgelabs.com/apps#${app.slug}`,
               image: `https://jetforgelabs.com${app.icon}`,
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
               publisher: { "@type": "Organization", name: "Jetforge Labs" },
               ...(release && {
-                softwareVersion: release.version,
-                downloadUrl: `https://jetforgelabs.com/download/${app.slug}`,
+                downloadUrl: app.ios
+                  ? [`https://jetforgelabs.com/download/${app.slug}`, app.ios.url]
+                  : `https://jetforgelabs.com/download/${app.slug}`,
               }),
+              ...(!release && app.ios && { downloadUrl: app.ios.url }),
             }}
           />
         );
