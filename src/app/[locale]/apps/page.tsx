@@ -81,17 +81,19 @@ export default async function AppsPage({ params }: Props) {
                   </div>
                   <p className="app-card-line">{tApps(`${app.slug}.line`)}</p>
                   <div className="app-card-actions">
-                    <a className="btn btn-ink btn-store" href={`/download/${app.slug}`}>
-                      {t("download")}
-                      <span className="vh"> {t("forApp", { name })}</span>
-                      <span className="arrow" aria-hidden="true">&darr;</span>
-                    </a>
-                    {app.ios && (
-                      <a className="ios-badge" href={app.ios.url} aria-label={t("iosBadgeLabel", { name })}>
-                        {/* eslint-disable-next-line @next/next/no-img-element -- Apple's badge artwork must stay untouched */}
-                        <img src="/badges/app-store-en.svg" alt="" height={44} width={131} />
+                    <div className="app-card-stores">
+                      <a className="btn btn-ink btn-store" href={`/download/${app.slug}`}>
+                        {t("download")}
+                        <span className="vh"> {t("forApp", { name })}</span>
+                        <span className="arrow" aria-hidden="true">&darr;</span>
                       </a>
-                    )}
+                      {app.ios && (
+                        <a className="ios-badge" href={app.ios.url} aria-label={t("iosBadgeLabel", { name })}>
+                          {/* eslint-disable-next-line @next/next/no-img-element -- Apple's badge artwork must stay untouched */}
+                          <img src="/badges/app-store-en.svg" alt="" height={40} width={119} />
+                        </a>
+                      )}
+                    </div>
                     {app.pro && (
                       <a className="text-link" href={app.pro.url}>
                         {t("proAvailable")}
