@@ -33,7 +33,7 @@ export interface AppEntry {
 }
 
 export const ALL_APPS: readonly AppEntry[] = [
-  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", siteUrl: "https://getdilo.co", pro: { url: DILO_PRICING_URL, price: { amount: "35", currency: "EUR" } } },
+  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", siteUrl: "https://getdilo.co", pro: { url: DILO_PRICING_URL, price: { amount: "49", currency: "EUR" } } },
   { slug: "macbrow", icon: "/apps/macbrow-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: true, href: "/download/macbrow", pro: { url: MACBROW_PRO_URL, trialDays: 14, price: { amount: "7.99", currency: "EUR" } } },
   { slug: "checkmate", icon: "/apps/checkmate-icon.png", category: "ProductivityApplication", minMacOS: 15, featured: true, href: "/download/checkmate", ios: { url: CHECKMATE_APP_STORE_URL, minIOS: 18 } },
   { slug: "limitbar", icon: "/apps/limitbar-icon.png", category: "DeveloperApplication", minMacOS: 14, featured: false, href: "/download/limitbar" },
