@@ -37,7 +37,7 @@ export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEnt
               offers: app.pro?.price
                 ? [
                     { "@type": "Offer", price: "0", priceCurrency: app.pro.price.currency },
-                    { "@type": "Offer", price: app.pro.price.amount, priceCurrency: app.pro.price.currency },
+                    { "@type": "Offer", price: app.pro.price.amount, priceCurrency: app.pro.price.currency, url: app.pro.url },
                   ]
                 : { "@type": "Offer", price: "0", priceCurrency: "USD" },
               publisher: { "@type": "Organization", name: "Jetforge Labs" },

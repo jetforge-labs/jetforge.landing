@@ -9,8 +9,7 @@ export const CHECKMATE_APP_STORE_URL = "https://apps.apple.com/app/id6828836039"
 export const DILO_PRICING_URL = "https://getdilo.co/#pricing";
 
 // Where "Buy Pro" for Macbrow goes. The app itself sends buyers to jetforgelabs.com/apps.
-// TODO: Gumroad product URL (temporary: the store front)
-export const MACBROW_PRO_URL = "https://jetforgelabs.gumroad.com";
+export const MACBROW_PRO_URL = "https://jetforgelabs.gumroad.com/l/macbrow";
 
 export type AppSlug = "berth" | "checkmate" | "deepspy" | "dilo" | "limitbar" | "macbrow" | "tide";
 
