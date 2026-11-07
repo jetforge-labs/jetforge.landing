@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Jetforge Labs. Small apps for less friction in your day: Checkmate, Dilo and LimitBar.";
+export const alt = "Jetforge Labs. Small apps for less friction in your day: Dilo, Macbrow and Checkmate.";
 export const size = {
   width: 1200,
   height: 630,
@@ -10,9 +10,9 @@ export const size = {
 export const contentType = "image/png";
 
 const APPS = [
-  { name: "Checkmate", bg: "#0B2E2D", accent: "#59C5BF" },
   { name: "Dilo", bg: "#0A1324", accent: "#7DB2FF" },
-  { name: "LimitBar", bg: "#111722", accent: "#FF5E3A" },
+  { name: "Macbrow", bg: "#140D09", accent: "#FFA463" },
+  { name: "Checkmate", bg: "#0B2E2D", accent: "#59C5BF" },
 ];
 
 export default function OgImage() {
