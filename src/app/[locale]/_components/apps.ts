@@ -5,10 +5,7 @@
 // Checkmate's iPhone app. Changing it? Run `node scripts/gen-checkmate-qr.mjs` to regenerate the QR.
 export const CHECKMATE_APP_STORE_URL = "https://apps.apple.com/app/id6828836039";
 
-// Dilo Pro is sold on Dilo's own site.
-export const DILO_PRICING_URL = "https://getdilo.co/#pricing";
-
-// Where "Buy Pro" for Macbrow goes. The app itself sends buyers to jetforgelabs.com/apps.
+// Where "Buy Pro" for Macbrow goes (Dilo has no buy link: its Pro is sold inside the app). The app itself sends buyers to jetforgelabs.com/apps.
 export const MACBROW_PRO_URL = "https://jetforgelabs.gumroad.com/l/macbrow";
 
 export type AppSlug = "berth" | "checkmate" | "deepspy" | "dilo" | "limitbar" | "macbrow" | "tide";
@@ -26,14 +23,14 @@ export interface AppEntry {
   href: string;
   /** The app's own site, when it has one (Dilo). */
   siteUrl?: string;
-  /** Paid tier: where to buy it, and, when there is one, the trial and the price for the structured data. */
-  pro?: { url: string; trialDays?: number; price?: { amount: string; currency: string } };
+  /** Paid tier: where to buy it (`url`, absent when it is sold inside the app), and, when there is one, the trial and the price for the structured data. */
+  pro?: { url?: string; trialDays?: number; price?: { amount: string; currency: string } };
   /** iPhone companion app: App Store link, minimum iOS major version. */
   ios?: { url: string; minIOS: number };
 }
 
 export const ALL_APPS: readonly AppEntry[] = [
-  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", siteUrl: "https://getdilo.co", pro: { url: DILO_PRICING_URL, price: { amount: "49", currency: "EUR" } } },
+  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", siteUrl: "https://getdilo.co", pro: { trialDays: 14, price: { amount: "49", currency: "EUR" } } },
   { slug: "macbrow", icon: "/apps/macbrow-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: true, href: "/download/macbrow", pro: { url: MACBROW_PRO_URL, trialDays: 14, price: { amount: "7.99", currency: "EUR" } } },
   { slug: "checkmate", icon: "/apps/checkmate-icon.png", category: "ProductivityApplication", minMacOS: 15, featured: true, href: "/download/checkmate", ios: { url: CHECKMATE_APP_STORE_URL, minIOS: 18 } },
   { slug: "limitbar", icon: "/apps/limitbar-icon.png", category: "DeveloperApplication", minMacOS: 14, featured: false, href: "/download/limitbar" },

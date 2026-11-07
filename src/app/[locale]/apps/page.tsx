@@ -95,11 +95,18 @@ export default async function AppsPage({ params }: Props) {
                         </a>
                       )}
                     </div>
-                    {app.pro && (
+                    {app.pro?.url ? (
                       <a className="text-link" href={app.pro.url}>
                         {app.pro.trialDays ? t("buyPro") : t("proAvailable")}
                         {app.pro.trialDays && <span className="vh"> {t("forApp", { name })}</span>}
                       </a>
+                    ) : (
+                      app.siteUrl && (
+                        <a className="text-link" href={app.siteUrl}>
+                          {t("learnMore")}
+                          <span className="vh"> {t("forApp", { name })}</span>
+                        </a>
+                      )
                     )}
                     {app.featured && (
                       <Link className="text-link" href={`/#${app.slug}`}>

@@ -180,7 +180,9 @@ kbd{font:500 .82em/1 var(--mono);display:inline-grid;place-items:center;min-widt
 .ch-dilo .phrase{font-size:clamp(3rem,6.2vw,5.75rem)}
 .ch-dilo .lede{margin-top:var(--s3)}
 .ch-dilo .ident{margin-top:var(--s5)}
-.ch-dilo .actions{margin-top:var(--s4)}
+.trial-line{margin-top:var(--s4);font-size:1.125rem;font-weight:620;line-height:1.35;color:var(--ch-ink)}
+.trial-line + .offer{margin-top:var(--s2)}
+.ch-dilo .offer{margin-top:var(--s4)}
 .ch-dilo .shot{margin-right:calc(-1 * var(--s4))}
 
 /* ---------- Macbrow: the top edge is the Mac's top edge ---------- */
@@ -216,6 +218,11 @@ kbd{font:500 .82em/1 var(--mono);display:inline-grid;place-items:center;min-widt
 .offer .price b{font-size:1.5rem;line-height:1;font-weight:700;letter-spacing:-.01em}
 .offer .price .link-arrow{padding:6px 0 0;font-size:.875rem;color:var(--ch-ink2)}
 .offer + .fine{margin-top:var(--s2)}
+.trial-line + .offer{margin-top:var(--s2)}
+.plans-even{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plans-even .plan-pro .rows{grid-template-columns:minmax(0,1fr)}
+.plans-after{margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--ch-line)}
+.plans-after p{font-size:.9375rem;color:var(--ch-ink3);max-width:80ch}
 /* Two headline features, set larger than the plan rows */
 .spot{margin-top:var(--s7);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s6);padding-top:var(--s5);border-top:1px solid var(--ch-line)}
 .spot-k{display:flex;align-items:center;gap:var(--s1);font:500 .8125rem/1 var(--mono);color:var(--app-accent);margin:0}
@@ -464,9 +471,11 @@ textarea::placeholder{color:var(--placeholder)}
 @media (max-width:1279px){.menubar .apps span{display:none}}
 @media (max-width:1100px){
   .plan-pro .rows{grid-template-columns:minmax(0,1fr)}
+  .plans-even .plan-head{flex-direction:column;align-items:flex-start;gap:4px}
+  .plans-even .plan-head p{text-align:left}
 }
 @media (max-width:960px){
-  .dilo-top,.mb-intro,.cm-grid,.plans,.mb-plans,.tour,.mb-also-row{grid-template-columns:minmax(0,1fr)}
+  .dilo-top,.mb-intro,.cm-grid,.plans,.plans-even,.mb-plans,.tour,.mb-also-row{grid-template-columns:minmax(0,1fr)}
   .tour-tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter)}
   .tour-tabs button{flex:none}
   .tour-tabs button small{display:none}
@@ -504,6 +513,7 @@ textarea::placeholder{color:var(--placeholder)}
   .mb-plans{margin-top:var(--s5);gap:var(--s4)}
   .mb-intro .ident small{max-width:22ch}
 }
+@media (max-width:640px){.plans-after{margin-top:var(--s4)}}
 @media (max-width:420px){
   .offer .btn{white-space:normal;height:auto;min-height:var(--h);padding-block:8px;line-height:1.2}
 }

@@ -54,7 +54,7 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
               <div className="price">
                 <small>{t("priceLabel")}</small>
                 <b>{t("price")}</b>
-                {app.pro && (
+                {app.pro?.url && (
                   <a className="link-arrow" href={app.pro.url}>
                     {t("buyPro")} <span aria-hidden="true">&rarr;</span>
                   </a>
