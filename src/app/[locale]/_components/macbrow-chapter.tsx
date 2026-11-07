@@ -6,20 +6,22 @@ import { MacbrowTour, type TourTab } from "./macbrow-tour";
 
 // The two closed-notch strips are tiny and shown at their exact size, so they skip the optimizer (it rounds their aspect ratio).
 // Real renders of the app, 2x PNGs in public/apps/macbrow/. Dimensions are half the pixel size.
-const TOUR_IMAGES: Record<string, { src: string; width: number; height: number }> = {
+const TOUR_IMAGES = {
   clipboard: { src: "/apps/macbrow/clipboard.png", width: 667, height: 223 },
   focus: { src: "/apps/macbrow/focus.png", width: 667, height: 223 },
   assistant: { src: "/apps/macbrow/assistant.png", width: 667, height: 245 },
   weather: { src: "/apps/macbrow/weather.png", width: 667, height: 586 },
   checkmate: { src: "/apps/macbrow/checkmate.png", width: 667, height: 534 },
-};
+} as const satisfies Record<string, { src: string; width: number; height: number }>;
+
+// The images decide which tabs exist and in which order; the labels and alt texts come from the messages under Home.macbrow.tour.tabs.<id>.
+const TOUR_IDS = Object.keys(TOUR_IMAGES) as (keyof typeof TOUR_IMAGES)[];
 
 /** Macbrow: the top edge of the section is the Mac's top edge, and the open notch hangs from it. */
 export async function MacbrowChapter({ app }: { app: AppEntry }) {
   const t = await getTranslations("Home.macbrow");
   const tApps = await getTranslations("Apps.macbrow");
-  const tabIds = Object.keys(t.raw("tour.tabs") as Record<string, unknown>);
-  const tabs: TourTab[] = tabIds.map((id) => ({
+  const tabs: TourTab[] = TOUR_IDS.map((id) => ({
     id,
     label: t(`tour.tabs.${id}.label`),
     hint: t(`tour.tabs.${id}.hint`),
@@ -47,7 +49,7 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
             <p className="lede">{t("lede")}</p>
             <div className="offer">
               <a className="btn btn-accent" href={app.href}>
-                {t("ctaTrial")} <span className="arrow" aria-hidden="true">&darr;</span>
+                {t("ctaTrial", { days: app.pro?.trialDays ?? 14 })} <span className="arrow" aria-hidden="true">&darr;</span>
               </a>
               <div className="price">
                 <small>{t("priceLabel")}</small>

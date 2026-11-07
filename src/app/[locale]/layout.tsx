@@ -13,7 +13,7 @@ import "../globals.css";
 const bricolage = localFont({
   src: "../../fonts/bricolage-grotesque-latin-subset.woff2",
   variable: "--font-bricolage",
-  weight: "200 800",
+  weight: "400 800",
   style: "normal",
   display: "swap",
   declarations: [{ prop: "font-stretch", value: "75% 100%" }],

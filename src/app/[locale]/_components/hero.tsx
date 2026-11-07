@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { APPS } from "./apps";
+import { APPS, OTHER_APPS } from "./apps";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -24,7 +24,7 @@ export async function Hero() {
         ))}
       </ul>
       <a className="link-arrow more-link" href="#more">
-        {t("moreLink")} <span aria-hidden="true">&darr;</span>
+        {t("moreLink", { count: OTHER_APPS.length })} <span aria-hidden="true">&darr;</span>
       </a>
     </section>
   );

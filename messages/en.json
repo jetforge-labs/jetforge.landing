@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Jetforge Labs | Small apps for less friction in your day",
-    "description": "Dilo for when you'd rather talk than type, Macbrow for your notch, Checkmate for the things you need to remember. Small apps for your Mac.",
+    "description": "Small apps for less friction: Dilo for when you'd rather talk than type, Macbrow for your notch, Checkmate for the things you need to remember.",
     "keywords": "Mac apps, macOS apps, Dilo, Macbrow, Checkmate, LimitBar, dictation for Mac, notch app for Mac, MacBook notch, task manager for Mac, iPhone apps, task manager for iPhone, to do list app, menu bar app, custom software, software studio, Jetforge Labs",
     "ogAlt": "Jetforge Labs. Small apps for less friction in your day: Dilo, Macbrow and Checkmate."
   },
@@ -20,7 +20,7 @@
     "line2": "with less friction.",
     "sub": "Small apps for the things that eat your time: typing what you could say, hunting for what you just had, remembering everything else.",
     "appsLabel": "Featured apps",
-    "moreLink": "Four more apps below"
+    "moreLink": "{count, plural, =1 {One more app below} =2 {Two more apps below} =3 {Three more apps below} =4 {Four more apps below} =5 {Five more apps below} =6 {Six more apps below} other {# more apps below}}"
   },
   "Apps": {
     "dilo": {
@@ -30,7 +30,7 @@
     "macbrow": {
       "name": "Macbrow",
       "line": "Turns the notch into a shelf for your files, a cleaner for your screenshots, a meeting alert, a music player and a calendar.",
-      "proNote": "Try everything free for 14 days. After that Shelf, music, battery and clock stay free. Pro is €7.99, one payment."
+      "proNote": "Try everything free for {days} days. After that Shelf, music, battery and clock stay free. Pro is €7.99, one payment."
     },
     "checkmate": {
       "name": "Checkmate",
@@ -125,9 +125,9 @@
       "phrase": "I just need it for a minute.",
       "meta": "macOS 15+ · made for MacBooks with a notch",
       "lede": "Macbrow turns the notch into a shelf for files, a cleaner for your screenshots, a meeting alert, a music player and a calendar. Drag something onto the notch and it opens to catch it.",
-      "ctaTrial": "Try everything free for 14 days",
+      "ctaTrial": "Try everything free for {days} days",
       "priceLabel": "Pro, one payment",
-    "buyPro": "Buy Pro",
+      "buyPro": "Buy Pro",
       "price": "€7.99",
       "fine": "No card, no account. No subscription, up to 3 Macs.",
       "panelAlt": "Macbrow open under the notch: a song playing with progress, playback and volume controls, and the November calendar with the Weekly sync happening now and a Stand-up next.",
@@ -273,7 +273,7 @@
       }
     },
     "more": {
-      "title": "Four more, one job each",
+      "title": "{count, plural, =1 {One more, one job} =2 {Two more, one job each} =3 {Three more, one job each} =4 {Four more, one job each} =5 {Five more, one job each} =6 {Six more, one job each} other {# more, one job each}}",
       "text": "Free downloads, notarized by Apple, and they update themselves.",
       "all": "All apps and downloads",
       "download": "Download",
@@ -299,7 +299,7 @@
     "forApp": "({name})",
     "iosBadgeLabel": "Download {name} on the App Store",
     "buyPro": "Buy Pro",
-    "trial": "Try free for 14 days"
+    "trial": "Try free for {days} days"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",

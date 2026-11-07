@@ -12,7 +12,7 @@ export async function MoreApps() {
     <section className="wrap more" id="more" aria-labelledby="more-title">
       <div className="more-head">
         <div>
-          <h2 id="more-title">{t("title")}</h2>
+          <h2 id="more-title">{t("title", { count: OTHER_APPS.length })}</h2>
           <p>{t("text")}</p>
         </div>
         <Link className="link-arrow" href="/apps">
