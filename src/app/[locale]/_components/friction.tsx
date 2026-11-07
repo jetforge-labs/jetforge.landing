@@ -4,11 +4,11 @@ export async function Friction() {
   const t = await getTranslations("Friction");
 
   return (
-    <section className="wrap friction tex" id="friction" aria-labelledby="friction-title">
+    <section className="wrap friction" id="friction" aria-labelledby="friction-title">
       <div className="friction-top">
         <h2 id="friction-title">{t("title")}</h2>
         <p>{t("text")}</p>
-        <a className="btn btn-ink" href="#contact" data-reason="suggest">{t("suggest")}</a>
+        <a className="btn btn-ink btn-spark" href="#contact" data-reason="suggest">{t("suggest")}</a>
       </div>
       <div className="custom" id="custom">
         <div>
