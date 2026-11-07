@@ -8,7 +8,7 @@ Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported 
 
 Every app is a download for the Mac, notarized by Apple, and updates itself. Most are free; Dilo and Macbrow have a paid Pro. Download page: https://jetforgelabs.com/apps
 
-- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free, Pro is a paid upgrade (49 EUR, one payment). https://getdilo.co
+- **Dilo:** writes what you say in any app, and turns calls into notes. Everything runs on your Mac. macOS 26+. 14-day free trial of everything in Pro, no card and no account; after the trial Basic stays free: dictation with fn in 19 languages, dictionary, history, voice notes, Markdown and text export, and reading and searching everything you recorded. Pro is 49 EUR, one payment, up to 3 Macs, lifetime updates (AI cleanup, meetings with summary and voices, Ask your Vault, built-in local model). Learn more and download: https://getdilo.co
 - **Macbrow:** turns the notch into a shelf for your files, a cleaner for your screenshots, a meeting alert, a music player and a calendar. macOS 15+, made for MacBooks with a notch. 14-day free trial of everything, no card and no account; after the trial the Shelf, music, battery, clock and basic appearance stay free. Pro is 7.99 EUR, one payment, no subscription, up to 3 Macs. Buy Pro: https://jetforgelabs.gumroad.com/l/macbrow
 - **Checkmate:** a task list for your Mac and iPhone, synced through your own iCloud. No account, no sign-up, free. macOS 15+, iOS 18+. iPhone: https://apps.apple.com/app/id6828836039
 - **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.

@@ -25,7 +25,8 @@
   "Apps": {
     "dilo": {
       "name": "Dilo",
-      "line": "Dilo writes what you say in any app, and turns calls into notes. On your Mac."
+      "line": "Dilo writes what you say in any app, and turns calls into notes. On your Mac.",
+      "proNote": "Try everything free for {days} days. After that dictation, your history and voice notes stay free. Pro is €49, one payment."
     },
     "macbrow": {
       "name": "Macbrow",
@@ -56,62 +57,77 @@
   "Home": {
     "dilo": {
       "phrase": "I’d rather talk than type.",
-      "lede": "Dilo writes what you say in any app, without the ums. And it turns calls, talks and voice notes into notes you can ask questions to. On your Mac, offline.",
-      "meta": "macOS 26+ · English and Spanish",
+      "lede": "Dilo writes what you say in any app. And it turns calls, talks and voice notes into notes you can search and ask. On your Mac, offline.",
+      "meta": "macOS 26+ · 19 languages",
       "shotLabel": "Dilo dictating into an email: it heard ‘um, let’s meet Tuesday, no, Wednesday at ten and, well, bring the revised budget’, crossed out the fillers and the correction, and pasted the clean sentence.",
-      "ctaTry": "Try Dilo free",
-      "ctaPro": "Get Pro",
+      "ctaMore": "Learn more at getdilo.co",
+      "trialLine": "Try everything free for {days} days.",
+      "priceLabel": "Pro, one payment",
+      "price": "€49",
+      "ctaDownload": "Download, free for {days} days",
+      "fine": "No card, no account. Then Basic stays free. No subscription, up to 3 Macs.",
+      "afterNote": "After the trial, AI cleanup, meetings and Ask need Pro. Dictation, history, notes and export keep working.",
       "basic": {
         "title": "Basic",
         "price": "Free",
-        "note": "No account, no card",
+        "note": "After the trial. Nothing you recorded is deleted.",
         "rows": {
           "dictate": {
             "k": "<kbd>fn</kbd><kbd>fn</kbd>",
             "title": "Dictate into any app",
-            "text": "Double tap, talk, tap again. The text lands at your cursor."
+            "text": "Double tap, talk, tap again. 19 languages, right at your cursor."
+          },
+          "dictionary": {
+            "k": "Dictionary",
+            "title": "Your names, spelled right",
+            "text": "Pin names, brands and terms with their capitals and accents."
           },
           "repaste": {
             "k": "<kbd>⌃</kbd><kbd>⌘</kbd><kbd>V</kbd>",
-            "title": "Paste the last one again",
-            "text": "From any app. <kbd>esc</kbd> cancels without pasting."
-          },
-          "offline": {
-            "k": "Offline",
-            "title": "Runs on your Mac",
-            "text": "No internet needed, no per-use fees."
-          }
-        }
-      },
-      "pro": {
-        "title": "Pro",
-        "price": "49 € once",
-        "note": "Every future version included",
-        "rows": {
-          "cleanup": {
-            "k": "Cleanup",
-            "title": "Fillers out, your voice intact",
-            "text": "No ums or “Tuesday, no”. Your style isn’t rewritten."
-          },
-          "meetings": {
-            "k": "<kbd>fn</kbd>+<kbd>M</kbd>",
-            "title": "Meetings without bots",
-            "text": "Zoom, Meet, Teams, FaceTime. Transcript, summary, decisions, tasks."
-          },
-          "audio": {
-            "k": "<kbd>fn</kbd>+<kbd>M</kbd>",
-            "title": "Any audio your Mac plays",
-            "text": "A talk, a podcast, a lecture, in writing with a summary."
+            "title": "History and paste again",
+            "text": "Every dictation is kept. <kbd>esc</kbd> cancels without pasting."
           },
           "notes": {
             "k": "<kbd>fn</kbd>+<kbd>R</kbd>",
             "title": "Voice notes",
             "text": "Stop recording and the text is already there."
           },
+          "export": {
+            "k": "Export",
+            "title": "Take it with you",
+            "text": "Save any note as Markdown or plain text."
+          },
+          "search": {
+            "k": "Search",
+            "title": "Read and search everything",
+            "text": "Meetings, notes and summaries from your trial stay yours."
+          }
+        }
+      },
+      "pro": {
+        "title": "Pro",
+        "price": "€49 once",
+        "note": "3 Macs, every future version",
+        "rows": {
+          "cleanup": {
+            "k": "Cleanup",
+            "title": "Fillers out, your voice intact",
+            "text": "AI removes the ums and “Tuesday, no”. Your style isn’t rewritten."
+          },
+          "meetings": {
+            "k": "<kbd>fn</kbd>+<kbd>M</kbd>",
+            "title": "Meetings without bots",
+            "text": "Zoom, Meet, Teams, FaceTime or any audio your Mac plays. Transcript, summary, decisions, tasks, and who said what."
+          },
           "ask": {
             "k": "<kbd>fn</kbd>+<kbd>L</kbd>",
-            "title": "Ask your meetings",
-            "text": "Answers cite the meeting, the date and the minute."
+            "title": "Ask your Vault",
+            "text": "Ask about anything you recorded. Answers cite the meeting, the date and the minute."
+          },
+          "local": {
+            "k": "Local",
+            "title": "A model that lives on your Mac",
+            "text": "No account, no API keys, no per-use fees."
           },
           "commands": {
             "k": "<kbd>fn</kbd>+<kbd>1…0</kbd>",
@@ -299,7 +315,8 @@
     "forApp": "({name})",
     "iosBadgeLabel": "Download {name} on the App Store",
     "buyPro": "Buy Pro",
-    "trial": "Try free for {days} days"
+    "trial": "Try free for {days} days",
+    "learnMore": "Learn more"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",
