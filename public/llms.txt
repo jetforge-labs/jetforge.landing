@@ -1,18 +1,18 @@
 # Jetforge Labs
 
-> Jetforge Labs is a small studio that makes apps for the little things that eat your time: remembering, typing, checking. It also builds a few custom tools for others.
+> Jetforge Labs is a small studio that makes apps for the things that eat your time: typing what you could say, hunting for what you just had, remembering everything else. It also builds a few custom tools for others.
 
 Jetforge Labs OÜ is a small studio. Everything is built, shipped and supported by the same people.
 
 ## Apps
 
-All apps are free downloads for the Mac, notarized by Apple, and update themselves. Download page: https://jetforgelabs.com/apps
+Every app is a download for the Mac, notarized by Apple, and updates itself. Most are free; Dilo and Macbrow have a paid Pro. Download page: https://jetforgelabs.com/apps
 
+- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free, Pro is a paid upgrade (35 EUR, one payment). https://getdilo.co
+- **Macbrow:** turns the notch into a shelf for your files, a cleaner for your screenshots, a meeting alert, a music player and a calendar. macOS 15+, made for MacBooks with a notch. 14-day free trial of everything, no card and no account; after the trial the Shelf, music, battery, clock and basic appearance stay free. Pro is 7.99 EUR, one payment, no subscription, up to 3 Macs. Buy Pro: https://jetforgelabs.gumroad.com/l/macbrow
 - **Checkmate:** a task list for your Mac and iPhone, synced through your own iCloud. No account, no sign-up, free. macOS 15+, iOS 18+. iPhone: https://apps.apple.com/app/id6828836039
-- **Dilo:** writes what you say in any app, and turns calls into notes. On your Mac. macOS 26+, the basic version is free, Pro is a paid upgrade. https://getdilo.co
 - **LimitBar:** shows your Claude Code and Codex limits in the menu bar. For developers. macOS 14+, free.
 - **Berth:** a Dock for your Mac that stays out of the way, with live window previews and a shelf. macOS 15+, free.
-- **Macbrow:** turns the notch into a shelf for your files, what's playing and your next event. macOS 15+, free.
 - **DeepSpy:** finds what's eating your disk and cleans it up: a space map, junk finder and app uninstaller. macOS 15+, free.
 - **Tide:** a modern terminal for your Mac, built native. macOS 15+, free.
 

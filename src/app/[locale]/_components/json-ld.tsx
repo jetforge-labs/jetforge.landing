@@ -32,9 +32,14 @@ export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEnt
               applicationCategory: app.category,
               operatingSystem: app.ios ? "macOS, iOS" : "macOS",
               operatingSystemVersion: `${release?.minMacOS ?? app.minMacOS}+`,
-              url: app.pro ? app.pro.url : `https://jetforgelabs.com/apps#${app.slug}`,
+              url: app.siteUrl ?? `https://jetforgelabs.com/apps#${app.slug}`,
               image: `https://jetforgelabs.com${app.icon}`,
-              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              offers: app.pro?.price
+                ? [
+                    { "@type": "Offer", price: "0", priceCurrency: app.pro.price.currency },
+                    { "@type": "Offer", price: app.pro.price.amount, priceCurrency: app.pro.price.currency, url: app.pro.url },
+                  ]
+                : { "@type": "Offer", price: "0", priceCurrency: "USD" },
               publisher: { "@type": "Organization", name: "Jetforge Labs" },
               ...(release && {
                 downloadUrl: app.ios

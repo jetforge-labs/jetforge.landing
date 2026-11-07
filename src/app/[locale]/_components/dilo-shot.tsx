@@ -1,12 +1,13 @@
 import Image from "next/image";
 
 // Recreation of Dilo dictating into a mail window (final state of the getdilo.co hero demo).
+// The text inside is the recreated app's own UI: decorative, hidden from assistive tech. The wrapper carries the label.
 export function DiloShot({ label }: { label: string }) {
   return (
     <div className="shot">
       <div className="dl" role="img" aria-label={label}>
         <div className="dl-bar" aria-hidden="true">
-          <div className="apps"><span>File</span><span>Edit</span><span>View</span><span>Message</span></div>
+          <div className="apps"><b>Mail</b><span>File</span><span>Edit</span><span>View</span><span>Message</span></div>
           <div className="st">
             <Image src="/apps/dilo-glyph.svg" alt="" width={20} height={20} />
             <span>Wed 28 Oct 10:42</span>
@@ -23,11 +24,9 @@ export function DiloShot({ label }: { label: string }) {
           </div>
         </div>
         <div className="hud" aria-hidden="true">
-          <div className="meta2">
-            <span className="wave"><i /><i /><i /><i /><i /></span>
-          </div>
+          <span className="wave"><i /><i /><i /><i /><i /></span>
           <div>
-            <span className="lbl">Cleaning up <span className="pro">Pro</span></span>
+            <span className="lbl">Cleaning up <span className="protag">Pro</span></span>
             <p className="raw">
               <s>um,</s> let&rsquo;s meet <s>Tuesday, no,</s> Wednesday at ten and, <s>well,</s> bring the revised budget
             </p>

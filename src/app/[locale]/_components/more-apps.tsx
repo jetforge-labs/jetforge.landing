@@ -1,29 +1,49 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { OTHER_APPS } from "./apps";
 
-/** Link to the /apps page, where every app can be downloaded. Shared by the hero pills and the MoreApps section. */
-export async function AllAppsButton() {
-  const t = await getTranslations("MoreApps");
-
-  return (
-    <Link className="btn btn-ink btn-store" href="/apps">
-      {t("cta")}
-      <span className="arrow" aria-hidden="true">&rarr;</span>
-    </Link>
-  );
-}
-
-/** Closes the chapter run: the page shows a few apps on purpose, /apps has all of them. */
+/** The apps without a chapter: one card each. The home page reads no feeds, so the macOS version is the fallback in apps.ts. */
 export async function MoreApps() {
-  const t = await getTranslations("MoreApps");
+  const t = await getTranslations("Home.more");
+  const tApps = await getTranslations("Apps");
 
   return (
-    <section className="wrap more" aria-labelledby="more-title">
-      <div>
-        <h2 id="more-title">{t("title")}</h2>
-        <p>{t("text")}</p>
+    <section className="wrap more" id="more" aria-labelledby="more-title">
+      <div className="more-head">
+        <div>
+          <h2 id="more-title">{t("title", { count: OTHER_APPS.length })}</h2>
+          <p>{t("text")}</p>
+        </div>
+        <Link className="link-arrow" href="/apps">
+          {t("all")} <span aria-hidden="true">&rarr;</span>
+        </Link>
       </div>
-      <AllAppsButton />
+      <ul className="cards">
+        {OTHER_APPS.map((app) => {
+          const name = tApps(`${app.slug}.name`);
+          return (
+            <li className="card" key={app.slug}>
+              <div className="card-head">
+                <Image src={app.icon} alt="" width={56} height={56} />
+                <div>
+                  <h3>{name}</h3>
+                  <ul className="card-chips">
+                    {app.category === "DeveloperApplication" && <li>{t("developers")}</li>}
+                    <li>{t("macos", { version: app.minMacOS })}</li>
+                  </ul>
+                </div>
+              </div>
+              <p>{tApps(`${app.slug}.line`)}</p>
+              <a className="link-arrow" href={app.href}>
+                {t("download")}
+                <span className="vh"> {name}</span>
+                <span aria-hidden="true">&darr;</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }

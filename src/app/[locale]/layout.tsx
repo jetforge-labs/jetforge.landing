@@ -9,11 +9,11 @@ import { routing } from "@/i18n/routing";
 import { JsonLd } from "./_components/json-ld";
 import "../globals.css";
 
-// Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%).
+// Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%); the subset keeps the full width range (regenerated from google/fonts ofl/bricolagegrotesque, wght 400-800, wdth 75-100).
 const bricolage = localFont({
   src: "../../fonts/bricolage-grotesque-latin-subset.woff2",
   variable: "--font-bricolage",
-  weight: "200 800",
+  weight: "400 800",
   style: "normal",
   display: "swap",
   declarations: [{ prop: "font-stretch", value: "75% 100%" }],
@@ -104,7 +104,7 @@ async function StructuredData({ locale }: { locale: string }) {
     url: "https://jetforgelabs.com",
     logo: "https://jetforgelabs.com/icon.png",
     description:
-      "Jetforge Labs is a small software studio. It makes apps (Checkmate, Dilo, LimitBar and more) and a few custom tools for others.",
+      "Jetforge Labs is a small software studio. It makes apps (Dilo, Macbrow, Checkmate and more) and a few custom tools for others.",
     foundingLocation: { "@type": "Place", name: "Estonia" },
     contactPoint: {
       "@type": "ContactPoint",

@@ -80,10 +80,11 @@ export default async function AppsPage({ params }: Props) {
                     </div>
                   </div>
                   <p className="app-card-line">{tApps(`${app.slug}.line`)}</p>
+                  {app.pro?.trialDays && <p className="app-card-note">{tApps(`${app.slug}.proNote`, { days: app.pro.trialDays })}</p>}
                   <div className="app-card-actions">
                     <div className="app-card-stores">
                       <a className="btn btn-ink btn-store" href={`/download/${app.slug}`}>
-                        {t("download")}
+                        {app.pro?.trialDays ? t("trial", { days: app.pro.trialDays }) : t("download")}
                         <span className="vh"> {t("forApp", { name })}</span>
                         <span className="arrow" aria-hidden="true">&darr;</span>
                       </a>
@@ -96,7 +97,8 @@ export default async function AppsPage({ params }: Props) {
                     </div>
                     {app.pro && (
                       <a className="text-link" href={app.pro.url}>
-                        {t("proAvailable")}
+                        {app.pro.trialDays ? t("buyPro") : t("proAvailable")}
+                        {app.pro.trialDays && <span className="vh"> {t("forApp", { name })}</span>}
                       </a>
                     )}
                     {app.featured && (

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Jetforge Labs",
     short_name: "Jetforge Labs",
     description:
-      "Small apps for less friction in your day: Checkmate, Dilo and LimitBar.",
+      "Small apps for less friction in your day: Dilo, Macbrow and Checkmate.",
     start_url: "/",
     display: "standalone",
     background_color: "#FFFFFF",
