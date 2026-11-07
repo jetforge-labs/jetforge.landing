@@ -36,7 +36,7 @@ export async function DiloChapter({ app }: { app: AppEntry }) {
           <DiloShot label={t("shotLabel")} />
         </div>
 
-        <div className="plans plans-even">
+        <div className="plans">
           <Plan ns="Home.dilo.basic" variant="basic" />
           <Plan ns="Home.dilo.pro" variant="pro" />
         </div>

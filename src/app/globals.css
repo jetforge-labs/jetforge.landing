@@ -18,8 +18,6 @@
   --spark-ink:#2D3122;    /* 10.9:1 on --spark */
   --night:#111214;
   --night2:#1A1C20;
-  --input-bg:#FFFFFF;
-  --placeholder:#6B6F78;
   --ink-hover:#2A2C31;
 
   /* Spacing on an 8pt grid */
@@ -104,7 +102,7 @@ a{color:inherit}
 .btn-light{background:var(--ch-ink);color:var(--frame-ink);padding-right:10px}
 .btn-light .arrow{background:rgba(17,18,20,.08)}
 @media (hover:hover) and (pointer:fine){
-  .btn-ink:hover{background:#2A2C31}
+  .btn-ink:hover{background:var(--ink-hover)}
   .btn-spark:hover{background:var(--spark-hover)}
   .btn-accent:hover{background:color-mix(in oklab,var(--app-accent) 86%,#fff)}
   .btn-deep:hover{background:color-mix(in oklab,var(--app-deep) 86%,#000)}
@@ -143,7 +141,8 @@ a{color:inherit}
   text-decoration:none;font-weight:700;font-size:1.375rem;letter-spacing:-.01em;box-shadow:inset 0 0 0 1px transparent;
   transition:box-shadow 200ms ease,transform 260ms var(--ease-out)}
 .pill img{width:44px;height:44px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.35))}
-@media (hover:hover) and (pointer:fine){.pill:hover{box-shadow:inset 0 0 0 1.5px var(--app-accent);transform:translateY(-3px)}}
+@media (hover:hover) and (pointer:fine){.pill:hover{box-shadow:inset 0 0 0 1.5px var(--app-accent)}}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.pill:hover{transform:translateY(-3px)}}
 .pill:focus-visible{outline-color:var(--frame-ink)}
 .hero .more-link{grid-column:1 / -1;justify-self:end;margin-top:var(--s1);color:var(--frame-ink2);font-size:.9375rem}
 
@@ -230,7 +229,6 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .mb-intro > div:last-child{padding-top:var(--s1)}
 .ch-macbrow .ident{margin-top:var(--s4)}
 .ch-macbrow .lede{max-width:38ch}
-.ch-macbrow .offer{margin-top:var(--s4)}
 .spot{margin-top:var(--s7);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s6);padding-top:var(--s5);border-top:1px solid var(--ch-line)}
 .spot-k{display:flex;align-items:center;gap:var(--s1);font:650 .875rem/1 var(--font);color:var(--app-accent);margin:0}
 .spot h3{margin-top:var(--s2);font-size:var(--t-h3);line-height:1.1;font-weight:700;letter-spacing:-.015em}
@@ -400,7 +398,8 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .card-chips li + li::before{content:"·";margin-right:8px;color:var(--frame-ink3)}
 .card > p{color:var(--frame-ink2);font-size:1rem;line-height:1.5;flex:1;max-width:36ch}
 .card .link-arrow{align-self:flex-start;min-height:40px;padding:0 16px;border-radius:999px;font-size:.9375rem;box-shadow:inset 0 0 0 1px var(--field-line);transition:box-shadow 160ms ease,background-color 160ms ease}
-@media (hover:hover) and (pointer:fine){.card .link-arrow:hover{text-decoration:none;background:var(--spark);box-shadow:inset 0 0 0 1px var(--frame-ink)}.card .link-arrow:hover > [aria-hidden]{transform:translateY(2px)}}
+@media (hover:hover) and (pointer:fine){.card .link-arrow:hover{text-decoration:none;background:var(--spark);box-shadow:inset 0 0 0 1px var(--frame-ink)}}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.card .link-arrow:hover > [aria-hidden]{transform:translateY(2px)}}
 
 /* ============ Friction + custom ============ */
 .friction{padding-block:var(--s7)}
@@ -415,7 +414,7 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .custom p{margin-top:20px;max-width:46ch;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:var(--spark-ink)}
 .custom .btn-light{background:var(--frame-ink);color:#fff}
 .custom .btn-light .arrow{background:var(--spark);color:var(--frame-ink)}
-@media (hover:hover) and (pointer:fine){.custom .btn-light:hover{background:#2A2C31}}
+@media (hover:hover) and (pointer:fine){.custom .btn-light:hover{background:var(--ink-hover)}}
 .custom :focus-visible{outline-color:var(--frame-ink)}
 
 /* ============ About ============ */
@@ -424,7 +423,7 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .about h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--spark);box-shadow:inset 0 0 0 1.5px var(--frame-ink)}
 .about p{font-size:clamp(1.5rem,2.8vw,2.375rem);line-height:1.22;letter-spacing:-.015em;font-weight:520;max-width:28ch}
 .about p.also{margin-top:var(--s3);font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.55;letter-spacing:0;font-weight:400;color:var(--frame-ink2);max-width:52ch}
-.also a{color:var(--frame-ink);font-weight:650;text-decoration:none;background:linear-gradient(var(--spark),var(--spark)) 0 100% / 100% .32em no-repeat;transition:background-size 220ms var(--ease-out)}
+.also a{color:var(--frame-ink);font-weight:650;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.22em;background:linear-gradient(var(--spark),var(--spark)) 0 100% / 100% .32em no-repeat;transition:background-size 220ms var(--ease-out)}
 @media (hover:hover){.also a:hover{background-size:100% 100%}}
 
 /* ============ Contact: the page ends on Jetforge's ink ============ */
@@ -535,7 +534,6 @@ button:disabled{opacity:.6;cursor:not-allowed}
   .mb-plans{margin-top:var(--s5)}
   .mb-intro .ident small{max-width:24ch}
   .plans-after{margin-top:var(--s4)}
-  .card{flex-direction:column}
 }
 @media (max-width:560px){
   .two{grid-template-columns:1fr}
@@ -562,7 +560,6 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .meta{display:flex;flex-wrap:wrap;gap:6px}
 .meta span{font:500 .75rem/1 var(--mono);letter-spacing:.02em;padding:6px 9px;border-radius:999px}
 /* Apple's App Store badge: official artwork, never recoloured or animated */
-.ios-badge{display:inline-block;border-radius:8px;line-height:0}
 .ios-badge img{height:44px;width:auto}
 .app-card .meta{margin-top:10px}
 .app-card .meta span{color:var(--frame-ink2);box-shadow:inset 0 0 0 1px var(--frame-line)}
@@ -579,6 +576,8 @@ button:disabled{opacity:.6;cursor:not-allowed}
   text-underline-offset:.22em;text-decoration-color:color-mix(in srgb,var(--frame-ink) 35%,transparent);transition:text-decoration-color 160ms ease}
 @media (hover:hover){.text-link:hover{text-decoration-color:var(--frame-ink)}}
 .apps-note{margin-top:32px;font-size:.9375rem;color:var(--frame-ink2);max-width:60ch}
+.btn-store{padding-right:10px}
+.btn-store .arrow{background:rgba(255,255,255,.14)}
 .apps-store{margin-top:4px}
 .apps-store .text-link{min-height:0;display:inline;gap:0}
 .apps-store .text-link{white-space:nowrap}
