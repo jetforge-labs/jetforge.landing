@@ -55,7 +55,7 @@ export default async function AppsPage({ params }: Props) {
       <AppsJsonLd apps={ALL_APPS} live />
       <SiteNav />
       <main id="main">
-        <div className="wrap page-head tex">
+        <div className="wrap page-head apps-head">
           <p className="eyebrow">{t("eyebrow")}</p>
           <h1>{t("title")}</h1>
           <p className="page-lead">{t("lead")}</p>
@@ -67,7 +67,7 @@ export default async function AppsPage({ params }: Props) {
               const release = releases[i];
               const name = tApps(`${app.slug}.name`);
               return (
-                <li className="app-card" id={app.slug} key={app.slug}>
+                <li className="app-card" id={app.slug} data-app={app.featured ? app.slug : undefined} key={app.slug}>
                   <div className="app-card-head">
                     <Image src={app.icon} alt="" width={72} height={72} />
                     <div>
@@ -75,7 +75,7 @@ export default async function AppsPage({ params }: Props) {
                       <p className="meta">
                         <span>{t("macos", { version: release?.minMacOS ?? app.minMacOS })}</span>
                         {app.ios && <span>{t("ios", { version: app.ios.minIOS })}</span>}
-                        {!app.pro && <span>{t("free")}</span>}
+                        {!app.pro && <span className="free">{t("free")}</span>}
                       </p>
                     </div>
                   </div>
@@ -109,7 +109,7 @@ export default async function AppsPage({ params }: Props) {
                       )
                     )}
                     {app.featured && (
-                      <Link className="text-link" href={`/#${app.slug}`}>
+                      <Link className="text-link see-more" href={`/#${app.slug}`}>
                         {t("more")}
                         <span className="vh"> {t("forApp", { name })}</span>
                       </Link>

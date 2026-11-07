@@ -548,42 +548,86 @@ button:disabled{opacity:.6;cursor:not-allowed}
 }
 
 /* ============ Apps page ============
-   Frame colours only: every card is the same, the icon carries each app's identity. */
-.page-head .page-lead{margin-top:20px;max-width:46ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--frame-ink2)}
-.apps-list{padding-bottom:clamp(72px,10vh,128px)}
-.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:20px}
-.app-card{scroll-margin-top:24px;display:flex;flex-direction:column;gap:20px;padding:clamp(20px,2.4vw,28px);border-radius:var(--r-frame);
-  box-shadow:inset 0 0 0 1.5px var(--frame-line);background:var(--frame-bg)}
+   Three featured apps in their chapter colour (same [data-app] tokens as the home), the other apps as a spec list. */
+.page-head.apps-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:var(--s6);align-items:end;padding-block:clamp(48px,9vh,104px) clamp(40px,6vh,64px)}
+.apps-head .eyebrow{grid-column:1 / -1;display:flex;align-items:center;gap:10px;margin-bottom:var(--s3);font:650 1rem/1.2 var(--font);letter-spacing:0;text-transform:none;color:var(--frame-ink)}
+.apps-head .eyebrow::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--spark);box-shadow:inset 0 0 0 1.5px var(--frame-ink)}
+.page-head.apps-head h1{grid-column:1;font-size:var(--t-display);font-weight:720;font-stretch:80%;font-variation-settings:"wdth" 80;letter-spacing:-.02em;line-height:.94}
+.apps-head .page-lead{grid-column:2;max-width:36ch;padding-bottom:.4em;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:var(--frame-ink2)}
+
+.apps-list{padding-bottom:clamp(72px,10vh,120px)}
+.app-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--s2)}
+.app-card{grid-column:span 3;scroll-margin-top:24px;display:flex;flex-direction:column;gap:var(--s2);padding-top:var(--s3);border-top:2px solid var(--frame-ink);margin-top:var(--s5)}
+.app-card[data-app]{grid-column:span 4;margin-top:0;position:relative;isolation:isolate;overflow:hidden;gap:20px;padding:clamp(22px,2.4vw,28px);border-top:0;border-radius:var(--r-frame);background:var(--app-bg);color:var(--ch-ink)}
+.app-card[data-app]::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(70% 55% at 100% 0%,color-mix(in srgb,var(--app-accent) 22%,transparent),transparent 70%)}
+.app-card[data-app] :focus-visible{outline-color:var(--app-accent)}
 .app-card-head{display:flex;align-items:center;gap:16px}
-.app-card-head img{width:72px;height:72px;flex:none;filter:drop-shadow(0 8px 14px rgba(17,18,20,.22))}
-.app-card h2{font-size:1.75rem;line-height:1.05;font-weight:700;letter-spacing:-.02em;font-variation-settings:"wdth" 92}
-.meta{display:flex;flex-wrap:wrap;gap:6px}
-.meta span{font:500 .75rem/1 var(--mono);letter-spacing:.02em;padding:6px 9px;border-radius:999px}
-/* Apple's App Store badge: official artwork, never recoloured or animated */
-.ios-badge img{height:44px;width:auto}
-.app-card .meta{margin-top:10px}
-.app-card .meta span{color:var(--frame-ink2);box-shadow:inset 0 0 0 1px var(--frame-line)}
-.app-card-line{color:var(--frame-ink2);max-width:36ch}
-.app-card-note{margin-top:-8px;font-size:.9375rem;line-height:1.5;color:var(--frame-ink2);max-width:40ch}
-.app-card-actions{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px}
-.app-card-actions .btn{--h:40px;gap:8px;padding-left:16px;padding-right:5px;font-size:.875rem}
-.app-card-actions .btn .arrow{width:30px;height:30px;font-size:.95rem}
-/* Store buttons share one height and left edge; text links go on their own row */
+.app-card-head img{width:56px;height:56px;flex:none;filter:drop-shadow(0 6px 12px rgba(17,18,20,.18))}
+.app-card[data-app] .app-card-head img{width:72px;height:72px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.4))}
+.app-card h2{font-size:1.5rem;line-height:1.05;font-weight:700;letter-spacing:-.01em}
+.app-card[data-app] h2{font-size:2rem;font-weight:720;font-stretch:80%;font-variation-settings:"wdth" 80;letter-spacing:-.015em}
+/* Meta: plain text separated by dots; "Free" is the one fact that changes a decision, so it gets the spark tag */
+.meta{margin-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font:500 var(--t-meta)/1.3 var(--font);font-variation-settings:"wdth" 90;color:var(--frame-ink3)}
+.meta span + span::before{content:"·";margin-right:8px}
+.meta .free{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:var(--spark);color:var(--frame-ink);font-weight:650}
+.meta span.free::before{content:none}
+.app-card[data-app] .meta{color:var(--ch-ink2)}
+.app-card-line{color:var(--frame-ink2);max-width:40ch;line-height:1.5}
+.app-card[data-app] .app-card-line{color:var(--ch-ink);font-size:1.0625rem}
+/* The Pro note is the price: a tinted panel, not a grey paragraph */
+.app-card-note{padding:12px 14px;border-radius:12px;font-size:.9375rem;line-height:1.5;color:var(--ch-ink2);
+  background:color-mix(in srgb,var(--app-accent) 9%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--app-accent) 26%,transparent)}
+.app-card-actions{margin-top:auto;padding-top:var(--s1);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .app-card-stores{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.app-card-actions .ios-badge{margin-top:0}
-.app-card-actions .ios-badge img{height:40px}
-.text-link{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;
-  text-underline-offset:.22em;text-decoration-color:color-mix(in srgb,var(--frame-ink) 35%,transparent);transition:text-decoration-color 160ms ease}
-@media (hover:hover){.text-link:hover{text-decoration-color:var(--frame-ink)}}
-.apps-note{margin-top:32px;font-size:.9375rem;color:var(--frame-ink2);max-width:60ch}
-.btn-store{padding-right:10px}
-.btn-store .arrow{background:rgba(255,255,255,.14)}
-.apps-store{margin-top:4px}
-.apps-store .text-link{min-height:0;display:inline;gap:0}
-.apps-store .text-link{white-space:nowrap}
-.arrow-ne{margin-left:.25em;text-decoration:none;display:inline-block}
-@media (max-width:560px){.app-card-actions .btn{width:100%;justify-content:space-between}
-  .app-card-stores:has(.ios-badge) .btn{width:auto}}
+.app-card-actions .btn{--h:44px;gap:10px;padding-left:18px;padding-right:5px;font-size:.9375rem}
+.app-card-actions .btn .arrow{width:34px;height:34px;background:var(--spark);color:var(--frame-ink)}
+.app-card[data-app] .btn-store{background:var(--app-accent);color:var(--app-on)}
+.app-card[data-app] .btn-store .arrow{background:color-mix(in srgb,var(--app-on) 14%,transparent);color:inherit}
+@media (hover:hover) and (pointer:fine){.app-card[data-app] .btn-store:hover{background:color-mix(in oklab,var(--app-accent) 86%,#fff)}}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.app-card-actions .btn:hover .arrow{transform:translateY(2px)}}
+/* Apple's App Store badge: official artwork, never recoloured or animated */
+.app-card-actions .ios-badge img{height:44px;width:auto}
+/* Secondary actions: Buy Pro / Learn more as an outline pill (money and the app's own site), "See it in action" as a quiet link */
+.text-link{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;
+  text-underline-offset:.25em;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);transition:text-decoration-color 160ms ease,box-shadow 160ms ease,background-color 160ms ease}
+@media (hover:hover){.text-link:hover{text-decoration-color:currentColor}}
+.app-card-actions > .text-link:first-of-type:not(.see-more){padding:0 18px;border-radius:999px;text-decoration:none;box-shadow:inset 0 0 0 1px var(--ch-line-strong)}
+@media (hover:hover) and (pointer:fine){.app-card-actions > .text-link:first-of-type:not(.see-more):hover{background:rgba(243,245,246,.06);box-shadow:inset 0 0 0 1.5px var(--app-accent)}}
+.app-card-actions > .see-more{margin-left:6px}
+.app-card-actions > .see-more::after{content:"\2192";margin-left:6px;text-decoration:none;display:inline-block;transition:transform 200ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.app-card-actions > .see-more:hover::after{transform:translateX(3px)}}
+
+/* Notes: a closing band with a hairline, the Gumroad link underlined in spark */
+.apps-note{font-size:.9375rem;color:var(--frame-ink2);max-width:62ch}
+.apps-note:not(.apps-store){margin-top:var(--s6);padding-top:var(--s3);border-top:1px solid var(--frame-line);max-width:none}
+.apps-store{margin-top:6px}
+.apps-store .text-link{min-height:0;display:inline;font-size:inherit;color:var(--frame-ink);text-decoration:none;white-space:nowrap;
+  background:linear-gradient(var(--spark),var(--spark)) 0 100% / 100% .32em no-repeat;transition:background-size 220ms var(--ease-out)}
+@media (hover:hover){.apps-store .text-link:hover{background-size:100% 100%}}
+.arrow-ne{margin-left:.25em;display:inline-block}
+
+@media (max-width:1100px){
+  .app-card[data-app]{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--s5);row-gap:var(--s2);align-items:start}
+  .app-card[data-app] > *{grid-column:1}
+  .app-card[data-app] .app-card-note,.app-card[data-app] .app-card-actions{grid-column:2}
+  .app-card[data-app] .app-card-note{grid-row:1}
+  .app-card[data-app] .app-card-actions{grid-row:2 / span 2;margin-top:0;padding-top:0}
+  .app-card[data-app]:not(:has(.app-card-note)) .app-card-actions{grid-row:1 / span 2}
+  .app-card:not([data-app]){grid-column:span 6}
+}
+@media (max-width:960px){
+  .apps-head{grid-template-columns:minmax(0,1fr)}
+  .apps-head .page-lead{grid-column:1;margin-top:var(--s3)}
+}
+@media (max-width:760px){
+  .app-card[data-app]{display:flex}
+  .app-card:not([data-app]){grid-column:span 12;margin-top:var(--s4)}
+  .app-card:not([data-app]) + .app-card:not([data-app]){margin-top:var(--s3)}
+}
+@media (max-width:560px){
+  .app-card-actions .btn{width:100%;justify-content:space-between}
+  .app-card-stores:has(.ios-badge) .btn{width:auto}
+}
 
 
 /* ============ Legal pages (privacy) ============
