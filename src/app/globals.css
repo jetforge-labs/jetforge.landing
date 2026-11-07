@@ -216,6 +216,7 @@ kbd{font:500 .82em/1 var(--mono);display:inline-grid;place-items:center;min-widt
 .offer .price{display:flex;flex-direction:column;gap:4px}
 .offer .price small{font:500 .75rem/1 var(--mono);color:var(--ch-ink3)}
 .offer .price b{font-size:1.5rem;line-height:1;font-weight:700;letter-spacing:-.01em}
+.offer .price .link-arrow{padding:6px 0 0;font-size:.875rem;color:var(--ch-ink2)}
 .offer + .fine{margin-top:var(--s2)}
 /* Two headline features, set larger than the plan rows */
 .spot{margin-top:var(--s7);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s6);padding-top:var(--s5);border-top:1px solid var(--ch-line)}
@@ -505,6 +506,9 @@ textarea::placeholder{color:var(--placeholder)}
   .spot{margin-top:var(--s6);padding-top:var(--s4)}
   .mb-plans{margin-top:var(--s5);gap:var(--s4)}
   .mb-intro .ident small{max-width:22ch}
+}
+@media (max-width:420px){
+  .offer .btn{white-space:normal;height:auto;min-height:var(--h);padding-block:8px;line-height:1.2}
 }
 @media (max-width:560px){
   .two{grid-template-columns:1fr}

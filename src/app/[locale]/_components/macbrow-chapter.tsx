@@ -49,10 +49,15 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
               <a className="btn btn-accent" href={app.href}>
                 {t("ctaTrial")} <span className="arrow" aria-hidden="true">&darr;</span>
               </a>
-              <p className="price">
+              <div className="price">
                 <small>{t("priceLabel")}</small>
                 <b>{t("price")}</b>
-              </p>
+                {app.pro && (
+                  <a className="link-arrow" href={app.pro.url}>
+                    {t("buyPro")} <span aria-hidden="true">&rarr;</span>
+                  </a>
+                )}
+              </div>
             </div>
             <p className="fine">{t("fine")}</p>
           </div>

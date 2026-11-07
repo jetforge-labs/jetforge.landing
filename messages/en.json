@@ -18,7 +18,7 @@
   "Hero": {
     "line1": "Your day,",
     "line2": "with less friction.",
-    "sub": "Small Mac apps for the things that eat your time: typing what you could say, hunting for what you just had, remembering everything else.",
+    "sub": "Small apps for the things that eat your time: typing what you could say, hunting for what you just had, remembering everything else.",
     "appsLabel": "Featured apps",
     "moreLink": "Four more apps below"
   },
@@ -127,6 +127,7 @@
       "lede": "Macbrow turns the notch into a shelf for files, a cleaner for your screenshots, a meeting alert, a music player and a calendar. Drag something onto the notch and it opens to catch it.",
       "ctaTrial": "Try everything free for 14 days",
       "priceLabel": "Pro, one payment",
+    "buyPro": "Buy Pro",
       "price": "€7.99",
       "fine": "No card, no account. No subscription, up to 3 Macs.",
       "panelAlt": "Macbrow open under the notch: a song playing with progress, playback and volume controls, and the November calendar with the Weekly sync happening now and a Stand-up next.",

@@ -9,7 +9,7 @@ import { routing } from "@/i18n/routing";
 import { JsonLd } from "./_components/json-ld";
 import "../globals.css";
 
-// Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%).
+// Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%); the subset keeps the full width range (regenerated from google/fonts ofl/bricolagegrotesque, wght 400-800, wdth 75-100).
 const bricolage = localFont({
   src: "../../fonts/bricolage-grotesque-latin-subset.woff2",
   variable: "--font-bricolage",
