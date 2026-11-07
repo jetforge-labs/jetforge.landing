@@ -7,10 +7,10 @@ export async function Hero() {
   const tApps = await getTranslations("Apps");
 
   return (
-    <section className="wrap hero tex" aria-labelledby="hero-title">
+    <section className="wrap hero" aria-labelledby="hero-title">
       <h1 id="hero-title">
         {t("line1")}
-        <br /> {t("line2")}
+        <br /> <span className="mark">{t("line2")}</span>
       </h1>
       <p className="sub">{t("sub")}</p>
       <ul className="pills" aria-label={t("appsLabel")}>

@@ -15,7 +15,7 @@ export async function MoreApps() {
           <h2 id="more-title">{t("title", { count: OTHER_APPS.length })}</h2>
           <p>{t("text")}</p>
         </div>
-        <Link className="link-arrow" href="/apps">
+        <Link className="link-arrow pill-link" href="/apps">
           {t("all")} <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
