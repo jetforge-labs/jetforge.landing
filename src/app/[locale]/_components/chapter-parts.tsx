@@ -1,9 +1,6 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
-
-/** Rich-text tag for the key caps written as <kbd>…</kbd> inside messages. */
-export const richKbd = { kbd: (chunks: ReactNode) => <kbd>{chunks}</kbd> };
+import { siteHost, type AppEntry } from "./apps";
 
 /** The chapter's big quote: the opening mark hangs into the margin. */
 export function Phrase({ id, text }: { id: string; text: string }) {
@@ -28,27 +25,52 @@ export function Ident({ icon, name, meta }: { icon: string; name: string; meta: 
   );
 }
 
-/** One plan of a chapter: a header with the plan name and price, then its feature rows (in the order of the messages). */
-export async function Plan({ ns, variant }: { ns: string; variant: "basic" | "pro" }) {
+/**
+ * Exit actions of an app that has its own site, same in every such chapter: the filled one leaves for the app's site (↗, new domain),
+ * the outline one downloads the file (↓). The arrow says where each one goes. Messages under `ns`: ctaSite, ctaDownload, fine.
+ */
+export async function GoActions({ app, ns, name }: { app: AppEntry; ns: string; name: string }) {
   const t = await getTranslations(ns);
-  const ids = Object.keys(t.raw("rows") as Record<string, unknown>);
+  if (!app.siteUrl) return null;
+  const host = siteHost(app.siteUrl);
 
   return (
-    <div className={`plan-${variant}`}>
-      <div className="plan-head">
-        <h3>
-          {t("title")} <b>{t("price")}</b>
-        </h3>
-        <p>{t("note")}</p>
+    <>
+      <div className="go">
+        <a className="btn btn-accent" data-go="out" href={app.siteUrl} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="chapter" data-track-destination={host}>
+          {t("ctaSite", { domain: host })} <span className="arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <a className="btn btn-line" data-go="file" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
+          {t("ctaDownload")}
+          <span className="vh"> ({name})</span> <span className="arrow" aria-hidden="true">&darr;</span>
+        </a>
       </div>
-      <ul className="rows">
-        {ids.map((id) => (
-          <li key={id}>
-            <span className="k">{t.rich(`rows.${id}.k`, richKbd)}</span>
-            <div>
-              <h4>{t(`rows.${id}.title`)}</h4>
-              {t.has(`rows.${id}.text`) && <p>{t.rich(`rows.${id}.text`, richKbd)}</p>}
-            </div>
+      <p className="fine">{t("fine", { days: app.pro?.trialDays ?? 14 })}</p>
+    </>
+  );
+}
+
+/** Closes a chapter: the app's site as an index (one link per section, no figures). Messages under `ns`: signpost.{tagline,label,links.<key>}. */
+export async function Signpost({ app, ns }: { app: AppEntry; ns: string }) {
+  const t = await getTranslations(`${ns}.signpost`);
+  if (!app.siteUrl || !app.siteSections) return null;
+  const host = siteHost(app.siteUrl);
+
+  return (
+    <div className="signpost">
+      <p className="signpost-dest">
+        <Image src={app.icon} alt="" width={32} height={32} />
+        <span>
+          <b>{host}</b>
+          <small>{t("tagline")}</small>
+        </span>
+      </p>
+      <ul aria-label={t("label", { domain: host })}>
+        {app.siteSections.map((section) => (
+          <li key={section.key}>
+            <a data-go="out" href={`${app.siteUrl}/${section.hash}`} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="signpost" data-track-destination={host}>
+              {t(`links.${section.key}`)} <span className="ne" aria-hidden="true">&#8599;</span>
+            </a>
           </li>
         ))}
       </ul>

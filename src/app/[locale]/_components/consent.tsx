@@ -14,7 +14,7 @@ interface ConsentBannerProps {
 
 /**
  * Cookie banner plus the one delegated click listener behind the analytics events: any element with
- * data-track-event / data-track-product / data-track-location reports through `track`.
+ * data-track-event / data-track-product / data-track-location (and, on outbound links, data-track-destination) reports through `track`.
  */
 export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentBannerProps) {
   const [open, setOpen] = useState(false);
@@ -36,6 +36,7 @@ export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentB
       track(el.dataset.trackEvent!, {
         product: el.dataset.trackProduct,
         location: el.dataset.trackLocation,
+        destination: el.dataset.trackDestination,
       });
     };
     window.addEventListener(OPEN_EVENT, onOpen);

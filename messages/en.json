@@ -26,12 +26,12 @@
     "dilo": {
       "name": "Dilo",
       "line": "Dilo writes what you say in any app, and turns calls into notes. On your Mac.",
-      "proNote": "Try everything free for {days} days. After that dictation, your history and voice notes stay free. Pro is €49, one payment."
+      "proNote": "Free for {days} days, no card. After that dictation, your history and voice notes stay free."
     },
     "macbrow": {
       "name": "Macbrow",
       "line": "Turns the notch into a shelf for your files, a cleaner for your screenshots, a meeting alert, a music player and a calendar.",
-      "proNote": "Try everything free for {days} days. After that Shelf, music, battery and clock stay free. Pro is €7.99, one payment."
+      "proNote": "Free for {days} days, no card. After that the Shelf, music, battery and clock stay free."
     },
     "checkmate": {
       "name": "Checkmate",
@@ -60,205 +60,44 @@
       "lede": "Dilo writes what you say in any app. And it turns calls, talks and voice notes into notes you can search and ask. On your Mac, offline.",
       "meta": "macOS 26+ · 19 languages",
       "shotLabel": "Dilo dictating into an email: it heard ‘um, let’s meet Tuesday, no, Wednesday at ten and, well, bring the revised budget’, crossed out the fillers and the correction, and pasted the clean sentence.",
-      "ctaMore": "Learn more at getdilo.co",
-      "trialLine": "Try everything free for {days} days.",
-      "priceLabel": "Pro, one payment",
-      "price": "€49",
-      "ctaDownload": "Download, free for {days} days",
-      "fine": "No card, no account. Then Basic stays free. No subscription, up to 3 Macs.",
-      "afterNote": "After the trial, AI cleanup, meetings and Ask need Pro. Dictation, history, notes and export keep working.",
-      "basic": {
-        "title": "Basic",
-        "price": "Free",
-        "note": "After the trial. Nothing you recorded is deleted.",
-        "rows": {
-          "dictate": {
-            "k": "<kbd>fn</kbd><kbd>fn</kbd>",
-            "title": "Dictate into any app",
-            "text": "Double tap, talk, tap again. 19 languages, right at your cursor."
-          },
-          "dictionary": {
-            "k": "Dictionary",
-            "title": "Your names, spelled right",
-            "text": "Pin names, brands and terms with their capitals and accents."
-          },
-          "repaste": {
-            "k": "<kbd>⌃</kbd><kbd>⌘</kbd><kbd>V</kbd>",
-            "title": "History and paste again",
-            "text": "Every dictation is kept. <kbd>esc</kbd> cancels without pasting."
-          },
-          "notes": {
-            "k": "<kbd>fn</kbd>+<kbd>R</kbd>",
-            "title": "Voice notes",
-            "text": "Stop recording and the text is already there."
-          },
-          "export": {
-            "k": "Export",
-            "title": "Take it with you",
-            "text": "Save any note as Markdown or plain text."
-          },
-          "search": {
-            "k": "Search",
-            "title": "Read and search everything",
-            "text": "Meetings, notes and summaries from your trial stay yours."
-          }
-        }
-      },
-      "pro": {
-        "title": "Pro",
-        "price": "€49 once",
-        "note": "3 Macs, every future version",
-        "rows": {
-          "cleanup": {
-            "k": "Cleanup",
-            "title": "Fillers out, your voice intact",
-            "text": "AI removes the ums and “Tuesday, no”. Your style isn’t rewritten."
-          },
-          "meetings": {
-            "k": "<kbd>fn</kbd>+<kbd>M</kbd>",
-            "title": "Meetings without bots",
-            "text": "Zoom, Meet, Teams, FaceTime or any audio your Mac plays. Transcript, summary, decisions, tasks, and who said what."
-          },
-          "ask": {
-            "k": "<kbd>fn</kbd>+<kbd>L</kbd>",
-            "title": "Ask your Vault",
-            "text": "Ask about anything you recorded. Answers cite the meeting, the date and the minute."
-          },
-          "local": {
-            "k": "Local",
-            "title": "A model that lives on your Mac",
-            "text": "No account, no API keys, no per-use fees."
-          },
-          "commands": {
-            "k": "<kbd>fn</kbd>+<kbd>1…0</kbd>",
-            "title": "Ten commands of your own",
-            "text": "Turn a note into an email or a summary, one key each."
-          }
+      "fine": "Free for {days} days. No card, no account.",
+      "ctaSite": "See Dilo at {domain}",
+      "ctaDownload": "Download free",
+      "signpost": {
+        "tagline": "Dilo’s own site, in English and Spanish",
+        "label": "More about Dilo at {domain}",
+        "links": {
+          "dictation": "Dictation",
+          "meetings": "Meetings and notes",
+          "pricing": "Pricing and Pro"
         }
       }
     },
     "macbrow": {
       "phrase": "I just need it for a minute.",
       "meta": "macOS 15+ · made for MacBooks with a notch",
-      "lede": "Macbrow turns the notch into a shelf for files, a cleaner for your screenshots, a meeting alert, a music player and a calendar. Drag something onto the notch and it opens to catch it.",
-      "ctaTrial": "Try everything free for {days} days",
-      "priceLabel": "Pro, one payment",
-      "buyPro": "Buy Pro",
-      "price": "€7.99",
-      "fine": "No card, no account. No subscription, up to 3 Macs.",
+      "lede": "Macbrow turns the notch into a shelf for your files, a cleaner for your screenshots and a heads-up before every meeting. Drag something onto the notch and it opens to catch it.",
+      "ctaSite": "See Macbrow at {domain}",
+      "ctaDownload": "Download free",
+      "fine": "Free for {days} days. No card, no account.",
       "panelAlt": "Macbrow open under the notch: a song playing with progress, playback and volume controls, and the November calendar with the Weekly sync happening now and a Stand-up next.",
-      "proTag": "Pro",
       "spot": {
-        "screenshots": {
-          "k": "Screenshots",
+        "shelf": {
+          "k": "The Shelf",
           "title": "A Desktop that stays clean",
-          "text": "New screenshots land on the Shelf with a countdown and go to the Trash on their own if you never use them. Drag, copy, share or pin one to keep it.",
-          "meta": "Keep for 24 h, 3 days or 7 days · “Put Back” restores an expired one",
+          "text": "Park files, links, text and images on the notch. They survive restarts; drag them out, share or AirDrop them. New screenshots land there too, with a countdown, and go to the Trash if you never use them.",
+          "meta": "The Shelf stays free after the trial. Screenshot cleanup and meeting alerts come with Pro.",
           "alt": "Macbrow’s Shelf tab holding 8 items. Visible: three screenshots, two with an expiry badge (20 h and 3 h), a banner image, an invoice PDF, a folder named Brand assets and a text snippet cut off at the edge."
-        },
-        "meetings": {
-          "k": "Meetings",
-          "title": "A heads-up before every meeting",
-          "text": "Shortly before an event, the closed notch expands with the time left in your calendar’s colour. Click for the details and join in one click.",
-          "meta": "Join on Google Meet, Zoom, Teams and Webex · 1 to 15 minutes ahead",
-          "alt": "The closed notch stretched into a meeting reminder: a dot in the calendar’s colour on the left and ‘in 1 min’ on the right.",
-          "caption": "Closed notch, one minute before"
         }
       },
-      "free": {
-        "title": "Free",
-        "price": "after the trial",
-        "note": "Nothing is deleted",
-        "rows": {
-          "shelf": {
-            "k": "Shelf",
-            "title": "Park files, links, text and images",
-            "text": "They survive restarts. Drag them out, share or AirDrop them."
-          },
-          "music": {
-            "k": "Music",
-            "title": "Now Playing, volume and output",
-            "text": "Speakers, AirPods, displays and AirPlay."
-          },
-          "header": {
-            "k": "Header",
-            "title": "Clock and battery",
-            "text": "A large clock when nothing is playing."
-          },
-          "looks": {
-            "k": "Looks",
-            "title": "Basic appearance"
-          }
+      "signpost": {
+        "tagline": "Macbrow’s own site",
+        "label": "More about Macbrow at {domain}",
+        "links": {
+          "features": "Every feature",
+          "pricing": "Pricing and Pro",
+          "faq": "Questions"
         }
-      },
-      "pro": {
-        "title": "Pro",
-        "price": "€7.99 once",
-        "note": "Plus the two above",
-        "rows": {
-          "clipboard": {
-            "k": "Clipboard",
-            "title": "Your last 50 copies",
-            "text": "Password managers are ignored."
-          },
-          "focus": {
-            "k": "Focus",
-            "title": "Focus timer or Pomodoro",
-            "text": "Counting down in the notch."
-          },
-          "mirror": {
-            "k": "Mirror",
-            "title": "Check your camera",
-            "text": "A quick look before a call."
-          },
-          "drawer": {
-            "k": "Drawer",
-            "title": "Pull down six integrations",
-            "text": "Reminders, Shortcuts, Weather, Checkmate, Dilo, LimitBar."
-          },
-          "assistant": {
-            "k": "Assistant",
-            "title": "Ask about your day",
-            "text": "On-device with Apple Intelligence, macOS 26+. Nothing happens until you confirm."
-          }
-        }
-      },
-      "tour": {
-        "title": "Pro, in the notch",
-        "text": "Real screens from Macbrow.",
-        "tabsLabel": "Pro features",
-        "tabs": {
-          "clipboard": {
-            "label": "Clipboard",
-            "hint": "last 50 copies",
-            "alt": "Macbrow’s Clipboard tab: four recent copies as cards (a code snippet, one file, a link to example.com and meeting notes), each with how long ago it was copied, plus pause and trash buttons."
-          },
-          "focus": {
-            "label": "Focus",
-            "hint": "timer, Pomodoro",
-            "alt": "Macbrow’s Focus tab: a ring with a 15:37 timer, a Timer and Pomodoro switch, and Pause and Reset buttons."
-          },
-          "assistant": {
-            "label": "Assistant",
-            "hint": "on device",
-            "alt": "Macbrow’s Assistant answering ‘What does my day look like?’ after checking the calendar: the Weekly sync under way, Stand-up at 12:30 and lunch at 14:00."
-          },
-          "weather": {
-            "label": "Drawer: Weather",
-            "hint": "MET Norway",
-            "alt": "Macbrow’s Home with the drawer open on Weather: 4 degrees and partly cloudy in Oslo, the next twelve hours and the next five days, data from MET Norway."
-          },
-          "checkmate": {
-            "label": "Drawer: Checkmate",
-            "hint": "your tasks",
-            "alt": "Macbrow’s Home with the drawer open on Checkmate: one overdue task, three for today and two for Monday, each with its project and time."
-          }
-        }
-      },
-      "also": {
-        "text": "Also in the notch: today’s calendar with a week strip, a pixel pet that reacts to your day, Light, Glass and Black styles, every connected display and six languages. On displays without a notch it shows as a small pill in the menu bar.",
-        "petAlt": "The closed notch with a small blue pixel cat walking on its left side.",
-        "petCaption": "The pet, in the closed notch"
       }
     },
     "checkmate": {
@@ -300,23 +139,21 @@
   "AppsPage": {
     "title": "Download our apps",
     "metaDescription": "Dilo, Macbrow, Checkmate, LimitBar, Berth, DeepSpy and Tide. Free downloads for your Mac, notarized by Apple, with automatic updates.",
-    "eyebrow": "Apps",
+    "heading": "Download <mark>our apps</mark>",
     "lead": "Every app here is a free download for your Mac. They are notarized by Apple and update themselves.",
     "listLabel": "All apps",
     "macos": "macOS {version}+",
     "ios": "iOS {version}+",
     "free": "Free",
     "download": "Download for Mac",
-    "proAvailable": "Basic is free, Pro available",
     "more": "See it in action",
     "note": "Downloads are signed and notarized by Apple. Install once: new versions arrive on their own.",
     "store": "You can also find them on our <link>Gumroad store</link>.",
     "newTab": "(opens in a new tab)",
     "forApp": "({name})",
     "iosBadgeLabel": "Download {name} on the App Store",
-    "buyPro": "Buy Pro",
-    "trial": "Try free for {days} days",
-    "learnMore": "Learn more"
+    "visitSite": "Visit {domain}",
+    "pricingLink": "Pro and pricing at {domain}"
   },
   "Friction": {
     "title": "Got a friction we haven't fixed?",

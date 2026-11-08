@@ -5,8 +5,8 @@
 // Checkmate's iPhone app. Changing it? Run `node scripts/gen-checkmate-qr.mjs` to regenerate the QR.
 export const CHECKMATE_APP_STORE_URL = "https://apps.apple.com/app/id6828836039";
 
-// Where "Buy Pro" for Macbrow goes (Dilo has no buy link: its Pro is sold inside the app). The app itself sends buyers to jetforgelabs.com/apps.
-export const MACBROW_PRO_URL = "https://jetforgelabs.gumroad.com/l/macbrow";
+// Apps with their own site (`siteUrl`: Dilo, Macbrow) are shown here, not sold: no price, no plans, no checkout link on jetforgelabs.com.
+// Pricing lives on the app's site, so the entry has no field that could paint a price or a payment URL.
 
 export type AppSlug = "berth" | "checkmate" | "deepspy" | "dilo" | "limitbar" | "macbrow" | "tide";
 
@@ -19,19 +19,21 @@ export interface AppEntry {
   minMacOS: number;
   /** Has a chapter on the home page. */
   featured: boolean;
-  /** Primary link of the home chapter: the direct download, or the app's own site. */
+  /** The direct download. Apps with a `siteUrl` still keep it, as the secondary action. */
   href: string;
-  /** The app's own site, when it has one (Dilo). */
+  /** The app's own site, when it has one (Dilo, Macbrow). Presence switches the app to the "showcase" pattern: no price, no plans. */
   siteUrl?: string;
-  /** Paid tier: where to buy it (`url`, absent when it is sold inside the app), and, when there is one, the trial and the price for the structured data. */
-  pro?: { url?: string; trialDays?: number; price?: { amount: string; currency: string } };
+  /** Anchors on `siteUrl` for the signpost that closes the chapter, in order. `key` picks the label in Home.<slug>.signpost.links. */
+  siteSections?: readonly { key: "features" | "dictation" | "meetings" | "pricing" | "faq"; hash: string }[];
+  /** Has a paid tier. The price itself lives on `siteUrl`, never here. */
+  pro?: { trialDays?: number };
   /** iPhone companion app: App Store link, minimum iOS major version. */
   ios?: { url: string; minIOS: number };
 }
 
 export const ALL_APPS: readonly AppEntry[] = [
-  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "https://getdilo.co", siteUrl: "https://getdilo.co", pro: { trialDays: 14, price: { amount: "49", currency: "EUR" } } },
-  { slug: "macbrow", icon: "/apps/macbrow-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: true, href: "/download/macbrow", pro: { url: MACBROW_PRO_URL, trialDays: 14, price: { amount: "7.99", currency: "EUR" } } },
+  { slug: "dilo", icon: "/apps/dilo-icon.png", category: "ProductivityApplication", minMacOS: 26, featured: true, href: "/download/dilo", siteUrl: "https://getdilo.co", siteSections: [{ key: "dictation", hash: "#dictation" }, { key: "meetings", hash: "#transcribe" }, { key: "pricing", hash: "#pricing" }], pro: { trialDays: 14 } },
+  { slug: "macbrow", icon: "/apps/macbrow-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: true, href: "/download/macbrow", siteUrl: "https://macbrow.co", siteSections: [{ key: "features", hash: "#screens" }, { key: "pricing", hash: "#pricing" }, { key: "faq", hash: "#faq" }], pro: { trialDays: 14 } },
   { slug: "checkmate", icon: "/apps/checkmate-icon.png", category: "ProductivityApplication", minMacOS: 15, featured: true, href: "/download/checkmate", ios: { url: CHECKMATE_APP_STORE_URL, minIOS: 18 } },
   { slug: "limitbar", icon: "/apps/limitbar-icon.png", category: "DeveloperApplication", minMacOS: 14, featured: false, href: "/download/limitbar" },
   { slug: "berth", icon: "/apps/berth-icon.png", category: "UtilitiesApplication", minMacOS: 15, featured: false, href: "/download/berth" },
@@ -46,3 +48,6 @@ export const APPS: readonly AppEntry[] = ALL_APPS.filter((app) => app.featured);
 export const OTHER_APPS: readonly AppEntry[] = ALL_APPS.filter((app) => !app.featured);
 
 export const isAppSlug = (value: string): value is AppSlug => ALL_APPS.some((app) => app.slug === value);
+
+/** Host of the app's own site, for labels and the `destination` of outbound_click ("macbrow.co"). */
+export const siteHost = (siteUrl: string) => new URL(siteUrl).hostname;

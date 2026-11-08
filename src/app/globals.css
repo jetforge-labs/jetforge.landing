@@ -159,24 +159,33 @@ a{color:inherit}
 .ident p{font-size:1.25rem;font-weight:700;letter-spacing:-.01em;line-height:1.1}
 .ident small{display:block;margin-top:5px;font:500 var(--t-meta)/1.3 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2)}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3)}
-.tag{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font:650 .6875rem/1 var(--font);letter-spacing:.02em;
-  background:color-mix(in srgb,var(--app-accent) 16%,transparent);color:var(--app-accent)}
-kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-width:1.9em;height:1.9em;padding:0 .45em;border-radius:.45em;
-  background:rgba(17,18,20,.06);box-shadow:inset 0 -1px 0 rgba(17,18,20,.14);color:inherit}
-[data-app] kbd{background:rgba(243,245,246,.1);box-shadow:inset 0 -1px 0 rgba(243,245,246,.18)}
 /* Reassurance copy at the point of purchase: readable sans, not 13px mono at 64% */
 .fine{font:500 var(--t-meta)/1.45 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2);max-width:46ch}
 
-/* Offer: primary button, then one strip "label · price · secondary pill". Same in Dilo and Macbrow. */
-.offer{margin-top:var(--s4);display:flex;flex-direction:column;align-items:flex-start;gap:var(--s2)}
-.offer .price{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
-.offer .price small{font:500 var(--t-meta)/1.2 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2)}
-.offer .price b{font-size:1.5rem;line-height:1;font-weight:720;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.offer .price .link-arrow{margin-left:6px;min-height:44px;padding:0 18px;border-radius:999px;font-size:.9375rem;color:var(--ch-ink);box-shadow:inset 0 0 0 1px var(--ch-line-strong);transition:box-shadow 160ms ease,background-color 160ms ease}
-@media (hover:hover) and (pointer:fine){.offer .price .link-arrow:hover{text-decoration:none;background:rgba(243,245,246,.06);box-shadow:inset 0 0 0 1.5px var(--app-accent)}}
-.offer + .fine{margin-top:var(--s2)}
-.trial-line{margin-top:var(--s4);font-size:1.125rem;font-weight:650;line-height:1.35;color:var(--ch-ink)}
-.trial-line + .offer{margin-top:var(--s2)}
+/* Go: the exit actions of an app with its own site. Filled = leave for its site, outline = download. Both 52px tall, one filled. */
+.go{margin-top:var(--s4);display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.go + .fine{margin-top:var(--s2)}
+.btn-line{background:transparent;color:var(--ch-ink);padding-right:10px;box-shadow:inset 0 0 0 1px var(--ch-line-strong)}
+.btn-line .arrow{background:rgba(243,245,246,.08)}
+@media (hover:hover) and (pointer:fine){.btn-line:hover{background:rgba(243,245,246,.06);box-shadow:inset 0 0 0 1.5px var(--app-accent)}}
+/* The arrow says where you go: ↗ another domain, ↓ a file, → this site */
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .btn[data-go="out"]:hover .arrow,.app-card-actions .btn[data-go="out"]:hover .arrow{transform:translate(2px,-2px)}
+  .btn[data-go="file"]:hover .arrow,.app-card-actions .btn[data-go="file"]:hover .arrow{transform:translateY(2px)}
+}
+
+/* Signpost: the app's own site as an index, no figures. Closes the Dilo and Macbrow chapters the same way. */
+.signpost{margin-top:var(--s6);padding-top:var(--s3);border-top:1px solid var(--ch-line);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s2) var(--s5);align-items:center}
+.signpost-dest{display:flex;align-items:center;gap:12px;margin:0}
+.signpost-dest img{width:32px;height:32px;flex:none}
+.signpost-dest b{display:block;font-size:1.125rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.signpost-dest small{display:block;font:500 var(--t-meta)/1.3 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2)}
+.signpost ul{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px}
+.signpost a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;font-weight:600;font-size:.9375rem;color:var(--ch-ink);text-decoration:none;transition:background-color 160ms ease}
+.signpost .ne,.app-card-note .ne{display:inline-block;transition:transform 200ms var(--ease-out)}
+.signpost .ne{color:var(--app-accent)}
+@media (hover:hover) and (pointer:fine){.signpost a:hover{background:rgba(243,245,246,.07)}}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.signpost a:hover .ne,.app-card-note a:hover .ne{transform:translate(2px,-2px)}}
 
 /* Feature rows */
 .rows{display:grid}
@@ -184,17 +193,6 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .rows .k{display:flex;flex-wrap:wrap;align-items:center;gap:4px;align-self:start;min-height:24px;font:500 .75rem/1 var(--mono);color:var(--ch-ink3)}
 .rows h4{font-size:1rem;font-weight:640;line-height:1.35;margin:0}
 .rows p{margin-top:2px;font-size:.9375rem;line-height:1.5;color:var(--ch-ink2);max-width:52ch}
-.plans{margin-top:var(--s7);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5);align-items:start}
-.plan-basic{padding-top:var(--s3)}
-/* Pro gets one tinted panel: the eye separates "what you keep" from "what you pay for" without reading */
-.plan-pro{padding:var(--s3) var(--s4) var(--s2);border-radius:var(--r-frame);background:color-mix(in srgb,var(--app-accent) 7%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--app-accent) 24%,transparent)}
-.plan-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s2);padding-bottom:var(--s2)}
-.plan-head h3{white-space:nowrap;font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
-.plan-head h3 b{color:var(--app-accent);font-weight:700}
-.plan-head p{font:500 var(--t-meta)/1.3 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2);text-align:right;margin:0}
-.plans-after{margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--ch-line)}
-.plans-after p{font-size:.9375rem;color:var(--ch-ink2);max-width:80ch}
-
 /* ---------- Dilo ---------- */
 .ch-dilo{padding-block:var(--sec-y) var(--s7)}
 .ch-dilo::before{content:"";position:absolute;inset:0;z-index:-1;background:
@@ -220,41 +218,18 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .render{display:block;width:100%;height:auto}
 .hang{position:relative;margin:var(--s4) 0 0;border-top:1px solid rgba(255,244,236,.14)}
 .hang img{margin-top:-1px}
-.closed-strip{position:relative;height:92px;margin:var(--s4) 0 0;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#2B170D,#140C08 70%);box-shadow:inset 0 0 0 1px rgba(255,244,236,.08)}
-.closed-strip .bar{height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(255,244,236,.05);font:500 12px/1 var(--mac);color:rgba(255,244,236,.7)}
-.closed-strip .bar b{color:rgba(255,244,236,.9)}
-.closed-strip img{position:absolute;top:0;left:50%;translate:-50% 0;height:44px;width:auto;max-width:none;transform-origin:50% 0}
-.closed-strip figcaption{position:absolute;left:14px;bottom:12px;font:500 .8125rem/1 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink2)}
 .ch-macbrow .phrase{font-size:clamp(2.75rem,5.4vw,5rem)}
 .mb-intro{margin-top:var(--s6);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s5) var(--s6);align-items:start}
 .mb-intro > div:last-child{padding-top:var(--s1)}
 .ch-macbrow .ident{margin-top:var(--s4)}
 .ch-macbrow .lede{max-width:38ch}
-.spot{margin-top:var(--s7);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s6);padding-top:var(--s5);border-top:1px solid var(--ch-line)}
+/* One spot: the text on the left, the render hanging from its top edge on the right */
+.spot{margin-top:var(--s7);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:start;padding-top:var(--s5);border-top:1px solid var(--ch-line)}
 .spot-k{display:flex;align-items:center;gap:var(--s1);font:650 .875rem/1 var(--font);color:var(--app-accent);margin:0}
 .spot h3{margin-top:var(--s2);font-size:var(--t-h3);line-height:1.1;font-weight:700;letter-spacing:-.015em}
-.spot article > p:not(.spot-k):not(.spot-meta){margin-top:var(--s2);color:var(--ch-ink2);max-width:46ch}
-.spot-meta{margin-top:var(--s2);font:500 var(--t-meta)/1.5 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink3)}
-.mb-plans{margin-top:var(--s6)}
-/* Pro tour: the stage is a visible piece of screen, so short panels hang from its top edge instead of floating over a void */
-.tour{margin-top:var(--s6);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s5);align-items:start}
-.tour h3{font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
-.tour > div > p{margin-top:var(--s1);color:var(--ch-ink2);font-size:.9375rem}
-.tour-tabs{margin-top:var(--s3);display:grid;gap:4px}
-.tour-tabs button{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:var(--s2);min-height:48px;padding:12px 16px;border-radius:12px;cursor:pointer;color:var(--ch-ink2);font-weight:600;
-  transition:background-color 180ms ease,color 180ms ease,box-shadow 180ms ease}
-.tour-tabs button small{font:500 .8125rem/1 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink3)}
-.tour-tabs button[aria-selected="true"]{background:rgba(255,164,99,.12);color:var(--ch-ink);box-shadow:inset 0 0 0 1px rgba(255,164,99,.45)}
-.tour-tabs button[aria-selected="true"] small{color:var(--ch-ink2)}
-.tour-tabs button:focus-visible{outline:2px solid var(--app-accent);outline-offset:2px}
-@media (hover:hover) and (pointer:fine){.tour-tabs button:hover:not([aria-selected="true"]){background:rgba(255,244,236,.05);color:var(--ch-ink)}}
-.tour-stage{position:relative;aspect-ratio:667 / 586;border-top:1px solid rgba(255,244,236,.18);border-radius:0 0 var(--r-frame) var(--r-frame);
-  background:radial-gradient(70% 55% at 50% 0%,rgba(255,140,64,.12),transparent 70%),rgba(255,244,236,.045);box-shadow:inset 0 0 0 1px rgba(255,244,236,.08)}
-.tour-stage [role="tabpanel"]:focus-visible{outline-offset:-2px}
-@media (prefers-reduced-motion:no-preference){.tour-stage [role="tabpanel"]:not([hidden]){animation:drop 280ms var(--ease-out)}@keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}}
-.mb-also-row{margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--ch-line);display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:var(--s5);align-items:center}
-.mb-also{font-size:.9375rem;color:var(--ch-ink2);max-width:80ch;margin:0}
-.mb-also-row .closed-strip{margin:0}
+.spot-text{margin-top:var(--s2);color:var(--ch-ink2);max-width:44ch}
+.spot-meta{margin-top:var(--s2);font:500 var(--t-meta)/1.5 var(--font);font-variation-settings:"wdth" 90;color:var(--ch-ink3);max-width:44ch}
+.spot .hang{margin:0}
 
 /* ---------- Checkmate ---------- */
 .ch-checkmate{background:var(--app-tint);color:var(--frame-ink);padding-block:var(--s7)}
@@ -308,7 +283,6 @@ kbd{font:500 .75rem/1 var(--mono);display:inline-grid;place-items:center;min-wid
 .dl .wave i{display:block;width:.28em;height:100%;border-radius:1em;background:linear-gradient(#EAF2FF,#3D8BFF);transform:scaleY(.55)}
 .dl .wave i:nth-child(2){transform:scaleY(.85)}.dl .wave i:nth-child(3){transform:scaleY(1)}.dl .wave i:nth-child(4){transform:scaleY(.7)}.dl .wave i:nth-child(5){transform:scaleY(.4)}
 .dl .lbl{display:inline-flex;align-items:center;gap:.6em;white-space:nowrap;font-size:.84em;font-weight:600;color:#A9B6CF}
-.dl .protag{display:inline-flex;align-items:center;height:1.6em;padding:0 .55em;border-radius:.4em;background:rgba(125,178,255,.2);color:#9CC4FF;font-size:.85em}
 .dl .raw{line-height:1.5;color:#EDF1F7;margin-top:.2em}
 .dl .raw s{text-decoration:none;color:#8792A8;background:linear-gradient(#FF8A7A,#FF8A7A) 0 58% / 100% .09em no-repeat}
 
@@ -485,21 +459,13 @@ button:disabled{opacity:.6;cursor:not-allowed}
 
 /* ============ Responsive ============ */
 @media (max-width:1279px){.menubar .apps span{display:none}}
-@media (max-width:1100px){
-  .plans .plan-head{flex-direction:column;align-items:flex-start;gap:4px}
-  .plans .plan-head p{text-align:left}
-}
 @media (max-width:960px){
-  .hero,.dilo-top,.mb-intro,.cm-grid,.plans,.tour,.mb-also-row,.friction-top,.about{grid-template-columns:minmax(0,1fr)}
+  .hero,.dilo-top,.mb-intro,.spot,.cm-grid,.friction-top,.about{grid-template-columns:minmax(0,1fr)}
   .hero .sub{grid-column:1;margin-top:var(--s3)}
   .friction h2,.about h2{grid-row:auto}
   .friction-top p{margin-top:var(--s3)}
   .about h2{padding-top:0;margin-bottom:var(--s2)}
-  .tour-tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter)}
-  .tour-tabs button{flex:none}
-  .tour-tabs button small{display:none}
   .ch-dilo .shot{margin-right:0}
-  .plans{gap:var(--s4)}
   .cm-screens{order:2}
 }
 @media (max-width:899px){
@@ -515,25 +481,21 @@ button:disabled{opacity:.6;cursor:not-allowed}
   .hero .more-link{justify-self:start}
   .phrase .q-open{margin-left:0}
   .rows li{grid-template-columns:minmax(0,1fr);gap:6px}
-  .plan-pro{padding:var(--s3) var(--s2) var(--s1);margin-inline:calc(-1 * var(--s1))}
   .ch-checkmate .rows{grid-template-columns:minmax(0,1fr)}
   .cm-screens{padding:0}
   .cm-screens .phone{display:none}
   .notch-stage{padding-inline:var(--s1)}
   .notch-stage .panel{width:100%}
-  .closed-strip .bar > *{visibility:hidden}
-  .closed-strip img{scale:.8}
-  .spot .hang,.tour-stage{margin-inline:calc(-1 * var(--gutter))}
-  .tour-stage{border-radius:0}
+  .spot .hang{margin-inline:calc(-1 * var(--gutter))}
   .menubar{visibility:hidden}
-  .spot{grid-template-columns:minmax(0,1fr);gap:var(--s5);margin-top:var(--s6);padding-top:var(--s4)}
-  .spot-meta{display:none}
-  .mb-plans .rows p{display:none}
-  .mb-plans .rows li{grid-template-columns:88px minmax(0,1fr);gap:var(--s2);padding:12px 0}
-  .mb-plans .rows .k{min-height:0;padding-top:3px}
-  .mb-plans{margin-top:var(--s5)}
+  .spot{gap:var(--s4);margin-top:var(--s6);padding-top:var(--s4)}
   .mb-intro .ident small{max-width:24ch}
-  .plans-after{margin-top:var(--s4)}
+  .go{flex-direction:column;align-items:stretch}
+  .go .btn{justify-content:space-between;padding-left:20px}
+  .signpost{grid-template-columns:minmax(0,1fr)}
+  .signpost ul{flex-direction:column;align-items:stretch;gap:0;margin-inline:calc(-1 * var(--s2))}
+  .signpost li{border-top:1px solid var(--ch-line)}
+  .signpost a{justify-content:space-between;width:100%;min-height:52px}
 }
 @media (max-width:560px){
   .two{grid-template-columns:1fr}
@@ -543,15 +505,12 @@ button:disabled{opacity:.6;cursor:not-allowed}
 }
 @media (max-width:420px){
   .nav ul{gap:0}.nav ul a{padding:0 8px}
-  .offer .btn{white-space:normal;height:auto;min-height:var(--h);padding-block:8px;line-height:1.2}
-  .offer .price .link-arrow{margin-left:0}
+  .go .btn{white-space:normal;height:auto;min-height:var(--h);padding-block:8px;line-height:1.2}
 }
 
 /* ============ Apps page ============
    Three featured apps in their chapter colour (same [data-app] tokens as the home), the other apps as a spec list. */
 .page-head.apps-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:var(--s6);align-items:end;padding-block:clamp(48px,9vh,104px) clamp(40px,6vh,64px)}
-.apps-head .eyebrow{grid-column:1 / -1;display:flex;align-items:center;gap:10px;margin-bottom:var(--s3);font:650 1rem/1.2 var(--font);letter-spacing:0;text-transform:none;color:var(--frame-ink)}
-.apps-head .eyebrow::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--spark);box-shadow:inset 0 0 0 1.5px var(--frame-ink)}
 .page-head.apps-head h1{grid-column:1;font-size:var(--t-display);font-weight:720;font-stretch:80%;font-variation-settings:"wdth" 80;letter-spacing:-.02em;line-height:.94}
 .apps-head .page-lead{grid-column:2;max-width:36ch;padding-bottom:.4em;font-size:clamp(1.0625rem,1.4vw,1.25rem);line-height:1.5;color:var(--frame-ink2)}
 
@@ -574,16 +533,20 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .app-card[data-app] .meta{color:var(--ch-ink2)}
 .app-card-line{color:var(--frame-ink2);max-width:40ch;line-height:1.5}
 .app-card[data-app] .app-card-line{color:var(--ch-ink);font-size:1.0625rem}
-/* The Pro note is the price: on the featured (dark) cards a tinted panel, not a grey paragraph */
+/* The note says what stays free and carries the way to the price (a link to the app's site, never the figure): on the featured (dark) cards a tinted panel */
 .app-card-note{font-size:.9375rem;line-height:1.5;color:var(--frame-ink2)}
 .app-card[data-app] .app-card-note{padding:12px 14px;border-radius:12px;color:var(--ch-ink2);
   background:color-mix(in srgb,var(--app-accent) 9%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--app-accent) 26%,transparent)}
+.app-card-note a{display:inline-flex;align-items:center;gap:6px;margin-top:4px;min-height:32px;color:var(--ch-ink);font-weight:650;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.22em;text-decoration-color:color-mix(in srgb,var(--app-accent) 70%,transparent)}
+.app-card-note .ne{color:var(--app-accent);text-decoration:none}
 .app-card-actions{margin-top:auto;padding-top:var(--s1);display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
 .app-card-stores{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .app-card-actions .btn{--h:44px;gap:10px;padding-left:18px;padding-right:5px;font-size:.9375rem}
 .app-card-actions .btn .arrow{width:34px;height:34px;background:var(--spark);color:var(--frame-ink)}
 .app-card[data-app] .btn-store{background:var(--app-accent);color:var(--app-on)}
 .app-card[data-app] .btn-store .arrow{background:color-mix(in srgb,var(--app-on) 14%,transparent);color:inherit}
+.app-card[data-app] .btn-line{color:var(--ch-ink)}
+.app-card[data-app] .btn-line .arrow{background:rgba(243,245,246,.08);color:inherit}
 @media (hover:hover) and (pointer:fine){.app-card[data-app] .btn-store:hover{background:color-mix(in oklab,var(--app-accent) 86%,#fff)}}
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.app-card-actions .btn:hover .arrow{transform:translateY(2px)}}
 /* Apple's App Store badge: official artwork, never recoloured or animated */
@@ -591,9 +554,6 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .text-link{display:inline-flex;align-items:center;min-height:44px;font-size:.9375rem;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;
   text-underline-offset:.25em;text-decoration-color:color-mix(in srgb,currentColor 35%,transparent);transition:text-decoration-color 160ms ease,box-shadow 160ms ease,background-color 160ms ease}
 @media (hover:hover){.text-link:hover{text-decoration-color:currentColor}}
-/* On the featured cards: Buy Pro / Learn more as an outline pill, "See it in action" as a quiet link */
-.app-card[data-app] .app-card-actions > .text-link:first-of-type:not(.see-more){padding:0 18px;border-radius:999px;text-decoration:none;box-shadow:inset 0 0 0 1px var(--ch-line-strong)}
-@media (hover:hover) and (pointer:fine){.app-card[data-app] .app-card-actions > .text-link:first-of-type:not(.see-more):hover{background:rgba(243,245,246,.06);box-shadow:inset 0 0 0 1.5px var(--app-accent)}}
 .app-card-actions > .see-more{margin-left:6px}
 .app-card-actions > .see-more::after{content:"\2192" / "";margin-left:6px;text-decoration:none;display:inline-block;transition:transform 200ms var(--ease-out)}
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.app-card-actions > .see-more:hover::after{transform:translateX(3px)}}
@@ -671,3 +631,5 @@ button:disabled{opacity:.6;cursor:not-allowed}
 @media (hover:hover){.consent-btn:hover{background:var(--ink-hover)}}
 .consent-btn:focus-visible,.consent-link:focus-visible{outline:2px solid var(--frame-ink);outline-offset:2px}
 @media (min-width:640px){.consent{left:var(--s3);right:auto;bottom:var(--s3)}}
+
+/* TEMPORARY (see the TODO(retire) in apps/page.tsx): notice for buyers who arrive from the "Buy" button of Macbrow 1.12.1 */

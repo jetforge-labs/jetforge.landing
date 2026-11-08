@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getRelease } from "@/lib/appcast";
-import { ALL_APPS } from "../_components/apps";
+import { ALL_APPS, siteHost } from "../_components/apps";
 import { AppsJsonLd } from "../_components/json-ld";
 import { SiteFooter } from "../_components/site-footer";
 import { SiteNav } from "../_components/site-nav";
@@ -56,8 +56,7 @@ export default async function AppsPage({ params }: Props) {
       <SiteNav />
       <main id="main">
         <div className="wrap page-head apps-head">
-          <p className="eyebrow">{t("eyebrow")}</p>
-          <h1>{t("title")}</h1>
+          <h1>{t.rich("heading", { mark: (chunks) => <span className="mark">{chunks}</span> })}</h1>
           <p className="page-lead">{t("lead")}</p>
         </div>
 
@@ -80,11 +79,19 @@ export default async function AppsPage({ params }: Props) {
                     </div>
                   </div>
                   <p className="app-card-line">{tApps(`${app.slug}.line`)}</p>
-                  {app.pro?.trialDays && <p className="app-card-note">{tApps(`${app.slug}.proNote`, { days: app.pro.trialDays })}</p>}
+                  {app.siteUrl && app.pro?.trialDays && (
+                    <p className="app-card-note">
+                      {tApps(`${app.slug}.proNote`, { days: app.pro.trialDays })}
+                      <br />
+                      <a data-go="out" href={`${app.siteUrl}/#pricing`} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="apps" data-track-destination={siteHost(app.siteUrl)}>
+                        {t("pricingLink", { domain: siteHost(app.siteUrl) })} <span className="ne" aria-hidden="true">&#8599;</span>
+                      </a>
+                    </p>
+                  )}
                   <div className="app-card-actions">
                     <div className="app-card-stores">
-                      <a className="btn btn-ink btn-store" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="apps">
-                        {app.pro?.trialDays ? t("trial", { days: app.pro.trialDays }) : t("download")}
+                      <a className="btn btn-ink btn-store" data-go="file" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="apps">
+                        {t("download")}
                         <span className="vh"> {t("forApp", { name })}</span>
                         <span className="arrow" aria-hidden="true">&darr;</span>
                       </a>
@@ -94,20 +101,13 @@ export default async function AppsPage({ params }: Props) {
                           <img src="/badges/app-store-en.svg" alt="" height={40} width={119} />
                         </a>
                       )}
-                    </div>
-                    {app.pro?.url ? (
-                      <a className="text-link" href={app.pro.url} data-track-event="checkout_click" data-track-product={app.slug} data-track-location="apps">
-                        {app.pro.trialDays ? t("buyPro") : t("proAvailable")}
-                        {app.pro.trialDays && <span className="vh"> {t("forApp", { name })}</span>}
-                      </a>
-                    ) : (
-                      app.siteUrl && (
-                        <a className="text-link" href={app.siteUrl}>
-                          {t("learnMore")}
-                          <span className="vh"> {t("forApp", { name })}</span>
+                      {app.siteUrl && (
+                        <a className="btn btn-line" data-go="out" href={app.siteUrl} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="apps" data-track-destination={siteHost(app.siteUrl)}>
+                          {t("visitSite", { domain: siteHost(app.siteUrl) })}
+                          <span className="vh"> {t("forApp", { name })}</span> <span className="arrow" aria-hidden="true">&#8599;</span>
                         </a>
-                      )
-                    )}
+                      )}
+                    </div>
                     {app.featured && (
                       <Link className="text-link see-more" href={`/#${app.slug}`}>
                         {t("more")}
