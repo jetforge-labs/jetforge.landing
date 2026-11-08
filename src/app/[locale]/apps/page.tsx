@@ -83,20 +83,20 @@ export default async function AppsPage({ params }: Props) {
                   {app.pro?.trialDays && <p className="app-card-note">{tApps(`${app.slug}.proNote`, { days: app.pro.trialDays })}</p>}
                   <div className="app-card-actions">
                     <div className="app-card-stores">
-                      <a className="btn btn-ink btn-store" href={`/download/${app.slug}`}>
+                      <a className="btn btn-ink btn-store" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="apps">
                         {app.pro?.trialDays ? t("trial", { days: app.pro.trialDays }) : t("download")}
                         <span className="vh"> {t("forApp", { name })}</span>
                         <span className="arrow" aria-hidden="true">&darr;</span>
                       </a>
                       {app.ios && (
-                        <a className="ios-badge" href={app.ios.url} aria-label={t("iosBadgeLabel", { name })}>
+                        <a className="ios-badge" href={app.ios.url} aria-label={t("iosBadgeLabel", { name })} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="apps">
                           {/* eslint-disable-next-line @next/next/no-img-element -- Apple's badge artwork must stay untouched */}
                           <img src="/badges/app-store-en.svg" alt="" height={40} width={119} />
                         </a>
                       )}
                     </div>
                     {app.pro?.url ? (
-                      <a className="text-link" href={app.pro.url}>
+                      <a className="text-link" href={app.pro.url} data-track-event="checkout_click" data-track-product={app.slug} data-track-location="apps">
                         {app.pro.trialDays ? t("buyPro") : t("proAvailable")}
                         {app.pro.trialDays && <span className="vh"> {t("forApp", { name })}</span>}
                       </a>

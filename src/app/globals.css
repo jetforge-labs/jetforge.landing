@@ -657,3 +657,17 @@ button:disabled{opacity:.6;cursor:not-allowed}
 .nf p{margin-top:24px;max-width:40ch;font-size:1.1875rem;color:var(--frame-ink2)}
 .nf .btn{margin-top:32px}
 .nf.tex{--tex-mask:radial-gradient(ellipse 50% 60% at 20% 50%,#000 8%,transparent 70%)}
+/* ============ Consent banner ============ */
+.foot-cols .consent-link{display:inline-flex;align-items:center;min-height:40px;padding:0;background:none;border:0;cursor:pointer;font:inherit;font-size:.9375rem;font-weight:500;color:var(--ch-ink);
+  text-decoration-thickness:2px;text-underline-offset:.25em}
+@media (hover:hover){.foot-cols .consent-link:hover{text-decoration:underline;text-decoration-color:var(--spark)}}
+.consent{position:fixed;z-index:60;left:var(--s2);right:var(--s2);bottom:var(--s2);max-width:30rem;padding:var(--s3);background:var(--frame-bg);color:var(--frame-ink);
+  border:1px solid var(--field-line);border-radius:12px;box-shadow:0 12px 40px rgba(17,18,20,.18);font-family:var(--font)}
+.consent-title{font-weight:700;font-size:1rem;margin:0 0 var(--s1)}
+.consent-body{font-size:.9375rem;line-height:1.5;color:var(--frame-ink2);margin:0 0 var(--s2)}
+.consent-body a{color:var(--frame-ink);text-decoration:underline;text-underline-offset:.2em}
+.consent-actions{display:flex;gap:var(--s1)}
+.consent-btn{flex:1;min-height:44px;padding:0 var(--s2);border-radius:8px;border:1px solid var(--frame-ink);background:var(--frame-ink);color:var(--frame-bg);font:inherit;font-weight:600;cursor:pointer}
+@media (hover:hover){.consent-btn:hover{background:var(--ink-hover)}}
+.consent-btn:focus-visible,.consent-link:focus-visible{outline:2px solid var(--frame-ink);outline-offset:2px}
+@media (min-width:640px){.consent{left:var(--s3);right:auto;bottom:var(--s3)}}

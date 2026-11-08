@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ALL_APPS } from "./apps";
+import { CookieSettingsButton } from "./consent";
 
 interface SiteFooterProps {
   home?: boolean;
@@ -43,6 +44,7 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
             <h3>{t("legalHeading")}</h3>
             <ul>
               <li><Link href="/privacy">{t("privacy")}</Link></li>
+              <li><CookieSettingsButton label={t("cookieSettings")} /></li>
             </ul>
           </div>
         </div>

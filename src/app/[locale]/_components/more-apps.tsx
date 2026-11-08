@@ -35,7 +35,7 @@ export async function MoreApps() {
                 </div>
               </div>
               <p>{tApps(`${app.slug}.line`)}</p>
-              <a className="link-arrow" href={app.href}>
+              <a className="link-arrow" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="more-apps">
                 {t("download")}
                 <span className="vh"> {name}</span>
                 <span aria-hidden="true">&darr;</span>
