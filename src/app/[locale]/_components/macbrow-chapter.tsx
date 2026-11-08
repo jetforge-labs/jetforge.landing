@@ -48,14 +48,14 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
           <div>
             <p className="lede">{t("lede")}</p>
             <div className="offer">
-              <a className="btn btn-accent" href={app.href}>
+              <a className="btn btn-accent" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
                 {t("ctaTrial", { days: app.pro?.trialDays ?? 14 })} <span className="arrow" aria-hidden="true">&darr;</span>
               </a>
               <div className="price">
                 <small>{t("priceLabel")}</small>
                 <b>{t("price")}</b>
                 {app.pro?.url && (
-                  <a className="link-arrow" href={app.pro.url}>
+                  <a className="link-arrow" href={app.pro.url} data-track-event="checkout_click" data-track-product={app.slug} data-track-location="chapter">
                     {t("buyPro")} <span aria-hidden="true">&rarr;</span>
                   </a>
                 )}

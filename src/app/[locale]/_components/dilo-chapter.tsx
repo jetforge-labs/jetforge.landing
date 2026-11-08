@@ -25,7 +25,7 @@ export async function DiloChapter({ app }: { app: AppEntry }) {
               <div className="price">
                 <small>{t("priceLabel")}</small>
                 <b>{t("price")}</b>
-                <a className="link-arrow" href={`/download/${app.slug}`}>
+                <a className="link-arrow" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
                   {t("ctaDownload", { days: trialDays })}
                   <span className="vh"> ({tApps("name")})</span> <span aria-hidden="true">&darr;</span>
                 </a>

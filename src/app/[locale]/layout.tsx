@@ -4,9 +4,9 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { routing } from "@/i18n/routing";
 import { JsonLd } from "./_components/json-ld";
+import { ConsentBanner } from "./_components/consent";
 import "../globals.css";
 
 // Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%); the subset keeps the full width range (regenerated from google/fonts ofl/bricolagegrotesque, wght 400-800, wdth 75-100).
@@ -145,7 +145,7 @@ export default async function LocaleLayout({
 
   // Only the contact form is a client component, so it is the only namespace sent to the browser.
   const { Contact } = await getMessages();
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const tConsent = await getTranslations({ locale, namespace: "Consent" });
 
   return (
     <html lang={locale} className={`${bricolage.variable} ${geistMono.variable}`}>
@@ -156,8 +156,14 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={{ Contact }}>
           {children}
         </NextIntlClientProvider>
+        <ConsentBanner
+          title={tConsent("title")}
+          body={tConsent("body")}
+          accept={tConsent("accept")}
+          reject={tConsent("reject")}
+          privacy={tConsent("privacy")}
+        />
       </body>
-      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }

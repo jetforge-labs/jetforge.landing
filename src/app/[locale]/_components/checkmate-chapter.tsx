@@ -32,7 +32,7 @@ export async function CheckmateChapter({ app }: { app: AppEntry }) {
           </ul>
           <Ident icon={app.icon} name={tApps("name")} meta={t("meta")} />
           <div className="actions">
-            <a className="btn btn-deep" href={app.href}>
+            <a className="btn btn-deep" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
               {t("ctaMac")} <span className="arrow" aria-hidden="true">&darr;</span>
             </a>
             {app.ios && (
