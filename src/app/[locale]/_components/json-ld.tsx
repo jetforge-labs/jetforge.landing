@@ -21,6 +21,27 @@ export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEnt
     <>
       {apps.map((app, i) => {
         const release = releases[i];
+        // An app with its own site is described by that site: same @id as the entity it publishes, no offers, no download URL.
+        if (app.siteUrl) {
+          return (
+            <JsonLd
+              key={app.slug}
+              data={{
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "@id": `${app.siteUrl}/#app`,
+                name: tApps(`${app.slug}.name`),
+                description: tApps(`${app.slug}.line`),
+                applicationCategory: app.category,
+                operatingSystem: app.ios ? "macOS, iOS" : "macOS",
+                operatingSystemVersion: `${release?.minMacOS ?? app.minMacOS}+`,
+                url: `${app.siteUrl}/`,
+                image: `https://jetforgelabs.com${app.icon}`,
+                publisher: { "@type": "Organization", name: "Jetforge Labs" },
+              }}
+            />
+          );
+        }
         return (
           <JsonLd
             key={app.slug}
@@ -32,14 +53,9 @@ export async function AppsJsonLd({ apps, live = false }: { apps: readonly AppEnt
               applicationCategory: app.category,
               operatingSystem: app.ios ? "macOS, iOS" : "macOS",
               operatingSystemVersion: `${release?.minMacOS ?? app.minMacOS}+`,
-              url: app.siteUrl ?? `https://jetforgelabs.com/apps#${app.slug}`,
+              url: `https://jetforgelabs.com/apps#${app.slug}`,
               image: `https://jetforgelabs.com${app.icon}`,
-              offers: app.pro?.price
-                ? [
-                    { "@type": "Offer", price: "0", priceCurrency: app.pro.price.currency },
-                    { "@type": "Offer", price: app.pro.price.amount, priceCurrency: app.pro.price.currency, url: app.pro.url ?? app.siteUrl },
-                  ]
-                : { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
               publisher: { "@type": "Organization", name: "Jetforge Labs" },
               ...(release && {
                 downloadUrl: app.ios

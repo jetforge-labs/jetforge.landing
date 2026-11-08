@@ -26,7 +26,7 @@ export function DiloShot({ label }: { label: string }) {
         <div className="hud" aria-hidden="true">
           <span className="wave"><i /><i /><i /><i /><i /></span>
           <div>
-            <span className="lbl">Cleaning up <span className="protag">Pro</span></span>
+            <span className="lbl">Cleaning up</span>
             <p className="raw">
               <s>um,</s> let&rsquo;s meet <s>Tuesday, no,</s> Wednesday at ten and, <s>well,</s> bring the revised budget
             </p>
