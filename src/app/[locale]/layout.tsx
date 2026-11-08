@@ -155,14 +155,14 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={{ Contact }}>
           {children}
+          <ConsentBanner
+            title={tConsent("title")}
+            body={tConsent("body")}
+            accept={tConsent("accept")}
+            reject={tConsent("reject")}
+            privacy={tConsent("privacy")}
+          />
         </NextIntlClientProvider>
-        <ConsentBanner
-          title={tConsent("title")}
-          body={tConsent("body")}
-          accept={tConsent("accept")}
-          reject={tConsent("reject")}
-          privacy={tConsent("privacy")}
-        />
       </body>
     </html>
   );

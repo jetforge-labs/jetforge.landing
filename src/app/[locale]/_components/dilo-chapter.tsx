@@ -19,7 +19,7 @@ export async function DiloChapter({ app }: { app: AppEntry }) {
             <Ident icon={app.icon} name={tApps("name")} meta={t("meta")} />
             <p className="trial-line">{t("trialLine", { days: trialDays })}</p>
             <div className="offer">
-              <a className="btn btn-accent" href={app.href}>
+              <a className="btn btn-accent" href={app.href} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="chapter">
                 {t("ctaMore")} <span className="arrow" aria-hidden="true">&rarr;</span>
               </a>
               <div className="price">
