@@ -390,7 +390,7 @@
       "p1": "We may collect the following types of information:",
       "item1": "Personal information you provide directly, such as your name, email address, and any messages you send through our contact forms.",
       "item2": "Usage data collected automatically, including device information, browser type, operating system, IP address, and interaction patterns within our Services.",
-      "item3": "Analytics data from Google Analytics 4, only if you accept analytics cookies: page views and clicks on download and buy buttons, in aggregate.",
+      "item3": "Analytics data from Google Analytics 4 on our websites, only if you accept analytics cookies: page views and clicks on download and buy buttons, in aggregate. Google also receives your IP address and device and browser data. Our legal basis is your consent (GDPR Art. 6(1)(a)).",
       "item4": "Advertising identifiers and related data when our applications display ads, used to serve relevant advertisements."
     },
     "use": {
@@ -405,7 +405,7 @@
     "thirdParty": {
       "heading": "Third-Party Services",
       "p1": "Our Services may integrate with third-party services that collect information independently. These may include:",
-      "item1": "Google Analytics 4 (Google Ireland Limited), loaded only after you accept analytics cookies. It sets the cookies _ga and _ga_*, which Google keeps for up to 2 years. Jetforge Labs OÜ is the controller of this data. You can change your choice at any time with the \"Cookie settings\" link in the footer.",
+      "item1": "Google Analytics 4 (Google Ireland Limited), loaded only after you accept analytics cookies; until then no request is made to Google and no cookie is set. It sets the cookies _ga and _ga_* in your browser, which last up to 2 years. Event data is kept for 14 months. Jetforge Labs OÜ is the controller. You can withdraw your consent at any time with the \"Cookie settings\" link in the footer, and delete the cookies in your browser.",
       "item2": "Advertising networks (e.g., Google AdMob) to display ads within our applications.",
       "item3": "Cloud hosting and infrastructure providers to store and process data securely.",
       "p2": "These third-party services have their own privacy policies, and we encourage you to review them. We are not responsible for the practices of these third parties."

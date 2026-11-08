@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { OPEN_EVENT, loadGtag, readConsent, track, writeConsent } from "@/lib/analytics";
+import { OPEN_EVENT, loadGtag, readConsent, track, withdrawGtag, writeConsent } from "@/lib/analytics";
 
 interface ConsentBannerProps {
   title: string;
@@ -18,6 +18,7 @@ interface ConsentBannerProps {
  */
 export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentBannerProps) {
   const [open, setOpen] = useState(false);
+  const firstButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const stored = readConsent();
@@ -25,13 +26,16 @@ export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentB
     // eslint-disable-next-line react-hooks/set-state-in-effect
     else if (stored === null) setOpen(true);
 
-    const onOpen = () => setOpen(true);
+    const onOpen = () => {
+      setOpen(true);
+      requestAnimationFrame(() => firstButton.current?.focus());
+    };
     const onClick = (e: MouseEvent) => {
       const el = (e.target as Element | null)?.closest<HTMLElement>("[data-track-event]");
       if (!el) return;
       track(el.dataset.trackEvent!, {
-        product: el.dataset.trackProduct ?? "",
-        location: el.dataset.trackLocation ?? "",
+        product: el.dataset.trackProduct,
+        location: el.dataset.trackLocation,
       });
     };
     window.addEventListener(OPEN_EVENT, onOpen);
@@ -45,9 +49,15 @@ export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentB
   if (!open) return null;
 
   const choose = (value: "granted" | "denied") => {
+    const wasGranted = readConsent() === "granted";
     writeConsent(value);
     if (value === "granted") loadGtag();
     setOpen(false);
+    if (value === "denied" && wasGranted) {
+      // Withdrawal: gtag is already running in this page, so stop it, clear cookies, then reload clean.
+      withdrawGtag();
+      location.reload();
+    }
   };
 
   return (
@@ -57,7 +67,7 @@ export function ConsentBanner({ title, body, accept, reject, privacy }: ConsentB
         {body} <Link href="/privacy">{privacy}</Link>
       </p>
       <div className="consent-actions">
-        <button type="button" className="consent-btn" onClick={() => choose("denied")}>{reject}</button>
+        <button ref={firstButton} type="button" className="consent-btn" onClick={() => choose("denied")}>{reject}</button>
         <button type="button" className="consent-btn" onClick={() => choose("granted")}>{accept}</button>
       </div>
     </div>
