@@ -9,11 +9,11 @@ export default async function NotFound() {
   return (
     <>
       <SiteNav />
-      <main id="main" className="wrap nf tex">
+      <main id="main" className="wrap nf">
         <p className="code">404</p>
         <h1>{t("title")}</h1>
         <p>{t("description")}</p>
-        <Link className="btn btn-ink" href="/">
+        <Link className="btn btn-ink plain" href="/">
           {t("back")}
         </Link>
       </main>

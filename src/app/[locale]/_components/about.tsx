@@ -6,11 +6,13 @@ export async function About() {
   return (
     <section className="wrap about" id="about" aria-labelledby="about-title">
       <h2 id="about-title">{t("title")}</h2>
-      <p>{t("text")}</p>
-      <p className="also">
-        {t("also")}{" "}
-        <a href="#contact" data-reason="custom">{t("alsoLink")}</a>
-      </p>
+      <div>
+        <p>{t("text")}</p>
+        <p className="also">
+          {t("also")}{" "}
+          <a href="#contact" data-reason="custom">{t("alsoLink")}</a>
+        </p>
+      </div>
     </section>
   );
 }

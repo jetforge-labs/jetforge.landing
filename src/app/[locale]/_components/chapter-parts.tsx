@@ -16,9 +16,9 @@ export function Phrase({ id, text }: { id: string; text: string }) {
 export function Ident({ icon, name, meta }: { icon: string; name: string; meta: string }) {
   return (
     <div className="ident">
-      <Image src={icon} alt="" width={56} height={56} />
+      <Image src={icon} alt="" width={60} height={60} />
       <p>
-        {name}
+        <span translate="no">{name}</span>
         <small>{meta}</small>
       </p>
     </div>
@@ -37,7 +37,7 @@ export async function GoActions({ app, ns, name }: { app: AppEntry; ns: string; 
   return (
     <>
       <div className="go">
-        <a className="btn btn-accent" data-go="out" href={app.siteUrl} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="chapter" data-track-destination={host}>
+        <a className="btn btn-app" data-go="out" href={app.siteUrl} data-track-event="outbound_click" data-track-product={app.slug} data-track-location="chapter" data-track-destination={host}>
           {t("ctaSite", { domain: host })} <span className="arrow" aria-hidden="true">&#8599;</span>
         </a>
         <a className="btn btn-line" data-go="file" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
@@ -59,7 +59,7 @@ export async function Signpost({ app, ns }: { app: AppEntry; ns: string }) {
   return (
     <div className="signpost">
       <p className="signpost-dest">
-        <Image src={app.icon} alt="" width={32} height={32} />
+        <Image src={app.icon} alt="" width={36} height={36} />
         <span>
           <b>{host}</b>
           <small>{t("tagline")}</small>

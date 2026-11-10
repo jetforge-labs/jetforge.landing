@@ -123,7 +123,7 @@ export function ContactForm() {
         <textarea id="msg" name="message" placeholder={placeholder} maxLength={5000} required />
       </div>
       <div className="form-foot">
-        <button className="btn btn-ink" type="submit" disabled={status === "sending"}>
+        <button className="btn btn-spark plain" type="submit" disabled={status === "sending"}>
           {status === "sending" ? t("sending") : t("send")}
         </button>
         <p className={status === "error" ? "hint err" : "hint"} id="form-status" role="status" aria-live="polite">

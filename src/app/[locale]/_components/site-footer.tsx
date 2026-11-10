@@ -16,14 +16,14 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
     <footer className="site-footer">
       <div className="wrap foot">
         <div className="foot-brand">
-          <Link className="wordmark" href="/" aria-label={t("backToTop")}>
+          <Link className="wordmark" href="/" aria-label={t("backToTop")} translate="no">
             Jetforge Labs
           </Link>
           <p>{t("tagline")}</p>
         </div>
         <div className="foot-cols">
           <nav aria-labelledby="foot-apps">
-            <h3 id="foot-apps">{t("appsHeading")}</h3>
+            <h2 id="foot-apps">{t("appsHeading")}</h2>
             <ul>
               {ALL_APPS.map((app) => (
                 <li key={app.slug}>
@@ -33,7 +33,7 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
             </ul>
           </nav>
           <nav aria-labelledby="foot-studio">
-            <h3 id="foot-studio">{t("studioHeading")}</h3>
+            <h2 id="foot-studio">{t("studioHeading")}</h2>
             <ul>
               <li><Link href={`${base}#about`}>{t("about")}</Link></li>
               <li><Link href={`${base}#custom`}>{t("custom")}</Link></li>
@@ -41,7 +41,7 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
             </ul>
           </nav>
           <div>
-            <h3>{t("legalHeading")}</h3>
+            <h2>{t("legalHeading")}</h2>
             <ul>
               <li><Link href="/privacy">{t("privacy")}</Link></li>
               <li><CookieSettingsButton label={t("cookieSettings")} /></li>

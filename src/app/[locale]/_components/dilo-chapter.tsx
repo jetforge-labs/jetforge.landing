@@ -10,16 +10,18 @@ export async function DiloChapter({ app }: { app: AppEntry }) {
   const name = tApps("name");
 
   return (
-    <section className="ch ch-dilo" data-app="dilo" id="dilo" aria-labelledby="dilo-phrase">
+    <section className="ch ch-dilo on-dark" data-app="dilo" id="dilo" aria-labelledby="dilo-phrase">
       <div className="wrap">
-        <div className="dilo-top">
-          <div>
-            <Phrase id="dilo-phrase" text={t("phrase")} />
-            <p className="lede">{t("lede")}</p>
-            <Ident icon={app.icon} name={name} meta={t("meta")} />
-            <GoActions app={app} ns="Home.dilo" name={name} />
-          </div>
+        <div className="dilo-head">
+          <Phrase id="dilo-phrase" text={t("phrase")} />
+          <p className="lede">{t("lede")}</p>
+        </div>
+        <div className="dilo-stage">
           <DiloShot label={t("shotLabel")} />
+        </div>
+        <div className="dilo-foot">
+          <Ident icon={app.icon} name={name} meta={t("meta")} />
+          <GoActions app={app} ns="Home.dilo" name={name} />
         </div>
 
         <Signpost app={app} ns="Home.dilo" />

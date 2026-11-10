@@ -9,22 +9,26 @@ import { JsonLd } from "./_components/json-ld";
 import { ConsentBanner } from "./_components/consent";
 import "../globals.css";
 
-// Same trimmed Latin subsets as getdilo.co. Bricolage is variable in weight and width (75% to 100%); the subset keeps the full width range (regenerated from google/fonts ofl/bricolagegrotesque, wght 400-800, wdth 75-100).
-const bricolage = localFont({
-  src: "../../fonts/bricolage-grotesque-latin-subset.woff2",
-  variable: "--font-bricolage",
-  weight: "400 800",
+// Funnel Display (headlines) and Funnel Sans (text), self-hosted. Both are variable in weight (300 to 800); the subsets are Latin only
+// (regenerated from google/fonts ofl/funneldisplay and ofl/funnelsans with fonttools, keeping all layout features).
+const funnelDisplay = localFont({
+  src: "../../fonts/funnel-display-latin-subset.woff2",
+  variable: "--font-funnel-display",
+  weight: "300 800",
   style: "normal",
   display: "swap",
-  declarations: [{ prop: "font-stretch", value: "75% 100%" }],
+  // Keep the system fallback untouched: the arrows (↗ ↓ →) are not in Funnel, so they render from the system font.
+  adjustFontFallback: false,
 });
 
-const geistMono = localFont({
-  src: "../../fonts/geist-mono-latin-subset.woff2",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const funnelSans = localFont({
+  src: "../../fonts/funnel-sans-latin-subset.woff2",
+  variable: "--font-funnel-sans",
+  weight: "300 800",
   style: "normal",
   display: "swap",
+  // Keep the system fallback untouched: the arrows (↗ ↓ →) are not in Funnel, so they render from the system font.
+  adjustFontFallback: false,
 });
 
 export function generateStaticParams() {
@@ -148,7 +152,7 @@ export default async function LocaleLayout({
   const tConsent = await getTranslations({ locale, namespace: "Consent" });
 
   return (
-    <html lang={locale} className={`${bricolage.variable} ${geistMono.variable}`}>
+    <html lang={locale} className={`${funnelDisplay.variable} ${funnelSans.variable}`}>
       <head>
         <StructuredData locale={locale} />
       </head>

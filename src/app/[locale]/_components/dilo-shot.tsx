@@ -1,11 +1,38 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // Recreation of Dilo dictating into a mail window (final state of the getdilo.co hero demo).
 // The text inside is the recreated app's own UI: decorative, hidden from assistive tech. The wrapper carries the label.
+// Without JS (or with reduced motion) it stays in its final state. Otherwise the clean-up plays once, when the mock is half in view.
 export function DiloShot({ label }: { label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"final" | "play" | "run">("final");
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setPhase("play");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        requestAnimationFrame(() => setPhase("run"));
+        observer.disconnect();
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(el);
+    const fallback = window.setTimeout(() => setPhase("run"), 12000);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
+  }, []);
+
   return (
     <div className="shot">
-      <div className="dl" role="img" aria-label={label}>
+      <div ref={ref} className={phase === "final" ? "dl" : `dl ${phase === "run" ? "play run" : "play"}`} role="img" aria-label={label}>
         <div className="dl-bar" aria-hidden="true">
           <div className="apps"><b>Mail</b><span>File</span><span>Edit</span><span>View</span><span>Message</span></div>
           <div className="st">

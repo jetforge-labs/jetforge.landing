@@ -70,7 +70,7 @@ export default async function AppsPage({ params }: Props) {
                   <div className="app-card-head">
                     <Image src={app.icon} alt="" width={72} height={72} />
                     <div>
-                      <h2>{name}</h2>
+                      <h2 translate="no">{name}</h2>
                       <p className="meta">
                         <span>{t("macos", { version: release?.minMacOS ?? app.minMacOS })}</span>
                         {app.ios && <span>{t("ios", { version: app.ios.minIOS })}</span>}
@@ -90,7 +90,7 @@ export default async function AppsPage({ params }: Props) {
                   )}
                   <div className="app-card-actions">
                     <div className="app-card-stores">
-                      <a className="btn btn-ink btn-store" data-go="file" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="apps">
+                      <a className="btn btn-ink" data-go="file" href={`/download/${app.slug}`} data-track-event="download_click" data-track-product={app.slug} data-track-location="apps">
                         {t("download")}
                         <span className="vh"> {t("forApp", { name })}</span>
                         <span className="arrow" aria-hidden="true">&darr;</span>
@@ -123,9 +123,9 @@ export default async function AppsPage({ params }: Props) {
           <p className="apps-note apps-store">
             {t.rich("store", {
               link: (chunks) => (
-                <a className="text-link" href="https://jetforgelabs.gumroad.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://jetforgelabs.gumroad.com" target="_blank" rel="noopener noreferrer">
                   {chunks}
-                  <span className="arrow-ne" aria-hidden="true">&#8599;</span>
+                  <span aria-hidden="true">&#8599;</span>
                   <span className="vh"> {t("newTab")}</span>
                 </a>
               ),
