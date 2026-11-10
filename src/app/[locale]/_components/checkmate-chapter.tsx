@@ -24,7 +24,7 @@ export async function CheckmateChapter({ app }: { app: AppEntry }) {
             {rowIds.map((id) => (
               <li key={id}>
                 <div>
-                  <h4>{t(`rows.${id}.title`)}</h4>
+                  <h3>{t(`rows.${id}.title`)}</h3>
                   <p>{t(`rows.${id}.text`)}</p>
                 </div>
               </li>
@@ -32,7 +32,7 @@ export async function CheckmateChapter({ app }: { app: AppEntry }) {
           </ul>
           <Ident icon={app.icon} name={tApps("name")} meta={t("meta")} />
           <div className="actions">
-            <a className="btn btn-deep" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
+            <a className="btn btn-deep" data-go="file" href={app.href} data-track-event="download_click" data-track-product={app.slug} data-track-location="chapter">
               {t("ctaMac")} <span className="arrow" aria-hidden="true">&darr;</span>
             </a>
             {app.ios && (

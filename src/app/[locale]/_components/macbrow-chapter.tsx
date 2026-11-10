@@ -10,7 +10,7 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
   const name = tApps("name");
 
   return (
-    <section className="ch ch-macbrow" data-app="macbrow" id="macbrow" aria-labelledby="macbrow-phrase">
+    <section className="ch ch-macbrow on-dark" data-app="macbrow" id="macbrow" aria-labelledby="macbrow-phrase">
       {/* The Mac's menu bar, recreated: decorative */}
       <div className="menubar" aria-hidden="true">
         <span className="apps"><b>Finder</b><span>File</span><span>Edit</span><span>View</span><span>Go</span></span>
@@ -39,7 +39,7 @@ export async function MacbrowChapter({ app }: { app: AppEntry }) {
             <p className="spot-meta">{t("spot.shelf.meta")}</p>
           </div>
           <figure className="hang">
-            <Image className="render" src="/apps/macbrow/shelf.png" width={667} height={223} sizes="(max-width: 640px) 100vw, 560px" alt={t("spot.shelf.alt")} />
+            <Image src="/apps/macbrow/shelf.png" width={667} height={223} sizes="(max-width: 640px) 100vw, 560px" alt={t("spot.shelf.alt")} />
           </figure>
         </article>
 

@@ -37,7 +37,7 @@ export function IphoneShot({ label }: { label: string }) {
       <div className="ph" role="img" aria-label={label}>
         <div aria-hidden="true">
           <div className="island" />
-          <h6>Today</h6>
+          <p className="ph-title">Today</p>
           <ul>
             <li><span className="ck p1" /><span>Call the plumber<small>09:30 &middot; Home</small></span></li>
             <li><span className="ck p2" /><span>Send the October invoice<small>16:00 &middot; Work</small></span></li>

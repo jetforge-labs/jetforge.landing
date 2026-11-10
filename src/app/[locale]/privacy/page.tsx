@@ -24,9 +24,9 @@ export default async function PrivacyPolicy() {
     <>
       <SiteNav />
       <main id="main">
-        <div className="wrap page-head tex">
+        <div className="wrap page-head">
           <p className="eyebrow">{t("eyebrow")}</p>
-          <h1>{t("title")}</h1>
+          <h1 className="legal-h1">{t("title")}</h1>
           <p className="updated">
             {t("lastUpdated")}: {t("lastUpdatedDate")}
           </p>
