@@ -86,13 +86,13 @@ export async function generateMetadata({
       siteName: "Jetforge Labs",
       title: t("title"),
       description: t("description"),
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: t("ogAlt") }],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: t("ogAlt") }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/opengraph-image"],
+      images: ["/opengraph-image.png"],
     },
   };
 }
@@ -106,7 +106,7 @@ async function StructuredData({ locale }: { locale: string }) {
     name: "Jetforge Labs",
     legalName: "Jetforge Labs OÜ",
     url: "https://jetforgelabs.com",
-    logo: "https://jetforgelabs.com/icon.png",
+    logo: "https://jetforgelabs.com/android-chrome-512x512.png",
     description:
       "Jetforge Labs is a small software studio. It makes apps (Dilo, Macbrow, Checkmate and more) and a few custom tools for others.",
     foundingLocation: { "@type": "Place", name: "Estonia" },

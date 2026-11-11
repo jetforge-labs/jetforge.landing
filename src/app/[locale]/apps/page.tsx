@@ -32,13 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "Jetforge Labs",
       title: `${t("title")} | Jetforge Labs`,
       description: t("metaDescription"),
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: tMeta("ogAlt") }],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: tMeta("ogAlt") }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${t("title")} | Jetforge Labs`,
       description: t("metaDescription"),
-      images: ["/opengraph-image"],
+      images: ["/opengraph-image.png"],
     },
   };
 }

@@ -31,7 +31,8 @@ export async function SiteNav({ home = false }: SiteNavProps) {
       <header className="bar" id={BAR_ID}>
         <div className="wrap bar-in">
           <Link className="wordmark" href="/" aria-label={t("homeLabel")} translate="no">
-            Jetforge Labs
+            <Image className="wm-line" src="/brand/jetforge-line-on-light.svg" alt="" width={202} height={32} priority />
+            <Image className="wm-mark" src="/brand/jetforge-mark-on-light.svg" alt="" width={36} height={36} priority />
           </Link>
           <div className="notch" aria-hidden="true">
             {APPS.map((app) => (

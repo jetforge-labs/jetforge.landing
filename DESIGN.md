@@ -6,13 +6,28 @@ Source of truth for tokens and components: `src/app/globals.css` (hand-written C
 
 ## Rules that do not bend
 
-- The wordmark is the text "Jetforge Labs" in Funnel Display. No lime square and no logo mark anywhere on the page (header, footer, 404, privacy).
+- The logo is the hallmark plate ("Punzón", see Brand mark below). Never set "Jetforge Labs" as loose text in place of it, and never put lime text or a bare lime ingot on a light background.
 - Lime (`--spark`) is Jetforge's only own colour and no app uses it. It is a fill (highlight under the hero line, primary button, selected chip), never text on light.
 - Each featured app owns its palette through `[data-app]`. Do not mix them.
 - Arrows are a convention, not decoration: `↗` external, `↓` download, `→` internal. A button without a destination change (submit, same-page anchor) has no arrow.
 - Brand names carry `translate="no"`.
 - Animations are finite (no infinite loops) and gated by `prefers-reduced-motion`. A global reduce rule also shortens whatever is left.
 - Heading levels are sequential: one `h1` per page, chapters and sections `h2`, items inside them `h3`.
+
+## Brand mark ("F, Punzón")
+
+A chamfered black plate with "Jetforge" and "Labs" and a lime ingot. The plate is the logo; there is no separate wordmark. Source of truth and full rules: `/Users/agustingallego/Developer/assets/jetforge/jetforge/` (read its `README.md`). Served from `public/brand/`.
+
+| Piece | File | Where | Minimum |
+|---|---|---|---|
+| One-line plate, on light | `jetforge-line-on-light.svg` | menu bar, 32px tall | 28px tall |
+| Reduced mark, on light | `jetforge-mark-on-light.svg` | menu bar at 480px and under (the line plate does not fit next to the links) | 16px |
+| Full plate, on dark | `jetforge-plate-on-dark.svg` | footer (dark band), 128px wide | 96px wide |
+| Favicon | `src/app/icon.svg` (swaps to lime under dark scheme), `favicon.ico`, `apple-icon.png`; `public/android-chrome-*.png` in the manifest | head | |
+| Open Graph | `src/app/opengraph-image.png` | `/opengraph-image.png` | |
+| Email | `public/email/wordmark-jetforge-labs@2x.png` (one-line plate, show at 243x52) | transactional email | |
+
+Colours: plate `#101010`, "Jetforge" `#F3F5F6`, "Labs" and ingot lime `#D4F73E` (on the lime plate, text and ingot are ink `#131313`). Lime appears only inside the plate. Keep a quarter of the plate height free on every side. No rounded corners, outline, shadow, gradient, stretching or recolouring; use the mono variants on photos.
 
 ## Tokens
 
@@ -40,7 +55,7 @@ Layout: `--max` 1280px, `--gutter` `clamp(20px,5vw,64px)`, `--bar-h` 52px, `--r`
 
 ## Type
 
-Funnel Display (headlines, wordmark, buttons excepted) and Funnel Sans (text), both variable (300 to 800), self-hosted from Latin subsets in `src/fonts/` through `next/font/local` (`--font-funnel-display`, `--font-funnel-sans`). The arrows are not in the fonts and fall back to the system font, so `adjustFontFallback` is off. The `--mac` stack (SF Pro) is only used inside the recreated app windows.
+Funnel Display (headlines, buttons excepted) and Funnel Sans (text), both variable (300 to 800), self-hosted from Latin subsets in `src/fonts/` through `next/font/local` (`--font-funnel-display`, `--font-funnel-sans`). The arrows are not in the fonts and fall back to the system font, so `adjustFontFallback` is off. The `--mac` stack (SF Pro) is only used inside the recreated app windows.
 
 | Role | Size | Weight | Notes |
 |---|---|---|---|
@@ -53,7 +68,7 @@ Funnel Display (headlines, wordmark, buttons excepted) and Funnel Sans (text), b
 
 ## Components
 
-- **Menu bar (`SiteNav`)**: sticky, translucent, 52px. Wordmark left, links right, notch centred (hidden under 720px). The notch is black; `NotchWatcher` sets `data-app` on the bar while a chapter crosses the middle of the viewport, which widens the notch, tints its glow and fades in that app's icon.
+- **Menu bar (`SiteNav`)**: sticky, translucent, 52px. Logo plate left, links right, notch centred (hidden under 720px). The notch is black; `NotchWatcher` sets `data-app` on the bar while a chapter crosses the middle of the viewport, which widens the notch, tints its glow and fades in that app's icon.
 - **Hero stage**: a 16/11 desktop. Dilo is the focal window (email lines filling in, its bar overlapping), Macbrow is the open notch, Checkmate a small task window. Decorative parts are `aria-hidden`; each object is a link to its chapter. On mobile it is one column.
 - **Chapters (`.ch`)**: one per featured app on its own palette. Dilo and Macbrow are dark, Checkmate is the pale tint. They share `Phrase`, `Ident`, `GoActions` and `Signpost` from `chapter-parts.tsx`. The app windows (`dilo-shot`, `checkmate-shot`) are CSS recreations sized in `em` from a container query.
 - **Dock (`MoreApps`)**: the other apps as icons on a translucent shelf; hover magnifies the icon and its neighbours.
