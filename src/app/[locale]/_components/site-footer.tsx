@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ALL_APPS } from "./apps";
@@ -17,7 +18,7 @@ export async function SiteFooter({ home = false }: SiteFooterProps) {
       <div className="wrap foot">
         <div className="foot-brand">
           <Link className="wordmark" href="/" aria-label={t("backToTop")} translate="no">
-            Jetforge Labs
+            <Image src="/brand/jetforge-plate-on-dark.svg" alt="" width={128} height={59} />
           </Link>
           <p>{t("tagline")}</p>
         </div>
